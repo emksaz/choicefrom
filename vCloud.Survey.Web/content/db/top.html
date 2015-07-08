@@ -1,0 +1,25 @@
+
+<nav class="nav">
+  <div id="LoginAgainDiv" class="w-container"><a href="/">
+      <div class="logo"><span>choice form</span><span>beta</span></div></a><a class="menu-button"><i class="ic ic-menu-w"></i></a>
+    <div class="menu"><a id="Selectques" href="#/QM" ng-click="setLineStyle()" class="nav-current">我的调查问卷</a><a ng-show="IsDemo=='1'">问卷模版</a><a ng-show="IsDemo=='1'">教学</a><a ng-show="IsDemo=='1'">方案与定价</a><a href="#/UC">账户设置</a>
+      <div id="accounts-settings" class="dropdown-event">
+        <button class="accounts-settings right-ic dropdown-bt"><i style=" background-image: url({{UserImageURL.ImgUrl}}); " class="ic-profile"></i><span>账户设置</span><i class="ic ic-down-2w"></i></button>
+        <ul class="dropdown accounts-settings downul">
+          <li ng-click="GoToUrl('/UC');"><i class="ic ic-work"></i>用户设置</li>
+          <li ng-show="IsDemo=='1'" ng-click="GoToUrl('');"><i class="ic ic-building-2d"></i>组织设置</li>
+          <li ng-show="IsDemo=='1'" ng-click="GoToUrl('');"><i class="ic ic-star"></i>方案类型</li>
+          <li ng-show="IsDemo=='1'" ng-click="GoToUrl('');"><i class="ic ic-megaphone-d"></i>更新通知</li>
+          <li ng-show="IsDemo=='1'" ng-click="GoToUrl('');"><i class="ic ic-question-mark-d"></i>帮助中心</li>
+          <li ng-click="SignOut()"><i class="ic ic-logout-d"></i>退出登录</li>
+        </ul>
+      </div>
+      <div ng-show="IsDemo=='1'" class="dropdown-event"><a class="notifications dropdown-bt"><i class="ic ic-24-notifications"></i></a>
+        <ul class="dropdown notification-center downul">
+          <li>没有新通知</li>
+          <li>查看全部通知</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>

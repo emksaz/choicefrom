@@ -1,0 +1,18 @@
+﻿<div class="popup_windows color_gary_kit_title border_dark_gary_262626 all_sides radius_3px help"
+     id="node_help_result"
+     ng-attr-style="{{designManager.helpManager.getStyle()}}"
+     ng-mousedown="handleHelpMouseDown($event)">
+    <div class="w-clearfix popup_title font_color_light_d6d6d6 border_light_gary_3c3c3c buttom">
+        <div class="design_icon ic_sea-rch_2 size_20px float_l margin_r_5px" style="background-position: -120px -140px;"></div>
+        <h2 class="float_l cursor_default">帮助</h2>
+        <div class="w-inline-block close_button color_gary_gradient_icon_button
+           border_light_gary_3c3c3c all_sides radius_2px cursor_pointer">
+            <div class="design_icon size_20px ic_close" ng-click="handleCloseHelpClick()"></div>
+        </div>
+    </div>
+    <div class="search_content" style="max-height:760px;">
+        <div class="search_item font_color_light_d6d6d6 border_light_gary_3c3c3c buttom font_size_12px cursor_pointer"
+             style="word-break:break-all" id="context_help_text">{{designManager.helpManager.getHelpText()}}</div>
+    </div>
+</div>
+

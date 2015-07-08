@@ -1,0 +1,383 @@
+#help_content {
+  h1 {
+    display: block;
+    font-size: 20px;
+    line-height: 36px;
+    font-weight: 600;
+    padding: 24px 0;
+    color: @dodger_blue;
+    border-bottom: 1px dashed @silver;
+  }
+
+  h2 {
+    display: inline-block;
+    font-size: 16px;
+    line-height: 36px;
+    font-weight: 600;
+    i {
+      margin-right: 12px;
+      display: block;
+      line-height: 36px;
+      float: left;
+    }
+  }
+
+  h3 {
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 400;
+    color: @dodger_blue;
+    margin-top: 12px;
+    float: none;
+    clear: none;
+  }
+
+  h4 {
+
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    margin-top: 6px;
+  }
+
+  img {
+    margin: 24px 0;
+  }
+
+  span {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 400;
+    color: @dark_gray;
+  }
+}
+
+
+section {
+  padding: 24px 0;
+  border-bottom: 1px dashed @silver;
+
+  &:first-of-type {
+    border-top: 1px dashed @silver;
+  }
+  &:last-of-type {
+    border: none;
+    margin-bottom: 48px;
+  }
+}
+
+
+section > mark {
+  display: block;
+  position: relative;
+  padding: 12px 24px 12px 48px;
+  margin-top: 24px;
+  background-color: fade(@sea_green, 12%);
+  border: 1px solid @sea_green;
+  color: @sea_green;
+  font-size: 13px;
+  line-height: 18px;
+  > i {
+    position: absolute;
+    left: 12px;
+    top: 0;
+    bottom: 0;
+    margin: auto 0;
+    font-size: 24px;
+    width: 24px;
+    height: 24px;
+    text-align: center;
+  }
+  > strong {
+    display: block;
+    margin-bottom: 6px;
+  }
+}
+
+ul.list-style-ul {
+  li {
+    &::before {
+      font-family: 'ic';
+      content: "\e641";
+      font-size: 0.6px;
+      line-height: 20px;
+      margin-right: 12px;
+      color: @sea_green;
+    }
+  }
+}
+
+section > .shortcut {
+  margin-top: 24px;
+  color: @purple !important;
+  div {
+    position: relative;
+    padding: 12px 24px 12px 48px;
+    border: 1px solid @purple;
+    display: inline-block;
+    border-radius: 3px;
+    i {
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      text-align: center;
+    }
+    span {
+      color: @purple;
+      display: block;
+    }
+  }
+  p {
+    display: inline-block;
+    margin: 0 12px 0 0;
+    strong {
+      margin-right: 6px;
+    }
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+}
+
+.icon-ul {
+  margin-top: 24px;
+  border-bottom: 1px dashed @silver;
+  &:last-of-type {
+    border: none;
+  }
+  li {
+    position: relative;
+    padding-left: 64px;
+    margin-top: 12px;
+    padding-bottom: 24px;
+    overflow: hidden;
+    &:after {
+      content: "";
+      width: 100%;
+      position: absolute;
+      height: 1px;
+      bottom: 0;
+      left: 64px;
+      background-color: fade(@silver,50%);
+    }
+    &:last-of-type:after {
+      background-color: transparent;
+    }
+    i {
+      font-size: 18px;
+      line-height: 18px;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 18px;
+      color: @white;
+      padding: 9px;
+      text-align: center;
+    }
+    i.blue {
+      background-color: @dodger_blue;
+    }
+    i.red {
+      background-color: @tomato;
+    }
+    i.green {
+      background-color: @sea_green;
+    }
+    i.dark {
+      background-color: @dark_slate;
+    }
+    i.purple {
+      background-color: @purple;
+    }
+  }
+}
+
+
+.help-center {
+  position: relative;
+  overflow: hidden;
+  margin: 24px 0 0 0;
+  @media screen and (min-width: 1200px) {
+    margin: 24px -33px 0 -33px;
+  }
+  @media (max-width: 991px) {
+    margin: 24px 0 0 0;
+  }
+}
+
+//
+.help-column {
+  position: relative;
+  width: 50%;
+  margin-bottom: 32px;
+  float: left;
+  &:nth-child(even) {
+    > .help-item {
+      float: right;
+    }
+  }
+  @media screen and (min-width: 1200px) {
+    width: 33.3%;
+    &:nth-child(even) {
+      > .help-item {
+        float: none;
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    width: 50%;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    &:nth-child(even) {
+      > .help-item {
+        float: none;
+      }
+    }
+  }
+}
+
+//问卷(卡片)
+.help-menu,
+.help-item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 435px;
+  height: 468px;
+  padding: 24px 24px 88px 24px;
+  margin: 0 auto;
+  border: 1px solid @silver;
+  border-radius: 3px;
+  background-color: @white;
+  float: left;
+  @media screen and (min-width: 1200px) {
+    width: 343px;
+    float: none;
+  }
+  @media (max-width: 991px) {
+    width: 343px;
+  }
+  @media (max-width: 767px) {
+    width: 100%;
+    float: none;
+    height: auto;
+  }
+  > i {
+    float: left;
+    margin-right: 8px;
+  }
+  > h2 {
+    float: left;
+    line-height: 20px;
+  }
+  > p {
+    width: 100%;
+    clear: left;
+    padding: 12px 0;
+    color: @dark_gray;
+  }
+  > ul {
+    padding-top: 16px;
+    border-top: 1px solid @silver;
+    > li {
+      position: relative;
+      padding: 8px 0 8px 28px;
+      > i {
+        position: absolute;
+        left: 0;
+        top: 8px;
+      }
+      > a {
+        cursor: pointer;
+        &:hover {
+          color: @dodger_blue;
+        }
+      }
+    }
+  }
+  > a {
+    position: absolute;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    border: 2px solid @dodger_blue;
+    text-align: center;
+    color: @dodger_blue;
+    bottom: 24px;
+    left: 24px;
+    right: 24px;
+    -webkit-transition: color 0.3s, background-color 0.3s;
+    transition: color 0.3s, background-color 0.3s;
+    &:hover {
+      background-color: @dodger_blue;
+      color: @white;
+    }
+  }
+}
+
+.help-contents {
+  position: relative;
+  overflow: hidden;
+  margin: 24px 0 0 0;
+}
+
+.help-menu {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  width: 25%;
+  height: auto;
+  padding: 24px;
+  margin: 0;
+  border: none;
+  background-color: transparent;
+  float: left;
+  .scrolltop {
+    cursor: pointer;
+    &:hover {
+      color: @dodger_blue;
+    }
+  }
+  > ul {
+    clear: left;
+    border: none;
+  }
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
+.help-content {
+  position: relative;
+  padding: 12px 48px;
+  display: block;
+  overflow: hidden;
+  float: right;
+  width: 75%;
+  background-color: @white;
+  border: 1px solid @silver;
+  border-radius: 3px;
+  @media (max-width: 991px) {
+    float: none;
+    width: 100%;
+  }
+  @media (max-width: 767px) {
+    padding: 12px 24px;
+  }
+  @media (max-width: 479px) {
+    padding: 12px;
+  }
+}

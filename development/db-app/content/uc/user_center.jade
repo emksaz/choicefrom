@@ -1,0 +1,24 @@
+div
+    header.page-header
+        .w-container
+            h1 账户设置
+            button.purple(style='display:none;')
+                i.ic.ic-star-w
+                span 管理我的方案
+            p(style='display:none;') 当前方案：经济型
+    .w-container
+        .tabs.tabs-style
+            nav
+                ul
+                    mixin tab(ng_class,ng_click,text)
+                        li(ng-attr-class= ng_class, ng-click= ng_click)
+                            span= text
+                    +tab("{{Usercenter.UserSetAction=='User_info' && 'tab-current' || ''}}", "UserSetTab('User_info')", '账户摘要')
+                    +tab("{{Usercenter.UserSetAction=='SchemeSet' && 'tab-current' || ''}}", "IsDemo=='1'", '方案类型')
+                    +tab("{{Usercenter.UserSetAction=='BillInfo' && 'tab-current' || ''}}", "IsDemo=='1'", '账单明细')
+                    +tab("{{Usercenter.UserSetAction=='EmailSet' && 'tab-current' || ''}}", "IsDemo=='1'", '邮箱通知')
+                    +tab("{{Usercenter.UserSetAction=='Password' && 'tab-current' || ''}}", "UserSetTab('Password')", '密码设置')
+
+        .w-tab-content
+            div
+                div(ui-view='')

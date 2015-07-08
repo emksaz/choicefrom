@@ -1,0 +1,25 @@
+
+<div id="web-link" ng-show="publishManager.otherFlag5" class="content-row">
+  <div class="row-title">
+    <h2>发布地址</h2>
+    <button ng-disabled="!publishManager.cancelLock" ng-if="publishManager.downFlag" ng-click="DownClick()" class="red"><i class="ic ic-stop-w"></i><span>停止收集方案</span></button>
+    <button ng-disabled="!publishManager.downLock" ng-if="publishManager.cancelFlag" ng-click="CanclePublish()" class="red"><i class="ic ic-clear-w"></i><span>取消发布</span></button>
+  </div>
+  <form>
+    <h3>Web 链接地址：</h3>
+    <input id="webShortLink" type="text" placeholder="" readonly="" name="web-link"/>
+    <p ng-show="!publishManager.parameterCheck">发布链接地址。</p>
+    <p ng-show="publishManager.parameterCheck">您选择了带参链接的方式，请在使用问卷链接时设置参数的值，将来这个值会记录到问卷结果中。</p><br/>
+  </form>
+  <form>
+    <h3>地址二维码：</h3>
+    <div><img id="qrCodeStr" src="" style="width:200px;height:200px"/></div>
+    <!-- ▼分享模块-->
+    <div class="jiathis_style_32x32"><a class="jiathis_button_weixin"></a><a class="jiathis_button_cqq"></a><a class="jiathis_button_tsina"></a><a class="jiathis_button_email"></a><a class="jiathis_button_copy"></a>
+      <!--a.jiathis.jiathis_txt.jtico.jtico_jiathis(href="http://www.jiathis.com/share" target="_blank")-->
+    </div>
+    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+    <!-- ▲分享模块-->
+    <p>可扫描二维码进入问卷。</p>
+  </form>
+</div>

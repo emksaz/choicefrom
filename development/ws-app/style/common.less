@@ -1,0 +1,180 @@
+.navbar {
+  position: relative;
+  z-index: 999;
+  width: 100%;
+  padding: 32px 0;
+  background-color: transparent;
+  @media (max-width: 991px) {
+    padding: 24px 0;
+  }
+}
+
+.navbar-scroll {
+  position: fixed;
+  z-index: 999;
+  display: none;
+  top: 0;
+  width: 100%;
+  padding: 18px 0 14px 0;
+  background-color: black;
+  box-shadow: none;
+  @media (max-width: 991px) {
+    display: none !important;
+  }
+}
+
+.navbar,
+.navbar-scroll {
+  .logo {
+    float: left;
+    @media (max-width: 767px) {
+      float: none;
+    }
+  }
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+  nav {
+    float: right;
+    color: @white;
+    font-size: 14px;
+    @media (max-width: 767px) {
+      float: none;
+      width: 100%;
+      text-align: center;
+      padding: 12px 0;
+      border-bottom: 1px dashed fade(@white, 50%);
+    }
+    a {
+      margin-left: 12px;
+      cursor: pointer;
+      @media (max-width: 767px) {
+        margin: 0;
+      }
+    }
+    .button {
+      padding: 6px 32px 4px 32px;
+      @media (max-width: 767px) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.logo {
+  display: inline-block;
+  font-family: Kiro-Regular, sans-serif;
+  color: @white;
+  font-size: 34px;
+  line-height: 38px;
+  height: 36px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: 0;
+
+  > span {
+    margin-left: 6px;
+    opacity: 0.6;
+    font-size: 14px;
+    font-weight: 200;
+    text-transform: none;
+  }
+}
+
+.title {
+  max-width: 479px;
+  margin: 0 auto;
+  .transition-property(all);
+  .transition-duration(500ms);
+  text-align: center;
+  @media (max-width: 767px) {
+    font-size: 14px;
+    padding: 0 24px;
+  }
+  @media (max-width: 479px) {
+    max-width: none;
+    padding: 0;
+  }
+  > h2 {
+    @media (max-width: 479px) {
+      font-size: 24px;
+      line-height: inherit;
+    }
+  }
+  > span {
+    display: inline-block;
+    margin-top: 12px;
+    color: @dodger_blue;
+    font-family: Kiro-Thin, sans-serif;
+    font-size: 24px;
+    @media (max-width: 479px) {
+      font-size: 16px;
+      margin: 0;
+    }
+  }
+  > p {
+    text-align: left;
+    margin-top: 24px;
+    @media (max-width: 479px) {
+      font-size: 12px;
+      margin-top: 14px;
+    }
+  }
+}
+
+.my-survey {
+  position: relative;
+  width: 433px;
+  height: 885px;
+  background-image: url("../images/ws/Gold2 @2x.png");
+  background-size: 433px;
+  padding: 107px 29px;
+  background-repeat: no-repeat;
+  @media (max-width: 991px) {
+    width: 288px;
+    height: 590px;
+    background-size: 288px;
+    padding: 71px 19px;
+  }
+  .survey-screen {
+    .translate3d(0,0,0);
+    width: 375px;
+    height: 667px;
+    overflow: hidden;
+    -webkit-overflow-scrolling:touch;
+    //overflow: scroll;
+    overflow-y: hidden;
+    background-color: black;
+    @media (max-width: 991px) {
+      //width: 250px;
+      //height: 444px;
+      -webkit-transform: scale3d(0.666, 0.666, 1);
+      transform: scale3d(0.666, 0.666, 1);
+      -ms-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+      -o-transform-origin: 0 0;
+      -webkit-transform-origin: 0 0;
+      transform-origin: 0 0;
+    }
+    iframe {
+      width: 375px;
+      height: 667px;
+      overflow: hidden;
+      transform-origin: 0 0;
+      background-color: #fff;
+      border: none;
+      @media (max-width: 991px) {
+        //width: 250px;
+        //height: 444px;
+/*       -webkit-transform: scale3d(0.666, 0.666, 1);
+        transform: scale3d(0.666, 0.666, 1);
+        -ms-transform-origin: 0 0;
+        -moz-transform-origin: 0 0;
+        -o-transform-origin: 0 0;
+        -webkit-transform-origin: 0 0;
+        transform-origin: 0 0;*/
+      }
+    }
+  }
+}

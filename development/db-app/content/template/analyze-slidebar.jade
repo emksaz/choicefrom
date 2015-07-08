@@ -1,0 +1,59 @@
+.sidebar
+   .setting-row
+      .sidebar-row
+         // 侧栏-设置区块
+         span {{QuestionSummaries.ShowSetName}}
+         a.box-button.blue(ng-click='AddShowRuleClick()', ng-show='QuestionSummaries.IsShowAddButton')
+            i.ic.ic-plus-w(title='添加显示设置')
+         form#rules(ng-show='!QuestionSummaries.AddShowRule')
+            div(ng-repeat='DataList in QuestionSummaries.DataListList')
+               input.css-checkbox(type='radio', name='radiog_lite', id='Rule_{{DataList.ID}}', ng-checked='DataList.IsSelect', ng-click='SelectDataListInfo(DataList)')
+               label.radio-label.radGroup1(for='Rule_{{DataList.ID}}', title='{{DataList.Name}}') {{DataList.Name}}
+               .dropdown-event(ng-show='DataList.IsShowTool')
+                  ul.floating.strip.downul
+                     li 操作：
+                     li(ng-click='EditShowRuleClick(DataList)') 编辑
+                     li(ng-click='EditShowRuleName(DataList)') 重命名
+                     li(ng-click='DeleteDataListInfo(DataList)') 删除
+                  a.box-button.setup.dropdown-bt
+                     i.ic.ic-wrench-d
+         form#sub-rules(ng-show='QuestionSummaries.AddShowRule')
+            div
+               input#checkboxG1.css-checkbox(type='checkbox', ng-checked='QuestionSummaries.ShowNodeAllSelect', ng-click='SelectAllNode()')
+               label.checkbox-label(for='checkboxG1') 全选
+            div
+               input#checkboxG2.css-checkbox(type='checkbox', ng-checked='QuestionSummaries.ShowNodeReverseSelect', ng-click='ReverseSelectNode()')
+               label.checkbox-label(for='checkboxG2') 反选
+            div(ng-repeat='Node in QuestionSummaries.ShowNodeList')
+               input.css-checkbox(type='checkbox', id='{{Node.NodeID}}', ng-checked='Node.IsSelect', ng-click='SelectShowNode(Node)')
+               label.checkbox-label(for='{{Node.NodeID}}', title='{{Node.NodeTitle}}: {{Node.NodeName}}') {{Node.NodeTitle}}: {{Node.NodeName}}
+         .customize-control(ng-show='QuestionSummaries.AddShowRule')
+            button.medium.gray(ng-click='CloseShowRuleClick()')
+               span 取消
+            button.medium.green(ng-click='SaveShowRuleClick()')
+               span 应用
+      .sidebar-row
+         // 侧栏-设置区块
+         span 输出结果
+         a.box-button.green(ng-click='OpenDownLoadInfo()')
+            i.ic.ic-plus-w(title='添加输出结果')
+         p(ng-show='!QuestionSummaries.IsShowOutView') 未输出任何结果
+         mark(ng-show='!QuestionSummaries.IsShowOutView')
+            | 点击右上角加号生成下载结果
+            a 更多帮助 »
+         #output(ng-show='QuestionSummaries.IsShowOutView', ng-repeat='DataOutput in DataOutputInfo.dataOutputList ')
+            .output_box
+               i.ic.ic-download-w(ng-click='GotoUrl(DataOutput.URL,DataOutput.FileName)')
+               span(style='min-height:26px') {{DataOutput.FileFormat}}: {{DataOutput.FileName}}
+               .dropdown-event
+                  ul.dropdown.output.downul
+                     li(ng-click='ShowDataOutputInfo(DataOutput)') {{DataOutput.ShowFileName}}
+                     li(ng-click='GotoUrl(DataOutput.URL,DataOutput.FileName)') 下载结果
+                     li(ng-click='DelDataOutput(DataOutput.ID,DataOutput.URL)') 删除结果
+                  a.box-button.setup.dropdown-bt
+                     i.ic.ic-wrench-d
+               ul.output-detailed(ng-show='DataOutput.IsShowInfo')
+                  li 文件格式: {{DataOutput.FileFormat}}
+                  // <li>视图内容:{{DataOutput.ViewName}}</li>
+                  li 创建时间:{{DataOutput.CreateTime}}
+                  li 有效时间:{{DataOutput.ExpireDate}}

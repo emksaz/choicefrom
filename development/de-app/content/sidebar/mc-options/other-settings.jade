@@ -1,0 +1,39 @@
+ul.kit-position#other-settings
+    include ../../template/title-local.jade
+    +title('其他选项')
+    li.section-content
+        .check-item
+            a.checkbox.check-attac
+                i.radio-button.off
+                i.radio-button.on
+                span 选项
+            a.checkbox.check-attac
+                i.radio-button.off
+                i.radio-button.on
+                span 备注栏
+            a.checkbox.check-attac
+                i.radio-button.off
+                i.radio-button.on
+                span 选项+备注栏
+            .attached-item
+                input(type='text', placeholder='其他')
+                div
+                    a.checkbox
+                        i.check-box.off
+                        i.check-box.on
+                        span 备注信息必填
+                h4 验证:
+                include ../../template/select.jade
+                h4 在以下范围之内:
+                .spinner
+                    input.switch-button(type="text" value="1")
+                    a
+                    a
+                h5 至
+                .spinner
+                    input.switch-button(type="text" value="1")
+                    a
+                    a
+                h5 个字
+                h4 当答案验证无效时，显示此错误讯息:
+                input(type='text', placeholder='输入格式无效!')

@@ -1,0 +1,10 @@
+nav
+    ul
+        mixin tab(tab,current)
+            li(class= current)
+                span= tab
+        +tab('摘要', 'tab-current')
+        +tab('预览', '')
+        +tab('配额', '')
+        +tab('发布', '')
+        +tab('分析结果', '')

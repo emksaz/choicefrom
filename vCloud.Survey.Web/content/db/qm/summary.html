@@ -1,0 +1,113 @@
+
+<div>
+  <div data-w-tab="Summary" class="w-tab-pane w--tab-active content-panel border-silver all-sides radius-2px settings">
+    <form id="SummaryForm" name="SummaryForm" data-name="Que Title Form" novalidate="">
+      <div class="content-panel-row border-silver bottom">
+        <div class="w-clearfix content-panel-title">
+          <h4 class="content-panel-title-text">问卷摘要</h4><a ng-attr-class="{{QSummary.SFSubmitFlag &amp;&amp; 'w-clearfix w-inline-block button float-right sea-green radius-3px save-settings-button' || 'w-clearfix w-inline-block button float-right silver radius-3px save-settings-button'}}" href="#" ng-click="SummarySubmit()">
+            <div class="icon float-left ic-save-w"></div>
+            <h5 class="float-left">保存更改</h5></a>
+        </div>
+        <div class="form-title-text margin-top-24px">
+          <h5>问卷标题：</h5>
+        </div>
+        <div class="w-clearfix postiton-relative">
+          <div class="w-form survey-form">
+            <input id="SummaryQuesTitle" type="text" placeholder="请输入问卷标题" name="SummaryQuesTitle" data-name="Que Title 2" ng-model="QSummary.SummaryQuesTitle" required="" ng-maxlength="100" ng-change="SFBtnSubmitCssChange(SummaryForm.$valid,SummaryForm.SummaryQuesTitle.$dirty)" maxlength="100" class="w-input input forced"/>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div ng-show="SummaryForm.SummaryQuesTitle.$dirty &amp;&amp; SummaryForm.SummaryQuesTitle.$invalid">
+              <div ng-show="SummaryForm.SummaryQuesTitle.$error.required" class="w-form-fail">
+                <p>问卷标题不可为空！</p>
+              </div>
+              <div ng-show="SummaryForm.SummaryQuesTitle.$error.maxlength" class="w-form-fail">
+                <p>{{::UserPageText.Summary_QTileMaximum}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="right-help">
+            <h6>{{::UserPageText.Summary_QTileMaximum}}</h6>
+          </div>
+        </div>
+        <div class="form-title-text margin-top-24px">
+          <h5>问卷简介：</h5>
+        </div>
+        <div class="w-clearfix postiton-relative">
+          <div class="w-form survey-form">
+            <textarea id="SummaryQuesDescribe" placeholder="请输入问卷简介" name="SummaryQuesDescribe" data-name="Que Intor Field" ng-maxlength="200" maxlength="200" ng-model="QSummary.SummaryQuesDescribe" ng-change="SFBtnSubmitCssChange(SummaryForm.$valid,SummaryForm.SummaryQuesDescribe.$dirty)" class="w-input survey-introduction"></textarea>
+            <div class="w-form-done">
+              <p>Thank you! Your submission has been received!</p>
+            </div>
+            <div ng-show="SummaryForm.SummaryQuesDescribe.$dirty &amp;&amp; SummaryForm.SummaryQuesDescribe.$invalid">
+              <div ng-show="SummaryForm.SummaryQuesDescribe.$error.maxlength" class="w-form-fail">
+                <p>{{::UserPageText.Summary_QDescribeMaximum}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="right-help">
+            <h6>{{::UserPageText.Summary_QDescribeMaximum}}</h6>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="content-panel-row border-silver bottom cover-pictures">
+      <div class="w-clearfix">
+        <h4 class="float-left">问卷封面：</h4>
+      </div>
+      <div class="w-clearfix margin-top-24px postiton-relative">
+        <div class="survey-item border-silver all-sides color-white float-left margin-right-24px">
+          <div style="background-image: url({{QSummary.SummaryQFacePpicture}}); background-size: cover; " class="survey-preview"></div>
+          <div class="w-clearfix collection-schedule font-color-dark-gray border-silver top">
+            <h6 class="float-right">{{QSummary.FileSize}}</h6>
+          </div>
+          <div class="pictures-upload-bar">
+            <div id="progressbar" style="width:0%;" class="progress-bar"></div>
+          </div>
+        </div>
+        <div class="w-clearfix upload-button font-color-dark-gray"><a class="w-clearfix w-inline-block button blue float-left radius-3px btnUpload">
+            <div class="icon float-left ic-upload-w"></div>
+            <h5 class="float-left">上 传</h5></a>
+          <h6 class="cover-pictures-help">{{::UserPageText.Summary_QFacePpicture}}</h6>
+        </div>
+      </div>
+    </div>
+    <div class="content-panel-row">
+      <div class="w-clearfix">
+        <h4 class="float-left">问卷概述：</h4>
+      </div>
+      <div class="margin-top-24px postiton-relative">
+        <div class="overview">
+          <div class="overview-row">
+            <h5 class="overview-column">创建者：</h5>
+            <h5 class="margin-right-15px">{{::QSummary.SummaryCreateName}}</h5>
+          </div>
+          <div class="overview-row">
+            <h5 class="overview-column">修改者：</h5>
+            <h5 class="margin-right-15px">{{QSummary.SummaryUpdateName}}</h5>
+          </div>
+          <div class="overview-row">
+            <h5 class="overview-column">创建时间：</h5>
+            <h5 class="margin-right-15px">{{::QSummary.SummaryCreateDate}}</h5>
+          </div>
+          <div class="overview-row">
+            <h5 class="overview-column">修改时间：</h5>
+            <h5 class="margin-right-15px">{{QSummary.SummaryUpdateDate}}</h5>
+          </div>
+          <div class="overview-row">
+            <h5 class="overview-column">节点数量：</h5>
+            <h5 class="margin-right-15px">{{QSummary.SummaryNodeNum}}</h5>
+          </div>
+          <div style="display:none;" class="overview-row">
+            <h5 class="overview-column">文件大小：</h5>
+            <h5 class="margin-right-15px">12.6 mb ( Files, Fonts, and Backups )</h5>
+          </div>
+        </div>
+        <div class="right-help">
+          <h6>{{::UserPageText.Summary_QCommitment}}</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="uploadDiv" style="display:none;"></div>
+</div>

@@ -1,0 +1,13 @@
+.pop-ups(ng-click='ShowPopup($event)', ng-show='QList.Popupbackground==3')
+   div
+      i.ic.ic-trash-f-d
+      span 删除文件夹
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form
+      p 删除文件夹仅删除文件夹目录，不会删除文件夹中的问卷，问卷将移入“我的文件夹”中。
+      h3 删除的文件夹： {{QList.FolderName}}
+      button.border(type='button', ng-click='CloseDiv()')
+         span 取 消
+      button.red(ng-click='DelFolder()')
+         span 删 除

@@ -1,0 +1,50 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('配额设置-空')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 Here are some quick tips for a first-time organization member.
+                    button.purple
+                        i.ic.ic-brush-w
+                        span 设计问卷
+                    include ./template/shortcut
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-settings
+                    #quota.content-wrap
+                        .content-row
+                            .row-title
+                                h2 配额设置
+                                button.dark
+                                    i.ic.ic-plus-w
+                                    span 新建配额
+                                button.green(disabled='disabled')
+                                    i.ic.ic-2dot-w
+                                    span 保存更改
+                                button.red
+                                    i.ic.ic-trash-w
+                                    span 删除配额
+                        .quota
+                            .sidebar
+                                include ./template/quota-setting-row-empyt
+                                +setting-row('创建配额行','添加配额行','没有配额行条件')
+                                +setting-row('创建配额列','添加配额列','没有配额列条件')
+                                button.dark(disabled='disabled')
+                                    span 生成配额表格
+                            .grid-position
+                                div
+                                    a.box-button
+                                        i.ic.ic-work
+                                        span 隐藏设置
+                                .total
+                                    span 配额收集数合计：
+                                    p 1367
+    include layout/footer

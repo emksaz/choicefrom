@@ -1,0 +1,18 @@
+| @{
+| Layout = null;
+| }
+
+doctype html
+html
+    head
+        include ../../content/layout/headtosi.jade 
+        +title ('survey| choice form')
+
+    body.member-bg(ng-app='myapp')
+
+        include ../../content/template/loading
+
+        .center-wrapper
+            include ../../content/template/login
+            include ../../content/template/register
+            include ../../content/template/forgetpassword

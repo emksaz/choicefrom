@@ -1,0 +1,135 @@
+.sidebar
+    .setting-row
+        h2
+            | 定义视图
+            a.box-button
+                i.ic.ic-question-mark-d
+        .sidebar-row
+            // 侧栏-设置区块
+            span 显示规则
+            a.box-button.blue
+                i.ic.ic-plus-w
+            form#rules
+                div
+                    include ../template/radio-button
+                    +radio('radio1','选择题1,选择题2,选择题1,选择题2,选择题1,选择题1,选择题2,选择题1,选择题2,选择题1','checked')
+                    .dropdown-event
+                        include ../template/floating-strip-3
+                        +item('操作：','编辑','重命名','删除')
+                div
+                    +radio('radio2','选择题1,选择题2,选择题1,选择题2,选择题1,选择题1,选择题2,选择题1,选择题2,选择题1')
+                    .dropdown-event
+                        include ../template/floating-strip-3
+                        +item('操作：','编辑','重命名','删除')
+            form#sub-rules
+                div
+                    include ../template/checkbox
+                    +checkbox('checkboxG1','全选')
+                div
+                    +checkbox('checkboxG2','反选')
+                div
+                    +checkbox('checkboxG3','Q1: 多选题')
+                div
+                    +checkbox('checkboxG4','Q2: 多选题')
+                div
+                    +checkbox('checkboxG5','Q3: 多选题')
+                div
+                    +checkbox('checkboxG6','Q5: 多选题')
+                div
+                    +checkbox('checkboxG7','Q6: 多选题')
+            .customize-control
+                button.medium.gray
+                    span 取消
+                button.medium.green
+                    span 应用
+        .sidebar-row
+            // 侧栏-设置区块
+            span 筛选条件
+            a.box-button.blue
+                i.ic.ic-plus-w
+            form#rules
+                div
+                    +checkbox('checkboxG8','收集器：收集器1,收集器2,收集器3,收集器1')
+                    .dropdown-event
+                        include ../template/floating-strip-3
+                        +item('操作：','编辑','重命名','删除')
+                div
+                    +checkbox('checkboxG9','收集器：收集器1,收集器2,收集器3,收集器1')
+                    .dropdown-event
+                        include ../template/floating-strip-3
+                        +item('操作：','编辑','重命名','删除')
+            form#sub-rules
+                ul
+                    li
+                        | 按收集器筛选
+                        i.ic.ic-right-2d
+                    li
+                        | 按问题与答案筛选
+                        i.ic.ic-right-2d
+                    li
+                        | 按时间筛选
+                        i.ic.ic-right-2d
+            form#sub2-rules
+                span 收集器筛选
+                #coll-rules
+                    div
+                        +checkbox('checkboxG11','收集器 1')
+                    div
+                        +checkbox('checkboxG12','渠道 1')
+                    div
+                        +checkbox('checkboxG13','渠道 2')
+            .customize-control
+                button.medium.gray
+                    span 取消
+                button.medium.green
+                    span 应用
+        h2
+            | 输出
+            a.box-button
+                i.ic.ic-question-mark-d
+        .sidebar-row
+            // 侧栏-设置区块
+            span 输出规则
+            a.box-button.blue
+                i.ic.ic-plus-w
+            form#rules
+                div
+                    +radio('radio1','输出规则20150214','checked')
+                    .dropdown-event
+                        include ../template/floating-strip-3
+                        +item('操作：','编辑','重命名','删除')
+        .sidebar-row
+            // 侧栏-设置区块
+            span 输出结果
+            a.box-button.green
+                i.ic.ic-plus-w
+            #output
+                //i.ic.ic-download-w
+                    span CSV: Data_All_150324.zip
+                    .dropdown-event
+                        ul.dropdown.output
+                            li 显示文件详情
+                            li 下载结果
+                            li 删除结果
+                        a.box-button.setup
+                            i.ic.ic-wrench-d
+                    ul.output-detailed
+                        li Format: CSV
+                        li View:儲存的資料檢視頁面(edited)
+                        li Created:3/24/2015
+                        li Expires:4/7/2015
+                .output_box
+                    i.ic.ic-download-w
+                    span CSV: Data_All_1asdadadadadasdsadadadas50324.zip
+                    .dropdown-event
+                        ul.dropdown.output
+                            li 显示文件详情
+                            li 下载结果
+                            li 删除结果
+                        a.box-button.setup
+                            i.ic.ic-wrench-d
+                    ul.output-detailed
+                        li Format: CSV
+                        li View:儲存的資料檢視頁面(edited)
+                        li Created:3/24/2015
+                        li Expires:4/7/2015

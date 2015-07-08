@@ -1,0 +1,18 @@
+mixin sidebar-row(header)
+    .sidebar-row
+        span= header
+        .dropdown-event
+            include ../template/floating-strip
+            +item('操作：','重命名','删除')
+        span
+            | 添加条件
+            a.box-button.dark
+                i.ic.ic-plus-w
+        .select
+            include ../template/select
+            a.box-button
+                i.ic.ic-trash-d
+        .select
+            include ../template/select
+            a.box-button
+                i.ic.ic-trash-d

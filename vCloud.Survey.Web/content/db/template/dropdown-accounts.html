@@ -1,0 +1,10 @@
+
+<ul class="dropdown accounts right-ic downul">
+  <li class="dropdown-tips">切换用户</li>
+  <li ng-click="ChangeCompany(Company);" ng-repeat="Company in QList.Companys" title="{{Company.CompanyName}}">
+    <div style=" background-image: url({{Company.BackgroundImg}}); " class="ic-profile"></div>                    {{Company.CompanyName}}<i ng-show="Company.IsCurrent" class="ic ic-checkmark-b"></i>
+  </li>
+  <!-- 正式环境删除开始-->
+  <li ng-show="IsDemo=='1'"><i class="ic ic-building-add-d"></i>创建新的组织</li>
+  <li ng-show="IsDemo=='1'"><i class="ic ic-settings-d"></i>组织设置</li>
+</ul>

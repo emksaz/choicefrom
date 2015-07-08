@@ -1,0 +1,5 @@
+ul.dropdown.sorting.right-ic.downul
+   li(ng-click='ChangeQuesSort(Sort);', ng-repeat='Sort in QList.Sorts')
+      i.ic(ng-class='Sort.SortClass')
+      | {{Sort.Name}}
+      i.ic.ic-checkmark-b(ng-show='Sort.IsSelect')

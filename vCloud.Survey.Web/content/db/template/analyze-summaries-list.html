@@ -1,0 +1,36 @@
+
+<div class="content-row column">
+  <div ng-repeat="node in QuestionSummaries.SummariesList" ng-show="node.NodeShow" class="chart-view">
+    <div><span>{{node.Name}}</span></div>
+    <div class="chart-container">
+      <h2>{{node.Title}}</h2><span>已回答：{{node.AnswerNum}} 已略过：{{node.SkipNum}} </span>
+      <div id="div_{{node.NodeID}}" style="height:270px; " ng-show="node.IsShowNodeImg"></div>
+      <form class="Answer_selection">
+        <ul ng-show="node.QType!='2'" class="Answer_selection_01">
+          <li>
+            <div><span>答案选择</span></div>
+            <div><span>回复</span></div>
+          </li>
+          <li ng-repeat="option in node.OptionList">
+            <div><img ng-show="option.ShowImg" ng-src="{{option.ImgUrl}}" width="64"/><span>{{option.OptionName}}</span></div>
+            <div><span>{{option.OptionPercentage}}%</span><span>{{option.OptionNum}}</span></div>
+          </li>
+        </ul>
+        <ul ng-show="node.QType=='2'" class="Answer_selection_02">
+          <li>
+            <div style="width:42%">答案选择</div>
+            <div style="width:13%">  平均值</div>
+            <div style="width:15%" class="Answer_point"><span>1</span></div>
+            <div style="width:15%" class="Answer_point"><span>2</span></div>
+            <div style="width:15%" class="Answer_point"><span>3</span></div>
+          </li>
+          <li ng-repeat="option in node.OptionList">
+            <div style="width:42%"><span>{{option.OptionName}}</span></div>
+            <div style="width:13%"><span>{{option.OptionAverageNum}}</span></div>
+            <div style="width:15%" ng-repeat="ovalue in option.OptionPercentageList" class="Answer_point"><span>{{ovalue.Num}}</span><span>{{ovalue.Percentage}}%</span></div>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </div>
+</div>

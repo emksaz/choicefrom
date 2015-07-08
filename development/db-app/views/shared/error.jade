@@ -1,0 +1,40 @@
+| @{
+| Layout = null;
+| }
+doctype html
+html
+    head
+        title 巧思 choice form
+        meta(http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1")
+        link(href='~/Css/db-index.css', rel='stylesheet')
+        script(src='~/Script/lib/jquery.min.js')
+        script(src='~/Script/lib/fastclick.js')
+        script(src='~/Script/de/event/event.js')
+        script(src='~/Script/lib/modernizr.js')
+
+        script(type='text/javascript').
+            $(function () {
+                var type = '@Request.QueryString["type"]';
+                if (type == "dashboard") {
+                    $("#SkipLink").attr("href", "/Home/DashBoard");
+                }
+                else {
+                    $("#SkipLink").attr("href", "/Home/Index");
+                }
+            })
+
+    body
+    #error.center-wrapper
+        #logo
+            span choice form
+            span beta
+        div
+            p 404!
+            span Document or file requested by the client was not found.
+            br
+            span 服务器未找到页面
+            br
+            button.blue
+                i.ic.ic-left-2w
+                span
+                    a#SkipLink(href='#') 返回首页

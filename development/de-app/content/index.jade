@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        include ../content/layout/head.jade
+        +title('survey | choice form')
+        //-script.
+            window.resizeTo(window.screen.width, window.screen.height);
+    body(ng-app="ZYDesign" ng-controller="ZYDesignController")
+        #main
+            include ../content/layout/nav.jade
+            include ../content/layout/toolbar.jade
+            include ../content/layout/sidebar.jade
+            .slide-border
+            include ../content/layout/footerbar.jade
+            include ../content/kit/nodes-kit.jade
+            include ../content/kit/media-kit.jade
+            include ../content/kit/theme-kit.jade
+            include ../content/popup/popup-search.jade
+            include ../content/popup/popup-debug.jade
+            include ../content/popup/popup-batch.jade
+            include ../content/popup/popup-save.jade
+            include ../content/popup/popup-message.jade
+            include ../content/popup/popup-topline.jade
+            include ../content/popup/markdown-editor.jade
+            .popup-background
+            ul.temp-icon
+                include ../content/popup/right-click.jade
+                li
+                    a.topline popup topline
+    script(src="../../script/lib/showdown.js")
+    script(src="../../script/lib/md-library.js")
+    script(src="../../script/lib/md-editor.js")
+    script(src="../../script/sortable-options.js")
+    script(src='../../script/directive/common_setting_directive.js')
+    script(src='../../script/directive/help_center_directive.js')
+    script(src='../../script/directive/normal_option_directive.js')
+    script(src='../../script/directive/option_setting_directive.js')
+    script(src='../../script/directive/other_setting_directive.js')
+    script(src='../../script/directive/question_setting_directive.js')
+    script(src='../../script/directive/type_setting_directive.js')
+    script(src='../../script/directive/version_drop_directive.js')
+    script(src='../../script/directive/app.js')
+    script(src='../../script/event/tips.js')
+    script.
+        setTimeout(function(){
+            $(".nano").nanoScroller({ flash: true });
+        },1000);
+    //script.
+        (function($){
+            $(window).load(function(){
+                $(".custom-scrollbar").mCustomScrollbar({
+                    axis:"y",
+                    scrollButtons:{enable:false},
+                    //mouseWheelPixels: 1,
+                    scrollInertia: 1,
+                    //snapAmount:84,
+                    //scrollInertia: 80,
+                    theme:"dark-thin"
+                });
+            });
+        })(jQuery);

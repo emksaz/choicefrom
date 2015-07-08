@@ -1,0 +1,16 @@
+mixin survey-sample(price, title, description)
+    .survey-column
+        .survey-item
+            .open-design
+                .survey-mask
+                    .survey-operations
+                        a
+                            i.ic.ic-eye-d-w
+                            span 查看范本
+                    a.design-enter 选择范本
+                .survey-preview
+            .collection-schedule
+                span= price
+        .survey-footer.ellipsis
+            span= title
+            div= description

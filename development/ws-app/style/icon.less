@@ -1,0 +1,133 @@
+.stitches-sprite(@x: 0, @y: 0, @width: 0, @height: 0) {
+  background-position: @x / 2 @y / 2;
+  width: @width / 2;
+  height: @height / 2;
+}
+
+.sprite {
+  background-image: url("../images/ws/spritehome.png");
+  background-repeat: no-repeat;
+  background-size: 80px;
+  display: block;
+
+  &.sprite-brush-1 {
+    .stitches-sprite(0, 0, 40px, 40px);
+  }
+
+  &.sprite-building-1 {
+    .stitches-sprite(-40px, 0, 40px, 40px);
+  }
+
+  &.sprite-checkmark-1 {
+    .stitches-sprite(-80px, 0, 40px, 40px);
+  }
+
+  &.sprite-down-2 {
+    .stitches-sprite(-120px, 0, 40px, 40px);
+  }
+
+  &.sprite-gift-2 {
+    .stitches-sprite(0, -40px, 40px, 40px);
+  }
+
+  &.sprite-imac-1 {
+    .stitches-sprite(-40px, -40px, 40px, 40px);
+  }
+
+  &.sprite-info-2 {
+    .stitches-sprite(-80px, -40px, 40px, 40px);
+  }
+
+  &.sprite-ipad-1 {
+    .stitches-sprite(-120px, -40px, 40px, 40px);
+  }
+
+  &.sprite-iphone-1 {
+    .stitches-sprite(0, -80px, 40px, 40px);
+  }
+
+  &.sprite-mail-2 {
+    .stitches-sprite(-40px, -80px, 40px, 40px);
+  }
+
+  &.sprite-marquee-1 {
+    .stitches-sprite(-80px, -80px, 40px, 40px);
+  }
+
+  &.sprite-play-4 {
+    .stitches-sprite(-120px, -80px, 40px, 40px);
+  }
+
+  &.sprite-question-mark-2 {
+    .stitches-sprite(0, -120px, 40px, 40px);
+  }
+
+  &.sprite-right-2 {
+    .stitches-sprite(-40px, -120px, 40px, 40px);
+  }
+
+  &.sprite-star-2 {
+    .stitches-sprite(-80px, -120px, 40px, 40px);
+  }
+
+  &.sprite-trophy-1 {
+    .stitches-sprite(-120px, -120px, 40px, 40px);
+  }
+}
+
+
+
+.stitches-ic(@x: 0, @y: 0, @width: 0, @height: 0) {
+  background-position: @x / 2 @y / 2;
+  width: @width / 2;
+  height: @height / 2;
+}
+
+.ic {
+  background-image: url("../images/ws/l-ic.png");
+  background-repeat: no-repeat;
+  background-size: 240px;
+  display: block;
+
+
+  &.ic-csv {
+    .stitches-ic(0, 0, 120px, 120px);
+  }
+
+  &.ic-mail {
+    .stitches-ic(-120px, 0, 120px, 120px);
+  }
+
+  &.ic-quota-c {
+    .stitches-ic(-240px, 0, 120px, 120px);
+  }
+
+  &.ic-quota-m {
+    .stitches-ic(0, -120px, 120px, 120px);
+  }
+
+  &.ic-quota-n {
+    .stitches-ic(-120px, -120px, 120px, 120px);
+  }
+
+  &.ic-spss {
+    .stitches-ic(-240px, -120px, 120px, 120px);
+  }
+
+  &.ic-weibo {
+    .stitches-ic(0, -240px, 120px, 120px);
+  }
+
+  &.ic-weichat {
+    .stitches-ic(-120px, -240px, 120px, 120px);
+  }
+
+  &.ic-www {
+    .stitches-ic(-240px, -240px, 120px, 120px);
+  }
+
+  &.ic-xls {
+    .stitches-ic(-360px, 0, 120px, 120px);
+  }
+}
+

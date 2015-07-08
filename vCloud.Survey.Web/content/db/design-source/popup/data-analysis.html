@@ -1,0 +1,70 @@
+
+<div id="data_analysis" class="pop-ups medium">
+  <div><i class="ic ic-document-d"></i><span>数据导出</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form>
+    <div id="export_data">
+      <ul id="bp-tabs" class="tabs">
+        <li class="tab activ"><a rel="panel1">数据结果</a></li>
+        <li class="tab"><a rel="panel2">数据分析</a></li>
+      </ul>
+      <div class="panel activ">
+        <div><span>数据视图</span>
+          <div>
+                        <input id="radio11" type="radio" name="radio11" checked="checked" class="css-checkbox"/>
+                        <label for="radio11" class="radio-label radGroup1">当前选择视图</label>
+          </div>
+          <div>
+                        <input id="radio12" type="radio" name="radio12" class="css-checkbox"/>
+                        <label for="radio12" class="radio-label radGroup1">原始视图</label>
+          </div>
+        </div>
+        <div><span>数据内容</span>
+          <div>
+                        <input id="radio13" type="radio" name="radio13" checked="checked" class="css-checkbox"/>
+                        <label for="radio13" class="radio-label radGroup1">选择文本</label>
+          </div>
+          <div>
+                        <input id="radio14" type="radio" name="radio14" class="css-checkbox"/>
+                        <label for="radio14" class="radio-label radGroup1">数值</label>
+          </div>
+        </div>
+        <div><span>文件名</span>
+          <input type="text" name="out_xlsx" placeholder="问卷编号 + 汇总数据/结果数据 + 年月时分秒"/><span>.xlsx</span>
+        </div>
+      </div>
+      <div class="panel">
+        <div><span>数据视图</span>
+          <div>
+                        <input id="radio15" type="radio" name="radio15" checked="checked" class="css-checkbox"/>
+                        <label for="radio15" class="radio-label radGroup1">当前选择视图</label>
+          </div>
+          <div>
+                        <input id="radio16" type="radio" name="radio16" class="css-checkbox"/>
+                        <label for="radio16" class="radio-label radGroup1">原始视图</label>
+          </div>
+        </div>
+        <div id="out_type"><span>输出类型</span>
+          <div>
+                        <input id="radio17" type="radio" name="radio17" checked="checked" class="css-checkbox"/>
+                        <label for="radio17" class="radio-label radGroup1"></label><img src="images/xlsx.png"/>
+          </div>
+          <div>
+                        <input id="radio18" type="radio" name="radio18" class="css-checkbox"/>
+                        <label for="radio18" class="radio-label radGroup1"></label><img src="images/pdf.png"/>
+          </div>
+        </div>
+        <div><span>文件名</span>
+          <input type="text" name="out_pdf" placeholder="问卷编号 + 汇总数据/结果数据 + 年月时分秒"/><span>.pdf</span>
+        </div>
+      </div>
+      <button class="border"><span>取 消</span></button>
+      <button class="green"><span>导 出</span>
+        <div>
+          <div class="load_point01"></div>
+          <div class="load_point02"></div>
+          <div class="load_point03"></div>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

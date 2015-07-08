@@ -1,0 +1,48 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('注册')
+    body.member-bg
+        include layout/loading
+        .center-wrapper
+            .main-container
+                #logo
+                    span choices form
+                    span beta
+                h2 注 册
+                form
+                    .input-sgin
+                        input(type='email', name='email', placeholder='邮箱')
+                        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                    .input-sgin
+                        input(type='text', name='name', placeholder='您的名字')
+                        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                    .input-sgin
+                        input(type='password', name='password', placeholder='密码（至少6位）')
+                        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                //form
+                    input(type='text', name='name', placeholder='您的名字')
+                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                //form
+                    input(type='password', name='password', placeholder='密码（至少6位）')
+                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                //form#verification
+                    input(type='text', name='verification', placeholder='验证码')
+                    .verification
+                    a.box-button
+                        i.ic.ic-refresh
+                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                p#sign_text
+                    | 点击注册意味您了解并同意我们的
+                    a 服务条款
+                    | 和
+                    a 隐私权条款
+                button.button.blue
+                    span 注 册
+                .create-account
+                    p
+                        | 已有
+                        span choices form
+                        | 账号？
+                    h3 登 录

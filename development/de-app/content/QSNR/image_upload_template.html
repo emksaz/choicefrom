@@ -1,0 +1,140 @@
+﻿<div class="upload_media_kit radius_3px border_dark_gary_262626 padding_lr_10px font_color_light_d6d6d6 all_sides
+                                         color_dark_slate_gary_kit kit_shadow upload_images elementShow"
+     ng-attr-style="{{imageUploadManager.getStyle()}}"
+     ng-attr-id="{{imageUploadManager.currentImage.id}}">
+    <div ng-class="{'arrow':!imageUploadManager.dropArrow,'image_uploader_drop_arrow':imageUploadManager.dropArrow}">
+        <div class="upload_arrow"></div>
+        <div class="upload_arrow gary"></div>
+    </div>
+    <div class="height_30px padding_tb_5px">
+        <h4 class="cursor_default">图片：</h4>
+    </div>
+    <div class="padding_lr_10px padding_tb_10px border_light_gary_3c3c3c all_sides radius_2px">
+        <div class="height_30px color_gary_gradient_text_button radius_3px
+             border_light_gary_3c3c3c all_sides padding_tb_5px font_center cursor_pointer"
+             style="position:relative;"
+             ng-click="handleUploadIconClick($event)">
+            上 传
+            <div id="upload_progressor"></div>
+            <div id="upload_canceller" class="design_icon size_20px ic_close" style="display:none;"
+                 ng-click="handleCancelIconClick($event)"></div>
+        </div>
+        <div class="padding_lr_5px margin_t_5px">
+            <h4 class="text_ellipsis cursor_default" style="width:200px;">{{imageUploadManager.currentImage.fileName}}</h4>
+        </div>
+        <div class="w-clearfix padding_lr_5px font_color_gary_9e9e9e cursor_default">
+            <h4>{{imageUploadManager.currentImage.getSizeText()}}</h4>
+            <div class="design_icon size_20px margin_r_5px float_l ic_image_position"></div>
+        </div>
+        <div class="w-clearfix padding_lr_5px font_color_gary_9e9e9e cursor_default">
+            <h4>{{imageUploadManager.currentImage.getVolumnText()}}</h4>
+            <div class="design_icon size_20px margin_r_5px float_l ic_image_size"></div>
+        </div>
+        <div class="w-clearfix padding_lr_5px margin_t_5px" style="display:none;">
+            <h4 class="cursor_default">支持 Retina、HiDPI 设备</h4>
+            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                <div class="position_div size_20px float_l">
+                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="height_30px padding_tb_5px">
+        <h4 class="cursor_default">设置：</h4>
+    </div>
+    <div class="padding_lr_10px padding_tb_10px border_light_gary_3c3c3c all_sides margin_b_10px radius_2px">
+        <div class="image_preview border_dark_gary_262626 all_sides" id="uploaded_image_wrapper">
+            <img ng-attr-src="{{imageUploadManager.currentImage.getBigImageStyle()}}" id="uploaded_image"
+                 ng-attr-style="{{imageUploadManager.currentImage.getStyle()}}" />
+        </div>
+        <div class="w-clearfix margin_t_10px border_light_gary_3c3c3c top" style="display:none;">
+            <div class="float_l margin_t_10px">
+                <div class="w-clearfix checkbox_tager padding_tb_6px">
+                    <h4 class="float_l font_line_height_24px margin_r_5px cursor_default">宽度：</h4>
+                    <div class="kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px float_l padding_lr_10px
+                                                             all_sides color_dark_gary_gradient_input width_60px">
+                        <h4>05</h4>
+                        <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button">
+                            <div class="design_icon ic_up"></div>
+                        </div>
+                        <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button">
+                            <div class="design_icon ic_down"></div>
+                        </div>
+                    </div>
+                    <h4 class="float_l font_line_height_24px margin_l_5px font_color_gary_9e9e9e">px</h4>
+                </div>
+                <div class="w-clearfix checkbox_tager padding_tb_6px">
+                    <h4 class="float_l font_line_height_24px margin_r_5px cursor_default">高度：</h4>
+                    <div class="kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px float_l padding_lr_10px
+                                                             all_sides color_dark_gary_gradient_input width_60px">
+                        <h4>05</h4>
+                        <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button">
+                            <div class="design_icon ic_up"></div>
+                        </div>
+                        <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button">
+                            <div class="design_icon ic_down"></div>
+                        </div>
+                    </div>
+                    <h4 class="float_l font_line_height_24px margin_l_5px font_color_gary_9e9e9e">px</h4>
+                </div>
+            </div>
+            <div class="position_div float_r padding_tb_5px margin_t_10px">
+                <h4 class="float_l font_line_height_24px margin_r_5px cursor_default">比例：</h4>
+                <div class="w-clearfix mc_button float_l border_dark_gary_262626 radius_3px all_sides">
+                    <div class="design_button_activation width_50per mc_options_t color_gary_gradient_icon_button"></div>
+                    <div class="float_l padding_lr_5px">
+                        <div class="design_icon size_20px ic_image_w"></div>
+                    </div>
+                    <div class="float_l padding_lr_5px border_dark_gary_262626 left">
+                        <div class="design_icon size_20px ic_image_l"></div>
+                    </div>
+                    <div class="w-inline-block design_button_activation mc_options_t width_50per"></div>
+                </div>
+            </div>
+            <div class="w-clearfix position_div float_r padding_tb_5px">
+                <h4 class="float_l font_line_height_24px margin_r_5px cursor_default">自动：</h4>
+                <div class="mc_button border_dark_gary_262626 radius_3px float_r all_sides">
+                    <div class="button_activation color_gary_gradient_icon_button design_button"></div>
+                    <div class="font_color_light_d6d6d6 position_div width_60px font_center">
+                        <h4>Auto</h4>
+                    </div>
+                    <div class="w-inline-block button_link"></div>
+                </div>
+            </div>
+        </div>
+        <div class="w-clearfix margin_t_10px border_light_gary_3c3c3c top" style="display:none;">
+            <div class="w-clearfix float_l margin_t_10px">
+                <h4 class="float_l margin_r_5px cursor_default">调整：</h4>
+                <div class="image_adjust float_l margin_r_20px">
+                    <div class="image_adjust_button design_icon ic_adjust top">
+                        <div class="w-inline-block adjust_link"></div>
+                    </div>
+                    <div class="image_adjust_button design_icon ic_adjust right">
+                        <div class="w-inline-block adjust_link"></div>
+                    </div>
+                    <div class="image_adjust_button design_icon ic_adjust left">
+                        <div class="w-inline-block adjust_link"></div>
+                    </div>
+                    <div class="image_adjust_button design_icon ic_adjust buttom">
+                        <div class="w-inline-block adjust_link"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="float_l margin_t_20px">
+                <div class="w-clearfix font_color_gary_9e9e9e">
+                    <h4>256 px</h4>
+                    <div class="design_icon size_20px margin_r_5px float_l ic_image_position_right"></div>
+                </div>
+                <div class="w-clearfix font_color_gary_9e9e9e margin_t_10px">
+                    <h4>231 px</h4>
+                    <div class="design_icon size_20px margin_r_5px float_l ic_image_position_bottom"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-inline-block close_button color_gary_gradient_icon_button radius_2px border_dark_gary_262626 all_sides"
+         ng-click="handleImageUploadCloseIconClick()">
+        <div class="design_icon size_20px ic_close"></div>
+    </div>
+</div>

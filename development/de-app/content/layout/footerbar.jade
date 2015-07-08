@@ -1,0 +1,32 @@
+#footerbar
+    span(id="system_hinter")
+    ul
+        li(ng-click='handleShowAllClick()')
+            a.v-tips(value="显示全部")
+                i.ic-d.ic-show-all
+        li(ng-click='chartSvgZoomIn()')
+            a.v-tips(value="放大")
+                i.ic-d.ic-zoom-in
+        li
+            span(ng-bind='designManager.getChartZoomRateText()')
+        li(ng-click='handleZoomOutClick()')
+            a.v-tips(value="缩小")
+                i.ic-d.ic-zoom-out
+    ul
+        li(ng-click='handleGridToggleClick()')
+            a.v-tips(value="网格显示")
+                i.ic-d.ic-grid
+    ul
+        li(ng-click='handleDeleteNodeClick()')
+            a.v-tips(value="删除节点")
+                i.ic-d.ic-trash
+        li(ng-click='handleCopyNodeClick()')
+            a.v-tips(value="复制节点")
+                i.ic-d.ic-duplicate
+        li(ng-click='handleBreakConnClick()')
+            a.v-tips(value="断开所选连线")
+                i.ic-d.ic-disconnect
+    .search(ng-mouseenter="handleSearcherMouseEnter($event)",ng-mouseleave="handleSearcherMouseLeave($event)")
+        input(type='text', placeholder='搜索',ng-keydown="handleSearcherKeydown($event)",id="search_txt")
+        a.search-button(ng-click="handleSearchClick()")
+            i.ic-d.ic-search

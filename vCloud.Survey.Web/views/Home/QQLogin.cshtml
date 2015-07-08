@@ -1,0 +1,78 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script data-appid="101221559" type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-callback="true" charset="utf-8"></script> 
+    <script src="~/Script/js/jquery-2.1.3.min.js"></script>  
+    <script src="~/Script/js/windowAlert-custom.js"></script>
+    <script type="text/javascript">
+        var qqOpenId = "";
+        var qqNickName = "";
+        var qqPic = "";
+        var type = '@Request.QueryString["type"]';
+        QC.Login.getMe(function (openId, accessToken) {
+            qqOpenId = openId;
+            var paras = { access_token: accessToken, oauth_consumer_key: 101221559, openid: openId };
+        //    https://graph.qq.com/user/get_user_info?access_token=YOUR_ACCESS_TOKEN&oauth_consumer_key=YOUR_APP_ID&openid=YOUR_OPENID
+            QC.api("get_user_info", paras)
+                .success(function (s) {//&#25104;&#21151;&#22238;&#35843;
+                    qqNickName = s.data.nickname;
+                    qqPic = s.data.figureurl_qq_2;
+                    $.ajax({
+                        type: "post",
+                        url: '/Home/QQQuickLogin',
+                        data: { type:type,openId: qqOpenId, nickName: qqNickName, pic: qqPic },
+                        dataType: "json",
+                        success: function (data) {
+                            if (data.Message == "") {
+                                if (type == "1" || type == "2") {//&#35299;&#38500;&#32465;&#23450;&#30452;&#25509;&#36339;&#36716;
+                                    location.href = "/Home/DashBoard#/UC/User_info/";
+                                }
+                                else {//&#27880;&#20876;&#30331;&#20837;
+                                    $.ajax({
+                                        type: "post",
+                                        url: "/Home/ValidateUser",
+                                        data: { email: data.Email, password: data.Password, isCheck: 2, loginType: "quicklogin" },
+                                        dataType: "json",
+                                        success: function (data) {
+                                            if (!data.Islogin) {
+                                                alert(data.Message, "red");
+                                            }
+                                            else {
+                                                location.href = data.Url;
+                                            }
+                                        }
+                                    })
+                                }
+
+                            }
+                            else {
+                                location.href = "/Home/DashBoard#/UC/User_info/" + data.Message;
+                            }
+                        },
+                        error: function (e) {
+                          
+                        }
+                    })
+                })
+                .error(function (f) {//&#22833;&#36133;&#22238;&#35843;
+                    alert("&#33719;&#21462;&#29992;&#25143;&#20449;&#24687;&#22833;&#36133;&#65281;","red");
+                })
+                .complete(function (c) {//&#23436;&#25104;&#35831;&#27714;&#22238;&#35843;
+                    //alert("&#33719;&#21462;&#29992;&#25143;&#20449;&#24687;&#23436;&#25104;&#65281;");
+                });
+        });
+    </script>  
+</head>
+<body>
+    <div>
+    
+    </div>
+</body>
+</html>

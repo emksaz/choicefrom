@@ -1,0 +1,47 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('登录')
+    body.member-bg
+        include layout/loading
+        .center-wrapper
+            .main-container
+                #logo
+                    span choices form
+                    span beta
+                h2 登 录
+                form
+                    .input-login
+                        input(type='email', name='email', placeholder='注册邮箱')
+                        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                    .input-login
+                        input(type='password', name='password', placeholder='密码')
+                        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                    .input-login
+                        div
+                            input#checkboxG1.css-checkbox(type='checkbox', name='checkboxG1', checked='checked')
+                            label.checkbox-label(for='checkboxG1') 30 天内记住我
+                        .forgot-password
+                            span 忘记密码
+                //form#verification
+                    input(type='text', name='verification', placeholder='验证码')
+                    .verification
+                    a.box-button
+                        i.ic.ic-refresh
+                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+
+                button.button.blue
+                            span 登 录
+                        .fast_login
+                            span 快捷登录
+                            div
+                                a.qq_logo
+                            div
+                                a.sina_logo
+                        .create-account
+                            p
+                                | 还没有
+                                span choices form
+                                | 账号？
+                            h3 免费注册

@@ -1,0 +1,19 @@
+.pop-ups.medium(ng-click='ShowPopup($event)', ng-show='QList.Popupbackground==4')
+   div
+      i.ic.ic-trash-f-d
+      span 删除问卷
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form
+      p 当前问卷所有内容和数据将被永久删除，问卷访问链接也将随之失效。
+      h2
+         | 请输入
+         span choiceform
+         | 确认删除操作
+      input#delete-survey(type='text', name='delete-survey', ng-model='QList.DelPassWord', ng-keydown='enterOrEscOper(1)')
+      br
+      mark#delMessage.form-message  您输入的choiceform不正确，请重新输入。
+      button.border(type='button', ng-click='CloseDiv()')
+         span 取 消
+      button.red(ng-click='DelQuesByPassword()')
+         span 删除问卷

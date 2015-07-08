@@ -1,0 +1,56 @@
+.kit#nodes-kit
+    .kit-title
+        h3 新增节点
+        a.switch-buton
+            span 锁定
+            .switch
+        a.bt-close-left-panel
+            div
+                i.ic.ic-close
+    .kit-section.nano
+        .kit-content.nano-content
+            .kit-scroll-group
+                .kit-position
+                    include ../template/title-local.jade
+                    +title('基本节点')
+                    ul.section-content
+                        mixin list()
+                            li.nodes-item
+                                a.quick-help
+                                    i.ic-m.ic-question
+                                i
+                                span 选择题
+                        +list()
+                        +list()
+                        +list()
+                        +list()
+                        +list()
+                        +list()
+                .kit-position
+                    include ../template/title-local.jade
+                    +title('甄别节点')
+                    ul.section-content
+                        mixin list()
+                            li.nodes-item
+                                a.quick-help
+                                    i.ic-m.ic-question
+                                i
+                                span 选择题
+                        +list()
+                        +list()
+                        +list()
+                        +list()
+                        +list()
+                .kit-position
+                    include ../template/title-local.jade
+                    +title('逻辑节点')
+                    ul.section-content
+                        mixin list()
+                            li.nodes-item
+                                a.quick-help
+                                    i.ic-m.ic-question
+                                i
+                                span 选择题
+                        +list()
+                        +list()
+                        +list()

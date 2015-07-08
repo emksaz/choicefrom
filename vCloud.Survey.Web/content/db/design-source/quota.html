@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>配额设置</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/db-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../../images/cf.svg">
+        <script type="text/javascript" src="../../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../script/lib/datetimepicker.js"></script>
+        <script type="text/javascript" src="../../../script/lib/scrollTo.js"></script>
+        <script type="application/javascript" src="../../../script/lib/fastclick.js"></script>
+        <script type="text/javascript" src="../../../script/lib/modernizr.js"></script>
+        <script src="../../../script/db-index.js"></script>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="lot lot1"></div>
+      <div class="lot lot2"></div>
+      <div class="lot lot3"></div>
+      <div class="lot lot4"></div>
+    </div>
+    <div class="main-wrapper">
+      <nav class="nav">
+        <div class="w-container">
+          <div class="logo"><span>choices form</span><span>beta</span></div><a class="menu-button"><i class="ic ic-menu-w"></i></a>
+          <div class="menu"><a class="nav-current">我的调查问卷</a><a>问卷模版</a><a>教学</a><a>方案与定价</a><a>账户设置</a>
+            <div id="accounts-settings" class="dropdown-event">
+              <button class="accounts-settings right-ic"><i class="ic-profile"></i><span>账户设置</span><i class="ic ic-down-2w"></i></button>
+              <ul class="dropdown accounts-settings">
+                <li><i class="ic ic-work"></i>用户设置</li>
+                <li><i class="ic ic-building-2d"></i>组织设置</li>
+                <li><i class="ic ic-star"></i>方案类型</li>
+                <li><i class="ic ic-megaphone-d"></i>更新通知</li>
+                <li><i class="ic ic-question-mark-d"></i>帮助中心</li>
+                <li><i class="ic ic-logout-d"></i>退出登录</li>
+              </ul>
+            </div>
+            <div class="dropdown-event"><a class="notifications"><i class="ic ic-24-notifications"></i></a>
+              <ul class="dropdown notification-center">
+                <li>没有新通知</li>
+                <li>查看全部通知</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <header class="page-header">
+        <div class="w-container"><a><i class="ic ic-24-dashboard-l"></i></a>
+          <h1>Here are some quick tips for a first-time organization member.</h1>
+          <button class="purple"><i class="ic ic-brush-w"></i><span>设计问卷</span></button>
+          <div class="shortcut"><a class="box-button"><i class="ic ic-24-Transfer-f-24"></i></a><a class="box-button"><i class="ic ic-eye-f-d"></i></a><a class="box-button"><i class="ic ic-folder-f-d"></i></a><a class="box-button"><i class="ic ic-multiple-documents-f-d"></i></a><a class="box-button"><i class="ic ic-trash-f-d"></i></a></div>
+        </div>
+      </header>
+      <div class="w-container">
+        <div class="tabs tabs-style">
+          <nav>
+            <ul>
+                            <li class="tab-current"><span>摘要</span></li>
+                            <li><span>预览</span></li>
+                            <li><span>配额</span></li>
+                            <li><span>发布</span></li>
+                            <li><span>分析结果</span></li>
+            </ul>
+          </nav>
+          <div id="quota" class="content-wrap">
+            <div class="content-row">
+              <div class="row-title">
+                <h2>配额设置</h2>
+                <button class="dark"><i class="ic ic-plus-w"></i><span>新建配额</span></button>
+                <button disabled="disabled" class="green"><i class="ic ic-2dot-w"></i><span>保存更改</span></button>
+                <button class="red"><i class="ic ic-trash-w"></i><span>删除配额</span></button>
+              </div>
+              <div class="too-small-alert">
+                <p>您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+              </div>
+            </div>
+            <div class="quota">
+              <div class="sidebar">
+                                <div class="setting-row">
+                                  <h2>创建配额行<a class="box-button"><i class="ic ic-question-mark-d"></i></a></h2><span>添加配额行<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                    <div class="sidebar-row"><span>配额行 1</span>
+                                                      <div class="dropdown-event">
+                                                                              <ul class="floating strip">
+                                                                                <li>操作：</li>
+                                                                                <li>重命名</li>
+                                                                                <li>删除</li>
+                                                                              </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                                                      </div><span>添加条件<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                    </div>
+                                                    <div class="sidebar-row"><span>配额行 2</span>
+                                                      <div class="dropdown-event">
+                                                                              <ul class="floating strip">
+                                                                                <li>操作：</li>
+                                                                                <li>重命名</li>
+                                                                                <li>删除</li>
+                                                                              </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                                                      </div><span>添加条件<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                    </div>
+                                </div>
+                                <div class="setting-row">
+                                  <h2>创建配额列<a class="box-button"><i class="ic ic-question-mark-d"></i></a></h2><span>添加配额列<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                    <div class="sidebar-row"><span>配额行 1</span>
+                                                      <div class="dropdown-event">
+                                                                              <ul class="floating strip">
+                                                                                <li>操作：</li>
+                                                                                <li>重命名</li>
+                                                                                <li>删除</li>
+                                                                              </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                                                      </div><span>添加条件<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                    </div>
+                                                    <div class="sidebar-row"><span>配额行 2</span>
+                                                      <div class="dropdown-event">
+                                                                              <ul class="floating strip">
+                                                                                <li>操作：</li>
+                                                                                <li>重命名</li>
+                                                                                <li>删除</li>
+                                                                              </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                                                      </div><span>添加条件<a class="box-button dark"><i class="ic ic-plus-w"></i></a></span>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                      <div class="select">
+                                                        <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+                                                        <ul class="option">
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                          <li>Brief Statement Or Account Of The Main Points Of Something</li>
+                                                        </ul><a class="box-button"><i class="ic ic-trash-d"></i></a>
+                                                      </div>
+                                                    </div>
+                                </div>
+                <button class="dark"><span>生成配额表格</span></button>
+              </div>
+              <div class="grid-position">
+                <div><a class="box-button"><i class="ic ic-work"></i><span>隐藏设置</span></a></div>
+                <div id="div-quota-input">
+                  <table id="reportTable" freezerownum="0" freezecolumnnum="1" cellpadding="0" cellspacing="0" style="width: 875px;" class="grid-column-group">
+                    <tbody>
+                      <tr>
+                        <td id="tdrow1" colspan="1" style="  border-bottom: 1px solid #bdc3c7; " align="left">
+                          <nobr>配额组1</nobr>
+                        </td>
+                        <td style="  border-bottom: 1px solid #bdc3c7;border-right: 1px solid #bdc3c7;" align="left"></td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" align="center" style="height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa" title="10-20">
+                          <nobr>         10-20       </nobr>
+                        </td>
+                        <td align="center" style="height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;">
+                          <input type="text" maxlength="6" onkeyup="ChangeText(this);" id="input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_" name="input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_" value="" class="w-input grid-column-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" align="center" style="height: 30px;padding-top: 5px;padding-bottom: 5px;  " title="21-30">
+                          <nobr>         21-30       </nobr>
+                        </td>
+                        <td align="center" style="height: 30px;  border-right: 1px solid #bdc3c7;">
+                          <input type="text" maxlength="6" onkeyup="ChangeText(this);" id="input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_" name="input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_" value="" class="w-input grid-column-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" align="center" style="height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa" title="31-40">
+                          <nobr>         31-40       </nobr>
+                        </td>
+                        <td align="center" style="height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;">
+                          <input type="text" maxlength="6" onkeyup="ChangeText(this);" id="input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_" name="input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_" value="" class="w-input grid-column-input">
+                        </td>
+                      </tr>
+                      <tr>
+                        <td rowspan="1" align="center" style="height: 30px;padding-top: 5px;padding-bottom: 5px; border-bottom: 1px solid #bdc3c7; " title="41-50">
+                          <nobr>         41-50       </nobr>
+                        </td>
+                        <td align="center" style="height: 30px;  border-bottom: 1px solid #bdc3c7; border-right: 1px solid #bdc3c7;">
+                          <input type="text" maxlength="6" onkeyup="ChangeText(this);" id="input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_" name="input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_" value="" class="w-input grid-column-input">
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="total"><span>配额收集数合计：</span>
+                  <p>1367</p><span>（
+                    <nobr>配额组1</nobr>收集数合计：0
+                    <nobr>配额组2</nobr>收集数合计：0）</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="w-container"><span>关于我们</span><span>关于我们</span><span>关于我们</span><span>关于我们</span>
+      <p>© 2015,<a>choices form</a> , Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+</html>

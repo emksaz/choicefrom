@@ -1,0 +1,31 @@
+.surveys
+   .survey-column(ng-repeat='myques in QList.MyQuesList')
+      .survey-item
+         .open-design
+            .status(ng-class='myques.QStatusClass')
+               i.ic(ng-class='myques.QStatusIconClass')
+            .survey-mask(ng-click='ReturnQuestionnairDesign(myques)')
+               .survey-operations
+                  i.ic.ic-trash-w(ng-click='OpenDelQues(myques,0,$event)', ng-show='myques.QStatus!=5', title='删除问卷')
+                  i.ic.ic-multiple-documents-w(ng-click='CopyQues(myques,0,$event)', title='复制问卷')
+                  i.ic.ic-folder-w(ng-click='OpenMoveQues(myques,0,$event)', title='移动问卷')
+                  i.ic.ic-rocket-f-w(ng-show='myques.QStatus==5 || myques.QStatus==8 ', title='发布设置', ng-click='GoToDataTrends(myques,$event)')
+                  i.ic.ic-eye-d-w(ng-show='myques.PreViewFlag', title='预览问卷', ng-click='PreViewClick(myques.QuestionnaireID,$event)')
+               a.design-enter 设计问卷
+            .survey-preview(style='background-image: url({{myques.ImgUrl}});  background-position: center; background-size: cover; background-repeat: no-repeat')
+         .collection-schedule
+            //a(href='#/QMSet/AnalyzeResults/{{myques.QuestionnaireID}}/DataTrends', title='分析结果')
+            a(ng-click='turnToAnalyzeResults(myques.QuestionnaireID)', title='分析结果')
+               .collection-progress.ellipsis
+                  i.ic.ic-activity-g
+                  span 回复数: {{myques.QuesSubmitNum}}
+                  .progress-bar(ng-style='myques.ProgressWidth')
+            a.box-button.settings(ng-click='turnToPublish(myques.QuestionnaireID)', title='发布设置')
+               i.ic.ic-settings-d
+      .survey-footer.ellipsis
+         span(title='{{myques.QTitle}}') {{myques.QTitle}}
+         div {{myques.SortDate}}
+   .survey-column
+      a(ng-click="GoToUrl('/QMCreate/','');")
+         .create-item
+            span +

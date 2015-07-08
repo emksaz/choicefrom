@@ -1,0 +1,39 @@
+#data-trends.content-wrap
+   .tabs.tabs-style-sub
+      nav
+         ul
+            li.sub-tab-current
+               span 收集进度
+            li(ng-click='AnalyzeResultTabSelect()')
+               span 统计图表
+            li(ng-show="IsDemo=='1'")
+               span 数据结果
+      .content-row
+         #div_questionViewWidth.question-view
+            div
+               span 项目收集进度
+            ul
+               li
+                  span 合计进度：
+                  .progress-bar-section
+                     .progress-bar-main(ng-style='DataTrends.ProgressWidthStyle')
+                  h2 {{DataTrends.ProgressWidth}}%
+         .chart-view
+            div
+               span 回复数（按天统计）
+               .dropdown-event
+                  button.small.right-ic.dropdown-bt
+                     span 视图比例
+                     i.ic.ic-down-2d
+                  ul#view-days.dropdown.customize.right-ic.downul
+                     li(ng-click="ShowViewDate('7')") 7天视图
+                     li(ng-click="ShowViewDate('30')") 30天视图
+                     li(ng-click="ShowViewDate('0')") 全部视图
+            .chart-container
+               span
+                  | 首次回复： {{DataTrends.FirstReturnTime}} 日期选择： {{DataTrends.StartTime}} - {{DataTrends.EndTime}}
+               #main(style='height:350px; ')
+         #div-quota-box
+            #div-quota-grid(style=' border-top: 1px solid #bdc3c7; border-left: 1px solid #bdc3c7; ', ng-show='DataTrends.GridShow')
+         .too-small-alert
+            p(style='color: #4e5b68;') 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。

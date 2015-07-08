@@ -1,0 +1,347 @@
+//配额 .content-row 调整
+#quota .content-row {
+  padding-bottom: 16px;
+}
+
+//配额区域
+.quota {
+  min-height: 750px;
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+//配额-侧栏
+.sidebar {
+  width: 30%;
+  float: left;
+  padding: 0 12px;
+/*  min-height: 750px;*/
+  border-right: 1px solid @silver;
+  padding-bottom: 64px;
+  @media screen and (min-width: 1200px) {
+    width: 25%;
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    float: none;
+    padding: 0 24px;
+    border: none;
+  }
+  @media (max-width: 479px) {
+    padding: 0 12px;
+  }
+}
+
+//生成配额表格 按钮
+.sidebar > button {
+  &:last-of-type {
+    margin-top: 24px;
+    @media (max-width: 991px) {
+      width: 49%;
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+}
+
+//侧栏-标题
+.setting-row h2 {
+  position: relative;
+  display: block;
+  padding: 10px 0;
+  border-bottom: 1px solid @silver;
+}
+
+//侧栏-标题-帮助按钮
+.setting-row h2 a {
+  position: absolute;
+  top: 10px;
+  right: -6px;
+  cursor: help;
+}
+
+//侧栏-二级标题
+.setting-row > span {
+  position: relative;
+  line-height: 24px;
+  display: block;
+  padding: 8px 0;
+}
+
+//侧栏-二级标题-添加按钮
+.setting-row span a {
+  position: relative;
+  float: right;
+}
+
+//侧栏-设置区块
+.sidebar-row {
+  position: relative;
+  border: 1px solid @silver;
+  border-radius: 2px;
+  &:nth-of-type(n+2) {
+    margin-top: 12px;
+  }
+}
+
+//侧栏-设置区块-添加条件
+.sidebar-row > span {
+  display: block;
+  line-height: 24px;
+  padding: 8px 8px 8px 12px;
+  //侧栏-设置区块-标题区
+  &:first-of-type {
+    display: block;
+    line-height: 24px;
+    padding: 6px 12px;
+    background-color: fade(@silver, 18%);
+    border-bottom: 1px solid @silver;
+  }
+}
+
+.sidebar-row > .dropdown-event {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+//侧栏-设置区块-设置按钮
+.sidebar-row > ul a {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.sidebar-row > span > a {
+  float: right;
+}
+
+//侧栏-设置区块-下拉菜单区域
+.sidebar-row > .select {
+  position: relative;
+  margin: 0 2px 0 12px;
+  padding-bottom: 6px;
+  &:first-of-type {
+    padding-top: 6px;
+    border-top: 1px solid @silver;
+  }
+}
+
+//侧栏-设置区块-下拉菜单(按钮)
+.sidebar-row button.select {
+  display: inline-block;
+  width: 85%;
+}
+
+//侧栏-设置区块-下拉菜单(菜单)
+.sidebar-row .option {
+  width: 85%;
+}
+
+//侧栏-设置区块-下拉菜单-删除按钮
+.sidebar-row > .select a {
+  float: right;
+}
+
+//侧栏-设置区块-空置状态 文字
+.sidebar-row > p {
+  font-size: 18px;
+  color: @silver;
+  text-align: center;
+  margin-top: 36px;
+  padding: 12px 0;
+}
+
+//侧栏-设置区块-空置状态 备注
+.sidebar-row > mark {
+  display: block;
+  font-size: 12px;
+  color: @silver;
+  text-align: center;
+  background: none;
+  padding: 0 24px;
+  margin-bottom: 36px;
+
+  //侧栏-设置区块-空置状态 备注链接
+  a {
+    color: @dodger_blue;
+    &:hover {
+      color: darken(@dodger_blue, 12%);
+    }
+  }
+}
+
+//侧栏响应式设置
+#quota {
+  .sidebar {
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    .flex-direction(column);
+    .justify-content(flex-start);
+    .flex-wrap(wrap);
+    @media (max-width: 991px) {
+      min-height: 0;
+      padding-bottom: 24px;
+      border-bottom: 1px solid @silver;
+      .flex-direction(row);
+      .justify-content(space-between);
+    }
+    &:before{
+      content: "";
+      display: block;
+      position: absolute;
+      border-right: 1px solid @silver;
+      height: 100%;
+      right: -1px;
+      min-height: 750px;
+    }
+  }
+
+  //(创建配额行)(创建配额列) 侧栏响应式设置
+  .setting-row {
+    .flex(1 0 auto);
+    width: 100%;
+    @media (max-width: 991px) {
+      width: 49%;
+      .flex(0 0 auto);
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+}
+
+//配额表格区域
+.grid-position {
+  padding: 0;
+  overflow: hidden;
+  position: relative;
+  right: 1px;
+  //min-height: 750px;
+  float: right;
+  width: 70%;
+  border-left: 1px solid @silver;
+
+  &>div{
+    padding: 4px 12px;
+    border-bottom: 1px solid @silver;
+    line-height: 36px;
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    //将这div下面对饿table 超出div隐藏
+    &#div-quota-input{
+      padding: 0;
+      line-height: normal;
+      & tr{
+/*        &:first-of-type{
+          &>td{
+            &:first-of-type{
+              padding-left: 2px;
+            }
+          }
+        }*/
+        &>td{
+          border-right: 1px solid @silver;
+          & input{
+            border:none;
+          }
+        }
+        &:first-of-type>td{
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px) {
+    width: 75%;
+  }
+  @media (max-width: 991px) {
+    width: 100%;
+    border-left: 1px solid @silver;
+  }
+
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+
+
+//配额表格区域-头部-放大按钮
+.grid-position > div > a,
+.grid-position > div > a > i {
+  float: right;
+}
+
+//配额表格区域-底部
+.grid-position > .total {
+  padding: 24px;
+  display: block;
+  text-align: right;
+}
+
+//配额表格区域-底部-统计数字
+.total p {
+  font-family: Kiro-Regular;
+  display: inline-block;
+  font-size: 32px;
+  color: @purple;
+}
+
+//配额表格区域-底部-文字
+.total span {
+  display: inline-block;
+  &:last-of-type{
+    font-size: 12px;
+  }
+}
+
+//这是配额表格的宽度及背景色
+.grid-column-group{
+  width: 1302px;
+  background-color: white;
+}
+//设置输入框内文字居中,颜色等属性
+.w-input, .w-select {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #555555;
+  vertical-align: middle;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+}
+
+.grid-column-input{
+  position: relative;
+  min-width: 100px;
+  width: 100%;
+  height: 30px;
+  margin-bottom: 0px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  float: left;
+/*  border-left-width: 1px;
+  border-left-color: #bdc3c7;*/
+  border-radius: 8px;
+  background-color: transparent;
+  text-align: center;
+}

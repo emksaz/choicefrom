@@ -1,0 +1,20 @@
+.popup.drag#batch
+    .popup-title
+        i.ic.ic-batch
+        h3 批量输入
+        a.close-popup
+            i.ic.ic-close
+    ul.popup-content
+        .batch-control
+            //-a
+                span 选项数值
+                i
+            a
+                i.ic.ic-question-l
+        .batch-input
+            textarea.dynamic_textarea#batch-textarea(placeholder='批量输入选项 (回车换行创建新选项)', name='batch',rows="1")
+        .popup-control
+            a
+                span 取 消
+            a
+                span 确 定

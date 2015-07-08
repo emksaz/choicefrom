@@ -1,0 +1,168 @@
+﻿
+#cf_markdown {
+  /* h1 样式 */
+  @h1_font_size: 1.5em;
+  @h1_line_height: 1.125em;
+  @h1_font_weight: 700;
+
+  /* h2 样式 */
+  @h2_font_size: 1.25em;
+  @h2_line_height: 1.25em;
+  @h2_font_weight: 400;
+
+  /* h3 样式 */
+  @h3_font_size: 16px;
+  @h3_line_height: 24px;
+
+  /* hX 样式 */
+  @font_size: 16px;
+  @line_height: 24px;
+  @color: blue;
+
+  /* a 样式 */
+  @a_color: #eb0000;
+  @b_color: #eb00ff;
+
+  @four_space: 34px;
+  @four_space_css3: ~"4ch"; // some browsers support char spacing
+  @two_space_css3: ~"2ch"; // less does not support ch very well
+  @ul_tick: "*";
+  @strong_char: "__";
+  @em_char: "*";
+
+  a {
+    background-color: transparent;
+  }
+  /**
+  * Improve readability when focused and also mouse hovered in all browsers.
+  */
+  a:active,
+  a:hover {
+    outline: 0;
+  }
+  /* Text-level semantics
+     ========================================================================== */
+  /**
+   * Address styling not present in IE 8/9/10/11, Safari, and Chrome.
+   */
+  abbr[title] {
+    border-bottom: 1px dotted;
+  }
+  /**
+   * Address style set to `bolder` in Firefox 4+, Safari, and Chrome.
+   */
+  b,
+  strong {
+    font-weight: bold;
+  }
+  /**
+   * Address styling not present in Safari and Chrome.
+   */
+  dfn {
+    font-style: italic;
+  }
+  /**
+   * Address variable `h1` font-size and margin within `section` and `article`
+   * contexts in Firefox 4+, Safari, and Chrome.
+   */
+  h1 {
+    margin: 0px;
+    font-size: 2.4rem;
+    line-height: 2.8rem;
+    font-weight: 600;
+    @media (max-width: 767px) {
+      font-size: 2.2rem;
+    }
+  }
+
+  h2 {
+    margin: 0px;
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    font-weight: 600;
+    @media (max-width: 767px) {
+      font-size: 2rem;
+    }
+  }
+
+  h3 {
+    margin: 0px;
+    font-size: 1em;
+    line-height: 1.25em;
+    font-weight: 400;
+  }
+
+  /**
+   * Address styling not present in IE 8/9.
+   */
+  mark {
+    background: #ff0;
+    color: #000;
+  }
+  /**
+   * Address inconsistent and variable font size in all browsers.
+   */
+  small {
+    font-size: 80%;
+  }
+  /**
+   * Prevent `sub` and `sup` affecting `line-height` in all browsers.
+   */
+  sub,
+  sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+
+  sup {
+    top: -0.5em;
+  }
+
+  sub {
+    bottom: -0.25em;
+  }
+  /**
+   * Address margin not present in IE 8/9 and Safari.
+   */
+  figure {
+    margin: 1em 40px;
+  }
+  /**
+   * Address differences between Firefox and other browsers.
+   */
+  hr {
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 0;
+  }
+  /**
+   * Contain overflow in all browsers.
+   */
+  pre {
+    overflow: auto;
+  }
+  /**
+   * Address odd `em`-unit font size rendering in all browsers.
+   */
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: monospace, monospace;
+    font-size: 1em;
+  }
+}
+
+// firefox cannot put position absolute inside table-cell
+@-moz-document url-prefix() {
+  .cs_markdown h1 {
+    display: block;
+  }
+}
+
+.cs_markdown-ones {
+  ol > li:after {
+  }
+}

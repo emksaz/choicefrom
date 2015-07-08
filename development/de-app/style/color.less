@@ -1,0 +1,65 @@
+@light-gray: #ECF0F1;
+@canvas: #9098A0;
+@gray4a: #4b4b4b;
+@dark39-gray: darken(@gray4a, 7%);
+@dark27-gray: darken(@gray4a, 15%);
+@medium5d-gray: lighten(@gray4a, 8%);
+@medium64-gray: lighten(@gray4a, 11%);
+@medium74-gray: lighten(@gray4a, 16%);
+@textd7: lighten(@gray4a, 55%);
+
+@white: #ffffff;
+@blue: #1894f2;
+@sea_green: #2ecc71;
+@purple: #5940aa;
+@dark-purple: #413f84;
+@dark_slate: #34495e;
+@gold: #f1c40f;
+@tomato: #e74c3c;
+
+@icolor1: #ffffff;
+@icolor2: #4e5b68;
+@icolor3: #5940aa;
+@icolor4: #ffffff;
+@icolor5: #4e5b68;
+
+.gray-gradient {
+  background-image: -webkit-linear-gradient(fade(@white, 16%), fade(@white, 8%));
+  background-image: -moz-linear-gradient(fade(@white, 16%), fade(@white, 8%));
+  background-image: -ms-linear-gradient(fade(@white, 16%), fade(@white, 8%));
+  background-image: -o-linear-gradient(fade(@white, 16%), fade(@white, 8%));
+  background-image: linear-gradient(fade(@white, 16%), fade(@white, 8%));
+}
+
+.dark-gray-gradient {
+  background-image: -webkit-linear-gradient(darken(@dark39-gray,2%), @dark39-gray);
+  background-image: -moz-linear-gradient(darken(@dark39-gray,2%), @dark39-gray);
+  background-image: -ms-linear-gradient(darken(@dark39-gray,2%), @dark39-gray);
+  background-image: -o-linear-gradient(darken(@dark39-gray,2%), @dark39-gray);
+  background-image: linear-gradient(darken(@dark39-gray,2%), @dark39-gray);
+}
+
+.dark-border {
+  box-shadow: @dark27-gray 0 0 0 1px inset;
+  -webkit-box-shadow: @dark27-gray 0 0 0 1px inset;
+}
+
+.light-dark-border {
+  box-shadow: @dark39-gray 0 0 0 1px inset;
+  -webkit-box-shadow: @dark39-gray 0 0 0 1px inset;
+}
+
+.dark-border-hover {
+  box-shadow: @medium64-gray 0 0 0 1px inset, @medium74-gray 0 0 3px 0 inset;
+  -webkit-box-shadow: @medium64-gray 0 0 0 1px inset, @medium74-gray 0 0 3px 0 inset;
+}
+
+.dark-border-focus {
+  box-shadow: @blue 0 0 0 1px inset, fade(@blue, 50%) 0 0 6px 0;
+  -webkit-box-shadow: @blue 0 0 0 1px inset, fade(@blue, 50%) 0 0 6px 0;
+}
+
+.windows-shadow {
+  box-shadow: fade(black, 50%) 0 2px 6px 0;
+  -webkit-box-shadow: fade(black, 50%) 0 2px 6px 0;
+}

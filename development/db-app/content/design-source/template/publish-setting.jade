@@ -1,0 +1,52 @@
+#publish.content-row
+    .row-title
+        h2 收集方案设置
+        button.green
+            i.ic.ic-rocket-f-w
+            span 发布收集方案 1
+    form
+        h3 问卷发行数（份）：
+        input(type='number', name='link', placeholder='')
+        br
+        .select
+            include ../template/select-dark
+        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+        p
+            | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+            | organization notifications.
+    form
+        h3 设置调研时限（天）：
+        input(type='number', name='link', placeholder='')
+        br
+        div
+            include ../template/checkbox
+            +checkbox('checkboxG1','无时限至集满配额','','disabled')
+        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+        p
+            | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+            | organization notifications.
+    form
+        div
+            include ../template/radio-button
+            +radio('radio1','直接发布')
+        div
+            +radio('radio2','计划发布','disabled')
+        input#datetimepicker(type='text', name='link', placeholder='')
+        br
+        mark.form-message Brief Statement Or Account Of The Main Points Of Something
+        p
+            | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+            | organization notifications.
+    form
+        div
+            +radio('radio3','每个终端只允许一次回复')
+        div
+            +radio('radio4','每个终端允许多次回覆（建议用于落地调研、电脑实验室或手动输入资料）')
+    form
+        div
+            +checkbox('checkboxG2','调查问卷中的问题被回复之后进入下一题，受访者将无法返回并变更之前的回覆。')
+    form
+        div
+            +checkbox('checkboxG3','设置带参链接kbox文字')
+        p
+            | 备注文字：在发布的链接后增加参数，可通过指定不同的参数值回收特定的信息（常用于回收答卷者信息），例：http://q.cform.io/?6Nveye&key=Tom

@@ -1,0 +1,67 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     version="1.1"
+     id="chartSmallar"
+     ng-mousedown="handleEyeMouseDown($event)">
+    <g id="eyeSvg" ng-attr-transform="{{designManager.getEyeTransform()}}">
+
+        <!--有效区域背景▼-->
+        <!--<rect width="10" height="10" x="0" y="0"
+              ng-attr-x="{{designManager.left}}"
+              ng-attr-y="{{designManager.top}}"
+              ng-attr-width="{{designManager.width}}"
+              ng-attr-height="{{designManager.height}}"
+              fill="gray"
+              ></rect>-->
+        <!--有效区域背景▲-->
+        <!--节点▼-->
+        <g ng-repeat="node in designManager.mixNodes"
+           ng-attr-id="eye-{{node.nodeUuid}}">
+
+            <!--节点主背景▼-->
+            <rect width="10" height="10" x="0" y="0"
+                  class="eye_bg_main"
+                  ng-attr-transform="{{node.getEyeTransform()}}"
+                  ng-attr-width={{node.getBackgroundWidth()}}
+                  ng-attr-height={{node.getBackgroundHeight()}}
+                  ng-attr-fill="{{node.mode == 1 && '#6e6e6e' || node.getBackgroundColor()}}"></rect>
+            <!--节点主背景▲-->
+
+            <!--纵选项背景 矩阵题专用▼-->
+            <rect width="10" height="10" x="0" y="0"
+                  class="eye_bg_x"
+                  ng-if="node.isTypeOf('MATRIX')"
+                  ng-class="{'elementHide':node.optionHidden,'elementShow':node.optionHidden}"
+                  ng-attr-transform="{{node.getEyeTransformX()}}"
+                  ng-attr-width={{node.getBackgroundWidthX()}}
+                  ng-attr-height={{::node.getBackgroundHeightX()}}
+                  ng-attr-fill="{{node.getBackgroundColor()}}"></rect>
+            <!--纵选项背景 矩阵题专用▲-->
+
+            <!--横选项背景 矩阵题专用▼-->
+            <rect width="10" height="10" x="0" y="0"
+                  class="eye_bg_y"
+                  ng-if="node.isTypeOf('MATRIX')"
+                  ng-class="{'elementHide':node.optionHidden,'elementShow':node.optionHidden}"
+                  ng-attr-transform="{{node.getEyeTransformY()}}"
+                  ng-attr-width={{::node.getBackgroundWidthY()}}
+                  ng-attr-height={{node.getBackgroundHeightY()}}
+                  ng-attr-fill="{{node.getBackgroundColor()}}"></rect>
+            <!--横选项背景 矩阵题专用▲-->
+        </g>
+        <!--节点▲-->
+
+        <!--当前视口框▼-->
+        <rect x="0" y="0" width="0" height="0"
+              id="curr_view_port"
+              ng-attr-x="{{designManager.viewLeft}}"
+              ng-attr-y="{{designManager.viewTop}}"
+              ng-attr-width="{{designManager.viewWidth}}"
+              ng-attr-height="{{designManager.viewHeight}}"
+              fill="transparent"
+              ng-attr-stroke-width="{{designManager.getEyeRectWidth()}}"
+              stroke="black"></rect>
+        <!--当前视口框▲-->
+    </g>
+
+</svg>

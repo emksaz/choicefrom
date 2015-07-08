@@ -1,0 +1,305 @@
+
+@{
+Layout = null;
+}<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+        <title>&#24039;&#24605;&#31185;&#25216; choices form</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../css/ws-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../images/cf.svg">
+        <script type="text/javascript" src="../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/jquery.validate.vq.js"></script>
+        <script type="text/javascript" src="../../script/lib/angular.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/modernizr.js"></script>
+        <script type="application/javascript" src="../../script/lib/fastclick.js"></script>
+        <script src="../../script/ws-index.js"></script>@if (ViewData["IsShowDemo"].ToString()=="1")
+    {
+    <meta name="&#24039;&#24605; choice form" content="&#26368;&#19987;&#19994;&#30340;&#22312;&#32447;&#38382;&#21367;&#31995;&#32479;">
+    <meta name="description" content="&#24039;&#24605; choice form &#26368;&#19987;&#19994;&#30340;&#22312;&#32447;&#38382;&#21367;&#31995;&#32479;">
+    <meta name="keywords" content="choice form,form,forms,choice,&#24039;&#24605;&#38382;&#21367;,&#35843;&#30740;,&#34920;&#21333;,&#22312;&#32447;&#38382;&#21367;,&#38382;&#21367;&#35774;&#35745;,">}
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?@System.Configuration.ConfigurationManager.AppSettings["BaiduWeb"].ToString()";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </head>
+  <body>
+    @if (ViewData["IsShowDemo"].ToString()=="1")
+    {
+    <!--script.window.location.href = "http://www.cform.io";
+    -->
+    <div style="position: absolute;z-index:90000;padding-left:200px;top:10px;width: 50px;text-align: center;font-size:32px;line-height:38px;color:snow;text-shadow:black 0px 0px 8px">Demo</div>}
+    <div style="margin:0 auto;display:none;"><img src="../../images/share.jpg"></div>
+    <div id="home" data-ix="show-nav" class="w-section section home">
+      <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" data-ix="display-none-scroll-nav" class="navbar-scroll">
+        <div class="w-container"><a href="#home">
+            <p class="logo">choice form<span>beta</span></p></a>
+          <nav role="navigation">
+            @if ((bool)ViewData["IsLogin"])
+            {<a href="/home/DashBoard" class="button sign-up">&#25105;&#30340;&#35843;&#26597;&#38382;&#21367;</a>}
+            else
+            {<a href="/home/signin?type=1" class="button log-in">&#30331; &#24405;</a><a href="/home/signin?type=2" class="button sign-up">&#27880; &#20876;</a>}
+          </nav>
+        </div>
+      </div>
+      <div data-collapse="none" data-animation="default" data-duration="400" class="navbar">
+        <div class="w-container">
+          <p class="logo">choice form<span>beta</span></p>
+          <nav role="navigation">
+            @if ((bool)ViewData["IsLogin"])
+            {<a href="/home/DashBoard" class="button sign-up">&#25105;&#30340;&#35843;&#26597;&#38382;&#21367;</a>}
+            else
+            {<a href="/home/signin?type=1" class="button log-in">&#30331; &#24405;</a><a href="/home/signin?type=2" class="button sign-up">&#27880; &#20876;</a>}
+          </nav>
+        </div>
+      </div>
+      <div>
+        <div id="home" class="w-container">
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <div class="hero-text">
+                <h1 data-ix="hero-headline"><span>&#24039;&#24605;</span>
+                  <p class="logo">choice form<span>beta</span></p><br><span>&#22312;&#32447;&#38382;&#21367;&#31995;&#32479;</span>
+                </h1>
+                <h2 data-ix="hero-headline-2">Best online survey software & questionnaire tool</h2>@if ((bool)ViewData["IsLogin"])
+                {<a href="/home/DashBoard" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>&#24320;&#22987;&#35774;&#35745;&#38382;&#21367;</strong></a>}
+                else
+                {<a href="/home/signin?type=1" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>&#24320;&#22987;&#35774;&#35745;&#38382;&#21367;</strong></a>}<a style="display:none;" href="#" data-ix="hero-button" class="button board"><i class="sprite sprite-play-4"></i><strong>&#35266;&#30475;&#35270;&#39057;</strong></a>
+              </div>
+            </div>
+            <div class="w-col w-col-6 cover-phone">
+              <div data-ix="phone-3" class="my-survey">
+                <div class="survey-screen"><iframe src="@Request["quesID"]" style="overflow:hidden;">
+                  <!-- iframe(src="@Request["quesID"]", style='overflow:hidden;')-->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="features" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2>&#35774;&#35745;&#65292;&#32780;&#38750;&#32534;&#20889;</h2><span>designing rather than writing</span>
+          <p>&#24039;&#24605;&#29420;&#26377;&#30340;&#22270;&#24418;&#21270;&#38382;&#21367;&#35774;&#35745;&#31995;&#32479;&#65293;nodes flow &#65292;&#39072;&#35206;&#22312;&#32447;&#38382;&#21367;&#32534;&#20889;&#21019;&#24314;&#26041;&#24335;&#12290;<br>nodes flow &#20197;&#27969;&#31243;&#22270;&#26041;&#24335;&#35774;&#35745;&#38382;&#21367;&#65292;&#25670;&#25918;&#39064;&#22411;&#33410;&#28857;&#21019;&#24314;&#38382;&#21367;&#39064;&#30446;&#65292;&#25302;&#21160;&#33410;&#28857;&#36830;&#32447;&#35774;&#23450;&#38382;&#21367;&#36339;&#36716;&#36923;&#36753;&#65292;&#25805;&#20316;&#31616;&#21333;&#24555;&#25463;&#65292;&#33756;&#40479;&#29992;&#25143;&#20063;&#33021;&#24555;&#36895;&#19978;&#25163;&#12290;nodes flow &#30452;&#35266;&#23637;&#29616;&#38382;&#21367;&#27969;&#31243;&#65292;&#26041;&#20415;&#26597;&#25214;&#12289;&#20462;&#25913;&#12289;&#24402;&#31867;&#65292;&#38382;&#21367;&#36923;&#36753;&#28165;&#26224;&#26126;&#20102;&#65292;&#20877;&#22797;&#26434;&#30340;&#38382;&#21367;&#20063;&#33021;&#36731;&#26494;&#23436;&#25104;&#12290;</p>
+        </div><img src="../../images/ws/web-ui.png" width="940" data-ix="phone">
+      </div>
+    </div>
+    <div id="function" class="w-section section function">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s1.png" width="1442" data-ix="show-up-from-left" class="left-image"></div>
+          <div class="w-col w-col-6">
+            <h2>&#19981;&#20165;&#21151;&#33021;&#24378;&#22823;&#65292;&#32780;&#19988;&#30452;&#35266;&#26131;&#29992;</h2>
+            <p>&#21451;&#22909;&#30340;&#25805;&#20316;&#30028;&#38754;&#25972;&#21512;&#20247;&#22810;&#38382;&#21367;&#35774;&#35745;&#21151;&#33021;&#65292;&#24120;&#29992;&#24037;&#20855;&#26639;&#12289;&#38544;&#34255;&#24335;&#38754;&#26495;&#12289;&#23646;&#24615;&#35774;&#23450;&#38754;&#26495;&#12289;&#23186;&#20307;&#36164;&#28304;&#31649;&#29702;...&#36890;&#36807;&#23545;&#21151;&#33021;&#30340;&#20998;&#31867;&#26803;&#29702;&#65292;&#24102;&#32473;&#24744;&#31616;&#27905;&#12289;&#28165;&#26224;&#30340;&#35270;&#35273;&#24863;&#21463;&#21644;&#31616;&#21333;&#12289;&#26131;&#29992;&#30340;&#25805;&#20316;&#20307;&#39564;&#12290;<br>Ctrl+S&#12289;Ctrl+C&#12289;Ctrl+V...&#25805;&#20316;&#24555;&#25463;&#38190;&#12289;&#40560;&#30524;&#35270;&#22270;&#31561;&#36148;&#24515;&#21151;&#33021;&#21152;&#36895;&#38382;&#21367;&#35774;&#35745;&#36827;&#31243;&#12290;</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>&#20016;&#23500;&#30340;&#39064;&#22411;</h2>
+            <p>&#20016;&#23500;&#30340;&#39064;&#22411;&#33410;&#28857;&#24211;&#12289;&#29956;&#21035;&#33410;&#28857;&#24211;&#65292;&#28385;&#36275;&#21508;&#31867;&#35843;&#30740;&#38382;&#21367;&#38656;&#27714;&#12290;&#20197;&#21450;&#36873;&#39033;&#36923;&#36753;&#36816;&#31639;&#12289;&#39064;&#30446;&#38543;&#26426;&#12289;&#39064;&#30446;&#24490;&#29615;&#12289;&#21160;&#24577;&#33258;&#23450;&#20041;&#21464;&#37327;&#31561;&#39640;&#32423;&#21151;&#33021;&#33410;&#28857;&#65292;&#36731;&#26494;&#35774;&#35745;&#19987;&#19994;&#38382;&#21367;&#12290;</p>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s2.png" width="1442" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s3.png" width="1442" data-ix="show-up-from-left" class="left-image"></div>
+          <div class="w-col w-col-6">
+            <h2>&#23454;&#26102;&#39044;&#35272;</h2>
+            <p>&#38382;&#21367;&#35774;&#35745;&#36807;&#31243;&#20013;&#65292;&#21487;&#23545;&#21333;&#20010;&#33410;&#28857;&#36827;&#34892;&#23454;&#26102;&#39044;&#35272;&#65292;&#25226;&#25511;&#38382;&#21367;&#35774;&#35745;&#30340;&#27599;&#20010;&#37325;&#35201;&#32454;&#33410;&#12290;<br>&#38382;&#21367;&#35774;&#35745;&#23436;&#27605;&#21518;&#65292;&#25903;&#25345;&#23545;&#25972;&#20010;&#38382;&#21367;&#30340;&#23454;&#26102;&#39044;&#35272;&#65292;&#25152;&#35265;&#21363;&#25152;&#24471;&#12290;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="and-more" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2>&#36234;&#31616;&#20415;&#65292;&#36234;&#19981;&#31616;&#21333;...</h2><span>less is more</span>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/icon-nodes.png">
+            <h3>&#21487;&#25193;&#20805;&#39064;&#22411;&#24211;</h3>
+            <p>&#38500;&#20102;&#20869;&#32622;20&#20313;&#27454;&#32463;&#20856;&#39064;&#22411;&#33410;&#28857;&#65292;&#25105;&#20204;&#36824;&#20250;&#19981;&#23450;&#26399;&#22686;&#21152;&#26032;&#39064;&#22411;&#33410;&#28857;&#12290;</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/Nodes.png">
+            <h3>&#36339;&#36716;&#36923;&#36753;&#28165;&#26224;&#26126;&#20102;</h3>
+            <p>nodes flow &#22270;&#24418;&#21270;&#38382;&#21367;&#35774;&#35745;&#26032;&#29702;&#24565;&#65281;&#25302;&#33410;&#28857;&#65292;&#36830;&#32447;&#26465;&#65292;&#36731;&#26494;&#35774;&#35745;&#22797;&#26434;&#38382;&#21367;&#12290;</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/logic-nodes.png">
+            <h3>&#39640;&#32423;&#21151;&#33021;</h3>
+            <p>&#39064;&#30446;&#24490;&#29615;&#12289;&#39064;&#30446;&#38543;&#26426;&#12289;&#36873;&#39033;&#36923;&#36753;&#36816;&#31639;...&#39640;&#32423;&#21151;&#33021;&#33410;&#28857;&#20026;&#19987;&#19994;&#38382;&#21367;&#32780;&#35774;&#12290;</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/custom-variables.png">
+            <h3>&#25903;&#25345;&#21160;&#24577;&#33258;&#23450;&#20041;&#21464;&#37327;</h3>
+            <p>&#22312;&#38382;&#21367;&#20869;&#23481;&#20013;&#21160;&#24577;&#23884;&#20837;&#21069;&#39064;&#30340;&#36873;&#25321;&#31572;&#26696;&#65292;&#24110;&#21161;&#24744;&#26356;&#31934;&#20934;&#22320;&#20998;&#26512;&#30446;&#26631;&#32676;&#20307;&#12290;</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/auto-save-versions.png">
+            <h3>&#21382;&#21490;&#29256;&#26412;</h3>
+            <p>&#38382;&#21367;&#35774;&#35745;&#36807;&#31243;&#20013;&#21487;&#38543;&#26102;&#20445;&#23384;&#29256;&#26412;&#65292;&#24403;&#38656;&#35201;&#29256;&#26412;&#22238;&#28335;&#26102;&#65292;&#21487;&#24555;&#36895;&#36820;&#22238;&#21040;&#25152;&#38656;&#30340;&#38382;&#21367;&#35774;&#35745;&#38454;&#27573;&#12290;</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/custom-theme.png">
+            <h3>&#20010;&#24615;&#21270;&#38382;&#21367;&#30382;&#32932;</h3>
+            <p>&#21487;&#23450;&#21046;&#38382;&#21367;&#30382;&#32932;&#65292;&#28385;&#36275;&#24744;&#30340;&#20010;&#24615;&#21270;&#38656;&#27714;&#12290;&#25903;&#25345;Markdown&#26631;&#35760;&#35821;&#35328;&#65292;&#36824;&#26377;&#20160;&#20040;&#19981;&#33021;&#21464;&#65311;</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/quota.png">
+            <h3>&#28789;&#27963;&#30340;&#37197;&#39069;&#35774;&#23450;</h3>
+            <p>&#20132;&#21449;&#37197;&#39069;&#12289;&#38750;&#20132;&#21449;&#37197;&#39069;&#12289;&#22810;&#26041;&#26696;&#22810;&#28192;&#36947;&#33258;&#21160;&#37197;&#39069;&#21512;&#24182;&#31561;&#37197;&#39069;&#35774;&#23450;&#65292;&#21161;&#24744;&#31934;&#20934;&#38145;&#23450;&#30446;&#26631;&#32676;&#20307;&#12290;</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/chart.png">
+            <h3>&#38382;&#21367;&#25968;&#25454;&#21487;&#35270;&#21270;&#23637;&#31034;</h3>
+            <p>&#26080;&#22270;&#26080;&#30495;&#30456;&#65292;&#38382;&#21367;&#25968;&#25454;&#21487;&#35270;&#21270;&#25226;&#30495;&#30456;&#36865;&#32473;&#20320;&#12290;&#25968;&#25454;&#31579;&#36873;&#21644;&#25968;&#25454;&#19979;&#36733;&#29992;&#20110;&#28145;&#24230;&#25968;&#25454;&#32479;&#35745;&#20998;&#26512;&#12290;</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/organizations.png">
+            <h3>&#25903;&#25345;&#20225;&#19994;&#36134;&#21495;</h3>
+            <p>&#36890;&#36807;&#36134;&#21495;&#35282;&#33394;&#35774;&#23450;&#20998;&#37197;&#19981;&#21516;&#30340;&#20225;&#19994;&#30446;&#24405;&#21644;&#38382;&#21367;&#26435;&#38480;&#65292;&#22242;&#38431;&#25104;&#21592;&#20998;&#24037;&#21327;&#20316;&#20197;&#21450;&#25104;&#26524;&#20998;&#20139;&#12290;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="process" class="w-section section process">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>&#24555;&#36895;&#32780;&#39640;&#25928;&#30340;&#37197;&#39069;&#35774;&#32622;</h2>
+            <p>&#39640;&#24230;&#28789;&#27963;&#30340;&#38382;&#21367;&#37197;&#39069;&#35774;&#23450;&#28385;&#36275;&#24744;&#21508;&#31181;&#20005;&#33499;&#30340;&#38382;&#21367;&#22238;&#25910;&#35201;&#27714;&#65292;&#20869;&#32622;&#29956;&#21035;&#33410;&#28857;&#24211;&#39044;&#35774;&#24120;&#29992;&#30340;&#29956;&#21035;&#35774;&#32622;&#65292;&#38477;&#20302;&#38382;&#21367;&#29956;&#21035;&#35774;&#23450;&#38590;&#24230;&#65292;&#24110;&#21161;&#24744;&#31934;&#20934;&#38145;&#23450;&#30446;&#26631;&#32676;&#20307;&#12290;</p>
+            <ul>
+              <li><i class="ic ic-quota-c"></i><span>&#20132;&#21449;&#37197;&#39069;</span></li>
+              <li><i class="ic ic-quota-n"></i><span>&#38750;&#20132;&#21449;&#37197;&#39069;</span></li>
+              <li class="quota-m"><i class="ic ic-quota-m"></i><span>&#22810;&#26041;&#26696;&#12289;&#22810;&#28192;&#36947;&#33258;&#21160;&#37197;&#39069;&#21512;&#24182;</span></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/settings-quota.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>&#21508;&#31181;&#28192;&#36947;&#40784;&#38598;&#19968;&#22530;</h2>
+            <p>&#24039;&#24605;&#20855;&#22791;&#23436;&#21892;&#30340;&#38382;&#21367;&#21457;&#24067;&#28192;&#36947;&#65292;&#24110;&#21161;&#24744;&#23558;&#35843;&#30740;&#38382;&#21367;&#21457;&#24067;&#21040;&#21508;&#31181;&#20027;&#27969;&#28192;&#36947;&#12290;&#36824;&#25903;&#25345;&#23545;&#19981;&#21516;&#28192;&#36947;&#35774;&#23450;&#29420;&#31435;&#30340;&#37197;&#39069;&#65292;&#20197;&#26356;&#31934;&#20934;&#22320;&#36827;&#34892;&#38382;&#21367;&#22238;&#25910;&#12290;</p>
+            <ul>
+              <li><i class="ic ic-weichat"></i><span>&#24494;&#20449;</span></li>
+              <li><i class="ic ic-weibo"></i><span>&#24494;&#21338;</span></li>
+              <li><i class="ic ic-mail"></i><span>&#37038;&#20214;</span></li>
+              <li><i class="ic ic-www"></i><span>&#32593;&#31449;</span></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/settings-publish.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>&#25968;&#25454;&#31579;&#36873;&#12289;&#35270;&#22270;&#21644;&#19979;&#36733;</h2>
+            <p>&#38382;&#21367;&#22238;&#25910;&#36827;&#31243;&#20840;&#31243;&#23454;&#26102;&#36319;&#36394;&#65292;&#23454;&#26102;&#25968;&#25454;&#35270;&#22270;&#19968;&#30446;&#20102;&#28982;&#12290;<br>&#21508;&#39033;&#38382;&#21367;&#39064;&#30446;&#20998;&#24067;&#25968;&#25454;&#20113;&#31471;&#27719;&#24635;&#32479;&#35745;&#65292;&#20840;&#38754;&#25484;&#25511;&#35843;&#30740;&#38382;&#21367;&#25968;&#25454;&#12290;<br>&#28789;&#27963;&#30340;&#33258;&#23450;&#20041;&#25968;&#25454;&#31579;&#36873;&#65292;&#24110;&#21161;&#24744;&#32858;&#28966;&#26368;&#37325;&#35201;&#30340;&#25968;&#25454;&#12290;</p>
+            <ul>
+              <li><i class="ic ic-xls"></i></li>
+              <li><i class="ic ic-spss"></i></li>
+              <li><i class="ic ic-csv"></i></li>
+            </ul>
+            <h3>&#22810;&#31181;&#25968;&#25454;&#26684;&#24335;&#19979;&#36733;&#12290;</h3>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/data-trends.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+      </div>
+    </div>
+    <div id="theme" class="w-section section theme">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-7">
+            <ul data-ix="phone-2">
+              <li class="sc-01"></li>
+              <li class="sc-02"></li>
+              <li class="sc-03"></li>
+              <li class="sc-04"></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-5">
+            <h2>&#31934;&#20110;&#24605;&#65292;&#24039;&#20110;&#24418;</h2><span>delicate concept and wealth design</span>
+            <p>&#22810;&#31181;&#22810;&#26679;&#30340;&#38382;&#21367;&#30382;&#32932;&#27169;&#26495;&#65292;&#19968;&#38190;&#25442;&#32932;&#65292;&#39640;&#39068;&#20540;&#38382;&#21367;&#25289;&#36817;&#24744;&#19982;&#30446;&#26631;&#32676;&#20307;&#30340;&#36317;&#31163;&#12290;<br><br>&#24039;&#24605;&#25903;&#25345; Markdown &#26631;&#35760;&#35821;&#35328;&#65292;&#26041;&#20415;&#24744;&#33258;&#24049;&#35774;&#23450;&#38382;&#21367;&#30382;&#32932;&#65292;&#26356;&#28789;&#27963;&#22320;&#25511;&#21046;&#38382;&#21367;&#26174;&#31034;&#25928;&#26524;&#65292;&#28385;&#36275;&#24744;&#39640;&#24230;&#20010;&#24615;&#21270;&#30340;&#38656;&#27714;&#12290;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="screenshoots" class="w-section section screenshoots">
+      <div class="w-container">
+        <div class="title">
+          <h2 class="dark-tittle">&#26032;&#24179;&#21488;&#65292;&#20026;&#26032;&#19968;&#20195;&#22312;&#32447;&#38382;&#21367;&#25171;&#36896;</h2><span>brandnew platform,brandnew online sruvery tool</span>
+        </div>
+        <div data-animation="slide" data-duration="500" data-infinite="1" data-delay="2500" data-autoplay="1" data-easing="ease-out" data-nav-spacing="1" class="w-slider screenshoots-slider">
+          <div class="w-slider-mask">
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-01.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-02.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-03.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-04.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-05.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-06.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-07.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-08.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-09.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-10.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-11.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-12.png" width="217"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="contact" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2 class="dark-tittle">&#32852;&#31995;&#25105;&#20204;</h2><span>contact us</span>
+          <p>choice form &#38750;&#24120;&#37325;&#35270;&#24744;&#30340;&#24847;&#35265;&#21644;&#24314;&#35758;&#65292;&#35831;&#24744;&#25226;&#24744;&#30340;&#20351;&#29992;&#24863;&#21463;&#65292;&#25110;&#32773;&#25209;&#35780;&#24847;&#35265;&#21578;&#35785;&#25105;&#20204;&#65292;&#36825;&#23558;&#26159;&#25105;&#20204;&#26356;&#22909;&#22320;&#23436;&#21892;&#31995;&#32479;&#30340;&#21160;&#21147;&#12290;</p>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-9">
+            <div class="contact-form">
+              <form id="email-form" method="post" class="w-clearfix">
+                <input id="name" type="text" placeholder="&#22914;&#20309;&#31216;&#21628;&#24744;?" name="name" data-name="Name" required="required">
+                <input id="email" type="email" placeholder="&#22914;&#20309;&#22238;&#22797;&#24744;? ( email )" name="email" data-name="Email" required="required">
+                <input id="email-2" type="text" placeholder="&#20027;&#39064;" name="email-2" data-name="Email 2" required="required">
+                <textarea id="field" placeholder="&#20869;&#23481;" name="field" required="required"></textarea>
+                <input id="submit_button" type="button" value="&#21457;&#36865;&#20449;&#24687;" onclick="SendMail()" data-wait="&#21457;&#36865;&#20013;..." class="button blue">
+              </form>
+              <div id="emilsucc" class="w-form-done success-message">
+                <p>&#24744;&#30340;&#20449;&#24687;&#24050;&#21457;&#36865;, &#25105;&#20204;&#20250;&#36890;&#36807;&#37038;&#20214;&#30340;&#24418;&#24335;&#22238;&#22797;&#24744;.</p>
+              </div>
+              <div id="emailfail" class="w-form-fail">
+                <p>(&#8857;o&#8857;)&#21734;, &#20449;&#24687;&#21457;&#36865;&#22833;&#36133;,&#35831;&#37325;&#35797;.(</p>
+              </div>
+            </div>
+          </div>
+          <div class="w-col w-col-3">
+            <h4>&#32852;&#31995;&#22320;&#22336;:</h4>
+            <p>&#19978;&#28023;&#24066;&#24464;&#27719;&#21306;&#40857;&#21326;&#20013;&#36335;600&#21495;&#32511;&#22320;&#20013;&#24515;B&#24231;701&#21333;&#20803;<br><br>Phone: 86 021-54591660<br>Email:&#160;sc@cform.io<br>Web:&#160;cform.io</p>
+            <h4>&#24037;&#20316;&#26102;&#38388;:</h4>
+            <p>&#21608;&#19968;&#33267;&#21608;&#20116;: 10 AM &#8211; 18 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-section footer">
+      <div class="w-container"><a href="#home">
+          <p class="logo">choice form<span>beta</span></p></a>
+        <div><span>&#20851;&#20110;&#25105;&#20204;</span><span>&#24110;&#21161;&#20013;&#24515;</span><span>&#27861;&#24459;&#26465;&#27454;</span><span>&#32852;&#31995;&#25105;&#20204;</span>
+          <p>&copy; 2015,<a>choice form</a> , Inc. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+    <div id="browser-bg">
+      <div id="Browser-low">
+        <h1 id="choices-left"><span>&#26816;&#27979;&#21040;&#22312;&#24403;&#21069;&#27983;&#35272;&#22120;&#19978;&#21487;&#33021;&#20986;&#29616;&#37096;&#20998;&#21151;&#33021;&#20307;&#39564;&#19981;&#20339;&#25110;&#26080;&#27861;&#20351;&#29992;&#30340;&#24773;&#20917;,&#26159;&#21542;&#20173;&#28982;&#35201;&#32487;&#32493;?<br>Tips:&#24314;&#35758;&#20351;&#29992;&#35895;&#27468;Chrome&#27983;&#35272;&#22120;&#25110;&#33529;&#26524;Safari&#27983;&#35272;&#22120;&#12290;</span></h1>
+      </div>
+      <script>
+        $(function () {
+            $("img").scrollLoading();
+        });
+      </script>
+    </div>
+  </body>
+</html>

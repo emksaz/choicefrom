@@ -1,0 +1,36 @@
+#Register.main-container(ng-controller='RegisterCtrl', style=' display:none')
+   #logo
+      span(onclick='turnToIndex()') choice form
+      span beta
+   h2 注 册
+   form(name='RegisterForm', autocomplete='off', novalidate='novalidate')
+      .input-sgin
+         input#REmail(type='email', name='REmail', ng-keydown='enter()', placeholder='邮箱', autocomplete='off', ng-model='Reg.Email', maxlength='50', required='', ng-change='registerInputChange(RegisterForm.$valid,RegisterForm.REmail.$dirty)')
+         mark.form-message(ng-show='RegisterForm.REmail.$dirty && RegisterForm.REmail.$invalid && RegisterForm.REmail.$error.required') 请输入新邮箱地址。
+         mark.form-message(ng-show='RegisterForm.REmail.$dirty && RegisterForm.REmail.$invalid && RegisterForm.REmail.$error.email') 请输入正确的邮箱地址。
+      .input-sgin
+         input#RName(type='text', ng-keydown='enter()', placeholder='您的名字', ng-model='Reg.Name', maxlength='50', autocomplete='off')
+      .input-sgin
+         input(type='password', style='display:none')
+         input#RPassWord(type='password', name='password', ng-keydown='enter()', placeholder='密码（至少6位）', ng-model='Reg.PassWord', ng-minlength='6', maxlength='12', required='', ng-change='registerInputChange(RegisterForm.$valid,RegisterForm.password.$dirty)', autocomplete='off')
+         mark.form-message(ng-show='RegisterForm.password.$dirty && RegisterForm.password.$invalid && RegisterForm.password.$error.required') 请输入新密码。
+         mark.form-message(ng-show='RegisterForm.password.$dirty && RegisterForm.password.$invalid && RegisterForm.password.$error.minlength') 密码不能小于6个字符。
+      .input-sgin
+         input#RInviteCode(type='text', name='invitecode', ng-keydown='enter()', autocomplete='off', placeholder='请输入邀请码', ng-model='Reg.InviteCode', maxlength='8', required='', ng-change='registerInputChange(RegisterForm.$valid,RegisterForm.invitecode.$dirty)')
+         mark.form-message(ng-show='RegisterForm.invitecode.$dirty && RegisterForm.invitecode.$invalid && RegisterForm.invitecode.$error.required') 邀请码不能为空。
+         mark.form-message(ng-show='Reg.CheckInviteCodeFlag') 邀请码错误。
+   p#sign_text
+      | 点击注册意味您了解并同意我们的
+      a 服务条款
+      | 和
+      a 隐私权条款
+      br
+      | 没有邀请码？请发送邮件到sc@cform.io获得邀请码（邮件主题：邀请码）。
+   button.button.blue(ng-click='Register()', type='button')
+      span#RegisterBtn 注 册
+   .create-account
+      p
+         | 已有
+         span(onclick='turnToIndex()') choice form
+         | 账号？
+      h3(ng-click='ChangeToLogin()') 登 录

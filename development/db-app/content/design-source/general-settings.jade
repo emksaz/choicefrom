@@ -1,0 +1,61 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('摘要')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 Here are some quick tips for a first-time organization member.
+                    button.purple
+                        i.ic.ic-brush-w
+                        span 设计问卷
+                    include ./template/shortcut
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-settings
+                    .content-wrap
+                        div
+                            .content-row
+                                .row-title
+                                    h2 问卷摘要
+                                    button.green
+                                        i.ic.ic-2dot-w
+                                        span 保存更改
+                                form
+                                    h3 问卷标题：
+                                    input(type='text', name='title', placeholder='请输入问卷标题')
+                                    br
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+                                        | organization notifications.
+                                form
+                                    h3 问卷简介：
+                                    textarea(name='summary', placeholder='请输入问卷简介')
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+                                        | organization notifications.
+                            #overview.content-row
+                                h2 使用详情
+                                ul
+                                    li
+                                        span 账户创建时间：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 创建问卷数量：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 发布问卷数量：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 存储容量：
+                                        span November 21st 2014, 2:34:07 am
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+                                        | organization notifications.
+    include layout/footer

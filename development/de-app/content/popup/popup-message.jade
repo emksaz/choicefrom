@@ -1,0 +1,13 @@
+.popup.vertical-centers#message
+    .popup-title
+        i.ic.ic-info
+        h3(ng-click="handlePopupMessageClose()") 提示信息
+        a.close-popup
+            i.ic.ic-close
+    ul.popup-content
+        p(ng-bind="designManager.PopupMessageManager.getPromptMessage()")
+        .popup-control
+            a.close-popup(ng-click="handleCancelSaveEditInfo()")
+                span 取 消
+            a(ng-click="handleSaveEditInfo()")
+                span 确 定

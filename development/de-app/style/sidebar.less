@@ -1,0 +1,477 @@
+#sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 301px;
+  height: 100%;
+  font-size: 12px;
+  background-color: @gray4a;
+  border-left: 1px solid @dark27-gray;
+  z-index: 60;
+
+  > .tab-panels {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+    ul.tabs {
+      height: 37px;
+      width: 100%;
+      border-bottom: 1px solid @dark27-gray;
+      .dark-gray-gradient;
+      > li {
+        float: left;
+        border-right: 1px solid @dark27-gray;
+        .tab {
+          display: block;
+          position: relative;
+          padding: 8px 20px;
+          &:hover i {
+            opacity: 1;
+          }
+        }
+        .tab.activ {
+          background-color: @gray4a;
+          opacity: 1;
+          &:before {
+            content: "";
+            position: absolute;
+            bottom: -1px;
+            height: 1px;
+            left: 0;
+            right: 0;
+            background-color: @gray4a;
+          }
+          > i {
+            opacity: 1 !important;
+          }
+        }
+      }
+    }
+
+    > .panel {
+      position: absolute;
+      width: 100%;
+      top: 177px;
+      bottom: 0;
+    }
+  }
+}
+
+//侧栏头部固定区域 ------------------------------------------------------------------------------------
+
+.leading-section {
+  position: relative;
+  padding: 0 8px;
+  border-bottom: 1px solid @dark27-gray;
+  z-index: 99;
+  .translate3d(0, 0, 0);
+  .color-box {
+    width: 20px;
+    height: 20px;
+    float: right;
+  }
+  > div {
+    overflow: hidden;
+    padding: 8px 0;
+    > i {
+      float: left;
+      margin-right: 6px;
+    }
+    > span {
+      display: block;
+      float: left;
+    }
+    &:first-child {
+      border-bottom: 1px solid @dark39-gray;
+    }
+    &:last-child {
+      > span {
+        color: lighten(@gray4a, 35%);
+        -webkit-transition: color 0.3s;
+        transition: color 0.3s;
+        cursor: pointer;
+        &:hover {
+          color: @blue;
+        }
+      }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------
+
+.kit-section-group {
+  min-height: 100% !important;
+  //width: 299px;
+}
+
+//选项区域------------------------------------------------------------------------------------
+
+.kit-position {
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative;
+  //width: 300px;
+  &:last-child > .section-content {
+    border: none;
+    padding-bottom: 96px;
+  }
+  //问题栏-添加媒体
+  &:first-child > .section-content > .media-content {
+    display: none;
+  }
+  span {
+    display: block;
+    float: left;
+  }
+}
+
+//选项区域 (标题)------------------------------------------------------------------------------------
+
+.title-local {
+  position: relative;
+  padding: 0 8px;
+  overflow: hidden;
+  background-color: @dark39-gray;
+  border-bottom: 1px solid @dark27-gray;
+  cursor: pointer;
+  -webkit-transition: background-color 0.3s;
+  transition: background-color 0.3s;
+  .translate3d(0, 0, 0);
+  &:hover {
+    background-color: darken(@dark39-gray, 2%);
+  }
+  &:hover i {
+    opacity: 1;
+  }
+  > i {
+    float: left;
+    margin-right: 6px;
+  }
+  > span {
+    padding: 5px 0;
+    display: block;
+    width: 230px;
+  }
+  &:hover .quick-help {
+    .translate3d(0,0,0);
+  }
+  #arrow-drop-down {
+    margin-top: 5px;
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+  }
+}
+
+// 选项区域 (可收起区域)------------------------------------------------------------------------------------
+
+.section-content {
+  width: 100%;
+  padding: 0 8px 8px 8px;
+  border-bottom: 1px solid @dark27-gray;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  .section-col {
+    display: block;
+    &:after {
+      clear: both;
+      content: " ";
+      display: table;
+    }
+    > a {
+      padding: 8px 0;
+      float: left;
+      &:nth-of-type(2) {
+        margin-left: 24px;
+      }
+      &:last-of-type {
+        float: right;
+        padding-right: 0;
+        //margin-right: -2px;
+      }
+      > span {
+        color: @textd7;
+        float: left;
+        margin-right: 8px;
+      }
+      > i {
+        float: right;
+      }
+    }
+    > h4 {
+      float: left;
+      &:nth-of-type(2) {
+        float: right;
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+// 问题 ------------------------------------------------------------------------------------
+
+#question-settings {
+
+  .section-content {
+    > textarea {
+      min-height: 128px;
+      max-width: 100%;
+      min-width: 100%;
+    }
+    #description {
+      display: none;
+      > textarea {
+        min-height: 96px;
+      }
+    }
+  }
+}
+
+// 下拉菜单 (媒体选择)------------------------------------------------------------------------------------
+
+.media-content {
+  margin-top: 8px;
+  border-top: 1px solid @dark39-gray;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  .select-itme {
+    float: left;
+    width: 236px;
+  }
+  .pic-preview {
+    float: right;
+    width: 40px;
+    height: 30px;
+    .dark-border;
+    background-image: url("../images/de/Unknown.png");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+// 添加选项按钮 ------------------------------------------------------------------------------------
+
+.add-options {
+  border-radius: 3px;
+  float: right;
+  margin: 16px 0 8px 0;
+  overflow: hidden;
+  border: 1px solid @dark39-gray;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  > a {
+    float: left;
+    padding: 5px 0;
+    transform-style: flat;
+    &:hover {
+      background-color: @medium5d-gray;
+    }
+    &:nth-of-type(2) {
+      padding: 5px 8px;
+    }
+    .gray-gradient;
+    > span {
+      display: block;
+      padding: 0 8px;
+      border-right: 1px solid @dark39-gray;
+    }
+  }
+}
+
+// 通用设置 ------------------------------------------------------------------------------------
+
+#common-settings {
+
+  .section-content {
+    padding-bottom: 0;
+  }
+  .attached-item {
+    display: none;
+    padding: 8px 0;
+    float: left;
+    &:after {
+      clear: both;
+      content: " ";
+      display: table;
+    }
+    > .spinner {
+      float: left;
+      &:first-child {
+        margin-right: 32px;
+      }
+    }
+    > .text-tips {
+      float: left;
+      clear: left;
+    }
+  }
+}
+
+// 其他选项------------------------------------------------------------------------------------
+
+#other-settings {
+
+  .attached-item {
+    padding-top: 8px;
+    clear: left;
+    > div {
+      &:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+      &:first-of-type {
+        padding: 8px 0;
+        border-bottom: 1px solid @dark39-gray;
+        > a.checkbox {
+          float: left;
+        }
+      }
+    }
+    > .select-itme {
+      margin-bottom: 8px;
+    }
+    > .spinner {
+      float: left;
+      > input {
+        width: 96px;
+      }
+    }
+    > h5 {
+      float: left;
+      &:nth-of-type(1) {
+        padding: 8px 12px;
+      }
+      &:nth-of-type(2) {
+        padding: 8px 0 8px 12px;
+      }
+    }
+    > h4 {
+      &:last-of-type {
+        clear: left;
+      }
+    }
+  }
+}
+
+// 类型选择 ------------------------------------------------------------------------------------
+
+#type-settings {
+  >.section-content{
+    padding: 0;
+    position: relative;
+
+    > .tabs {
+     padding: 8px;
+    }
+    > ul.panel {
+      position: relative;
+      width: 100%;
+      top: auto;
+      bottom: auto;
+      float: left;
+      .type-item {
+        font-size: 48px;
+        padding: 12px;
+        width: 74px;
+        > i {
+          width: 48px;
+          height: 48px;
+        }
+        > .ic-tick {
+          opacity: 0;
+          width: 16px;
+          height: 16px;
+          position: absolute;
+          top: -1px;
+          right: 2px;
+        }
+        &:nth-child(3n) {
+          border-right: 1px solid @dark39-gray;
+        }
+        &:nth-child(4n) {
+          width: 76px;
+          border-right: none;
+        }
+      }
+      .attached-item {
+        width: 100%;
+        padding: 16px 8px;
+        float: left;
+        > span {
+          float: left;
+          padding: 2px 0;
+        }
+        > .text-tips {
+          float: left;
+        }
+      }
+    }
+    > div.panel {
+      padding: 8px;
+      > .spinner {
+        float: left;
+        > input {
+          width: 96px;
+        }
+      }
+      > h5 {
+        float: left;
+        &:nth-of-type(1) {
+          padding: 8px 12px;
+        }
+        &:nth-of-type(2) {
+          padding: 8px 0 8px 12px;
+        }
+      }
+    }
+  }
+}
+
+// 没选择任何节点 ------------------------------------------------------------------------------------
+
+#nothing-selected {
+  background-color: @dark39-gray;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  &::after {
+    content: "";
+    position: absolute;
+    opacity: 0.6;
+    height: 16px;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: url("../images/de/shadow.png");
+    background-repeat: repeat-x;
+  }
+  > div {
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 200px;
+    height: 200px;
+    color: lighten(@gray4a, 35%);
+    > i {
+      width: 64px;
+      height: 64px;
+      display: inline-block;
+    }
+  }
+}

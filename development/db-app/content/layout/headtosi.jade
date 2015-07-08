@@ -1,0 +1,24 @@
+mixin title(title)
+    title= title
+    meta(http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1")
+    meta(name='Dashboard', content='Survey-Best')
+    link(href='~/Css/normalize.css', rel='stylesheet')
+    link(href='~/Css/db-index.css', rel='stylesheet')
+    script(src='~/Script/lib/jquery.min.js')
+    script(src='~/Script/lib/fastclick.js' )
+    script(src='~/Script/lib/modernizr.js' )
+    script(src='~/Script/lib/angular.min.js')
+    script(src='~/Script/lib/angular-ui-router.js')
+    script(src='http://localhost:7099/common/script/windowAlert-custom.js')
+    script(src='http://localhost:7099/common/script/loading.js')
+    script(type='text/javascript', src='http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js', data-appid='101221559', data-redirecturi='http://www.csvfx.com/Home/QQLogin', charset='utf-8')
+    |@if (System.Configuration.ConfigurationManager.AppSettings.Get("isPublic") == "0") { 
+    script(src='http://localhost:7099/db-app/script/SignIn/SignIn.js')
+    |}else{
+    script(src='~/ReleaseJS/zySI.min.js')
+    |}
+    link(rel='shortcut icon', type='image/x-icon', href='/Images/favicon.ico')
+    link(rel='apple-touch-icon', href='/Images/cf.svg' )
+
+
+

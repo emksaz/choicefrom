@@ -1,0 +1,189 @@
+
+<div id="question-summaries" class="content-wrap">
+  <div class="tabs tabs-style-sub">
+    <nav>
+      <ul>
+        <li ng-click="AnalyzeResultTabSelect()"><span>收集进度</span></li>
+        <li class="sub-tab-current"><span>统计图表</span></li>
+        <li ng-show="IsDemo=='1'"><span>数据结果</span></li>
+      </ul>
+    </nav>
+    <div class="sidebar">
+      <div class="setting-row">
+        <div class="sidebar-row">
+          <!-- 侧栏-设置区块--><span>{{QuestionSummaries.ShowSetName}}</span><a ng-click="AddShowRuleClick()" ng-show="QuestionSummaries.IsShowAddButton" class="box-button blue"><i title="添加显示设置" class="ic ic-plus-w"></i></a>
+          <form id="rules" ng-show="!QuestionSummaries.AddShowRule">
+            <div ng-repeat="DataList in QuestionSummaries.DataListList">
+              <input type="radio" name="radiog_lite" id="Rule_{{DataList.ID}}" ng-checked="DataList.IsSelect" ng-click="SelectDataListInfo(DataList)" class="css-checkbox"/>
+              <label for="Rule_{{DataList.ID}}" title="{{DataList.Name}}" class="radio-label radGroup1">{{DataList.Name}}</label>
+              <div ng-show="DataList.IsShowTool" class="dropdown-event">
+                <ul class="floating strip downul">
+                  <li>操作：</li>
+                  <li ng-click="EditShowRuleClick(DataList)">编辑</li>
+                  <li ng-click="EditShowRuleName(DataList)">重命名</li>
+                  <li ng-click="DeleteDataListInfo(DataList)">删除</li>
+                </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+              </div>
+            </div>
+          </form>
+          <form id="sub-rules" ng-show="QuestionSummaries.AddShowRule">
+            <div>
+              <input id="checkboxG1" type="checkbox" ng-checked="QuestionSummaries.ShowNodeAllSelect" ng-click="SelectAllNode()" class="css-checkbox"/>
+              <label for="checkboxG1" class="checkbox-label">全选</label>
+            </div>
+            <div>
+              <input id="checkboxG2" type="checkbox" ng-checked="QuestionSummaries.ShowNodeReverseSelect" ng-click="ReverseSelectNode()" class="css-checkbox"/>
+              <label for="checkboxG2" class="checkbox-label">反选</label>
+            </div>
+            <div ng-repeat="Node in QuestionSummaries.ShowNodeList">
+              <input type="checkbox" id="{{Node.NodeID}}" ng-checked="Node.IsSelect" ng-click="SelectShowNode(Node)" class="css-checkbox"/>
+              <label for="{{Node.NodeID}}" title="{{Node.NodeTitle}}: {{Node.NodeName}}" class="checkbox-label">{{Node.NodeTitle}}: {{Node.NodeName}}</label>
+            </div>
+          </form>
+          <div ng-show="QuestionSummaries.AddShowRule" class="customize-control">
+            <button ng-click="CloseShowRuleClick()" class="medium gray"><span>取消</span></button>
+            <button ng-click="SaveShowRuleClick()" class="medium green"><span>应用</span></button>
+          </div>
+        </div>
+        <div class="sidebar-row">
+          <!-- 侧栏-设置区块--><span>输出结果</span><a ng-click="OpenDownLoadInfo()" class="box-button green"><i title="添加输出结果" class="ic ic-plus-w"></i></a>
+          <p ng-show="!QuestionSummaries.IsShowOutView">未输出任何结果</p>
+          <mark ng-show="!QuestionSummaries.IsShowOutView">点击右上角加号生成下载结果<a>更多帮助 »</a></mark>
+          <div id="output" ng-show="QuestionSummaries.IsShowOutView" ng-repeat="DataOutput in DataOutputInfo.dataOutputList ">
+            <div class="output_box"><i ng-click="GotoUrl(DataOutput.URL,DataOutput.FileName)" class="ic ic-download-w"></i><span style="min-height:26px">{{DataOutput.FileFormat}}: {{DataOutput.FileName}}</span>
+              <div class="dropdown-event">
+                <ul class="dropdown output downul">
+                  <li ng-click="ShowDataOutputInfo(DataOutput)">{{DataOutput.ShowFileName}}</li>
+                  <li ng-click="GotoUrl(DataOutput.URL,DataOutput.FileName)">下载结果</li>
+                  <li ng-click="DelDataOutput(DataOutput.ID,DataOutput.URL)">删除结果</li>
+                </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+              </div>
+              <ul ng-show="DataOutput.IsShowInfo" class="output-detailed">
+                <li>文件格式: {{DataOutput.FileFormat}}</li>
+                <!-- <li>视图内容:{{DataOutput.ViewName}}</li>-->
+                <li>创建时间:{{DataOutput.CreateTime}}</li>
+                <li>有效时间:{{DataOutput.ExpireDate}}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-row column">
+      <div ng-repeat="node in QuestionSummaries.SummariesList" ng-show="node.NodeShow" class="chart-view">
+        <div><span>{{node.Name}}</span></div>
+        <div class="chart-container">
+          <h2>{{node.Title}}</h2><span>已回答：{{node.AnswerNum}} 已略过：{{node.SkipNum}} </span>
+          <div id="div_{{node.NodeID}}" style="height:270px; " ng-show="node.IsShowNodeImg"></div>
+          <form class="Answer_selection">
+            <ul ng-show="node.QType!='2'" class="Answer_selection_01">
+              <li>
+                <div><span>答案选择</span></div>
+                <div><span>回复</span></div>
+              </li>
+              <li ng-repeat="option in node.OptionList">
+                <div><img ng-show="option.ShowImg" ng-src="{{option.ImgUrl}}" width="64"/><span>{{option.OptionName}}</span></div>
+                <div><span>{{option.OptionPercentage}}%</span><span>{{option.OptionNum}}</span></div>
+              </li>
+            </ul>
+            <ul ng-show="node.QType=='2'" class="Answer_selection_02">
+              <li>
+                <div style="width:42%">答案选择</div>
+                <div style="width:13%">  平均值</div>
+                <div style="width:15%" class="Answer_point"><span>1</span></div>
+                <div style="width:15%" class="Answer_point"><span>2</span></div>
+                <div style="width:15%" class="Answer_point"><span>3</span></div>
+              </li>
+              <li ng-repeat="option in node.OptionList">
+                <div style="width:42%"><span>{{option.OptionName}}</span></div>
+                <div style="width:13%"><span>{{option.OptionAverageNum}}</span></div>
+                <div style="width:15%" ng-repeat="ovalue in option.OptionPercentageList" class="Answer_point"><span>{{ovalue.Num}}</span><span>{{ovalue.Percentage}}%</span></div>
+              </li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="z-index:9000" ng-show="QuestionSummaries.Popupbackground!=0" ng-click="CloseDiv()" class="pop-ups-background">
+  <div ng-click="ShowPopup($event)" ng-show="QuestionSummaries.Popupbackground==1" class="pop-ups">
+    <div><i class="ic ic-folder-d"></i><span>重命名显示规则名称</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form id="EditForm" name="EditForm" novalidate="">
+      <h3>名称：</h3>
+      <input id="EditName" type="text" placeholder="请输入名称" name="EditName" ng-model="QuestionSummaries.SelectShowChangeName" required="" ng-maxlength="100" oninput="notifyTextLength(this, 100)"/><br/>
+      <mark ng-show="EditFForm.EditFolderName.$dirty &amp;&amp; EditFForm.EditFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="EditShowChangeName(EditForm.$valid)" class="blue"><span>重命名</span></button>
+    </form>
+  </div>
+  <div id="Data_analysis" ng-click="ShowPopup($event)" ng-show="QuestionSummaries.Popupbackground==2" class="pop-ups medium">
+    <div><i class="ic ic-document-d"></i><span>输出结果</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <div id="export_data">
+        <ul id="bp-tabs" class="tabs">
+          <li ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]" ng-click="QuestionSummaries.DataTabClass=1" class="tab"><a rel="panel1">数据结果</a></li>
+          <li ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]" ng-click="QuestionSummaries.DataTabClass=2" class="tab"><a rel="panel2">统计图表</a></li>
+        </ul>
+        <div ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]" class="panel">
+          <div><span>数据视图</span>
+            <div>
+              <input id="radio11" type="radio" name="data_type_1" value="0" ng-model="QuestionSummaries.DataViewType" class="css-checkbox"/>
+              <label for="radio11" class="radio-label radGroup1">当前显示</label>
+            </div>
+            <div>
+              <input id="radio12" type="radio" name="data_type_1" value="1" ng-model="QuestionSummaries.DataViewType" class="css-checkbox"/>
+              <label for="radio12" class="radio-label radGroup1">全部</label>
+            </div>
+          </div>
+          <div><span>数据内容</span>
+            <div>
+              <input id="radio13" type="checkbox" name="data_type_2" ng-model="QuestionSummaries.DataViewSelectText" class="css-checkbox"/>
+              <label for="radio13" class="checkbox-label radGroup1">选项文本</label>
+            </div>
+            <div>
+              <input id="radio14" type="checkbox" name="data_type_5" ng-model="QuestionSummaries.DataViewSelectValue" class="css-checkbox"/>
+              <label for="radio14" class="checkbox-label radGroup1">选项值</label>
+            </div>
+          </div>
+          <div><span>文件名</span>
+            <input type="text" maxlength="30" name="out_xlsx" ng-model="QuestionSummaries.DataViewTypeDownLoadFileName" placeholder="问卷编号 + 结果数据 + 年月时分秒"/><span>.xlsx</span>
+          </div>
+        </div>
+        <div ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]" class="panel">
+          <div><span>数据视图</span>
+            <div>
+              <input id="radio15" type="radio" name="data_type_3" value="0" ng-model="QuestionSummaries.DataAnalysisViewType" class="css-checkbox"/>
+              <label for="radio15" class="radio-label radGroup1">当前显示</label>
+            </div>
+            <div>
+              <input id="radio16" type="radio" name="data_type_3" value="1" ng-model="QuestionSummaries.DataAnalysisViewType" class="css-checkbox"/>
+              <label for="radio16" class="radio-label radGroup1">全部</label>
+            </div>
+          </div>
+          <div><span>输出类型</span>
+            <div>
+              <input id="radio17" type="radio" name="data_type_4" value="0" ng-model="QuestionSummaries.DataAnalysisViewFileType" class="css-checkbox"/>
+              <label for="radio17" class="radio-label radGroup1">EXCEL</label>
+            </div>
+            <div>
+              <input id="radio18" type="radio" name="data_type_4" value="1" ng-model="QuestionSummaries.DataAnalysisViewFileType" class="css-checkbox"/>
+              <label for="radio18" class="radio-label radGroup1">PDF</label>
+            </div>
+          </div>
+          <div><span>文件名</span>
+            <input type="text" maxlength="30" name="out_pdf" ng-model="QuestionSummaries.DataAnalysisViewTypeDownLoadFileName" placeholder="问卷编号 + 汇总数据 + 年月时分秒"/><span>.{{QuestionSummaries.DataAnalysisViewFileType==1?"pdf":"xlsx"}}</span>
+          </div>
+        </div>
+        <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+        <button ng-click="CreateFileInfo();" class="green"><span>导 出</span>
+          <div ng-show="QuestionSummaries.IsCreateFileIng">
+            <div class="load_point01"></div>
+            <div class="load_point02"></div>
+            <div class="load_point03"></div>
+          </div>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+doctype html
+html
+    head
+        include layout/head
+        +title ('404')
+    body
+        #error.center-wrapper
+            #logo
+                span choices form
+                span beta
+            div
+                p 404!
+                span Document or file requested by the client was not found.
+                br
+                span 服务器未找到页面
+                br
+                button.blue
+                    i.ic.ic-left-2w
+                    span 返回首页
+        include layout/footer

@@ -1,0 +1,16 @@
+#ques-review.pop-ups
+   div
+      i.ic.ic-eye-f-d
+      span 问卷预览
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form.ng-pristine.ng-valid
+      #QuesPreviewURl
+      button.blue
+         span 下载二维码
+      mark.form-message 当前链接为预览链接，不作为正式的问卷向他人发送。
+      div
+         h3 问卷预览地址：
+         button.dark
+            span 复制链接
+         a#QuesPreviewHref.preViewLink(href='', target='_blank', style='height:auto;') http://121.40.216.155/?b68a4213-48a6-4dcd-a325-680f00dcfe50

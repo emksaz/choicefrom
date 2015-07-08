@@ -1,0 +1,403 @@
+.gradient-01(@img) {
+  background-image: linear-gradient(315deg, #5940aa, fade(#5940aa, 90%) 56%, fade(#413f84, 95%)), @img;
+  background-image: -webkit-linear-gradient(315deg, #5940aa, fade(#5940aa, 90%) 56%, fade(#413f84, 95%)), @img;
+  background-image: -moz-linear-gradient(315deg, #5940aa, fade(#5940aa, 90%) 56%, fade(#413f84, 95%)), @img;
+  background-image: -ms-linear-gradient(315deg, #5940aa, fade(#5940aa, 90%) 56%, fade(#413f84, 95%)), @img;
+  background-image: -o-linear-gradient(315deg, #5940aa, fade(#5940aa, 90%) 56%, fade(#413f84, 95%)), @img;
+}
+
+.member-bg {
+  .gradient-01(url());
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.3;
+    z-index: 0;
+    background-color: transparent;
+    background-image: url("../images/db/pattern.png");
+    background-repeat: repeat;
+    background-attachment: scroll;
+    background-position: 0% 0%;
+    background-clip: border-box;
+    background-origin: padding-box;
+    background-size: 1024px auto;
+    width: 100%;
+    height: 100%;
+    display: block;
+    .animation-duration(40s);
+    .animation-timing-function(linear);
+    .animation-delay(0s);
+    .animation-direction(normal);
+    .animation-fill-mode(none);
+    .animation-iteration-count(infinite);
+    .animation-play-state(running);
+    .animation-name(animatedBackground);
+    .transition-property(all);
+    .transition-duration(500ms);
+    @media (max-width: 767px) {
+      display: none;
+    }
+  }
+  @keyframes animatedBackground {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      background-position: 0px 1126px;
+    }
+  }
+  @-webkit-keyframes animatedBackground {
+    0% {
+      background-position: 0px 0px;
+    }
+    100% {
+      background-position: 0px 1126px;
+    }
+  }
+  @media (max-width: 767px) {
+    background: none;
+  }
+}
+
+//框架
+.center-wrapper {
+  min-height: 100% !important;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  .flex-flow(row wrap);
+  .justify-content(center);
+  .align-items(center);
+  .align-content(center);
+  @media (max-width: 767px) {
+    display: block;
+  }
+
+  //顶部蓝色线条
+  &:after {
+    content: "";
+    position: absolute;
+    height: 4px;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: @dodger_blue;
+  }
+
+  //居中窗口
+  .main-container {
+    //.user-select(none);
+    color: @dark_gray;
+    padding: 24px;
+    width: 380px;
+    border-radius: 3px;
+    border: 1px solid @silver;
+    background-color: @white;
+    cursor: default;
+    margin-bottom: 64px;
+    margin-top: 88px;
+    z-index: 99;
+    @media (max-width: 767px) {
+      border: none;
+      margin: auto;
+    }
+    @media (max-width: 479px) {
+      width: 100%;
+    }
+
+    //同意我们的条款
+    > p {
+      text-align: center;
+      margin-bottom: 24px;
+      font-size: 12px;
+      color: @silver;
+      @media (max-width: 479px) {
+        text-align: left;
+      }
+
+      //同意我们的条款-链接
+      > a {
+        padding: 0 4px;
+        color: @dark_gray;
+        cursor: pointer;
+        &:hover {
+          color: @dodger_blue;
+        }
+      }
+    }
+    // (登录)(注册)标题
+    h2 {
+      float: right;
+      line-height: 68px;
+      margin-bottom: 12px;
+      @media (max-width: 479px) {
+        font-size: 16px;
+      }
+    }
+    //表单
+    form {
+      &>.input-sgin,.input-login,.input-forget{
+        width: 100%;
+        margin-bottom: 24px;
+      }
+      color: @dark_slate;
+
+      input {
+        width: 100%;
+      }
+
+      mark {
+        margin-top: 12px;
+      }
+      //忘记密码-单选框
+      div {
+        float: left;
+        > .checkbox-label {
+          font-size: 12px;
+          color: @dark_gray;
+        }
+      }
+      //验证码
+      .verification {
+        width: 38%;
+        float: left;
+        height: 38px;
+        border: 1px solid @silver;
+        overflow: hidden;
+        border-radius: 2px;
+        margin-left: 12px;
+        @media (max-width: 479px) {
+          width: 75%;
+          margin: 0;
+          margin-top: 24px;
+        }
+      }
+      //验证码-刷新按钮
+      a {
+        float: right;
+        padding: 9px;
+        @media (max-width: 479px) {
+          margin: 24px 12px 0 0;
+        }
+        i {
+          margin: 0;
+        }
+      }
+      //忘记密码-文字按钮
+      .forgot-password {
+        float: right;
+        font-size: 12px;
+        padding: 0;
+        cursor: pointer;
+        .transition(color, 500ms, ease);
+        &:hover {
+          color: @dodger_blue;
+        }
+        span {
+          display: block;
+          text-decoration: underline;
+        }
+      }
+      &:after {
+        content: " ";
+        display: table;
+        clear: both;
+      }
+    }
+    //验证码-输入框
+    #verification {
+      > input {
+        width: 45%;
+        float: left;
+        @media (max-width: 479px) {
+          width: 100%;
+          float: none;
+        }
+      }
+    }
+
+    //(登录)(注册)按钮
+    button {
+      padding: 8px;
+      width: 100%;
+    }
+    .back_login {
+      & h3{
+        margin-top: 0px;
+      }
+    }
+
+    //注册账号
+    .sand-mail{
+      margin-top:0 !important;
+      border: 1px 0 0 0 solid @silver !important;
+      display: inline-block;
+    }
+    .sand-mail,.back_login,
+    .create-account {
+      margin-top: 24px;
+      border-top: 1px solid @silver;
+      padding-top: 24px;
+      text-align: center;
+      //灰色文字
+      > p > span {
+        padding: 0 6px;
+        font-size: 18px;
+        font-family: Kiro-Regular, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      //绿色文字按钮
+      > h3 {
+        .transition(color, 500ms, ease);
+        font-size: 16px;
+        cursor: pointer;
+        display: block;
+        float: none;
+        clear: none;
+        display: inline-block;
+        color: @sea_green;
+        &:hover {
+          color: @dodger_blue;
+        }
+      }
+    }
+    //发送重置密码邮件
+    .sand-mail {
+      > p {
+
+      }
+      > p > span {
+        color: @dodger_blue;
+      }
+      > h3 {
+        color: @tomato;
+      }
+    }
+  }
+
+  #sign_text{
+    text-align: left;
+  }
+}
+
+#logo {
+  margin-bottom: 12px;
+  float: left;
+  color: @dodger_blue;
+  font-size: 36px;
+  line-height: 60px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @media (max-width: 479px) {
+    font-size: 32px;
+  }
+  > span {
+    font-family: Kiro-Regular, sans-serif;
+    &:nth-child(2) {
+      opacity: 0.6;
+      font-size: 13px;
+      margin-left: 6px;
+    }
+  }
+}
+
+/*新增*/
+#find_password {
+  &>p{
+    text-align: center;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: @silver;
+    @media (max-width: 479px) {
+      text-align: left;
+    }
+  }
+}
+
+//取消滚动动画效果
+.RemoveBgAnimation{
+  &:before{
+    display: none !important;
+  }
+}
+
+.fast_login{
+  &>span{
+    display: inline-block;
+    width: 100%;
+    margin: 12px 0 12px 0;
+  }
+  &>div{
+    display: inline-block;
+    &>a{
+      border: 1px solid rgba(0, 0, 0, 0);
+      border-radius: 25px;
+    }
+  }
+  .sina_logo{
+    background-image: url("../images/sina_logo.png");
+  }
+  .sina_logo_h{
+    background-image: url("../images/sina_logo_h.png");
+  }
+  .qq_logo{
+    background-image: url("../images/qq_logo.png");
+  }
+  .qq_logo_h{
+    background-image: url("../images/qq_logo_h.png");
+  }
+  .sina_logo,.sina_logo_h,.qq_logo,.qq_logo_h{
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: block;
+    background-position: center;
+    height: 50px;
+    width: 50px;
+  }
+
+}
+#fast_binding{
+  &>div{
+    position: relative;
+    width:100%;
+    &:after{
+      content: "";
+      position: relative;
+      width: 100%;
+      height: 1px;
+      background-color: #111111;
+    }
+    &>a{
+      border-radius: 25px;
+      float: left;
+      border: 1px solid @silver;
+      position: relative;
+    }
+    &>span{
+      position: absolute;
+      top:12px;
+      left:80px;
+      right:125px;
+    }
+    &>button{
+      margin-top: 8px;
+      float: right;
+      min-width: 80px;
+    }
+  }
+}
+
+
+

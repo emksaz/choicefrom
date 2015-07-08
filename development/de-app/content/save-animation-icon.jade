@@ -1,0 +1,32 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title('survey | choice form')
+        script.
+            window.resizeTo(window.screen.width, window.screen.height);
+    body
+        #main
+            nav
+                a.leave
+                    i.ic.ic-leave
+                    i.leave-icon
+                        span.dashboard-loader
+                            span.loader-inner
+                .logo
+                    span choice form
+                    span 返回我的问卷
+                .title Tiffany & Co 蒂芙尼潜在购买者调查问卷
+                .operation.drop-closest
+                    a.save.v-tips(rel="Tooltip")
+                        .save-circle
+                        span 保存
+                    a.save.v-tips(rel="Tooltip")
+                        i.sv.sv-wifi
+                        span 保存
+                    a.save.v-tips(rel="Tooltip")
+                        i.sv.sv-cloud-checkmark
+                        span 保存
+                    a.save.v-tips(rel="Tooltip")
+                        i.sv.sv-save
+                        span 保存

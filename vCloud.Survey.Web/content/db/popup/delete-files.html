@@ -1,0 +1,12 @@
+
+<div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==4" class="pop-ups medium">
+  <div><i class="ic ic-trash-f-d"></i><span>删除问卷</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form>
+    <p>当前问卷所有内容和数据将被永久删除，问卷访问链接也将随之失效。</p>
+    <h2>请输入<span>choiceform</span>确认删除操作</h2>
+    <input id="delete-survey" type="text" name="delete-survey" ng-model="QList.DelPassWord" ng-keydown="enterOrEscOper(1)"/><br/>
+    <mark id="delMessage" class="form-message"> 您输入的choiceform不正确，请重新输入。</mark>
+    <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+    <button ng-click="DelQuesByPassword()" class="red"><span>删除问卷</span></button>
+  </form>
+</div>

@@ -1,0 +1,170 @@
+
+<h1>问卷编辑器使用入门（一）</h1>
+<section><img src="../../images/help/glb_wjsjbjq.png" alt="问卷编辑器图例" width="600" height="auto"/>
+  <p>上面的图代表一份简单的问卷，从图形上您可以一目了然地看到问卷的基本构成和逻辑。下面，我们将带您了解问卷编辑器的使用入门。</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>问卷题目类型</h2>
+  <h3>了解问卷设计编辑器：</h3>
+  <p>
+    巧思独有的图形化问卷编辑设计器为您提供了可视化、超便捷的问卷设计工具，我们将调研问卷设计过程中的各类题型、逻辑运算操作、
+    信息甄别等功能以节点的形式封装，在问卷中增加一个节点，就代表增加了一道题目或其他操作功能。而节点间线条的不同连接方式代表了这些节点间的选择路径，
+    因此，当您完成问卷设计时，您能直观地辨别出问卷的选择路径，帮助您快速、准确地创建调研问卷。
+  </p>
+  <h2><i class="ic-checkmark-2"></i>目前我们为您提供了以下题型节点：</h2>
+  <h3>基本节点：</h3>
+  <ul class="list-style-ul">
+    <li><span>选择题</span></li>
+    <li><span>打分题</span></li>
+    <li><span>填空题</span></li>
+    <li><span>排序题</span></li>
+    <li><span>矩阵题</span></li>
+    <li><span>图片题</span></li>
+    <li><span>视频题</span></li>
+    <li><span>问卷结束</span></li>
+  </ul>
+  <h3>甄别节点：</h3>
+  <ul class="list-style-ul">
+    <li><span>甄别选择题</span></li>
+    <li><span>地域题</span></li>
+    <li><span>性别题</span></li>
+    <li><span>年龄题</span></li>
+    <li><span>婚姻状况题</span></li>
+    <li><span>学历题</span></li>
+    <li><span>职业题</span></li>
+    <li><span>行业题</span></li>
+    <li><span>职位题</span></li>
+    <li><span>收入题</span></li>
+    <li><span>家庭收入题</span></li>
+  </ul>
+  <h3>工具节点：</h3>
+  <ul class="list-style-ul">
+    <li><span>随机题</span></li>
+    <li><span>循环题</span></li>
+    <li><span>逻辑题</span></li>
+  </ul>
+  <h2><i class="ic-checkmark-2"></i>新增问卷题目与删除题目</h2>
+  <h3>新增题目：</h3>
+  <p>
+    点击“问卷节点工具栏”的“新增题目节点”按钮，在面板中点选节点，问卷编辑区中将为您创建一个新节点。
+    或者您也可以拖曳节点图标到问卷编辑区。
+  </p>
+  <h3>删除题目：</h3>
+  <p>在问卷编辑区点选节点，随后按键盘“Del”键删除节点。或者，您也可以点击节点工具栏的“删除”按钮删除当前节点。</p>
+  <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>删除题目节点将自动删除所有与该节点相连的选择路径。</mark>
+  <h3>题目节点错误提示信息：</h3>
+  <p>
+    在问卷设计过程中，题目设置出现错误是，在题目节点右上角会出现红色惊叹提示图标，鼠标移动到图标上查看具体的错误信息，
+    错误纠正后提示图标自动消失。
+  </p><img src="../../images/help/cht_ts.png" alt="问卷编辑器图例" width="600" height="auto"/>
+  <h3>题目节点属性提示信息：</h3>
+  <p>题目节点下方列有题目节点属性提示图标，当题目有图片媒体、设定为多选题等属性设置后，题目节点下方会出现图标提示，这样您能直观地看到题目的一些主要属性。</p><img src="../../images/help/cht_xxts.png" alt="问卷编辑器图例" width="600" height="auto"/>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>问卷题目顺序与选择逻辑</h2>
+  <p>问卷创建过程中，题目的表现顺序以及根据受访者不同的回答动态地呈现后续题目是问卷设计编辑的主要工作之一。巧思以“选择路径”的方式，视觉化呈现问卷题目的先后顺序和内在逻辑.<br/>选择路径用于串接问卷的题目，需要对受访者的回答做出判断处理情形下，只需要将题目节点中需要特殊处理的选项端与其后节点的输入端连接即可。
+    这样，当受访用户在本题中选择了需要特殊处理的选项后，将会看到与对应的后续调研问题。<br/>
+  </p>
+  <ul class="list-style-ul">
+    <li><span>顺序连接题目节点</span></li>
+  </ul><img src="../../images/help/cht_wfz.png" alt="问卷编辑器图例" width="600" height="auto"/>
+  <ul class="list-style-ul">
+    <li><span>带选择路径连接题目节点</span></li>
+  </ul><img src="../../images/help/cht_fz.png" alt="问卷编辑器图例" width="600" height="auto"/>
+  <p>是不是非常直观？</p>
+    <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>您可以从前节点的输出端拖曳线条连接到后节点的输入端，也可以从后节点的输入端拖曳线条到前节点的输出端。有时您会遇到无法在端点间连接线条的情况，通常来说我们的提示信息会告诉您哪里错了。
+    </mark>
+  <h2><i class="ic-checkmark-2"></i>选择路径的连接与断开</h2>
+  <h3>连接选择路径：</h3>
+  <p>鼠标点击节点的端点并拖曳，将拖曳出的线条连接到另外一个节点的端点上，完成选择路径的连接。</p>
+  <h3>断开选择路径：</h3>
+  <ul class="list-style-ul">
+    <li><span>拖曳线条断开：</span><br/><span>鼠标移动到节点间的路径线条，线条变成黑色高亮状态，点击线条并拖曳，线条会自动判断后松开起点或者终点。</span></li>
+    <li><span>点选线条断开：</span><br/><span>可以点选节点间的路径线条，线条变成红色选择状态，按键盘“Del”键，删除路径线条。</span></li>
+    <li><span>快捷按钮断开：</span><br/><span>在问卷编辑区选择一个节点，随后在节点操作工具栏点击“断开节点连接”<img src="../../images/help/btn_dklg.png" alt="问卷编辑器图例" width="80" height="auto"/>按钮，直接断开该节点的所有路径连接。</span></li>
+        <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>选择节点后按快捷键 Ctrl + B （Windows）、Cmd + B（Mac）直接断开该节点的所有路径连接。
+        </mark>
+  </ul>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>功能节点的连接</h2>
+  <p>除了上述介绍的几种路径连接方式外，逻辑、随机和循环功能的选择路径连接稍有不同，如果您需要设计更为专业的功能，那么您需要了解下后续的内容。</p>
+  <h3>随机节点连接：</h3>
+  <p>文档待更新</p>
+  <h3>循环节点连接：</h3>
+  <p>文档待更新</p>
+  <h3>逻辑节点连接：</h3>
+  <p>文档待更新</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>节点属性设置</h2>
+  <p>不同类型的节点带有不同的设置属性，在”问卷编辑区“选择节点后，即可在“节点属性编辑面板”中对节点的属性进行设置，以满足个性化的需求。</p><img src="../../images/help/glb_panel_base.png" alt="问卷管理中心图例" width="200" height="auto"/>
+  <p>每个节点还具有不同的高级属性，在“节点高级属性编辑面板”中对节点的高级属性进行设置。</p><img src="../../images/help/glb_panel_advance.png" alt="问卷管理中心图例" width="200" height="auto"/>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>让问卷更便于浏览</h2>
+  <p>随着问卷题目节点的增加，“问卷编辑区”可能无法同时显示那么多节点，您可以拖动题目节点到空白的区域，位置的移动不会影响改节点的路径选择。</p>
+    <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>排列美观、整齐的问卷非常有利于您掌控问卷的整体选择逻辑，从线条的连接就可以看出问卷是否已经正确地反映了您问卷的选择逻辑。
+    </mark>
+  <p>
+    或者有时，您会无法浏览到全部问卷节点，这时点击问卷编辑区的空白背景并拖曳，问卷所有节点将跟随鼠标移动。
+    或者，您也可以点击“视图工具栏”的“放大视图”或“缩小视图”按钮调整问卷显示比例，特别是点击“显示全部”按钮将自动以合适的比例显示您问卷的所有节点。
+  </p>
+    <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>在编辑时，留意右下角的“鹰眼视图”，“鹰眼视图”在固定小窗内为您显示所有的问卷节点，您可以找到您所有的问卷节点。
+    </mark>
+  <p>如果您要将问卷节点对得整整齐齐的话，您还可以打开背景网格功能，辅助您对齐问卷节点。</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>搜索问卷</h2>
+  <p>在“问卷搜索输入框”<img src="../../images/help/glb_wjss.png" alt="问卷管理中心图例" width="200" height="auto"/>中输入要搜索的内容，搜索程序会遍历您问卷的所有节点和选项，搜索结果将在提示框中以节点题目编号列表的方式呈现。
+    点击列表中的题目编号，节点属性编辑面板将切换显示该节点的属性，便于您快速修改。
+  </p><img src="../../images/help/glb_ssjg.png" alt="问卷管理中心图例" width="200" height="auto"/>
+    <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>直接点击搜索结果中的题目节点名称，该节点将在问卷设计编辑界面中居中显示，便于您快速进行节点编辑。
+    </mark>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>Undo和Redo</h2>
+  <p>文档待更新</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>问卷版本</h2>
+  <p>
+    问卷版本是问卷编辑过程中的一个状态文件，当您完成阶段工作后，可以为问卷保存一个版本，
+    当后续工作发生错误时，可以打开自己保存的版本，很方便地回到之前的问卷编辑状态。
+  </p>
+  <h3>保存问卷版本：</h3>
+  <p>按组合键盘“Ctrl＋S”，在弹出窗口中输入问卷版本的名称，就可以为当前问卷保存一个版本。</p><img src="../../images/help/dlg_bcbb.png" alt="问卷管理中心图例" width="300" height="auto"/>
+  <h3>恢复问卷版本：</h3>
+  <p>鼠标移动到“问卷版本”<img src="../../images/help/btn_bcbb.png" alt="问卷管理中心图例" width="80" height="auto"/> 按钮上，在下拉菜单中选择之前保存的问卷版本，可以在当前问卷编辑区中打开该问卷版本。</p><img src="../../images/help/dlg_hqbb.png" alt="问卷管理中心图例" width="300" height="auto"/>
+  <h3>重命名问卷版本：</h3>
+  <p>点击问卷版本名称右侧的“重命名”<img src="../../images/help/btn_ggbban.png" alt="问卷管理中心图例" width="60" height="auto"/> 按钮，在提示框中输入新的版本名称后保存版本。</p><img src="../../images/help/dlg_ggbb.png" alt="问卷管理中心图例" width="300" height="auto"/>
+  <h3>删除问卷版本：</h3>
+  <p>点击问卷版本名称右侧的“删除”<img src="../../images/help/btn_lzt.png" alt="问卷管理中心图例" width="60" height="auto"/>  按钮删除该版本。</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>保存问卷</h2>
+  <p>系统会定时自动保存您的操作步骤，您也可以点击问卷编辑工具栏中的“保存”按钮保存您的问卷。</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>调试问卷</h2>
+  <p>问卷设计完毕后，可能会有一些小问题您没有注意，您可以点击<img src="../../images/help/btn_wjts.png" alt="问卷管理中心图例" width="80" height="auto"/>“调试”按钮，对问卷进行调试。</p>
+  <ul class="list-style-ul">
+    <li><span>当问卷有错误时：</span><br/><span>
+        系统会弹出对话框，对话框中会列出有问题的节点。点击对话框中的问题节点名称，
+        该节点将居中显示在问卷编辑界面中，便于您纠正错误。</span><br/><img src="../../images/help/dlg_tscc.png" alt="问卷管理中心图例" width="300" height="auto"/></li>
+    <li><span>当问卷没有有错误时：</span><br/><span>如果没有提示框，那么您已经正确创建了问卷。系统弹出问卷预览提示框，提示框中包含问卷预览Web连接地址和地址二维码。</span><br/><img src="../../images/help/dlg_wjyl.png" alt="问卷管理中心图例" width="300" height="auto"/><br/><span>点击预览提示框里的问卷Web链接地址，或者扫描地址二维码对问卷进行预览。</span></li>
+        <mark><i class="ic-lightbulb-32"></i><strong>小贴士:</strong>预览问卷与真实问卷完全一致，但仅用于问卷预览和纠错，不会对问卷数据进行收集。
+        </mark>
+  </ul>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>发布问卷</h2>
+  <p>问卷设计完毕后，只需发布问卷，即可在问卷发布页面中对发布份数、发布日期等问卷发布属性进行设定，并最终发布到受访者手中。</p>
+</section>
+<section>
+  <h2><i class="ic-checkmark-2"></i>相关链接:</h2>
+  <p>问卷设计完毕后，只需发布问卷，即可在问卷发布页面中对发布份数、发布日期等问卷发布属性进行设定，并最终发布到受访者手中。</p>
+</section>
+<section>
+  <h1><i class="ic-link-4"> 相关链接:</i></h1><br/><a href="glb_designcenter2.html" target="_blank"><span>问卷编辑器使用入门（二）</span></a>
+</section>

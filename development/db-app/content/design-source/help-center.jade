@@ -1,0 +1,93 @@
+doctype html
+html
+    head
+        include layout/head
+        +title ('Help Center')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    h1 帮助中心
+            .w-container
+                .help-center
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 快速开始
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['创建新的调查问卷', '设计与编辑问卷', '创建连续的题目', '保存和恢复问卷版本', '为题目选项设定不同的分支', '设定问卷标题和封面']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 问卷设置
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['进入问卷设置页面', '问卷操作工具栏', '设计问卷', '配额设定', '发布设定', '分析数据']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 问卷管理
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['我的调查问卷', '问卷排序', '问卷文件夹操作', '调查问卷', '新建问卷', '使用范本', '快捷操作']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 编辑器使用入门 1
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['问卷题目类型', '题型节点清单', '新增问卷题目与删除题目', '问卷题目顺序与选择逻辑', '功能节点的连接', '节点属性设置', '让问卷更便于浏览']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 编辑器使用入门 2
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['问卷操作工具栏', '问卷节点工具栏', '视图工具栏', '节点操作工具栏', '节点属性设置面板', '媒体资源面板']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 发布问卷
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['问卷状态信息', '问卷收集方案', '停止问卷收集方案', '问卷收集方案设置', '问卷发布渠道设置', '在微信上发布问卷']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+                    .help-column
+                        .help-item
+                            i.ic.ic-window-f
+                            h2 分析结果
+                            p Learn the basics of the Webflow Designer, Dashboard, and more.
+                            ul
+                                each val, index in ['快速查看分析结果', '查看收集进度', '查看数据分析']
+                                    li
+                                        i.ic.ic-multiple-documents-f-d
+                                        a= val
+                            a 查看全部
+    include layout/footer
+

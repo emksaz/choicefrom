@@ -1,0 +1,204 @@
+﻿
+svg#chartLarger(xmlns='http://www.w3.org/2000/svg', xmlns:xlink='http://www.w3.org/1999/xlink', version='1.1', ng-mousedown='handleFlowMouseDown($event)', ng-mouseup='handleFlowMouseUp($event)')
+    g#chartSvg(ng-attr-transform='{{designManager.getChartTransform()}}')
+    // 画布背景▼
+    //
+        <rect x="0" y="0" height="0" width="0"
+        ng-attr-x="{{designManager.left}}"
+        ng-attr-y="{{designManager.top}}"
+        ng-attr-width="{{designManager.width}}"
+        ng-attr-height="{{designManager.height}}" fill="gray"></rect>
+    // 画布背景▲
+    g#nodeSvg
+        // ***********************************************************************
+        // 节点SVG模板▼
+        g
+        g.flow_node(ng-repeat='node in designManager.mixNodes', ng-mousedown='handleNodeMouseDown($event, node)', ng-dblclick='handleNodeDbClick(node)', ng-attr-transform='{{node.getTransform()}}', ng-attr-id='{{::node.nodeUuid}}', ng-if='node.visible')
+            // 背景▼
+            rect.background_fill.background_size(ng-attr-fill="{{::node.isTerminal() && '#FFFFFF' || node.mode==1 && '#6e6e6e' || node.getBackgroundColor()}}", x='0', y='0', width='0', height='0', ng-attr-x='{{::node.getBackgroundLeft()}}', ng-attr-y='{{::node.getBackgroundTop()}}', ng-class="{'selected_node_rect':node.isSelected(),'node_rect':!node.isSelected()}", ng-attr-width='{{::node.getBackgroundWidth()}}', ng-attr-height='{{::node.getBackgroundHeight()}}', ng-attr-rx='{{::node.getBackgrounRadius()}}')
+            // 背景▲
+            // 背景头 甄别节点,工具节点和注释节点使用▼
+            rect(x='0', y='0', width='0', height='25', ng-attr-x='{{::node.getBackgroundLeft()}}', ng-attr-y='{{::node.getBackgroundTop()}}', ng-attr-width='{{::node.getBackgroundWidth()}}', ng-attr-height='{{::node.mode == 1 && 30 || 25}}', fill='rgba(0,0,0,0.1)', rx='5', ng-if='node.isHeadNeed()')
+            // 背景头 工具节点和注释节点使用▲
+            // 终端节点专用区域▼
+            g(ng-if='node.isTerminal()')
+            // 小背景 终端节点专用▼
+            rect.background_fill(ng-attr-fill='{{::node.getBackgroundColor()}}', x='97', y='2', width='97', height='52', rx='3', ng-attr-x='{{::node.getSmallBgX()}}', ng-attr-y='{{::node.getSmallBgY()}}', ng-attr-width='{{::node.getSmallBgWidth()}}', ng-attr-height='{{::node.getSmallBgHeight()}}')
+            // 小背景 终端节点专用▲
+            // 小背景文字 终端节点专用▼
+            text(x='118', y='38', fill='#FFFFFF', font-size='20', ng-attr-x='{{::node.getSmallBgTxtX()}}', ng-attr-y='{{::node.getSmallBgTxtY()}}')
+                | {{::node.getSmallBgTxt()}}
+            // 小背景文字 终端节点专用▲
+            // 终端节点专用区域▲
+            // 题目标志▼
+            g(transform='translate(10,5)')
+            image(width='16', height='16', xlink:href='../../Images/QSNR/random.svg', ng-if="node.isTypeOf('RANDOM')")
+            // 随机节点图标 随机节点专用
+            image(width='18', height='18', xlink:href='../../Images/QSNR/retweet.svg', ng-if="node.isTypeOf('LOOP')")
+            // 循环节点图标 循环节点专用
+            image(width='20', height='20', xlink:href='../../Images/QSNR/node_setting.svg', ng-if="node.isTypeOf('LOGIC')")
+            // 逻辑节点图标 逻辑节点专用
+            image(width='16', height='16', xlink:href='../../Images/QSNR/file-text-o.svg', ng-if="node.isTypeOf('COMMENT')")
+            // 注释节点图标 注释节点专用
+            image(x='2', y='2', width='16', height='16', xlink:href='../../Images/QSNR/checkmark-3.svg', ng-if="node.isTypeOf('SELECT') && node.mode == 1")
+            // 甄别选择题图标 甄别选择题专用
+            // 题目标志▲
+            // 节点名字▼
+            g
+            text(x='20', y='-10', font-size='12', ng-attr-x='{{::node.getNodeNameX()}}', ng-attr-y='{{::node.getNodeNameY()}}') {{node.getShowNodeName()}}
+            // 节点名字▲
+            // 题目专用区域▼
+            g(ng-if='node.isSubject()')
+            // 缩放ICON 题目节点专用▼
+            g.expansion_icon(ng-attr-transform='{{::node.getExpansionIconTransform()}}', ng-click='handleExpansionClick($event,node)', ng-dblclick='handleExpansionClickDisable($event)')
+                g
+                image(width='16', height='16', xlink:href='../../Images/QSNR/caret-down.svg', fill='#FFFFFF')
+            // 缩放ICON 题目节点专用▲
+            // 题目描述 题目节点专用▼
+            g
+                text
+                tspan(ng-attr-x='{{::node.question.getX()}}', ng-attr-y='{{::node.question.getY()}}', fill='#ffffff', font-size='12') {{node.question.getShowText()}}
+            // 题目描述 题目节点专用▲
+            // 题目专用区域▲
+            // 输入口 甄别节点 设计模式的开始节点 注释节点不使用▼
+            g(ng-if='node.isInputNeed()')
+            // 输入文字▼
+            text(fill='#ffffff', ng-attr-fill="{{::node.isTerminal() && '#000000' || '#FFFFFF' }}", font-size='12', ng-attr-x='{{::node.input.getTextX()}}', ng-attr-y='{{::node.input.getTextY()}}') {{::node.input.text}}
+            // 输入文字▲
+            // 输入▼
+            g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,node.input)', ng-mouseup='handleConnectorMouseUp($event,node.input)')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::node.input.getBlockX()}}', ng-attr-y='{{::node.input.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::node.input.getCircleX()}}', ng-attr-cy='{{::node.input.getCircleY()}}', ng-attr-r='{{::node.input.getCircleR()}}')
+            // 输入▲
+            // 输入口 甄别节点 设计模式的开始节点 注释节点不使用▲
+            // 输出口 甄别节点 设计模式的开始节点 注释节点不使用▼
+            g.elem_output(ng-if='node.isOutputNeed()')
+            // 输出文字▼
+            text.text_anchor_end(ng-attr-x='{{::node.output.getTextX()}}', ng-attr-y='{{::node.output.getTextY()}}', ng-attr-fill="{{::node.isTerminal() && '#000000' || '#FFFFFF' }}", font-size='12') {{node.output.getShowText()}}
+            // 输出文字▲
+            // 输出▼
+            g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,node.output)', ng-mouseup='handleConnectorMouseUp($event,node.output)')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::node.output.getBlockX()}}', ng-attr-y='{{::node.output.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::node.output.getCircleX()}}', ng-attr-cy='{{::node.output.getCircleY()}}', ng-attr-r='{{::node.output.getCircleR()}}')
+            // 输出▲
+            // 输出口 甄别节点 设计模式的开始节点 注释节点不使用▲
+            // 循环节点专用区域▼
+            g(ng-if="node.isTypeOf('LOOP')")
+            // 循环开始文字 循环节点专用▼
+            text(fill='#ffffff', font-size='12', ng-attr-x='{{::node.loopStart.getTextX()}}', ng-attr-y='{{::node.loopStart.getTextY()}}') {{::node.loopStart.text}}
+            // 循环开始文字 循环节点专用▲
+            // 循环开始 循环节点专用▼
+            g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,node.loopStart)', ng-mouseup='handleConnectorMouseUp($event,node.loopStart)')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::node.loopStart.getBlockX()}}', ng-attr-y='{{::node.loopStart.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::node.loopStart.getCircleX()}}', ng-attr-cy='{{::node.loopStart.getCircleY()}}', ng-attr-r='{{::node.loopStart.getCircleR()}}')
+            // 循环开始 循环节点专用▲
+            // 循环结束文字 循环节点专用▼
+            text.text_anchor_end(ng-attr-x='{{::node.loopEnd.getTextX()}}', ng-attr-y='{{::node.loopEnd.getTextY()}}', fill='#ffffff', font-size='12') {{::node.loopEnd.text}}
+            // 循环结束文字 循环节点专用▲
+            // 循环结束 循环节点专用▼
+            g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,node.loopEnd)', ng-mouseup='handleConnectorMouseUp($event,node.loopEnd)')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::node.loopEnd.getBlockX()}}', ng-attr-y='{{::node.loopEnd.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::node.loopEnd.getCircleX()}}', ng-attr-cy='{{::node.loopEnd.getCircleY()}}', ng-attr-r='{{::node.loopEnd.getCircleR()}}')
+            // 循环结束 循环节点专用▲
+            // 循环节点专用区域▲
+            // 随机节点专用区域▼
+            g(ng-if="node.isTypeOf('RANDOM')")
+            // 随机开始文字 随机节点专用▼
+            text(fill='#ffffff', font-size='12', ng-attr-x='{{::node.randomStart.getTextX()}}', ng-attr-y='{{::node.randomStart.getTextY()}}') {{::node.randomStart.text}}
+            // 循环输入文字 随机节点专用▲
+            // 随机开始 随机节点专用▼
+            g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,node.randomStart)', ng-mouseup='handleConnectorMouseUp($event,node.randomStart)')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::node.randomStart.getBlockX()}}', ng-attr-y='{{::node.randomStart.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::node.randomStart.getCircleX()}}', ng-attr-cy='{{::node.randomStart.getCircleY()}}', ng-attr-r='{{::node.randomStart.getCircleR()}}')
+            // 循环输入 随机节点专用▲
+            // 随机节点专用区域▲
+            // 缩放隐藏区域▼
+            g(ng-if='!node.optionHidden')
+            // 分割线 题目节点 工具节点 使用▼
+            g(ng-if='node.isLineNeed()')
+                line.expansion_hide.seg_line(stroke='#FFFFFF', stroke-miterlimit='10', ng-attr-x1='{{::node.line.getX1()}}', ng-attr-y1='{{::node.line.getY1()}}', ng-attr-x2='{{::node.line.getX2()}}', ng-attr-y2='{{::node.line.getY2()}}')
+            // 分割线 题目节点 工具节点 使用▲
+            // 选项分割线 有其他选项时才使用▼
+            g(ng-if='node.isLineTNeed()')
+                line.expansion_hide.line_t(stroke='#FFFFFF', stroke-miterlimit='10', ng-attr-x1='{{::node.lineT.getX1()}}', ng-attr-y1='{{::node.lineT.getY1()}}', ng-attr-x2='{{::node.lineT.getX2()}}', ng-attr-y2='{{::node.lineT.getY2()}}')
+            // 选项分割线 有其他选项时才使用▲
+            // 矩阵题专用区域▼
+            g(ng-if="node.isTypeOf('MATRIX')")
+                // 垂直连接线 矩阵题专用▼
+                line(stroke='#000000', ng-attr-x1='{{node.vLine.getX1()}}', ng-attr-y1='{{::node.vLine.getY1()}}', ng-attr-x2='{{node.vLine.getX2()}}', ng-attr-y2='{{::node.vLine.getY2()}}')
+                // 垂直连接线 矩阵题专用▲
+                // 水平连接线 矩阵题专用▼
+                line(stroke='#000000', ng-attr-x1='{{::node.hLine.getX1()}}', ng-attr-y1='{{node.hLine.getY1()}}', ng-attr-x2='{{::node.hLine.getX2()}}', ng-attr-y2='{{node.hLine.getY2()}}')
+                // 水平连接线 矩阵题专用▲
+                g(ng-mousedown='handleOptionXMouseDown(node)')
+                // 纵选项区域背景 矩阵题专用▼
+                rect.background_fill.background_size_x(ng-attr-fill='{{::node.getBackgroundColor()}}', ng-class="{'selected_node_rect':node.isSelected(),'node_rect':!node.isSelected()}", x='218', y='0', width='0', height='0', ng-attr-width='{{::node.getBackgroundWidthX()}}', ng-attr-height='{{::node.getBackgroundHeightX()}}', ng-attr-rx='{{::node.getBackgrounRadius()}}')
+                // 纵选项区域背景 矩阵题专用▲
+                // 纵选项 矩阵题专用▼
+                g.expansion_hide(ng-repeat='optionX in node.optionsX', ng-attr-id='{{optionX.outputId}}')
+                    text(fill='#ffffff', font-size='12', ng-attr-x='{{::optionX.getTitleX()}}', ng-attr-y='{{::optionX.getTitleY()}}') {{::optionX.getTitle()}}
+                    text(fill='#ffffff', font-size='12', ng-attr-x='{{::optionX.getTitleX()}}', ng-attr-y='{{::optionX.getTitleY() + 220}}') {{::optionX.getTitle()}}
+                    text(fill='#ffffff', font-size='12', ng-attr-x='{{::optionX.getTextX()}}', ng-attr-y='{{::optionX.getTextY()}}', ng-attr-transform='{{::optionX.getTextRotation()}}') {{optionX.getShowText()}}
+                // 纵选项 矩阵题专用▲
+                g(ng-mousedown='handleOptionYMouseDown(node)')
+                // 横选项区域背景 矩阵题专用▼
+                rect.background_fill.background_size_y(ng-attr-fill='{{::node.getBackgroundColor()}}', ng-class="{'selected_node_rect':node.isSelected(),'node_rect':!node.isSelected()}", x='0', y='214', width='0', height='0', ng-attr-width='{{::node.getBackgroundWidthY()}}', ng-attr-height='{{::node.getBackgroundHeightY()}}', ng-attr-rx='{{::node.getBackgrounRadius()}}')
+                // 横选项区域背景 矩阵题专用▲
+                // 横选项 矩阵题专用▼
+                g.expansion_hide(ng-repeat='optionY in node.optionsY', ng-attr-id='{{optionY.outputId}}')
+                    text(font-family=" 'MicrosoftYaHei' ", fill=' #ffffff', font-size='12', ng-attr-x='{{::optionY.getTitleX()}}', ng-attr-y='{{::optionY.getTitleY()}}')
+                    | {{::optionY.getTitle()}}
+                    text(font-family=" 'MicrosoftYaHei' ", fill=' #ffffff', font-size='12', ng-attr-x='{{::optionY.getTitleX() + 225}}', ng-attr-y='{{::optionY.getTitleY()}}')
+                    | {{::optionY.getTitle()}}
+                    text(fill='#ffffff', font-size='12', ng-attr-x='{{::optionY.getTextX()}}', ng-attr-y='{{::optionY.getTextY()}}') {{optionY.getShowText()}}
+                // 横选项 矩阵题专用▲
+            // 矩阵题专用区域▲
+            // 选项 题目节点 逻辑节点 使用(填空题选项和特殊其他选项不显示圆圈)▼
+            g.expansion_hide.chart_options(ng-repeat='option in node.options ', ng-attr-id="{{::option.outputId.replace('|','a')}}")
+                // 选项文字 矩阵题不显示▼
+                g(ng-if="!node.isTypeOf('MATRIX')")
+                text.text_anchor_end.option_number(ng-if="node.isTypeOf('SELECT')", x='30', ng-attr-y='{{::option.getTextY()}}', fill='#ffffff', stroke-miterlimit='10', font-size='12') {{option.number}}
+                text.text_anchor_end.option_text(ng-attr-x='{{::option.getTextX()}}', ng-attr-y='{{::option.getTextY()}}', fill='#ffffff', stroke-miterlimit='10', font-size='12') {{option.getShowText()}}
+                // 选项文字 矩阵题不显示▲
+                g.flow_connector(ng-mousedown='handleConnectorMouseDown($event,option)', ng-mouseup='handleConnectorMouseUp($event,option)', ng-if='option.isCircleNeed()')
+                rect(fill='transparent', width='26', height='26', ng-attr-x='{{::option.getBlockX()}}', ng-attr-y='{{::option.getBlockY()}}')
+                circle.connector_circle(r='0', ng-attr-cx='{{::option.getCircleX()}}', ng-attr-cy='{{::option.getCircleY()}}', ng-attr-r='{{::option.getCircleR()}}', ng-attr-style="{{::node.isMultiSelect() && 'stroke: #34495e;fill: rgba(52, 73, 94, 0.49);' || ''}}")
+            // 选项 题目节点 逻辑节点 使用(填空题选项和其他选项不显示圆圈)▲
+            // 注释内容 注释节点专用▼
+            g(ng-if="node.isTypeOf('COMMENT')")
+                text(ng-repeat='line in node.commentTexts', x='5', ng-attr-y='{{::line.transY}}')
+                | {{::line.text}}
+            // 注释内容 注释节点专用▲
+            // 缩放隐藏区域▲
+            // 警告标志▼
+            g.elem_warn_icon(ng-if='!node.validate().isValid', ng-attr-transform='{{::node.getWarnIconTrasform()}}', fill='red')
+            image(width='16', height='16', xlink:href='../../Images/QSNR/notification.svg')
+            text
+                tspan.elem_warning_msg(style='display:none', fill='red', x='0', y='-5')
+                | {{node.validateResult.message}}
+            // 警告标志▲
+            // 多选标志▼
+            g(ng-if='node.multipleSelect', ng-attr-transform='{{node.getMultiTransform()}}')
+            image(width='20', height='20', xlink:href='../../Images/QSNR/node-icon-multiselect.svg')
+            // 多选标志▼
+            // 媒体标志▼
+            g(ng-if='node.image', ng-attr-transform='{{node.getMediaTransform()}}')
+            image(width='20', height='20', xlink:href='../../Images/QSNR/node-icon-media.svg')
+            // 媒体标志▼
+    // 连接对象SVG模板▼
+    g(ng-repeat='connection in designManager.connections', ng-if='connection.visible', ng-attr-id='{{::connection.uuid}}', ng-attr-class="{{connection.isDisabled() && 'connection_disable' || 'connection'}}", ng-mousedown='handleConnectionMouseDown($event, connection)', ng-mouseenter='handleConnectionMouseEnter($event, connection)', ng-mouseleave='handleConnectionMouseLeave($event, connection)')
+        path(fill='transparent', stroke='rgba(255,0,0,0)', stroke-width='10', ng-attr-d='{{connection.getPathD()}}')
+        // 线▼
+        path(ng-attr-class='{{connection.getPathCls()}}', ng-attr-d='{{connection.getPathD()}}')
+        // 线▼
+        // 线▲
+        // 端点▼
+        circle(ng-attr-class='{{connection.getSrcCircleCls()}}', r='3', ng-attr-cx='{{connection.sourceCoordX()}}', ng-attr-cy='{{connection.sourceCoordY()}}')
+        // 端点▲
+        // 端点▼
+        circle(ng-attr-class='{{connection.getDestCircleCls()}}', r='3', ng-attr-cx='{{connection.destCoordX()}}', ng-attr-cy='{{connection.destCoordY()}}')
+        // 端点▲
+    // 连接对象SVG模板▲
+    // 选择框▼
+    rect#flow_select_rect(x='0', y='0', width='0', height='0', ng-attr-x='{{designManager.selectRectManager.getLeft()}}', ng-attr-y='{{designManager.selectRectManager.getTop()}}', ng-attr-width='{{designManager.selectRectManager.width}}', ng-attr-height='{{designManager.selectRectManager.height}}', stroke='black', fill='rgba(0,255,255,0.1)')
+    // 选择框▲

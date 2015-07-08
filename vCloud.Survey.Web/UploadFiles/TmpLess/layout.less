@@ -1,0 +1,79 @@
+/*.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-position: top, center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: scroll, fixed;
+  background-image: url("../images/20150324_LL_Browse_grid_tile3_2x3_v2.jpg");
+}*/
+
+.eff-wrapper{
+  height: 100% !important;
+}
+
+.wrap {
+  height: auto !important;
+  min-height: 100%;
+  display: block;
+  padding-bottom: 16rem;
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+.content {
+  height: 100%;
+}
+
+.attachment-wrapper {
+  position: relative;
+  margin-top: 3.2rem;
+  text-align: center;
+  .animation-delay(0.2s);
+  @media (max-width: 767px) {
+    margin-top: 2.4rem;
+  }
+}
+
+.attachment {
+
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+
+
+
+.mobile-none {
+  display: block;
+}
+
+@media (max-width: 991px) {
+
+  .w-container.fixback {
+    display: none;
+  }
+
+  .cs-select > span::before {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .slidein-button {
+    display: block;
+  }
+
+
+}

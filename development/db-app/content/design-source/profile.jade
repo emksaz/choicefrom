@@ -1,0 +1,78 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('账户摘要')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    h1 密码设置
+                    button.purple
+                        i.ic.ic-star-w
+                        span 管理我的方案
+                    p 当前方案：经济型
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-user
+                    .content-wrap
+                        div
+                            #profile.content-row
+                                #indicatorContainerWrap
+                                    #RadioProgressBar(style='width: 100px;height: 100px;background-color: rgba(200, 19, 19, 0.28);')
+                                    i.ic-profile
+                                div
+                                    button.blue
+                                        i.ic.ic-cloud-upload-w
+                                        span 上 传
+                                    p 你睡阿的阿家大家阿达了啦道理
+                            .content-row
+                                .row-title
+                                    h2 帐户信息
+                                    button.green
+                                        i.ic.ic-2dot-w
+                                        span 保存更改
+                                form
+                                    h3 使用者名称：
+                                    input(type='text', name='name', placeholder='请输入使用者名称')
+                                    br
+                                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your organization notifications.
+                                form
+                                    h3 Email 地址：
+                                    input(type='email', name='email', placeholder='请输入 Email 地址')
+                                    br
+                                    mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your organization notifications.
+                            #fast_binding.content-row.fast_login
+                                h2 快捷绑定:
+                                div
+                                    a.sina_logo_h
+                                    span 新浪快捷绑定
+                                    button.green 绑定
+                                div
+                                    a.qq_logo_h
+                                    span qq快捷绑定
+                                    button.red 解除绑定
+                            #overview.content-row
+                                h2 使用详情
+                                ul
+                                    li
+                                        span 账户创建时间：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 创建问卷数量：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 发布问卷数量：
+                                        span November 21st 2014, 2:34:07 am
+                                    li
+                                        span 存储容量：
+                                        span November 21st 2014, 2:34:07 am
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your organization notifications.
+    include layout/footer

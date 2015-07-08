@@ -1,0 +1,171 @@
+
+<header class="page-header">
+  <div class="w-container">
+    <h1>我的调查问卷</h1>
+    <div id="switching-accounts" class="dropdown-event">
+      <button title="{{QList.CompanyName}}" class="border switching-accounts right-ic dropdown-bt"><i id="liCompanyImg" class="ic-profile"></i><span>{{QList.CompanyName}}</span><i class="ic ic-down-2d"></i></button>
+      <ul class="dropdown accounts right-ic downul">
+        <li class="dropdown-tips">切换用户</li>
+        <li ng-click="ChangeCompany(Company);" ng-repeat="Company in QList.Companys" title="{{Company.CompanyName}}">
+          <div style=" background-image: url({{Company.BackgroundImg}}); " class="ic-profile"></div>                    {{Company.CompanyName}}<i ng-show="Company.IsCurrent" class="ic ic-checkmark-b"></i>
+        </li>
+        <!-- 正式环境删除开始-->
+        <li ng-show="IsDemo=='1'"><i class="ic ic-building-add-d"></i>创建新的组织</li>
+        <li ng-show="IsDemo=='1'"><i class="ic ic-settings-d"></i>组织设置</li>
+      </ul>
+    </div>
+    <div id="sorting" class="dropdown-event">
+      <button class="sorting right-ic dropdown-bt"><i ng-class="QList.SortClass" class="ic"></i><span>{{QList.SortName}}</span><i class="ic ic-down-2d"></i></button>
+      <ul class="dropdown sorting right-ic downul">
+        <li ng-click="ChangeQuesSort(Sort);" ng-repeat="Sort in QList.Sorts"><i ng-class="Sort.SortClass" class="ic"></i>{{Sort.Name}}<i ng-show="Sort.IsSelect" class="ic ic-checkmark-b"></i></li>
+      </ul>
+    </div>
+    <button id="create-surveys" ng-click="GoToUrl('/QMCreate/','');" has-authority="QListPage-CreateQuesBtn" class="button blue"><i class="ic ic-plus-w"></i><span>新建调查问卷</span></button>
+  </div>
+</header>
+<!-- 顶部控制栏-->
+<div class="w-container">
+  <div class="too-small-alert">
+    <p>您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+  </div>
+  <div class="surveys">
+    <div ng-repeat="myques in QList.MyQuesList" class="survey-column">
+      <div class="survey-item">
+        <div class="open-design">
+          <div ng-class="myques.QStatusClass" class="status"><i ng-class="myques.QStatusIconClass" class="ic"></i></div>
+          <div ng-click="ReturnQuestionnairDesign(myques)" class="survey-mask">
+            <div class="survey-operations"><i ng-click="OpenDelQues(myques,0,$event)" ng-show="myques.QStatus!=5" title="删除问卷" class="ic ic-trash-w"></i><i ng-click="CopyQues(myques,0,$event)" title="复制问卷" class="ic ic-multiple-documents-w"></i><i ng-click="OpenMoveQues(myques,0,$event)" title="移动问卷" class="ic ic-folder-w"></i><i ng-show="myques.QStatus==5 || myques.QStatus==8 " title="发布设置" ng-click="GoToDataTrends(myques,$event)" class="ic ic-rocket-f-w"></i><i ng-show="myques.PreViewFlag" title="预览问卷" ng-click="PreViewClick(myques.QuestionnaireID,$event)" class="ic ic-eye-d-w"></i></div><a class="design-enter">设计问卷</a>
+          </div>
+          <div style="background-image: url({{myques.ImgUrl}});  background-position: center; background-size: cover; background-repeat: no-repeat" class="survey-preview"></div>
+        </div>
+        <div class="collection-schedule">
+          <!--a(href='#/QMSet/AnalyzeResults/{{myques.QuestionnaireID}}/DataTrends', title='分析结果')--><a ng-click="turnToAnalyzeResults(myques.QuestionnaireID)" title="分析结果">
+            <div class="collection-progress ellipsis"><i class="ic ic-activity-g"></i><span>回复数: {{myques.QuesSubmitNum}}</span>
+              <div ng-style="myques.ProgressWidth" class="progress-bar"></div>
+            </div></a><a ng-click="turnToPublish(myques.QuestionnaireID)" title="发布设置" class="box-button settings"><i class="ic ic-settings-d"></i></a>
+        </div>
+      </div>
+      <div class="survey-footer ellipsis"><span title="{{myques.QTitle}}">{{myques.QTitle}}</span>
+        <div>{{myques.SortDate}}</div>
+      </div>
+    </div>
+    <div class="survey-column"><a ng-click="GoToUrl('/QMCreate/','');">
+        <div class="create-item"><span>+</span></div></a></div>
+  </div><a ng-show="QList.MyAddQues" ng-click="AddMoreQues('0')" class="load-more">
+    <p>加载更多...</p></a>
+</div>
+<div class="w-container">
+  <div class="content-wrapper">
+    <div class="separator-bar">
+      <div id="folder" class="dropdown-event">
+        <button class="border folder right-ic dropdown-bt"><i class="ic ic-folder-d"></i><span>{{QList.FolderName}}</span><i class="ic ic-down-2d"></i></button>
+        <ul class="dropdown folder right-ic downul">
+          <li class="dropdown-tips">切换文件夹</li>
+          <div class="overauto">
+            <li ng-click="ChangeFolder(Folder);" ng-repeat="Folder in QList.FolderList" title="{{Folder.FolderName}}"><i class="ic ic-folder-d"></i>{{Folder.FolderName}}<i ng-show="Folder.IsSelect" class="ic ic-checkmark-b"></i></li>
+          </div>
+          <li ng-click="OpenAddFolder()"><i class="ic ic-add-folder-d"></i>创建新的文件夹</li>
+        </ul>
+      </div>
+      <div ng-show="QList.FolderSetShow" class="dropdown-event">
+        <ul class="floating strip downul">
+          <li>文件夹操作：</li>
+          <li ng-click="OpenEditFolder()">重命名</li>
+          <li ng-click="QList.Popupbackground=3">删除</li>
+        </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+      </div>
+    </div>
+  </div>
+  <div ng-show="QList.OtherQuesHide" class="surveys">
+    <div ng-repeat="otherques in QList.OtherQuesList" class="survey-column">
+      <div class="survey-item">
+        <div class="open-design">
+          <div ng-class="otherques.QStatusClass" class="status"><i ng-class="otherques.QStatusIconClass" class="ic"></i></div>
+          <div ng-click="ReturnQuestionnairDesign(otherques)" class="survey-mask">
+            <div class="survey-operations"><i ng-click="OpenDelQues(otherques,1,$event)" ng-show="otherques.QStatus!=5" title="删除问卷" class="ic ic-trash-w"></i><i ng-click="CopyQues(otherques,1,$event)" title="复制问卷" class="ic ic-multiple-documents-w"></i><i ng-click="OpenMoveQues(otherques,1,$event)" title="移动问卷" class="ic ic-folder-w"></i><i ng-show="otherques.QStatus==5 || otherques.QStatus==8 " title="发布设置" ng-click="GoToDataTrends(otherques,$event)" class="ic ic-rocket-f-w"></i><i ng-show="otherques.PreViewFlag" title="预览问卷" ng-click="PreViewClick(otherques.QuestionnaireID,$event)" class="ic ic-eye-d-w"></i></div><a class="design-enter">设计问卷</a>
+          </div>
+          <div style="background-image: url({{otherques.ImgUrl}}); background-position: center; background-size: cover; background-repeat: no-repeat;" class="survey-preview"></div>
+        </div>
+        <div class="collection-schedule"><a ng-click="turnToAnalyzeResults(otherques.QuestionnaireID)" title="分析结果">
+            <div class="collection-progress ellipsis"><i class="ic ic-activity-g"></i><span>回复数: {{otherques.QuesSubmitNum}}</span>
+              <div ng-style="otherques.ProgressWidth" class="progress-bar"></div>
+            </div></a><a title="发布设置" ng-click="turnToPublish(otherques.QuestionnaireID)" class="box-button settings"><i class="ic ic-settings-d"></i></a></div>
+      </div>
+      <div class="survey-footer ellipsis"><span title="{{otherques.QTitle}}">{{otherques.QTitle}}</span>
+        <div>{{otherques.SortDate}}</div>
+      </div>
+    </div>
+    <div class="survey-column"><a ng-click="GoToUrl('/QMCreate/',QList.FolderID);">
+        <div class="create-item"><span>+</span></div></a></div>
+  </div><a ng-show="QList.OtherAddQues" ng-click="AddMoreQues('1')" class="load-more">
+    <p>加载更多...</p></a>
+</div>
+<div style="z-index:9000" ng-show="QList.Popupbackground!=0" ng-click="CloseDiv()" class="pop-ups-background">
+  <div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==1" class="pop-ups">
+    <div><i class="ic ic-add-folder-d"></i><span>新建文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form id="AddFolderForm" name="AddFolderForm" novalidate="">
+      <h3>文件夹名称：</h3>
+      <input id="AFolderName" type="text" placeholder="请输入文件夹名称" name="AFolderName" ng-model="EFolder.Name" ng-keydown="enterOrEscOper(4)" required="" ng-maxlength="20" oninput="notifyTextLength(this, 20)"/><br/>
+      <mark ng-show="AddFolderForm.AFolderName.$dirty &amp;&amp; AddFolderForm.AFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="SaveFolder(AddFolderForm.$valid)" class="green"><span>新 建</span></button>
+    </form>
+  </div>
+  <div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==2" class="pop-ups">
+    <div><i class="ic ic-folder-d"></i><span>重命名文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form id="EditFForm" name="EditFForm" novalidate="">
+      <h3>文件夹名称：</h3>
+      <input id="EditFolderName" type="text" placeholder="请输入文件夹名称" name="EditFolderName" ng-model="NewFolderName" ng-keydown="enterOrEscOper(3)" required="" ng-maxlength="20" oninput="notifyTextLength(this, 20)"/><br/>
+      <mark ng-show="EditFForm.EditFolderName.$dirty &amp;&amp; EditFForm.EditFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="EditFolder(EditFForm.$valid)" class="blue"><span>重命名</span></button>
+    </form>
+  </div>
+  <div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==3" class="pop-ups">
+    <div><i class="ic ic-trash-f-d"></i><span>删除文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <p>删除文件夹仅删除文件夹目录，不会删除文件夹中的问卷，问卷将移入“我的文件夹”中。</p>
+      <h3>删除的文件夹： {{QList.FolderName}}</h3>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="DelFolder()" class="red"><span>删 除</span></button>
+    </form>
+  </div>
+  <div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==4" class="pop-ups medium">
+    <div><i class="ic ic-trash-f-d"></i><span>删除问卷</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <p>当前问卷所有内容和数据将被永久删除，问卷访问链接也将随之失效。</p>
+      <h2>请输入<span>choiceform</span>确认删除操作</h2>
+      <input id="delete-survey" type="text" name="delete-survey" ng-model="QList.DelPassWord" ng-keydown="enterOrEscOper(1)"/><br/>
+      <mark id="delMessage" class="form-message"> 您输入的choiceform不正确，请重新输入。</mark>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="DelQuesByPassword()" class="red"><span>删除问卷</span></button>
+    </form>
+  </div>
+  <div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==5" class="pop-ups">
+    <div><i class="ic ic-folder-f-d"></i><span>移动到文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <h3>将当前问卷移动到文件夹：</h3>
+      <div class="select dropdown-event">
+        <button class="select right-ic dropdown-bt"><span>{{QList.MoveQuesFolder}}</span><i class="ic ic-down-1d"></i></button>
+        <ul class="option downul">
+          <li ng-show="QList.MoveT==1" ng-click="ChangeMoveFolder('','我的文件夹');">我的文件夹</li>
+          <li ng-click="ChangeMoveFolder(Folder.FolderID,Folder.FolderName);" ng-repeat="Folder in QList.ShowMoveFolderList" title="{{Folder.FolderName}}">{{Folder.FolderName}}</li>
+        </ul>
+      </div>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="MoveFolder()" class="blue"><span>移 动</span></button>
+    </form>
+  </div>
+  <div id="ques-review" ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==6" class="pop-ups">
+    <div><i class="ic ic-eye-f-d"></i><span>问卷预览</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form class="ng-pristine ng-valid">
+      <div><img id="QuesPreviewURl" src=""/></div>
+      <button type="button" ng-click="downLoadQRCode()" ng-show="fasle" class="blue"><span>下载二维码</span></button>
+      <mark class="form-message">当前链接为预览链接，不作为正式的问卷向他人发送。</mark>
+      <div>
+        <h3>问卷预览地址：</h3>
+        <button type="button" class="dark"><span ng-show="false">复制链接</span></button><a id="QuesPreviewHref" href="" target="_blank" style="height:auto;" class="preViewLink"></a>
+      </div>
+    </form>
+  </div>
+</div>

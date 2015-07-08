@@ -1,0 +1,86 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('配额设置')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 Here are some quick tips for a first-time organization member.
+                    button.purple
+                        i.ic.ic-brush-w
+                        span 设计问卷
+                    include ./template/shortcut
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-settings
+                    #quota.content-wrap
+                        .content-row
+                            .row-title
+                                h2 配额设置
+                                button.dark
+                                    i.ic.ic-plus-w
+                                    span 新建配额
+                                button.green(disabled='disabled')
+                                    i.ic.ic-2dot-w
+                                    span 保存更改
+                                button.red
+                                    i.ic.ic-trash-w
+                                    span 删除配额
+                            .too-small-alert
+                                p 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。
+                        .quota
+                            .sidebar
+                                include ./template/quota-setting-row
+                                +setting-row('创建配额行','添加配额行')
+                                +setting-row('创建配额列','添加配额列')
+
+                                button.dark
+                                    span 生成配额表格
+                            .grid-position
+                                div
+                                    a.box-button
+                                        i.ic.ic-work
+                                        span 隐藏设置
+                                #div-quota-input
+                                    table#reportTable.grid-column-group(freezerownum='0', freezecolumnnum='1', cellpadding='0', cellspacing='0', style='width: 875px;')
+                                        tbody
+                                            tr
+                                                td#tdrow1(colspan='1', style='  border-bottom: 1px solid #bdc3c7; ', align='left')
+                                                    nobr 配额组1
+                                                td(style='  border-bottom: 1px solid #bdc3c7;border-right: 1px solid #bdc3c7;', align='left')
+                                            tr
+                                                td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa', title='10-20')
+                                                    nobr          10-20       
+                                                td(align='center', style='height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;')
+                                                    input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_', value='')
+                                            tr
+                                                td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  ', title='21-30')
+                                                    nobr          21-30       
+                                                td(align='center', style='height: 30px;  border-right: 1px solid #bdc3c7;')
+                                                    input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_', value='')
+                                            tr
+                                                td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa', title='31-40')
+                                                    nobr          31-40       
+                                                td(align='center', style='height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;')
+                                                    input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_', value='')
+                                            tr
+                                                td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px; border-bottom: 1px solid #bdc3c7; ', title='41-50')
+                                                    nobr          41-50       
+                                                td(align='center', style='height: 30px;  border-bottom: 1px solid #bdc3c7; border-right: 1px solid #bdc3c7;')
+                                                    input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_', value='')
+                                .total
+                                    span 配额收集数合计：
+                                    p 1367
+                                    span
+                                        | （
+                                        nobr 配额组1
+                                        | 收集数合计：0
+                                        nobr 配额组2
+                                        | 收集数合计：0）
+    include layout/footer

@@ -1,0 +1,30 @@
+#Login.main-container(ng-controller='LoginCtrl')
+   #logo
+      span(onclick='turnToIndex()') choice form
+      span beta
+   h2 登 录
+   form(autocomplete='off', novalidate='novalidate', name='LoginForm')
+      .input-login
+         |<input type="email" name="loginEmail" placeholder="注册邮箱" required  ng-model="Email" id="name" value="@ViewData["Email"]" ng-keydown="Enter();" maxlength="50" ng-change="loginInputChange(LoginForm.$valid,LoginForm.loginEmail.$dirty)">
+         mark.form-message(ng-show='LoginForm.loginEmail.$dirty && LoginForm.loginEmail.$invalid && LoginForm.loginEmail.$error.required') 请输入邮箱地址。
+         mark.form-message(ng-show='LoginForm.loginEmail.$dirty && LoginForm.loginEmail.$invalid && LoginForm.loginEmail.$error.email') 请输入正确的邮箱格式。
+      .input-login
+         | @*
+         input(type='password', style='display:none')
+         | *@
+         input#password(type='password', name='loginPassword', placeholder='密码', required='', autocomplete='off', ng-model='Login.Password', ng-keydown='Enter();', maxlength='12', ng-change='loginInputChange(LoginForm.$valid,LoginForm.loginPassword.$dirty)')
+         mark#PwMsg.form-message(ng-show='LoginForm.loginPassword.$dirty && LoginForm.loginPassword.$invalid && LoginForm.loginPassword.$error.required') 请输入密码。
+      .input-login
+         div
+            input#checkboxG1.css-checkbox(type='checkbox', name='checkboxG1', onclick='changeCheck()', checked='checked')
+            label.checkbox-label(for='checkboxG1') 30 天内记住我
+         .forgot-password(onclick='ChangeToForget()')
+            span 忘记密码
+   button.button.blue(ng-click='login()')
+      span 登 录
+   .create-account
+      p
+         | 还没有
+         span(onclick='turnToIndex()') choice form
+         | 账号？
+      h3(onclick='ChangeToRegister()') 免费注册

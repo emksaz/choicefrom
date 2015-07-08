@@ -1,0 +1,61 @@
+
+<header class="page-header">
+  <div class="w-container"><a href="#/QM"><i title="我的调查问卷" class="ic ic-24-dashboard-l"></i></a>
+    <h1 id="quesTile"></h1>
+    <button id="quesTile" ng-click="QuesSettBtn('Design')" class="purple"><i class="ic ic-brush-w"></i><span>设计问卷</span></button>
+    <div id="quesIconDIV" style="display:none;" class="shortcut"><a id="preView" title="预览问卷" ng-click="PreViewCode($event)" class="box-button"><i class="ic ic-eye-f-d"></i></a><a ng-click="QuesSetMoveQues()" title="移动问卷" class="box-button"><i class="ic ic-folder-f-d"></i></a><a ng-click="QuesSetCopyQues()" title="复制问卷" class="box-button"><i class="ic ic-multiple-documents-f-d"></i></a><a id="delQuesaIcon" ng-click="OpenDelQues()" title="删除问卷" class="box-button"><i class="ic ic-trash-f-d"></i></a></div>
+  </div>
+</header>
+<!-- 顶部控制栏-->
+<div class="w-container">
+  <div class="tabs tabs-style">
+    <nav>
+      <ul>
+        <li ng-attr-class="{{QQuesSet.QMSetAction=='Quota' &amp;&amp; 'tab-current' || ''}}" ng-click="QuesSettTab('Quota')"><span>配额</span></li>
+        <li ng-attr-class="{{QQuesSet.QMSetAction=='Publish' &amp;&amp; 'tab-current' || ''}}" ng-click="QuesSettTab('Publish')"><span>发布</span></li>
+        <li ng-attr-class="{{QQuesSet.QMSetAction=='AnalyzeResults' &amp;&amp; 'tab-current' || ''}}" ng-click="QuesSettTab('AnalyzeResults')"><span>分析结果</span></li>
+      </ul>
+    </nav>
+    <div ui-view=""></div>
+  </div>
+</div>
+<div style="z-index:9000" ng-show="QQuesSet.QuesBtnFlag!=0" ng-click="cancelCon()" class="pop-ups-background">
+  <div ng-show="QQuesSet.QuesBtnFlag==2" ng-click="CancelPopup($event)" class="pop-ups medium">
+    <div><i class="ic ic-trash-f-d"></i><span>删除问卷</span><a ng-click="cancelCon()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <p>当前问卷所有内容和数据将被永久删除，问卷访问链接也将随之失效。</p>
+      <h2>请输入<span>choiceform</span>确认删除操作</h2>
+      <input id="delete-survey" type="text" name="delete-survey" ng-model="QQuesSet.DelPassWord" ng-keydown="enterOrEscOper(1)"/><br/>
+      <mark id="delMessage" class="form-message"> 您输入的choiceform不正确，请重新输入。</mark>
+      <button type="button" ng-click="cancelCon()" class="border"><span>取 消</span></button>
+      <button ng-click="QuesSetDelQuesByPwd()" class="red"><span>删除问卷</span></button>
+    </form>
+  </div>
+  <div ng-show="QQuesSet.QuesBtnFlag==1" ng-click="CancelPopup($event)" class="pop-ups">
+    <div><i class="ic ic-folder-f-d"></i><span>移动到文件夹</span><a ng-click="cancelCon()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form>
+      <h3>将当前问卷移动到文件夹：</h3>
+      <div class="select dropdown-event">
+        <button class="select right-ic dropdown-bt"><span>{{QQuesSet.QuesSetInitFolder}}</span><i class="ic ic-down-1d"></i></button>
+        <ul class="option downul">
+          <li ng-if="MyFolderFlag" ng-click="SelectMoveFolder('','我的文件夹');">我的文件夹</li>
+          <li ng-click="SelectMoveFolder(Folder.FolderID,Folder.FolderName);" ng-repeat="Folder in QQuesSet.QuesSetFolderList">{{Folder.FolderName}}</li>
+        </ul>
+      </div>
+      <button type="button" ng-click="cancelCon()" class="border"><span>取 消</span></button>
+      <button ng-click="SaveMoveFolderData()" class="blue"><span>移 动</span></button>
+    </form>
+  </div>
+  <div id="ques-review" ng-show="QQuesSet.QuesBtnFlag==3" ng-click="CancelPopup($event)" class="pop-ups">
+    <div><i class="ic ic-eye-f-d"></i><span>问卷预览</span><a ng-click="cancelCon()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form class="ng-pristine ng-valid">
+      <div><img id="QuesPreviewURl"/></div>
+      <button class="blue"><span ng-show="false">下载二维码</span></button>
+      <mark class="form-message">当前链接为预览链接，不作为正式的问卷向他人发送。</mark>
+      <div>
+        <h3>问卷预览地址：</h3>
+        <button class="dark"><span ng-show="false">复制链接</span></button><a id="QuesPreviewHref" href="" target="_blank" style="height:auto;" class="preViewLink"></a>
+      </div>
+    </form>
+  </div>
+</div>

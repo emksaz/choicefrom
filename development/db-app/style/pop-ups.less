@@ -1,0 +1,351 @@
+.pop-ups {
+  width: 480px;
+  padding-bottom: 24px;
+  background-color: lighten(@silver, 20%);
+
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  .box-shadow(rgba(0, 0, 0, 0.3) 0px 3px 8px 0px);
+  border-radius: 3px;
+  > div {
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    padding: 0 0 0 12px;
+    background-color: @white;
+    border-bottom: 1px solid @silver;
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    > span, i {
+      display: inline-block;
+      float: left;
+      line-height: 36px;
+    }
+    > i {
+      margin: 7px 6px 0 0;
+    }
+    > a {
+      float: right;
+    }
+  }
+  form {
+/*    padding: 20px 24px;*/
+    padding: 24px 24px 0 24px;
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    input {
+      width: 100%;
+      background-color: @white;
+    }
+    mark {
+      margin-top: 12px;
+      width: 100%;
+    }
+    h3{
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    &>button {
+      margin-top: 24px;
+      &:nth-last-of-type(2) {
+        float: left;
+        /*margin-left: 24px;*/
+        width: 96px;
+      }
+      &:last-of-type{
+        float: right;
+        /*margin-right: 24px;*/
+        width: 128px;
+      }
+    }
+  }
+
+  .select {
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+    position: relative;
+    clear: both;
+    width: 100%;
+    background-color: @white;
+    button {
+      margin: 0;
+      width: 100%;
+      span {
+        display: block;
+        font-size: 14px;
+      }
+    }
+    ul.option {
+      width: 100%;
+    }
+  }
+}
+
+
+
+.pop-ups.medium {
+  width: 600px;
+  h2{
+    margin: 12px 0;
+    span {
+      padding: 0 6px;
+      color: @tomato;
+    }
+  }
+}
+
+.static-background(){
+  position: fixed;
+  background: -moz-radial-gradient(50% 50%, circle cover, fade(black, 50%) 0, fade(black, 70%) 100%);/* FF3.6+ */
+  background: -webkit-radial-gradient(50% 50%, circle cover, fade(black, 50%) 0, fade(black, 70%) 100%);/* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(50% 50%, circle cover, fade(black, 50%) 0, fade(black, 70%) 100%);/* Opera 11.10+ */
+  background: -ms-radial-gradient(50% 50%, circle cover, fade(black, 50%) 0, fade(black, 70%) 100%);/* IE10+ */
+  background: radial-gradient(50% 50%, circle cover, fade(black, 50%) 0, fade(black, 70%) 100%);;/* W3C */
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  .flex-flow(row wrap);
+  .justify-content(center);
+  .align-items(center);
+  .align-content(center);
+}
+
+.pop-ups-background {
+  .static-background();
+}
+
+.background_opacity{
+  .static-background();
+  opacity: 0;
+  z-index: 8000;
+}
+
+//重新登录
+#login_again{
+  & h3,mark{
+    margin-top:0px;
+  }
+  & input:first-of-type{
+    margin-bottom: 24px;
+  }
+}
+
+//问卷预览
+#ques-review{
+  width: 360px;
+
+  #QuesPreviewURl{
+    clear: left;
+    margin: 0 auto;
+    margin-bottom: 12px;
+    display: block;
+    width: 312px;
+    height:312px;
+    background-image: url("../images/erweima.png");
+    background-color: #0a0a0a;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  }
+  form{
+    div h3:first-of-type{
+      margin: 0;
+     width: auto;
+    }
+
+    button{
+      margin-top: 0px;
+      float: right;
+      padding: 0;
+      width:96px
+    }
+
+    mark{
+      margin-bottom: 12px;
+    }
+    a{
+      &:link, &:visited,&:hover,&:active{
+      color:@dark_slate;
+      }
+      clear: both;
+      float: left;
+      margin-top: 12px;
+    }
+  }
+  & .bdsharebuttonbox{
+    padding: 0 !important;
+    margin: 24px 24px 0 24px;
+    border:none;
+    background-color: lighten(@silver, 20%);
+  }
+}
+
+#Data_analysis{
+  width: 480px;
+
+}
+
+
+#export_data{
+  #out_type{
+    //height: 100px;
+    & img{
+      width: 4rem !important;
+    }
+  }
+  & #bp-tabs>.activ{
+    border: 1px solid @silver;
+    border-bottom: 0;
+    &:after{
+      content: "";
+      width: 100%;
+      position: absolute;
+      border-bottom: 1px solid lighten(@silver, 20%);
+      bottom: -1px;
+      left: 0;
+    }
+  }
+  & div.panel{
+    height: 180px;
+    display: none;
+  }
+  &>div.activ{
+    display: block;
+  }
+
+  & li{
+    position: relative;
+    background-color: lighten(@silver, 20%);
+    list-style-type:none;
+    display: inline-block;
+    padding: 6px 12px;
+    float: left;
+    &:last-of-type{
+      border-left:0 ;
+    }
+    cursor: pointer;
+  }
+  &>button{
+    &:first-of-type{
+      width: 96px;
+      float: left;
+    }
+    &:last-of-type{
+      width: 128px;
+      float: right;
+      padding-right: 0!important;
+      padding-left: 0!important;
+      position: relative;
+      &>div{
+        position: absolute;
+        height: 4px;
+        width: 40px;
+        bottom: 12px;
+        right: 6px;
+        &>div{
+          width: 4px;
+          height: 4px;
+          background: rgba(255, 255, 255, 0.65);
+          border-radius: 0px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          .animation(loadmymove 0.9s linear infinite);
+          @keyframes loadmymove
+          {
+            from {left:0px;}
+            to {left:36px;}
+          }
+          @-webkit-keyframes loadmymove
+          {
+            from {left:0px;}
+            to {left:36px;}
+          }
+          &:first-of-type{
+           .animation-delay(0.3s);
+          }
+          &:nth-of-type(2){
+            .animation-delay(0.6s);
+          }
+          &:last-of-type{
+            .animation-delay(0.9s);
+          }
+        }
+      }
+    }
+  }
+  & .panel div span,div,input{
+    display: inline-block;
+    float: left;
+  }
+  & .panel
+  {
+    margin-bottom: 24px;
+    padding: 24px;
+    border: 1px solid @silver;
+
+    &:first-of-type{
+      &>div{
+        &:last-of-type{
+          margin-top: 0px;
+        }
+      }
+    }
+
+    &>div{
+      &:nth-last-of-type(n+2){
+        padding-bottom:24px;
+        &>span{
+          margin-right: 24px;
+        }
+        &>div{
+          width: 150px;
+        }
+/*        &>div:first-of-type{
+          margin-right: 20px;
+          margin-left: 20px;
+        }*/
+      }
+      &:last-of-type{
+        width: 100%;
+        & span{
+          padding-top: 8px !important;
+        }
+        &>input{
+          margin: 0px 6px 0px 12px;
+          clear: none !important;
+          width: 70%;
+
+
+        }
+      }
+    }
+
+  }
+}
+

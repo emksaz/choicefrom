@@ -1,0 +1,286 @@
+
+/*@-moz-document url-prefix() {
+  select {
+    color: transparent !important;
+    text-shadow: 0 0 0 @choices_text !important;
+  }
+}
+
+select {
+  padding: 0 3.2rem 0 1.2rem !important;
+}
+
+/!* Default custom select styles *!/
+.cs-select {
+  white-space: nowrap;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  z-index: 20;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.cs-select select {
+  display: none;
+}
+
+.cs-select span {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/!* Placeholder and selected option *!/
+.cs-select > span {
+  padding-right: 3em;
+
+  &::after {
+    position: absolute;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    font-size: 0.5em;
+    content: "\e604";
+    font-family: 'Icon flat', sans-serif;
+    right: 0.5em;
+  }
+
+  &::before {
+    content: "SPACE";
+    padding: 0 0.5em;
+    margin-right: 1em;
+    float: left;
+    border-radius: 2px;
+    font-size: 0.667em;
+    line-height: 1.5em;
+    text-align: center;
+    cursor: default;
+    border: 1px solid fade(@choices_text, 70%);
+    color: fade(@choices_text, 70%);
+  }
+}
+
+/!* Options *!/
+.cs-select .cs-options {
+  position: absolute;
+  overflow: hidden;
+  visibility: hidden;
+}
+
+.cs-select.cs-active .cs-options {
+  visibility: visible;
+}
+
+.cs-select ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.cs-select ul span {
+  padding: 0.75em;
+}
+
+.cs-select ul li.cs-focus span {
+  background-color: fade(@choices_bg, 20%);
+}
+
+.cs-select li.cs-optgroup > span {
+  cursor: default;
+}
+
+.cs-skin-overlay .cs-options {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  background: @bg-color;
+  opacity: 0;
+  -webkit-transform: perspective(1000px) translate3d(0, 0, -200px);
+  transform: perspective(1000px) translate3d(0, 0, -200px);
+  -webkit-transition: -webkit-transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+  transition: transform 0.4s, opacity 0.4s, visibility 0s 0.4s;
+  -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+}
+
+.cs-skin-overlay.cs-active .cs-options {
+  opacity: 1;
+  -webkit-transform: perspective(1000px) translate3d(0, 0, 0px);
+  transform: perspective(1000px) translate3d(0, 0, 0px);
+  -webkit-transition: opacity 0.4s, -webkit-transform 0.4s;
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.cs-skin-overlay .cs-options > ul {
+  overflow-y: auto;
+  padding: 6em 0 6em 0;
+  position: absolute;
+  text-align: center;
+  top: 0%;
+  left: 50%;
+  width: 100%;
+  -webkit-transform: translate(-50%, 0%);
+  transform: translate(-50%, 0%);
+}
+
+.cs-skin-overlay .cs-optgroup {
+  display: inline-block;
+  margin: 0 1em 0 1em;
+}
+
+.cs-skin-overlay .cs-optgroup > span {
+  font-size: 0.75em;
+  padding-left: 0;
+  color: @question_color;
+}
+
+.cs-skin-overlay li.cs-optgroup {
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+  transition: transform 0.3s, opacity 0.3s;
+  -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+  text-align: left;
+  counter-reset: section 0 heading 0;
+}
+
+.cs-skin-overlay.cs-active li.cs-optgroup {
+  opacity: 1;
+}
+
+.cs-skin-overlay li.cs-optgroup ul span {
+  padding: 0.5em 0;
+}
+
+.cs-skin-overlay li.cs-optgroup li span:hover,
+.cs-skin-overlay li.cs-focus span,
+.cs-skin-overlay li.cs-selected span {
+  color: @button_color;
+  background: transparent;
+}
+
+//滑动条
+
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 1em 0;
+  width: 100%;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1em;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: fade(@choices_bg, 10%);
+    border-radius: 2px;
+    border: 1px solid @question_color;
+  }
+
+  &::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 3em;
+    width: 3em;
+    border-radius: 3em;
+    background: @button_color;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -1.125em;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+    background: fade(@choices_bg, 40%);
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: 1em;
+    cursor: pointer;
+    animate: 0.2s;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    background: fade(@choices_bg, 10%);
+    border-radius: 2px;
+    border: 1px solid @question_color;
+  }
+
+  &::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 2em;
+    width: 2em;
+    border-radius: 3px;
+    background: @button_color;
+    cursor: pointer;
+  }
+
+  &::-ms-track {
+    width: 100%;
+    height: 1em;
+    cursor: pointer;
+    animate: 0.2s;
+    background: transparent;
+    border-color: transparent;
+    border-width: 39px 0;
+    color: transparent;
+  }
+
+  &::-ms-fill-lower {
+    background: fade(@choices_bg, 10%);
+    border: 1px solid @question_color;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  }
+
+  &::-ms-fill-lower {
+    background: fade(@choices_bg, 10%);
+    border: 1px solid @question_color;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  }
+
+  &::-ms-fill-upper {
+    background: fade(@choices_bg, 10%);
+    border: 1px solid @question_color;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+  }
+
+  &::-ms-thumb {
+    box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
+    border: 0px solid #000000;
+    height: 3em;
+    width: 3em;
+    border-radius: 3em;
+    background: @button_color;
+    cursor: pointer;
+  }
+
+  &:focus::-ms-fill-lower {
+    background: @choices_bg;
+  }
+
+  &:focus::-ms-fill-upper {
+    background: @choices_bg;
+  }
+}*/

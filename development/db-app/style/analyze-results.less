@@ -1,0 +1,681 @@
+//分析结果 - Tabs 位置调整
+#data-trends,
+#responses,
+#question-summaries {
+  .content-row {
+    border-bottom: none;
+    min-height: 558px;
+    border-right: 1px solid @silver;
+    @media (max-width: 991px) {
+      border: none;
+    }
+  }
+  > .tabs {
+    margin-top: 24px;
+  }
+}
+
+//分析结果-数据区块
+.chart-view,
+.question-view {
+  overflow: hidden;
+  border-radius: 2px;
+  border: 1px solid @silver;
+  &:nth-of-type(n+2) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+}
+
+//分析结果 - 数据区块 - 顶部标题区域
+.chart-view > div,
+.question-view > div {
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  &:first-of-type {
+    background-color: fade(@silver, 28%);
+    padding: 8px 12px;
+  }
+}
+
+//分析结果 - 数据区块 - 标题
+.chart-view > div > span,
+.question-view > div > span {
+  line-height: 28px;
+  //右侧 (显示详情)
+  &:nth-of-type(n+2) {
+    float: right;
+    margin: 0 24px 0 12px;
+    @media (max-width: 991px) {
+      margin: 0 12px;
+    }
+    @media (max-width: 767px) {
+      margin: 0 0 0 12px;
+    }
+  }
+}
+
+//分析结果 - 数据区块 - 顶部标题区域 (显示详情) 开关按钮
+.question-view > div > input {
+  float: right;
+  margin-right: 24px;
+}
+
+//分析结果 - 数据区块 - 进度条区域
+.question-view ul {
+  padding: 24px 12px;
+  list-style: none;
+  &:first-of-type {
+    border-bottom: 1px solid @silver;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条区域 - 文字
+.question-view ul li span {
+  display: inline-block;
+  width: 12%;
+  line-height: 30px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  @media (max-width: 991px) {
+    width: 100%;
+    display: block;
+    line-height: 20px;
+    margin-bottom: 8px;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条区域 - 进度条(外框)
+.question-view ul li .progress-bar-section {
+  position: relative;
+  display: inline-block;
+  width: 75%;
+  border: 2px solid @dodger_blue;
+  height: 30px;
+  @media (max-width: 991px) {
+    width: 85%;
+  }
+  @media (max-width: 479px) {
+    width: 75%;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条区域 - 进度条
+.question-view ul li .progress-bar-main {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 75%;
+  height: 100%;
+  background-color: fade(@dodger_blue, 45%);
+}
+
+//分析结果 - 数据区块 - 进度条区域 - 右侧百分比文字
+.question-view ul li h2 {
+  line-height: 30px;
+  font-size: 24px;
+  float: right;
+  color: @dodger_blue;
+  margin-right: 24px;
+  @media (max-width: 991px) {
+    margin-right: 12px;
+  }
+  @media (max-width: 767px) {
+    font-size: 20px;
+    margin: 0;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条 (明细)
+#details li {
+  &:nth-of-type(n+2)  {
+    margin-top: 16px;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条(外框) (明细)
+#details li .progress-bar-section {
+  height: 16px;
+  border: 1px solid @purple;
+}
+
+//分析结果 - 数据区块 - 进度条 (明细)
+#details li .progress-bar-main {
+  background-color: fade(@purple, 45%);
+}
+
+//分析结果 - 数据区块 - 进度条 (明细) - 文字
+#details li span {
+  font-size: 14px;
+  line-height: 16px;
+  @media (max-width: 991px) {
+    margin-bottom: 8px;
+  }
+}
+
+//分析结果 - 数据区块 - 进度条 (明细) - 右侧百分比文字
+#details li h2 {
+  font-size: 18px;
+  line-height: 16px;
+  color: @purple;
+}
+
+//分析结果 - 数据区块 - 图形化区域
+.chart-view .chart-container {
+  padding: 12px;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 灰色小字
+.chart-view .chart-container > span {
+  display: block;
+  font-size: 12px;
+  color: @dark_gray;
+  margin-bottom: 24px;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 右侧下拉菜单 (视图比例)
+.chart-view .dropdown-event {
+  float: right;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 右侧按钮 (自定义)
+.chart-view > div > button {
+  float: right;
+  margin-right: 12px;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 题目标题
+.chart-view h2 {
+  width: 100%;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 题目表格
+.chart-view form {
+  margin: 24px -12px 0 -12px;
+  border-top: 1px solid @silver;
+  top: 12px;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 题目表格 列
+.chart-view .Answer_selection .Answer_selection_01, .Answer_selection_02{
+  width: 100%;
+  float: left;
+  border-bottom: 1px solid @silver;
+  list-style: none;
+& li{
+  width: 100%;
+  display: block;
+  float: left;
+  min-height: 37px;
+
+  div{
+    clear: none !important;
+    width: 50%;
+    min-height: 37px;
+    //max-height: 70px;
+    float: left;
+    padding: 8px 12px !important;
+    white-space:normal;
+/*    text-overflow: ellipsis;
+    overflow: hidden;*/
+    word-wrap: break-word;
+    -ms-word-wrap: break-word;
+/*        -ms-word-break: break-all;
+        word-break: break-all;*/
+    &:first-of-type{
+      border-right: 1px solid @silver;
+      img{
+        padding-top: 0;
+        margin-right: 12px;
+      }
+    }
+    &:last-of-type{
+      span {
+        //右侧列 数字右对齐
+        &:nth-of-type(2) {
+          float: right;
+        }
+      }
+    }
+  }
+
+  &:nth-of-type(1) {
+    background-color: fade(@silver, 28%);
+    border-bottom: 1px solid @silver;
+  }
+  //行下划线
+  &:nth-of-type(n+2) {
+    border-bottom: 1px solid fade(@silver, 45%);
+  }
+  //最后一行取消下划线
+  &:last-of-type {
+    border: none;
+  }
+}
+}
+
+.Answer_selection .Answer_selection_02{
+  position: relative;
+  &>li{
+    &:first-of-type{
+      &>div:nth-of-type(3), &>div:nth-of-type(2){
+        padding:8px 0 8px 0 !important;
+        &:before{
+          content: "";
+          display: inline-block;
+          position: absolute;
+          top: 0;
+          border-left: 1px solid @silver;
+          height: 100%;
+        }
+        &>span{
+          margin-left: 12px;
+        }
+      }
+    }
+
+    &:nth-of-type(n+2){
+      &>div:nth-of-type(n+3) span{
+        display: block;
+      }
+    }
+    &>div{
+      display: inline-block;
+      &:first-of-type{
+        border-right: none;
+        width: 42%;
+      }
+      &:nth-of-type(2){
+        width: 13%;
+      }
+      &:nth-of-type(n+3){
+        padding-right: 0 !important;
+        width: 15%;
+      }
+      &:last-of-type{
+        padding-right: 8px !important;
+        &>span:last-of-type{
+          float: none;
+
+        }
+      }
+    }
+  }
+}
+
+/*//分析结果 - 数据区块 - 图形化区域 - 题目表格 行
+.chart-view form ul li {
+
+}*/
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs
+.chart-view .tabs {
+  margin-top: 0;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 帮助按钮
+.chart-view .tabs a {
+  position: absolute;
+  top: 0;
+  right: 2px;
+  cursor: help;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 导航栏
+.chart-view .tabs nav ul {
+  background-color: fade(@silver, 28%);
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 选中效果
+.chart-view .tabs nav ul li.sub-tab-current {
+  background-color: @white;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义区域
+.chart-view .cq-view {
+  border-bottom: 1px solid @silver;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义区域
+.chart-view .cq-view ul {
+  padding: 0 0 12px 12px;
+  position: relative;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  .flex-flow(row, wrap);
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义图形化 按钮
+.chart-view .cq-view ul li {
+  margin: 12px 12px 0 0;
+  display: inline-block;
+  background-color: @silver;
+  border-radius: 3px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  .transition(background-color, 500ms, ease);
+  &:hover {
+    background-color: @dark_gray;
+  }
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义图形化 按钮 选中效果
+.chart-view .cq-view ul li.ic-current {
+  background-color: @dodger_blue;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义区域 底部按钮
+.chart-view .customize-control {
+  border-top: 1px dashed @silver;
+  padding: 12px 0;
+  margin: 0 12px;
+}
+
+//分析结果 - 数据区块 - 图形化区域 - 自定义 Tabs 自定义区域 底部按钮 (保存按钮) 右对齐
+.chart-view .customize-control button {
+  &:nth-of-type(2) {
+    float: right;
+  }
+}
+
+//分析结果-侧栏
+#responses,
+#question-summaries {
+  //侧栏
+  .sidebar {
+    border-right: none;
+    float: right;
+/*    outline: 1px solid @silver;*/
+    @media screen and (min-width: 1200px) {
+      width: 30%;
+    }
+    @media (max-width: 991px) {
+      border: none;
+    }
+  }
+
+  .setting-row {
+    position: relative;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: flex;
+    -ms-box-orient: horizontal;
+    -ms-box-pack: center;
+    .flex-direction(column);
+    .justify-content(flex-start);
+    .flex-wrap(wrap);
+    @media (max-width: 991px) {
+      .flex-direction(row);
+      .justify-content(space-between);
+      h2 {
+        width: 100%;
+        .flex(1 0 auto);
+      }
+    }
+  }
+
+  //侧栏板块
+  .sidebar-row {
+    margin-top: 12px;
+    .flex(1 0 auto);
+    width: 100%;
+    @media (max-width: 991px) {
+      width: 49%;
+      .flex(0 0 auto);
+    }
+    @media (max-width: 767px) {
+      width: 100%;
+    }
+  }
+
+  //侧栏板块-表单区域
+  .sidebar-row form {
+    &:after {
+      content: " ";
+      display: table;
+      clear: both;
+    }
+  }
+
+  //侧栏板块-添加按钮
+  .sidebar-row > a {
+    position: absolute;
+    right: 8px;
+    top: 6px;
+  }
+
+  //侧栏板块-主板块
+  .sidebar-row #rules {
+    padding: 12px;
+  }
+
+  //侧栏板块-主板块-内容行 行高设置
+  .sidebar-row #rules > div {
+    position: relative;
+    line-height: 36px;
+  }
+
+  //侧栏板块-主板块-内容行 文字限字设置
+  .sidebar-row #rules label {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 88%;
+    > span {
+      color: @silver;
+      font-size: 12px;
+    }
+  }
+
+//侧栏板块-主板块-内容行 文字限字设置(显示规则)
+  .sidebar-row #sub-rules div label{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 95%;
+  }
+
+  //侧栏板块-主板块-内容行 右侧扳手按钮
+  .sidebar-row #rules .dropdown-event {
+    position: absolute;
+    right: -12px;
+    top: 0;
+    bottom: 0;
+  }
+
+  //侧栏板块 - 二级板块
+  .sidebar-row #sub-rules,
+  .sidebar-row #sub2-rules {
+    padding: 12px 0;
+  }
+
+  //侧栏板块 - 二级板块 (显示规则) - 内容行设置
+  .sidebar-row #sub-rules div {
+    padding: 6px 12px;
+    &:nth-of-type(n+3) {
+      border-bottom: 1px solid fade(@silver, 50%);
+      &:nth-of-type(odd) {
+        background-color: fade(@silver, 18%);
+      }
+    }
+    &:nth-of-type(3) {
+      border-top: 1px dashed @silver;
+    }
+    &:last-of-type {
+      border: none;
+    }
+  }
+
+  //侧栏板块 - 底部按钮区
+  .sidebar-row .customize-control {
+    padding: 0 12px 12px 12px;
+  }
+
+  //侧栏板块 - 底部按钮区 - 应用按钮右侧对齐
+  .sidebar-row .customize-control button {
+    &:nth-of-type(2) {
+      float: right;
+    }
+  }
+
+  //侧栏板块 - 二级板块 (筛选条件) - 内容区
+  .sidebar-row #sub-rules ul {
+    list-style: none;
+  }
+
+  //侧栏板块 - 二级板块 (筛选条件) - 内容行设置
+  .sidebar-row #sub-rules ul li {
+    padding: 6px 12px;
+    border-bottom: 1px solid fade(@silver, 50%);
+    cursor: pointer;
+    .transition(background-color, 500ms, ease-in);
+    &:hover {
+      background-color: fade(@silver, 18%);
+    }
+    &:hover i {
+      opacity: 1;
+    }
+  }
+
+  //侧栏板块 - 二级板块 (筛选条件) - 内容行 右侧图标
+  .sidebar-row #sub-rules ul li i {
+    float: right;
+    opacity: 0.6;
+  }
+
+  //侧栏板块 - 三级板块 (筛选条件)(按收集器筛选) - 标题文字
+  .sidebar-row #sub2-rules span {
+    display: block;
+    color: @dark_gray;
+    font-size: 12px;
+    padding: 0 12px;
+    border-bottom: 1px solid @silver;
+  }
+
+  //侧栏板块 - 三级板块 (筛选条件)(按收集器筛选) - 筛选区域
+  .sidebar-row #coll-rules div {
+    border-bottom: 1px solid fade(@silver, 50%);
+    padding: 6px 12px;
+    &:nth-of-type(n+2) {
+      margin-left: 12px;
+    }
+  }
+
+  //侧栏 (输出结果) 板块
+  .sidebar-row #output {
+    position: relative;
+    padding: 12px;
+    .output_box{
+      position: relative;
+      &:before{
+        position: absolute;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        content: " ";
+        width: 20px;
+        height: 100%;
+        background-color: @sea_green;
+        margin-right: 12px;
+        float: left;
+      }
+
+      //侧栏 (输出结果) 板块-下载图标
+      &>i{
+        position: absolute;
+        z-index: 5;
+        width: 20px;
+        height: 20px;
+        background-color: @sea_green;
+        float: left;
+        margin-right: 12px;
+        cursor: pointer;
+      }
+      &>span{
+        padding-left: 32px;
+        display: inline-block;
+        width: 85%;
+        white-space: normal;
+        //word-wrap: break-word;
+        word-break: break-all;
+      }
+      //侧栏 (输出结果) 板块-右侧扳手图标
+      &>.dropdown-event{
+        position: absolute;
+        right: 0;
+        top: 6px;
+        .ic-wrench-d{
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+      }
+      //侧栏 (输出结果) 板块-下载文件详情
+      .output-detailed{
+        position: relative;
+        font-size: 12px;
+        color: @dark_gray;
+        list-style: none;
+        //侧栏 (输出结果) 板块-下载文件详情 (文字)
+        li {
+          padding-left: 32px;
+        }
+      }
+    }
+  }
+}
+
+
+#div-quota-box{
+  overflow-x: hidden;
+  padding:0;
+  padding-bottom: 10px;
+  position: relative;
+  right: 1px;
+  #div-quota-grid{
+    line-height: normal;
+    & tr{
+      &>td{
+        border-right: 1px solid @silver;
+        & input{
+          border:none;
+        }
+      }
+      &:first-of-type>td{
+        border-right: none;
+      }
+    }
+  }
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
+.content-row .results_load_more{
+  margin-top: 32px;
+  @media (max-width: 991px) {
+    width: 100% !important;
+    padding:0 !important;
+  }
+}
+

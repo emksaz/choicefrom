@@ -1,0 +1,17 @@
+ul#options
+    mixin options(pic,placeholder)
+        li
+            .options-item
+                input.input-num(type='text', placeholder='01')
+                .options-input
+                    textarea.dynamic_textarea(type='text', placeholder= placeholder)
+                .handle
+                    i.drag-icon.ic-m.ic-drag
+                    a.opt-delete
+                        i.ic-m.ic-trash
+                .media-content
+                    include ./select.jade
+                    .pic-preview
+    +options('','选项 1')
+    +options('','选项 2')
+    +options('','选项 3')

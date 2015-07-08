@@ -1,0 +1,57 @@
+| @{
+| Layout = null;
+| }
+doctype html
+html(lang="zh-cmn-Hans")
+    head
+        include ./layout/head.jade
+        +title('巧思科技 choices form')
+        | @if (ViewData["IsShowDemo"].ToString()=="1")
+        | {
+        meta(name='巧思 choice form', content='最专业的在线问卷系统')
+        meta(name='description', content='巧思 choice form 最专业的在线问卷系统')
+        meta(name='keywords', content='choice form,form,forms,choice,巧思问卷,调研,表单,在线问卷,问卷设计,')
+        | }
+
+        script.
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "//hm.baidu.com/hm.js?@System.Configuration.ConfigurationManager.AppSettings["BaiduWeb"].ToString()";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+    body
+        | @if (ViewData["IsShowDemo"].ToString()=="1")
+        | {
+        //script.
+            window.location.href = "http://www.cform.io";
+        div(style='position: absolute;z-index:90000;padding-left:200px;top:10px;width: 50px;text-align: center;font-size:32px;line-height:38px;color:snow;text-shadow:black 0px 0px 8px') Demo
+        | }
+
+        div(style='margin:0 auto;display:none;')
+            img(src='../../images/share.jpg')
+
+        include ./template/cover.jade
+        //-include ./template/clients.jade
+        include ./template/features.jade
+        include ./template/and-more.jade
+        include ./template/process.jade
+        include ./template/theme.jade
+        include ./template/screenshoots.jade
+        //-include ./template/testimonials.jade
+        //-include ./template/facts.jade
+        include ./template/contact.jade
+        include ./template/footer.jade
+
+        #browser-bg
+            #Browser-low
+                h1#choices-left
+                    span
+                        | 检测到在当前浏览器上可能出现部分功能体验不佳或无法使用的情况,是否仍然要继续?
+                        br
+                        | Tips:建议使用谷歌Chrome浏览器或苹果Safari浏览器。
+            script.
+                $(function () {
+                    $("img").scrollLoading();
+                });

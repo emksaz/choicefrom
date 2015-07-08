@@ -1,0 +1,21 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title('survey | choice form')
+        script.
+            window.resizeTo(window.screen.width, window.screen.height);
+    body
+        #main
+            include layout/nav.jade
+            include layout/toolbar.jade
+            include layout/sidebar-blank.jade
+            .slide-border
+            include layout/footerbar.jade
+            include kit/nodes-kit.jade
+            include kit/media-kit.jade
+            include kit/theme-kit.jade
+    script.
+        setTimeout(function () {
+            $(".nano").nanoScroller({flash: true});
+        }, 1000);

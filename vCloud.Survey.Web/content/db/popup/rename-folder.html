@@ -1,0 +1,11 @@
+
+<div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==2" class="pop-ups">
+  <div><i class="ic ic-folder-d"></i><span>重命名文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form id="EditFForm" name="EditFForm" novalidate="">
+    <h3>文件夹名称：</h3>
+    <input id="EditFolderName" type="text" placeholder="请输入文件夹名称" name="EditFolderName" ng-model="NewFolderName" ng-keydown="enterOrEscOper(3)" required="" ng-maxlength="20" oninput="notifyTextLength(this, 20)"/><br/>
+    <mark ng-show="EditFForm.EditFolderName.$dirty &amp;&amp; EditFForm.EditFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+    <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+    <button ng-click="EditFolder(EditFForm.$valid)" class="blue"><span>重命名</span></button>
+  </form>
+</div>

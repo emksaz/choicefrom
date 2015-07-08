@@ -1,0 +1,345 @@
+h1 问卷配额
+section
+      p
+         | 问卷的配额是指调查人员将调查总体样本按一定标志、属性、特征进行分层或者分类后，分别对各层或者各类确定各类的样本配额数量，在配额数量内任意抽选样本的抽样方法。而这些标志、属性、特征则称为控制特性.
+         | 例如,对受访者的年龄、收入、教育程度、职业等进行分类，然后分别分配样本的配额数量。
+         br
+         br
+         | 一般分为交叉配额与非交叉配额两种方式。
+
+section
+      h2
+         i.ic-checkmark-2
+         | 配额与甄别
+      p 配额设定与甄别密切相关，仅能对问卷中的甄别选项进行配额设定，当问卷中没有甄别选项时，不能对问卷设定配额。
+      h2
+         i.ic-checkmark-2
+         | 创建带有甄别的问卷：
+      p 当问卷可以设定配额前，首先要创建带有甄别的问卷。下面，请按照提示创建一份带有甄别的、可设定配额的问卷。
+      img(src='../../images/help/glb_quota_survey.png', alt='问卷配额图例', width='600', height='auto')
+      h3 创建新问卷
+      p 创建一份新问卷。
+      h3 创建甄别题节点
+      p 打开新增节点面板，点击或拖动甄别节点栏中的“甄别选择题”，在问卷中创建一个甄别选择题节点。
+      img(src='../../images/help/glb_quota_zhbjd.png', alt='问卷配额图例', width='240', height='auto')
+      p
+         | 甄别选择题节点的使用方法与选择题完全相同，为该节点设定如下属性：
+         br
+         | 编号：S1 性别
+         br
+         | 问题：请输入您的性别
+         br
+         | 选项：男／女
+         br
+         br
+         | 按相同步骤，再增加2个甄别选择题节点，为节点设定如下属性：
+         br
+         | 编号：S2 年龄
+         br
+         | 问题：请输入您的年龄
+         br
+         | 选项：25岁以下／25-30岁／31-45岁／45岁以上
+         br
+         br
+         | 编号：S3 收入
+         br
+         | 问题：请输入您的月收入
+         br
+         | 选项：2500元以下／2500-4000元／4100-6000元／6000元以上
+         br
+      h3 创建问卷题目节点
+      p 现在我们的问卷中有如下节点：
+      ul.list-style-ul
+         li
+            span 开始节点
+         li
+            span 结束节点
+         li
+            span S1 性别（甄别节点）
+         li
+            span S2 年龄（甄别节点）
+         li
+            span S3 收入（甄别节点）
+
+  p 此时在开始节点的右上方，出现错误提示，将鼠标移动到错误提示上，显示“问卷中没有检测到任何正式题！”
+  p
+     | 我们在问卷中创建一个选择题节点，为节点设定如下属性：
+     br
+     | 编号：S1 性别
+     br
+     | 问题：您会关注哪类电子产品？
+     br
+     | 选项：平板电脑／台式电脑／手机／智能穿戴设备／智能家庭设备
+     br
+  br
+  p 最后，将节点依次链接，最终得到如下图所示的问卷：
+  img(src='../../images/help/glb_quota_survey.png', alt='问卷配额图例', width='600', height='auto')
+
+  include help-mark
+  +mark('系统无法创建仅包含甄别题的问卷。')
+
+
+section
+      h2
+         i.ic-checkmark-2
+         | 非交叉配额
+      p
+         | 非交叉配额，又称独立配额。是根据调查总体的特性，对具有某个控制特性的调查样本分别规定配额数量。
+         | 而且，不规定必须同时具有两种或两种以上控制特定的样本数额。
+         br
+         br
+         | 非交叉配额只对样本独立规定一种控制特性下的样本数额。如在消费者需求调查中，我们按受访消费者的年龄、性别、收入分别进行配额抽样而不考虑这三个控制特性的交叉关系。
+      h2
+         i.ic-checkmark-2
+         | 建立非交叉配额
+      p 在问卷管理中心页面，点击问卷右下角“问卷设定”按钮，进入问卷设定页面，随后进入配额设定页面。
+      img(src='../../images/help/glb_surveymanager_wjsz.png', alt='问卷管理中心图例', width='240', height='auto')
+      br
+      p 配额设定页面中，目前没有任何配额。
+      img(src='../../images/help/glb_quota_kbpe.png', alt='问卷管理中心图例', width='600', height='auto')
+      br
+      h2
+         i.ic-checkmark-2
+         | 创建配额行
+      p
+         | 在配额设定页面中的创建配额行面板中，点击
+         img(src='../../images/help/btn_zjpe.png', alt='问卷管理中心图例', width='24', height='auto')
+         | 增加配额组按钮增加一个配额组，配额组是一系列配额条件的组合。
+      p 添加配额组后，页面如下图所示：
+      img(src='../../images/help/glb_quota_tjpetj.png', alt='问卷管理中心图例', width='260', height='auto')
+      br
+      p
+         | 点击配额组1中的
+         img(src='../../images/help/btn_zjpe.png', alt='问卷管理中心图例', width='24', height='auto')
+         | 添加条件按钮，页面如下图所示：
+      img(src='../../images/help/glb_quota_zjpetj.png', alt='问卷管理中心图例', width='260', height='auto')
+      br
+      p
+         | 点击图中的下拉列表，显示了问卷中所有甄别节点。
+         br
+         | 选择“S1 性别”，点击
+         img(src='../../images/help/btn_shchpebg.png', alt='问卷管理中心图例', width='240', height='auto')
+         | 生成配额表格按钮生成配额表格。
+      p 现在我们生成了如下图所示的空白配额表格，表格的左侧是从甄别题“S1 性别”中获得的甄别条件。
+      img(src='../../images/help/glb_fjc_kbpe.png', alt='问卷管理中心图例', width='800', height='auto')
+      br
+      h2
+         i.ic-checkmark-2
+         | 设定配额数量
+      p 在配额表格单元中输入配额数量。
+      img(src='../../images/help/glb_quota_kbpe1.png', alt='问卷管理中心图例', width='800', height='auto')
+      br
+      p
+         | 这个配额表格的含义为：
+         br
+         ul.list-style-ul
+            li
+               span 总共收集200份问卷
+            li
+               span 其中男性最多收集100份
+            li
+               span 其中女性最多收集100份
+         br
+      p 到这里我们就完成了一份最简单的非交叉配额设定。
+      h2
+         i.ic-checkmark-2
+         | 再增加配额组
+      p 在刚才的基础上，再增加一个配额组，条件设定为“S3 收入”，生成配额表后，得到如下表格。
+      img(src='../../images/help/glb_quota_dgpez.png', alt='问卷管理中心图例', width='800', height='auto')
+      p
+         | 这个配额表格的含义为：
+         br
+         ul.list-style-ul
+            li
+               span 总共收集200份问卷
+            li
+               span 其中配额组1的条件设定是：男性最多收集100份，女性最多收集100份
+            li
+               span 其中配额组2的条件设定是：2500元以下最多收集50份，2500-6000元最多收集50份，4100-6000元最多收集50份，6000元以上最多收集50份
+            li
+               span 配额组1和2之间不会互相交叉限制，极端情况下收到的200份问卷都是基于男女配额限定的问卷而收入的配额限定没有发挥任何作用，这也是正确的
+         br
+      h2
+         i.ic-checkmark-2
+         | 设定多个配额组的配额数量
+      p 在刚才的基础上，为配额条件设定为“S3 收入”如下数值，得到如下表格。
+      img(src='../../images/help/glb_quota_dgpez2.png', alt='问卷管理中心图例', width='800', height='auto')
+      p
+         | 配额收集数合计数值为红色代表配额数值有错误。当非交叉配额有多个配额组时，所有配额组的配额总数必须严格相等，否则配额将无法生效。修正数值后，配额收集数合计数值为紫色代表配额数值已经正确设定。
+      br
+      p 修改配额数值，使配额1和配额2的总数量严格相等。配额收集数合计数值颜色变为紫色，代表配额已经正确设定。
+      br
+      img(src='../../images/help/glb_quota_dgpez3.png', alt='问卷管理中心图例', width='800', height='auto')
+      p 熟练使用后，还可是设定更为复杂的非交叉配额。
+      img(src='../../images/help/glb_quota_dgpez4.png', alt='问卷管理中心图例', width='800', height='auto')
+      br
+      include help-mark
+      +mark('无法生成仅包含配额列的配额表，在生成配额表时应先从配额行开始规划整个配额表。')
+
+section
+      h2
+         i.ic-checkmark-2
+         | 交叉配额
+      p
+         | 交叉配额是对调查对象的各个特性的样本数额交叉分配。交叉配额对每一个控制特性所需分配的样本数都做了具体规定，必须按规定在总体中抽取调查单位。提高了样本的代表性。
+         br
+         br
+         | 或者说交叉配额是在按各类控制特性独立分配样本数额的基础上，再采用交叉控制安排样本具体数额的抽样方式。
+      h2
+         i.ic-checkmark-2
+         | 建立交叉配额
+      p
+         | 沿用刚才带有甄别题的问卷设定交叉配额，首先在配额设置页面删除当前配额，回到初始的空白状态。
+         br
+      p
+         | 随后在配额行中添加配额组，添加条件“S1 性别”。接着在配额列中添加配额组，添加条件“S2 年龄”。
+         | 点击
+         img(src='../../images/help/btn_shchpebg.png', alt='问卷管理中心图例', width='240', height='auto')
+         |  生成配额表格按钮生成配额表格，在表格中填入数值。得到如下交叉配额表。
+      img(src='../../images/help/glb_quota_jchpe1.png', alt='问卷管理中心图例', width='800', height='auto')
+      p
+         | 这个配额表格的含义为：
+         br
+         ul.list-style-ul
+            li
+               span 总共收集400份问卷
+            li
+               span 其中:男性且25岁以下收集50份；男性且25-30岁收集50份；男性且31-45岁收集50份；男性且45岁以上收集50份
+            li
+               span 其中:女性且25岁以下收集50份；女性且25-30岁收集50份；女性且31-45岁收集50份；女性且45岁以上收集50份
+         br
+      p 到这里我们就完成了一份最简单的交叉配额设定。
+      h2
+         i.ic-checkmark-2
+         | 再增加配额条件
+      p
+         | 为配额组1再增加配额条件，添加条件“S3 收入”，输入数值后得到如下配额表：
+         br
+         img(src='../../images/help/glb_quota_jchpe2.png', alt='问卷管理中心图例', width='800', height='auto')
+      p
+         | 这个配额表格的含义为：
+         br
+         ul.list-style-ul
+            li
+               span 总共收集960份问卷
+            li
+               span 其中每个单元格内数值为性别、年龄、收入条件叠加后的配额数量，必须同时符合着3格条件的样本才能作为为合格样本回收数据
+         br
+      h2
+         i.ic-checkmark-2
+         | 建立多个交叉配额组
+      p
+         | 沿用刚才带有甄别题的问卷设定多个交叉配额组，首先在配额设置页面删除当前配额，回到初始的空白状态。
+         br
+      p
+         | 随后在配额行中添加配额组，添加条件“S1 性别”。接着在配额行中继续添加配额组，添加条件“S3 收入”。最后在配额列中添加配额组，添加条件“S2 年龄”。
+         | 点击
+         img(src='../../images/help/btn_shchpebg.png', alt='问卷管理中心图例', width='240', height='auto')
+         |  生成配额表格按钮生成配额表格，在表格中填入数值。得到如下交叉配额表。
+      img(src='../../images/help/glb_quota_jchpe3.png', alt='问卷管理中心图例', width='800', height='auto')
+      p
+         | 配额收集数合计数值为红色代表配额数值有错误。
+         br
+         | 当交叉配额有多个配额组时，每个配额组中每一列的配额总数必须严格相等，否则配额将无法生效。
+         br
+      p(style='color:red;') 经过检查，可以看到配额组1中最后一列的总数是60，配额组2中最后一列的总数是40，其他配额组1的列总和与配额组2的列总和一致，因此仅需修改最后一列即可。
+      p 修正配额组2最后一列中每项数值后，配额收集数合计数值为紫色代表配额数值已经正确设定。
+      h2
+         i.ic-checkmark-2
+         | 关于配额的总结
+      p(style='color:red;') 问卷配额所有的概念都是以配额组为单位，行里面可以有2个组，列里面只能有1个组。另外，行里的配额组可以有3个条件，列里面的配额组只能有2个条件。
+
+      mark
+         i.ic-lightbulb-32
+         strong 小贴士:
+         | 问卷配额所设定限制总揽：
+         ul.list-style-ul
+            li
+               span 最多2个行配额组
+            li
+               span 最多1个列配额组
+            br
+            li
+               span 最多3个行配额条件
+            li
+               span 最多2个列配额条件
+            br
+            li
+               span 出现在配额行里面的配额条件不能在配额列里出现
+            li
+               span 不同行配额组里的配额条件不能完全相同
+
+      h2
+         i.ic-checkmark-2
+         | 灵活运用配额
+      p 灵活运用配额可以更为精准地确定样本群体，提高问卷的有效性，如果您需要复杂的设定，甚至可以设计出如下图所示的复杂配额，表中每个单元格都由5个条件进行限定：
+      img(src='../../images/help/glb_quota_jdpe.png', alt='问卷管理中心图例', width='800', height='auto')
+
+section
+      h2
+         i.ic-checkmark-2
+         | 配额组操作
+      p
+         | 鼠标移动到配额组名称右边的
+         img(src='../../images/help/btn_quota_pezcz.png', alt='问卷管理中心图例', width='200', height='auto')
+         | 设置按钮对配额组进行操作：
+         br
+         ul.list-style-ul
+            li
+               span 重命名：为配额组设定配额名称。
+            li
+               span 删除：删除改配额组。
+         br
+      p
+         | 重命名后，问卷配额组的名称能直观地看出配额设定的含义。
+         br
+      img(src='../../images/help/glb_quota_dgpez1.png', alt='问卷管理中心图例', width='800', height='auto')
+      h2
+         i.ic-checkmark-2
+         | 删除配额条件
+      p
+         | 鼠标移动到配额条件名称右边的
+         img(src='../../images/help/btn_delete1.png', alt='问卷管理中心图例', width='25', height='auto')
+         |  删除按钮删除该配额条件。
+         include help-mark
+         +mark('删除配额组或者配额条件，都会影响整个问卷配额表。')
+      br
+      h2
+         i.ic-checkmark-2
+         | 保存配额
+      p 点击保存更改按钮保存当前配额表。
+      h2
+         i.ic-checkmark-2
+         | 删除配额
+      p 点击删除配额按钮删除当前配额表。
+      h2
+         i.ic-checkmark-2
+         | 隐藏设置
+      p
+         | 当配额表格过宽时，点击配额表右上方的
+         img(src='../../images/help/btn_ycshzh.png', alt='问卷管理中心图例', width='100', height='auto')
+         |  隐藏设置按钮，隐藏配额设置面板。
+      h2
+         i.ic-checkmark-2
+         | 显示设置
+      p
+         | 当配额设置面板隐藏时，点击配额表右上方的
+         img(src='../../images/help/btn_xshishzh.png', alt='问卷管理中心图例', width='100', height='auto')
+         |  显示设置按钮，显示配额设置面板。
+
+section
+      h1
+         i.ic-link-4  相关链接:
+      br
+      a(href='glb_discriminate.html', target='_blank')
+         span 甄别
+      br
+      a(href='glb_survey_pub.html', target='_blank')
+         span 问卷发布
+      br
+      a(href='glb_data_view.html', target='_blank')
+         span 分析结果
+      br
+      a(href='glb_quickstart.html', target='_blank')
+         span 快速开始
+      br

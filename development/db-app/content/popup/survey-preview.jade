@@ -1,0 +1,17 @@
+#ques-review.pop-ups(ng-click='ShowPopup($event)', ng-show='QList.Popupbackground==6')
+    div
+        i.ic.ic-eye-f-d
+        span 问卷预览
+        a.box-button(ng-click='CloseDiv()')
+            i.ic.ic-x-d
+    form.ng-pristine.ng-valid
+        div
+            img#QuesPreviewURl(src='')
+        button.blue(type='button', ng-click='downLoadQRCode()', ng-show='fasle')
+            span 下载二维码
+        mark.form-message 当前链接为预览链接，不作为正式的问卷向他人发送。
+        div
+            h3 问卷预览地址：
+            button.dark(type='button')
+                span(ng-show='false') 复制链接
+            a#QuesPreviewHref.preViewLink(href='', target='_blank', style='height:auto;')

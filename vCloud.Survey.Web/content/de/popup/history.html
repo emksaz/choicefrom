@@ -1,0 +1,13 @@
+
+<div class="dropdown version">
+  <div>
+    <ul>
+      <li><span>最近保存时间</span></li>
+      <li><span>Mar 16, 2015 15:08:37</span></li>
+    </ul>
+    <ul>
+      <li class="version"><a ng-click="handleVersionSaveClick()" class="save-version">保存版本</a><span>command + s</span><a class="quick-help"><i class="ic-m ic-question"></i></a></li>
+      <li ng-repeat="item in versionHistoryManager.getBackupList()" ng-click="handleVersionItemClick(item)"><span title="{{item.verName}}">>{{item.verName}}</span><a ng-click="handleDeleteIconClick(item,$event)"><i class="ic-m ic-trash"></i></a><a ng-click="handleChangeIconClick(item,$event)"><i class="ic-m ic-pan"></i></a></li>
+    </ul>
+  </div>
+</div>

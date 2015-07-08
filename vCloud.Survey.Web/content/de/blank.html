@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>survey | choice form</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../css/de-index.css">
+        <link rel="stylesheet" type="text/css" href="../../css/de-chart.css">
+        <link rel="stylesheet" type="text/css" href="../../css/colpick.css">
+        <link rel="stylesheet" type="text/css" href="../../css/md-editor.css">
+        <link rel="stylesheet" type="text/css" href="../../css/scroller.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../images/cf.svg">
+        <script type="text/javascript" src="../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/angular.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/sortable.js"></script>
+        <script type="text/javascript" src="../../script/lib/colpick.js"></script>
+        <script type="text/javascript" src="../../script/lib/scroller.js"></script>
+        <script type="text/javascript" src="../../script/lib/modernizr.js"></script>
+        <script type="application/javascript" src="../../script/lib/fastclick.js"></script>
+    <script>window.resizeTo(window.screen.width, window.screen.height);</script>
+  </head>
+  <body>
+    <div id="main">
+      <nav><a ng-click="handleBackIconClick()" class="leave"><i class="ic ic-leave"></i><i class="leave-icon"><span class="dashboard-loader"><span class="loader-inner"></span></span></i></a>
+        <div class="logo"><span>choice form</span><span>返回我的问卷</span></div>
+        <div ng-bind="designManager.startNode.nodeName" class="title"></div>
+        <div class="operation drop-closest"><a value="Tooltip" ng-click="handleReleaseIconClick()" class="publish v-tips"><i class="ic ic-publish"></i><span>发布</span></a><a value="Tooltip" ng-click="handleTestClick()" class="debug v-tips"><i class="ic ic-debug"></i><span>调试</span></a><a value="Tooltip" ng-click="handleReleaseIconClick()" class="save v-tips"><i class="sv sv-save"></i><span>保存</span></a>
+          <div class="history dropdown-item"><a ng-mouseenter="handleVersionHistoryMouseEnter()" class="drop-but"><i class="ic ic-history"></i></a>
+            <!--include ../content/-popup/history.jade-->
+            <div data-version-drop="designManager.versionHistoryManager" data-popupmessage-manager="designManager.PopupMessageManager"></div>
+          </div>
+          <div class="undo"><a value="Tooltip" ng-click="handleRedoClick()" class="v-tips"><i class="ic ic-redo"></i></a><a value="Tooltip" ng-click="handleUndoClick()" class="v-tips"><i class="ic ic-undo"></i></a></div>
+        </div>
+      </nav>
+      <div id="toolbar"><a value="Tooltip" name="0" ng-click="handleToggleNodeBoxClick();" class="small_tab h-tips"><i class="ic ic-nodes"></i></a><a value="Tooltip" name="1" class="small_tab h-tips"><i class="ic ic-media"></i></a><a value="Tooltip" name="2" class="small_tab h-tips"><i class="ic ic-preview"></i></a><a value="Tooltip" name="3" class="small_tab h-tips"><i class="ic ic-gift"></i></a><a value="Tooltip" name="4" class="small_tab h-tips"><i class="ic ic-printer"></i></a><a class="additional"><i class="ic ic-tips-f"></i></a>
+        <div class="dropdown-item"><a class="drop-but"><i class="ic ic-question-f"></i></a>
+          <!--include ../popup/help-center.jade-->
+          <div data-help-center="todo"></div>
+        </div>
+      </div>
+      <div id="sidebar">
+        <div class="tab-panels">
+          <ul class="tabs">
+            <li><a value="Tooltip" rel="sidebar_panel1" class="tab activ v-tips"><i class="ic ic-editor"></i></a></li>
+            <li><a value="Tooltip" rel="sidebar_panel2" class="tab v-tips"><i class="ic ic-advanced"></i></a></li>
+          </ul>
+          <div class="leading-section">
+            <div><i></i><span>选择题</span>
+              <div class="color-box"></div>
+            </div>
+            <div><span>题目编号</span></div>
+            <input type="text" placeholder="题目编号">
+            <div><i class="ic-m ic-location"></i><span>common target</span></div>
+          </div>
+          <div id="sidebar_panel1" class="panel activ">
+            <div class="kit-section-group">
+              <div id="nothing-selected" class="kit-position">
+                <div><i></i><span>请在画布上选择一个节点来激活这个面板对其进行编辑</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="sidebar_panel2" class="panel">
+            <div class="kit-section-group">
+              <div id="nothing-selected" class="kit-position">
+                <div><i></i><span>请在画布上选择一个节点来激活这个面板对其进行编辑</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="slide-border"></div>
+      <div id="footerbar"><span id="system_hinter"></span>
+        <ul>
+          <li ng-click="handleShowAllClick()"><a value="显示全部" class="v-tips"><i class="ic-d ic-show-all"></i></a></li>
+          <li ng-click="chartSvgZoomIn()"><a value="放大" class="v-tips"><i class="ic-d ic-zoom-in"></i></a></li>
+          <li><span ng-bind="designManager.getChartZoomRateText()"></span></li>
+          <li ng-click="handleZoomOutClick()"><a value="缩小" class="v-tips"><i class="ic-d ic-zoom-out"></i></a></li>
+        </ul>
+        <ul>
+          <li ng-click="handleGridToggleClick()"><a value="网格显示" class="v-tips"><i class="ic-d ic-grid"></i></a></li>
+        </ul>
+        <ul>
+          <li ng-click="handleDeleteNodeClick()"><a value="删除节点" class="v-tips"><i class="ic-d ic-trash"></i></a></li>
+          <li ng-click="handleCopyNodeClick()"><a value="复制节点" class="v-tips"><i class="ic-d ic-duplicate"></i></a></li>
+          <li ng-click="handleBreakConnClick()"><a value="断开所选连线" class="v-tips"><i class="ic-d ic-disconnect"></i></a></li>
+        </ul>
+        <div ng-mouseenter="handleSearcherMouseEnter($event)" ng-mouseleave="handleSearcherMouseLeave($event)" class="search">
+          <input type="text" placeholder="搜索" ng-keydown="handleSearcherKeydown($event)" id="search_txt"><a ng-click="handleSearchClick()" class="search-button"><i class="ic-d ic-search"></i></a>
+        </div>
+      </div>
+      <div id="nodes-kit" class="kit">
+        <div class="kit-title">
+          <h3>新增节点</h3><a class="switch-buton"><span>锁定</span>
+            <div class="switch"></div></a><a class="bt-close-left-panel">
+            <div><i class="ic ic-close"></i></div></a>
+        </div>
+        <div class="kit-section nano">
+          <div class="kit-content nano-content">
+            <div class="kit-scroll-group">
+              <div class="kit-position">
+                                <div class="title-local"><a class="quick-help"><i class="ic-m ic-question"></i></a><i id="arrow-drop-down" class="ic ic-arrow-drop-down"></i><span>基本节点</span></div>
+                <ul class="section-content">
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                </ul>
+              </div>
+              <div class="kit-position">
+                                <div class="title-local"><a class="quick-help"><i class="ic-m ic-question"></i></a><i id="arrow-drop-down" class="ic ic-arrow-drop-down"></i><span>甄别节点</span></div>
+                <ul class="section-content">
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                </ul>
+              </div>
+              <div class="kit-position">
+                                <div class="title-local"><a class="quick-help"><i class="ic-m ic-question"></i></a><i id="arrow-drop-down" class="ic ic-arrow-drop-down"></i><span>逻辑节点</span></div>
+                <ul class="section-content">
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                                    <li class="nodes-item"><a class="quick-help"><i class="ic-m ic-question"></i></a><i></i><span>选择题</span></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="media-kit" class="kit">
+        <div class="kit-title">
+          <h3>图片库</h3><a class="switch-buton"><span>锁定</span>
+            <div class="switch"></div></a><a class="bt-close-left-panel">
+            <div><i class="ic ic-close"></i></div></a>
+        </div>
+        <div class="kit-section nano">
+          <div class="kit-content nano-content">
+            <ul class="kit-scroll-group">
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item link">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item link">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item link">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+                            <li class="media-item">
+                              <div class="nodes-progress">
+                                <div class="nodes-progress-bar"></div>
+                              </div>
+                            </li>
+            </ul>
+          </div>
+          <div class="nodes-col"><a class="upload"><span>上 传</span></a>
+            <div><span>example.jpg</span><a><span>删除</span><i class="ic-m ic-trash"></i></a></div>
+            <div><i class="ic ic-dimensions"></i><span>640 x 360 px</span></div>
+            <div><i class="ic ic-size"></i><span>124 kB</span></div>
+            <div class="media-preview">
+              <div class="link-button">
+                <ul>
+                  <li>被以下节点所引用:</li>
+                  <li>选择题1</li>
+                  <li>选择题1</li>
+                  <li>选择题1</li>
+                  <li>选择题1</li>
+                  <li>选择题1</li>
+                  <li>选择题1</li>
+                </ul><a></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="theme-kit" class="kit mobile">
+        <div class="kit-title">
+          <h3>问卷预览</h3><a class="switch-buton"><span>锁定</span>
+            <div class="switch"></div></a><a class="bt-close-left-panel">
+            <div><i class="ic ic-close"></i></div></a>
+        </div>
+        <div class="kit-section nano">
+          <ul class="kit-content nano-content">
+            <div class="kit-scroll-group">
+              <div class="check-item"><a class="theme-mobile"><i class="ic ic-iphone"></i></a><a class="theme-pad"><i class="ic ic-ipad"></i></a><a class="theme-pc"><i class="ic ic-imac"></i></a></div>
+              <div class="theme-nav"><a id="preset-theme" class="gradient"><span>选择主题</span></a><a id="custom-theme" class="gradient"><span>保存自定义主题</span></a></div>
+              <div class="preview-screen">
+                <div id="survey-screen" class="survey-screen">
+                  <iframe id="preview-screen" src=""></iframe>
+                </div>
+              </div>
+              <div class="theme-control">
+                <h4>自定义颜色</h4>
+                <ul class="theme-color">
+                  <li>
+                    <div class="color-box"></div><span>背景</span>
+                  </li>
+                  <li>
+                    <div class="color-box"></div><span>问题文字</span>
+                  </li>
+                  <li>
+                    <div class="color-box"></div><span>按钮</span>
+                  </li>
+                  <li>
+                    <div class="color-box"></div><span>按钮文字</span>
+                  </li>
+                  <li>
+                    <div class="color-box"></div><span>选项文字</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ul>
+          <div class="theme-col">
+            <div class="theme-title"><i class="ic ic-preset"></i><span>选择主题</span><a id="close-col"><i class="ic ic-close"></i></a></div>
+            <div class="preset tab-panels">
+              <ul class="tabs">
+                <li><a rel="theme_panel1" class="tab activ"><span>预设主题</span></a></li>
+                <li><a rel="theme_panel2" class="tab"><span>自定义主题</span></a></li>
+              </ul>
+              <div id="theme_panel1" class="panel activ">
+                <ul>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                </ul>
+              </div>
+              <div id="theme_panel2" class="panel">
+                <ul>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                                    <li class="icolor"><i class="ic-m ic-tick"></i><a><i class="ic-m ic-trash"></i></a><span>coloricon</span>
+                                      <div>+</div>
+                                      <div>+</div>
+                                      <div>+</div>
+                                    </li>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                  <div class="justify-fix">&nbsp;</div>
+                </ul>
+              </div>
+              <div class="teme-save"><a id="close-teme-save"><i class="ic ic-close"></i></a>
+                <div class="icolor"><span></span>
+                  <div>+</div>
+                  <div>+</div>
+                  <div>+</div>
+                </div>
+                <h4>输入自定义主题名字:</h4>
+                <input type="text" placeholder=""><a class="gradient"><span>保存</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    setTimeout(function () {
+        $(".nano").nanoScroller({flash: true});
+    }, 1000);
+  </script>
+</html>

@@ -1,0 +1,65 @@
+﻿<div class="popup_masker">
+    <div class="popup_windows color_gary_kit_title border_dark_gary_262626 all_sides radius_3px batch_input" 
+         style="top: 50%; transform: translateY(-50%); -o-transform: translateY(-50%); -webkit-transform: translateY(-50%); -moz-transform: translateY(-50%); -ms-transform: translateY(-50%); ">
+        <div class="w-clearfix popup_title font_color_light_d6d6d6 border_light_gary_3c3c3c buttom">
+            <div class="design_icon ic_bach_input size_20px margin_r_5px float_l"></div>
+            <h2 class="float_l cursor_default">批量输入</h2>
+            <div class="w-inline-block close_button color_gary_gradient_icon_button border_light_gary_3c3c3c all_sides radius_2px"
+                 ng-mouseenter="closeHover = true" ng-mouseleave="closeHover = false" ng-click="handleCancleOptionClick()">
+                <div class="design_icon size_20px ic_close"
+                     ng-class="{'opacity_100_dur_200':closeHover,'opacity_70_dur_200':!closeHover}"></div>
+            </div>
+        </div>
+        <div class="batch_input_content">
+            <div class="w-clearfix batch_input_control border_light_gary_3c3c3c buttom elementHide"
+                 ng-mouseenter="titleHover = true"
+                 ng-mouseleave="titleHover = false">
+                <h4 class="margin_r_10px float_l margin_t_1px cursor_default">选项数值：</h4>
+                <div class="w-clearfix mc_button float_l border_dark_gary_262626 radius_3px all_sides">
+                    <div class="design_button_activation width_50per mc_options_t color_gary_gradient_icon_button"
+                         ng-class="{'trans_0_0_dur_200':numberShow,'trans_32_0_dur_200':!numberShow}"></div>
+                    <div class="float_l padding_lr_5px"
+                         ng-mouseenter="numberHideIconHover = true"
+                         ng-mouseleave="numberHideIconHover = false" >
+                        <div class="design_icon size_20px ic_off"
+                             ng-class="{'opacity_100_dur_200':numberHideIconHover,'opacity_70_dur_200':!numberHideIconHover}"></div>
+                    </div>
+                    <div class="float_l padding_lr_5px border_dark_gary_262626 left"
+                         ng-mouseenter="numberShowIconHover = true"
+                         ng-mouseleave="numberShowIconHover = false">
+                        <div class="design_icon size_20px ic_mc_number"
+                             ng-class="{'opacity_100_dur_200':numberShowIconHover,'opacity_70_dur_200':!numberShowIconHover}"></div>
+                    </div>
+                    <div class="w-inline-block design_button_activation mc_options_t width_50per cursor_pointer"
+                         ng-class="{'trans_0_0_dur_200':numberShow,'trans_32_0_dur_200':!numberShow}"
+                         ng-click="numberShow = !numberShow"></div>
+                </div>
+                <div class="design_icon size_20px ic_nodes_help nodes_help"
+                     ng-class="{'trans_0_0_dur_200':titleHover,'trans_0_m20_dur_200':titleHover}"></div>
+            </div>
+            <div class="w-clearfix batch_input_row" style="overflow:hidden;">
+                <div class="batch_number_from_wrapper border_light_gary_3c3c3c right elementHide"
+                     ng-class="{'elementShow':numberShow,'elementHide':!numberShow}">
+                    <textarea id="option_batch_add_number" class="batch_input_area cs-textarea batch-number"></textarea>
+                </div>
+                <div class="batch_input_from_wrapper"
+                     ng-class="{'width_85per':numberShow,'width_720px':!numberShow}">
+                    <textarea id="option_batch_add_text" class="batch_input_area cs-textarea batch-input"
+                              style="margin-left:6px;width:713px;"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="w-clearfix popup_control batch_input border_light_gary_3c3c3c top">
+            <div class="w-inline-block design_button padding_tb_5px radius_3px color_gary_gradient_text_button
+                 border_light_gary_3c3c3c all_sides font_color_light_d6d6d6 batch_input float_r cursor_pointer" ng-click="handleApplyOptionClick()">
+                <div class="font_center">确 定</div>
+            </div>
+            <div class="w-inline-block design_button padding_tb_5px radius_3px
+                 font_color_light_d6d6d6 cancel float_l cursor_pointer" ng-click="handleCancleOptionClick()">
+                <div class="font_center">取 消</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

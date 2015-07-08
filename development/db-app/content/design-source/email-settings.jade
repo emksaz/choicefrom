@@ -1,0 +1,40 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('邮箱设置')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    h1 密码设置
+                    button.purple
+                        i.ic.ic-star-w
+                        span 管理我的方案
+                    p 当前方案：经济型
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-user
+                    .content-wrap
+                        div
+                            #mail-settings.content-row
+                                .row-title
+                                    h2 邮箱通知
+                                    button.green(disabled='disabled')
+                                        i.ic.ic-2dot-w
+                                        span 保存更改
+                                form
+                                    h2 Please select what kind of emails you wish to receive.
+                                    div
+                                        include ./template/checkbox
+                                        +checkbox('checkboxG1','Major Feature Announcements')
+                                    div
+                                        +checkbox('checkboxG2','Important Account Messages')
+                                    div
+                                        +checkbox('checkboxG3','New Account Emails')
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+                                        | organization notifications.
+    include layout/footer

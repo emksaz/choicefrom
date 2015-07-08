@@ -1,0 +1,33 @@
+#web-link.content-row(ng-show='publishManager.otherFlag5')
+   .row-title
+      h2 发布地址
+      button.red(ng-disabled='!publishManager.cancelLock', ng-if='publishManager.downFlag', ng-click='DownClick()')
+         i.ic.ic-stop-w
+         span 停止收集方案
+      button.red(ng-disabled='!publishManager.downLock', ng-if='publishManager.cancelFlag', ng-click='CanclePublish()')
+         i.ic.ic-clear-w
+         span 取消发布
+   form
+      h3 Web 链接地址：
+      input#webShortLink(type='text', placeholder='', readonly='', name='web-link')
+      p(ng-show='!publishManager.parameterCheck')
+         | 发布链接地址。
+      p(ng-show='publishManager.parameterCheck')
+         | 您选择了带参链接的方式，请在使用问卷链接时设置参数的值，将来这个值会记录到问卷结果中。
+      br
+   form
+      h3 地址二维码：
+      div
+         img#qrCodeStr(src='', style='width:200px;height:200px')
+      // ▼分享模块
+      .jiathis_style_32x32
+         a.jiathis_button_weixin
+         a.jiathis_button_cqq
+         a.jiathis_button_tsina
+         a.jiathis_button_email
+         a.jiathis_button_copy
+         //a.jiathis.jiathis_txt.jtico.jtico_jiathis(href="http://www.jiathis.com/share" target="_blank")
+      script(type='text/javascript', src='http://v3.jiathis.com/code/jia.js', charset='utf-8')
+      // ▲分享模块
+      p
+         | 可扫描二维码进入问卷。

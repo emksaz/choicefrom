@@ -1,0 +1,32 @@
+
+<div id="sidebar" data-id="node_editor">
+  <div class="tab-panels">
+    <ul class="tabs">
+      <li><a value="" name="5" rel="sidebar_panel1" class="tab activ v-tips"><i class="ic ic-editor"></i></a></li>
+      <li><a value="Tooltip" name="6" rel="sidebar_panel2" class="tab v-tips"><i class="ic ic-advanced"></i></a></li>
+    </ul>
+    <div class="leading-section">
+      <div><i></i><span>选择题</span>
+        <div class="color-box"></div>
+      </div>
+      <div><span>题目编号</span></div>
+      <input type="text" placeholder="题目编号" ng-model="node.nodeName" ng-focus="handleNodeNameChange(node,-1)" ng-change="handleNodeNameChange(node)" ng-blur="handleNodeNameChange(node,1)" ng-model-options="{debounce:150}" ng-disabled="!node.nodeNameEditable" maxlength="20"/>
+      <div ng-click="handleNodeLocateClick(node)"><i class="ic-m ic-location"></i><span>common target</span></div>
+    </div>
+    <div id="sidebar_panel1" class="panel nano activ">
+      <div ng-if="node" class="kit-section-group nano-content">
+        <div data-question-setting="todo"></div>
+        <div data-type-setting="todo"></div>
+        <div data-option-setting="todo"></div>
+        <div data-common-setting="todo"></div>
+        <div data-other-setting="todo"></div>
+        <!--include ../content/sidebar/mc-options/question-settings.jade-->
+        <!--include ../content/sidebar/mc-options/type-settings.jade-->
+        <!--include ../content/sidebar/mc-options/mc-options-settings.jade-->
+        <!--include ../content/sidebar/mc-options/common-settings.jade-->
+        <!--include ../content/sidebar/mc-options/other-settings.jade-->
+      </div>
+    </div>
+    <div id="sidebar_panel2" class="panel"></div>
+  </div>
+</div>

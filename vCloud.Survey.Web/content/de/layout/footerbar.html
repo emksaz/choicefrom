@@ -1,0 +1,20 @@
+
+<div id="footerbar"><span id="system_hinter"></span>
+  <ul>
+    <li ng-click="handleShowAllClick()"><a value="显示全部" class="v-tips"><i class="ic-d ic-show-all"></i></a></li>
+    <li ng-click="chartSvgZoomIn()"><a value="放大" class="v-tips"><i class="ic-d ic-zoom-in"></i></a></li>
+    <li><span ng-bind="designManager.getChartZoomRateText()"></span></li>
+    <li ng-click="handleZoomOutClick()"><a value="缩小" class="v-tips"><i class="ic-d ic-zoom-out"></i></a></li>
+  </ul>
+  <ul>
+    <li ng-click="handleGridToggleClick()"><a value="网格显示" class="v-tips"><i class="ic-d ic-grid"></i></a></li>
+  </ul>
+  <ul>
+    <li ng-click="handleDeleteNodeClick()"><a value="删除节点" class="v-tips"><i class="ic-d ic-trash"></i></a></li>
+    <li ng-click="handleCopyNodeClick()"><a value="复制节点" class="v-tips"><i class="ic-d ic-duplicate"></i></a></li>
+    <li ng-click="handleBreakConnClick()"><a value="断开所选连线" class="v-tips"><i class="ic-d ic-disconnect"></i></a></li>
+  </ul>
+  <div ng-mouseenter="handleSearcherMouseEnter($event)" ng-mouseleave="handleSearcherMouseLeave($event)" class="search">
+    <input type="text" placeholder="搜索" ng-keydown="handleSearcherKeydown($event)" id="search_txt"/><a ng-click="handleSearchClick()" class="search-button"><i class="ic-d ic-search"></i></a>
+  </div>
+</div>

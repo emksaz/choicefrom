@@ -1,0 +1,36 @@
+.popup.drag#markdown
+    .popup-title
+        i.ic.ic-markdown
+        span 编辑问题
+        a.close-popup
+            i.ic.ic-close
+    .inner
+        .editor
+            #editor-control.editor-control
+                a(href='#h1') H1
+                a(href='#h2') H2
+                a(href='#h3') H3
+                span.editor-divider
+                a.text-bold(href='#bold') B
+                a.text-italic(href='#italic') I
+                a.text.Code(href='#quote') BQ
+                a(href='#ul-list')
+                    abbr(title='Unordered List') UL
+                a(href='#ol-list')
+                    abbr(title='Ordered List') OL
+                a.text.Code(href='#code') <>
+                a(href='#hr') ----
+                span.editor-divider
+                //a(href='#link') link
+                a(href='#image') 插入图片
+                span.editor-divider
+                a#eye(href='#', title='Preview') 预览
+                a
+                    i.ic.ic-question-l
+            textarea.editor-area#editor-area(placeholder='输入问题')
+            .result
+    .popup-control
+        a
+            span 取 消
+        a
+            span 确 定

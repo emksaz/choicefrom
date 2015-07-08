@@ -1,0 +1,28 @@
+
+<div id="Login" ng-controller="LoginCtrl" class="main-container">
+  <div id="logo"><span onclick="turnToIndex()">choice form</span><span>beta</span></div>
+  <h2>登 录</h2>
+  <form autocomplete="off" novalidate="novalidate" name="LoginForm">
+    <div class="input-login"><input type="email" name="loginEmail" placeholder="注册邮箱" required  ng-model="Email" id="name" value="@ViewData["Email"]" ng-keydown="Enter();" maxlength="50" ng-change="loginInputChange(LoginForm.$valid,LoginForm.loginEmail.$dirty)">
+      <mark ng-show="LoginForm.loginEmail.$dirty &amp;&amp; LoginForm.loginEmail.$invalid &amp;&amp; LoginForm.loginEmail.$error.required" class="form-message">请输入邮箱地址。</mark>
+      <mark ng-show="LoginForm.loginEmail.$dirty &amp;&amp; LoginForm.loginEmail.$invalid &amp;&amp; LoginForm.loginEmail.$error.email" class="form-message">请输入正确的邮箱格式。</mark>
+    </div>
+    <div class="input-login">@*
+      <input type="password" style="display:none"/>*@
+      <input id="password" type="password" name="loginPassword" placeholder="密码" required="" autocomplete="off" ng-model="Login.Password" ng-keydown="Enter();" maxlength="12" ng-change="loginInputChange(LoginForm.$valid,LoginForm.loginPassword.$dirty)"/>
+      <mark id="PwMsg" ng-show="LoginForm.loginPassword.$dirty &amp;&amp; LoginForm.loginPassword.$invalid &amp;&amp; LoginForm.loginPassword.$error.required" class="form-message">请输入密码。</mark>
+    </div>
+    <div class="input-login">
+      <div>
+        <input id="checkboxG1" type="checkbox" name="checkboxG1" onclick="changeCheck()" checked="checked" class="css-checkbox"/>
+        <label for="checkboxG1" class="checkbox-label">30 天内记住我</label>
+      </div>
+      <div onclick="ChangeToForget()" class="forgot-password"><span>忘记密码</span></div>
+    </div>
+  </form>
+  <button ng-click="login()" class="button blue"><span>登 录</span></button>
+  <div class="create-account">
+    <p>还没有<span onclick="turnToIndex()">choice form</span>账号？</p>
+    <h3 onclick="ChangeToRegister()">免费注册</h3>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.kit-position#question-settings
+    include ../../template/title-local.jade
+    +title('问题')
+    .section-content
+        .section-col
+            a.switch-buton.add-description
+                span 添加描述
+                .switch
+            a.switch-buton.add-media
+                span 添加媒体
+                .switch
+            a.win-edit
+                i.ic.ic-editor-win
+        textarea#topic(placeholder='输入问题', name='topic', required='required')
+        #description
+            .section-col
+                a.win-edit
+                    i.ic.ic-editor-win
+            textarea(placeholder='输入描述', name='description', required='required')
+        .media-content
+            h4 媒体选项：
+            include ../../template/select.jade
+            .pic-preview

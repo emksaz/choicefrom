@@ -1,0 +1,13 @@
+.dropdown.help-center
+    div
+        ul
+            mixin list(icon, name)
+                li
+                    i(class= icon)
+                    span= name
+            +list('ic ic-technical','技术文档')
+            +list('ic ic-forum','社区')
+            +list('ic ic-video-tutoria','视频教程')
+            +list('ic ic-question-f','FAQs')
+            +list('ic ic-shortcut','快捷键')
+            +list('ic ic-mail','联系我们')

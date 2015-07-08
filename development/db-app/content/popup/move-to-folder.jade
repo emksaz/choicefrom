@@ -1,0 +1,19 @@
+.pop-ups(ng-click='ShowPopup($event)', ng-show='QList.Popupbackground==5')
+   div
+      i.ic.ic-folder-f-d
+      span 移动到文件夹
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form
+      h3 将当前问卷移动到文件夹：
+      .select.dropdown-event
+         button.select.right-ic.dropdown-bt
+            span {{QList.MoveQuesFolder}}
+            i.ic.ic-down-1d
+         ul.option.downul
+            li(ng-show='QList.MoveT==1', ng-click="ChangeMoveFolder('','我的文件夹');") 我的文件夹
+            li(ng-click='ChangeMoveFolder(Folder.FolderID,Folder.FolderName);', ng-repeat='Folder in QList.ShowMoveFolderList', title='{{Folder.FolderName}}') {{Folder.FolderName}}
+      button.border(type='button', ng-click='CloseDiv()')
+         span 取 消
+      button.blue(ng-click='MoveFolder()')
+         span 移 动

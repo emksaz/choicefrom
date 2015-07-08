@@ -1,0 +1,278 @@
+﻿<div class="w-clearfix design_nodes_kit_section interactions_target font_color_light_d6d6d6 border_dark_gary_262626 right elementShow">
+    <div class="toolbar_sidebar color_gary_toolbar_select float_l">
+        <div class="toolbar_select color_gary_toolbar_select border_dark_gary_262626 buttom top"></div>
+    </div>
+    <div class="nodes_kit color_dark_slate_gary_kit float_l border_dark_gary_262626 left">
+        <div class="w-clearfix kit_title color_gary_kit_title padding_tb_8px padding_lr_10px border_dark_gary_262626 buttom">
+            <h2 class="float_l cursor_default">新增节点</h2>
+            <div class="w-inline-block close_button color_gary_gradient_icon_button border_light_gary_3c3c3c all_sides radius_2px cursor_pointer">
+                <div class="design_icon size_20px ic_close"
+                     ng-click="handleCloseBoxClick()"></div>
+            </div>
+        </div>
+        <div class="w-clearfix kit_hold height_30px color_dark_slate_gary_kit padding_lr_10px border_dark_gary_262626 top">
+            <div class="w-clearfix mc_button border_dark_gary_262626 radius_3px float_r all_sides" title="自动隐藏/固定显示">
+                <div class="button_activation color_gary_gradient_icon_button design_button"></div>
+                <div class="float_l padding_lr_5px">
+                    <div class="design_icon size_20px ic_hold"
+                         ng-class="{'node_box_pinned':nodeBoxManager.isPinned()}"></div>
+                </div>
+                <div class="w-inline-block button_link cursor_pointer"
+                     ng-click="handleTogglePinClick()"></div>
+            </div>
+        </div>
+        <div class="kit_section_group">
+            <div>
+                <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                     width_100per font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                     ng-click="nodeBoxManager.baseNodeHide = !nodeBoxManager.baseNodeHide">
+                    <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                         ng-class="{'rotate_m90_dur_300':nodeBoxManager.baseNodeHide,
+                                    'rotate_0_dur_300':!nodeBoxManager.baseNodeHide}"></div>
+                    <h4 class="float_l">基本节点</h4>
+                </div>
+                <div class="section_content" ng-class="{'elementHide':nodeBoxManager.baseNodeHide}">
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addSelectNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_mc"></div>
+                                <h4 class="margin_t_10px">选择题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Select" ng-click="handleHelpClick($event,'selectNode')"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addMarkingNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_rate"></div>
+                                <h4 class="margin_t_10px">打分题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Marking" ng-click="handleHelpClick($event,'markingNode')"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column node_box_item">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addFillblankNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_fill_blank"></div>
+                                <h4 class="margin_t_10px">填空题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Fillblank" ng-click="handleHelpClick($event,'fillblankNode')"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addSequencingNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_sequence"></div>
+                                <h4 class="margin_t_10px">排序题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Sequencing"></div>
+                            </div>
+                        </div>
+
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addMatrixNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_matrix"></div>
+                                <h4 class="margin_t_10px">矩阵题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Matrix"></div>
+                            </div>
+                        </div>
+
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addSelectPicNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_pictures"></div>
+                                <h4 class="margin_t_10px">图片题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_SelectPic" ng-click="handleHelpClick($event,'selectPicNode')"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addSequencingNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_movies"></div>
+                                <h4 class="margin_t_10px">视频题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_Vidio"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addEndNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_end"></div>
+                                <h4 class="margin_t_10px">结束节点</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_End" ng-click="handleHelpClick($event,'endNode')"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                     width_100per font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                     ng-click="nodeBoxManager.checkNodeHide = !nodeBoxManager.checkNodeHide">
+                    <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                         ng-class="{'rotate_m90_dur_300':nodeBoxManager.checkNodeHide,
+                                    'rotate_0_dur_300':!nodeBoxManager.checkNodeHide}"></div>
+                    <h4 class="float_l">甄别节点</h4>
+                </div>
+                <div class="section_content" ng-class="{'elementHide':nodeBoxManager.checkNodeHide}">
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 cursor_pointer"
+                                 data-method="addSelectNode" data-check="check" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_mc"></div>
+                                <h4 class="margin_t_10px">甄别选择题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help" id="node_box_ScreenSelect" ng-click="handleHelpClick($event,'screenSelect')"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addMarkingNode" data-check="check" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_rate"></div>
+                                <h4 class="margin_t_10px">甄别打分题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addSequencingNode" data-check="check" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_que_sequence"></div>
+                                <h4 class="margin_t_10px">甄别排序题</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addRegionNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_geographical"></div>
+                                <h4 class="margin_t_10px">地域</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addGenderNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_gender"></div>
+                                <h4 class="margin_t_10px">性别</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addAgeGroupNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_age"></div>
+                                <h4 class="margin_t_10px">年龄</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addMaritalStatusNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_marriage"></div>
+                                <h4 class="margin_t_10px">婚姻状况</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addEduStatusNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_educational"></div>
+                                <h4 class="margin_t_10px">学历</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addProfessionNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_profession"></div>
+                                <h4 class="margin_t_10px">职业</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addOccupationNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_industry"></div>
+                                <h4 class="margin_t_10px">行业</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addJobTitleNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_post"></div>
+                                <h4 class="margin_t_10px">职位</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addIncomeNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_income"></div>
+                                <h4 class="margin_t_10px">收入</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addFamilyIncomeNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_household_income"></div>
+                                <h4 class="margin_t_10px">家庭收入</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                     width_100per font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                     ng-click="nodeBoxManager.toolNodeHide = !nodeBoxManager.toolNodeHide">
+                    <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                         ng-class="{'rotate_m90_dur_300':nodeBoxManager.toolNodeHide,
+                                    'rotate_0_dur_300':!nodeBoxManager.toolNodeHide}"></div>
+                    <h4 class="float_l">工具节点</h4>
+                </div>
+                <div class="section_content" ng-class="{'elementHide':nodeBoxManager.toolNodeHide}">
+                    <div class="w-row overflow_hide border_dark_gary_262626 buttom">
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addLogicNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_logic"></div>
+                                <h4 class="margin_t_10px">逻辑节点</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button border_dark_gary_262626 right font_color_light_d6d6d6 column_button_disable"
+                                 data-method="addLoopNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_loop"></div>
+                                <h4 class="margin_t_10px">循环节点</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                        <div class="w-col w-col-4 column">
+                            <div class="w-inline-block column_button font_color_light_d6d6d6 box_developing"
+                                 data-method="addRandomNode" ng-click="handleAddNodeClick($event)">
+                                <div class="nodes_icon ic_random"></div>
+                                <h4 class="margin_t_10px">随机节点</h4>
+                                <div class="design_icon size_20px ic_nodes_help nodes_help"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

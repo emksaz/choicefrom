@@ -1,0 +1,105 @@
+.tips {
+  position: relative;
+  border-radius: 3px;
+  padding: 6px;
+  max-width: 300px;
+  background-color: fade(@dark_slate,95%);
+  .box-shadow(rgba(0, 0, 0, 0.3) 0px 3px 8px 0px);
+  :after {
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-width: 8px;
+  }
+  span {
+    font-size: 12px;
+    line-height: 12px;
+    color: @white;
+  }
+  a {
+    color: @dodger_blue;
+    cursor: pointer;
+    padding: 0 6px;
+    &:hover {
+      color: lighten(@dodger_blue, 10%);
+    }
+  }
+}
+
+.tips.top {
+  margin-top: 8px;
+  :after {
+    bottom: 100%;
+    left: 50%;
+    border-bottom-color: fade(@dark_slate,95%);
+    margin-left: -8px;
+  }
+}
+
+.tips.bottom {
+  margin-bottom: 8px;
+  :after {
+    top: 100%;
+    left: 50%;
+    border-top-color: fade(@dark_slate,95%);
+    margin-left: -8px;
+  }
+}
+
+.tips.left {
+  margin-left: 8px;
+  :after {
+    right: 100%;
+    top: 50%;
+    border-right-color: fade(@dark_slate,95%);
+    margin-top: -8px;
+  }
+}
+
+.tips.right {
+  margin-right: 8px;
+  :after {
+    left: 100%;
+    top: 50%;
+    border-left-color: fade(@dark_slate,95%);
+    margin-top: -8px;
+  }
+}
+
+.top-slide {
+  position: absolute;
+  max-width: 80%;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  color: @white;
+  padding: 12px 24px 12px 40px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  .box-shadow(rgba(0, 0, 0, 0.3) 0px 3px 8px 0px);
+  i {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+  }
+}
+
+.top-slide.green {
+  background-color: @sea_green;
+}
+
+.top-slide.red {
+  background-color: @tomato;
+}
+
+.tip_fix_top {
+  display: none;
+  position: fixed;
+  z-index: 9100;
+  top: 0;
+}

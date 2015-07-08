@@ -1,0 +1,23 @@
+﻿<div class="w-clearfix position_div">
+    <div class="nodes_options_image_preview float_r border_dark_gary_262626 all_sides thumb_image_icon cursor_default"
+         ng-attr-style="{{owner.image.getThumbnailStyle()}}"></div>
+    <div class="w-clearfix w-inline-block nodes_dropdown color_gary_gradient_text_button
+         border_light_gary_3c3c3c all_sides radius_2px width_225px font_color_light_d6d6d6 cursor_pointer"
+         ng-click="handleCurrImageClick(owner)">
+        <div class="design_icon size_20px ic_arrow_drop_down float_r"></div>
+        <h4 style="width:90%" class="text_ellipsis">{{getOwnerFileName(owner.image.fileName)}}</h4>
+        <div class="nodes_dropdown_menu border_light_gary_3c3c3c all_sides elementShow nodes_dropdown_menu_mediaSelect"
+             ng-if="owner.showImageList"
+             ng-mouseleave="handleListMouseLeave(owner)">
+            <div class="dropdown_list"
+                 ng-repeat="image in imageUploadManager.imageList"
+                 ng-click="handleImageItemClick(owner,image,$event)">
+                <h4 class="text_ellipsis">{{image.fileName}}</h4>
+            </div>
+            <div class="dropdown_list"
+                 ng-click="handleAddImageItemClick(owner)">
+                <h4>添加图片...</h4>
+            </div>
+        </div>
+    </div>
+</div>

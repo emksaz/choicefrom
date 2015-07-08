@@ -1,0 +1,44 @@
+nav.nav
+    #LoginAgainDiv.w-container
+        a(href='/')
+            .logo
+                span choice form
+                span beta
+        a.menu-button
+            i.ic.ic-menu-w
+        .menu
+            a#Selectques.nav-current(href='#/QM', ng-click='setLineStyle()') 我的调查问卷
+            a(ng-show="IsDemo=='1'") 问卷模版
+            a(ng-show="IsDemo=='1'") 教学
+            a(ng-show="IsDemo=='1'") 方案与定价
+            a(href='#/UC') 账户设置
+            #accounts-settings.dropdown-event
+                button.accounts-settings.right-ic.dropdown-bt
+                    i.ic-profile(style=' background-image: url({{UserImageURL.ImgUrl}}); ')
+                    span 账户设置
+                    i.ic.ic-down-2w
+                ul.dropdown.accounts-settings.downul
+                    li(ng-click="GoToUrl('/UC');")
+                        i.ic.ic-work
+                        | 用户设置
+                    li(ng-show="IsDemo=='1'", ng-click="GoToUrl('');")
+                        i.ic.ic-building-2d
+                        | 组织设置
+                    li(ng-show="IsDemo=='1'", ng-click="GoToUrl('');")
+                        i.ic.ic-star
+                        | 方案类型
+                    li(ng-show="IsDemo=='1'", ng-click="GoToUrl('');")
+                        i.ic.ic-megaphone-d
+                        | 更新通知
+                    li(ng-show="IsDemo=='1'", ng-click="GoToUrl('');")
+                        i.ic.ic-question-mark-d
+                        | 帮助中心
+                    li(ng-click='SignOut()')
+                        i.ic.ic-logout-d
+                        | 退出登录
+            .dropdown-event(ng-show="IsDemo=='1'")
+                a.notifications.dropdown-bt
+                    i.ic.ic-24-notifications
+                ul.dropdown.notification-center.downul
+                    li 没有新通知
+                    li 查看全部通知

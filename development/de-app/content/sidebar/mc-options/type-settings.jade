@@ -1,0 +1,49 @@
+.kit-position#type-settings
+    include ../../template/title-local.jade
+    +title('打分设置')
+    .section-content.tab-panels
+        .tabs.check-item
+            a.checkbox.tab.activ
+                i.radio-button.off
+                i.radio-button.on
+                span 分值评价
+            a.checkbox.tab
+                i.radio-button.off
+                i.radio-button.on
+                span 图像评价
+        .panel#type_panel1
+            h4 在以下范围之内:
+            .spinner
+                input.switch-button(type="text" value="1")
+                a
+                a
+            h5 至
+            .spinner
+                input.switch-button(type="text" value="1")
+                a
+                a
+        ul.panel.activ#type_panel2
+            mixin list(icon)
+                li.type-item
+                    a.quick-help
+                        i.ic-m.ic-question
+                    i(class= icon)
+                    i.ic-m.ic-tick
+                    //span 选择题
+            +list('ic-rheart-love-l')
+            +list('ic-rstar-l')
+            +list('ic-rcheck-l')
+            +list('ic-rdelete-l')
+            +list('ic-ryes-like-l')
+            +list('ic-rno-dislike-l')
+            +list('ic-rcrown-l')
+            +list('ic-rflower-l')
+            .attached-item
+                span 评价分值:
+                .input-range
+                    #range(name="stall_block")
+                        #range_point(name="dialog_block") 0
+                .text-tips
+                    i.ic-m.ic-prompt
+                    span 最小分值: 3分   |   最大分值: 7分
+

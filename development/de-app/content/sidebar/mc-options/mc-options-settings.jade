@@ -1,0 +1,18 @@
+.kit-position#mc-options-settings
+    include ../../template/title-local.jade
+    +title('选项')
+    .section-content
+        .section-col
+            a.switch-buton.options-num
+                span 选项数值
+                .switch
+            a.switch-buton.options-del
+                span 删除
+                .switch
+        //include ../../template/options.jade
+        div(data-normal-option="todo")
+        .add-options
+            a
+                span 添加选项
+            a#batch-input
+                i.ic.ic-expand-more

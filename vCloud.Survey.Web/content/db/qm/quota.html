@@ -1,0 +1,97 @@
+
+<div id="quota" class="content-wrap">
+  <div class="content-row">
+    <div class="row-title">
+      <h2>配额设置</h2>
+      <!--button.dark
+      i.ic.ic-plus-w
+      span 新建配额
+      -->
+      <button id="QuesQuotaDisabled" disabled="" ng-click="SaveQuota()" class="green"><i class="ic ic-2dot-w"></i><span>保存更改</span></button>
+      <button ng-click="DelQuotaTable()" class="red"><i class="ic ic-trash-w"></i><span>删除配额</span></button>
+    </div>
+    <div class="too-small-alert">
+      <p style="color: #4e5b68;">您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+    </div>
+  </div>
+  <div id="div_quota_allWidth" class="quota">
+    <div id="div_quota_sidebarWidth" ng-show="QuesQuotaInfo.IsShowSidebar" class="sidebar">
+      <div ng-show="!QuesQuotaInfo.ShowRow" class="setting-row">
+        <h2>创建配额行<a class="box-button"><i id="quatoNoRowTips" title="创建配额行" class="ic ic-question-mark-d"></i></a></h2><span>添加配额组<a ng-click="AddRowGroup('')" class="box-button dark"><i title="添加配额组" class="ic ic-plus-w"></i></a></span>
+        <div class="sidebar-row">
+          <!-- 配额侧栏-设置区块-->
+          <p>没有配额行条件</p>
+          <mark>点击右上角加号添加配额组。<a>更多帮助 »</a></mark>
+        </div>
+      </div>
+      <div ng-show="QuesQuotaInfo.ShowRow" class="setting-row">
+        <h2>创建配额行<a class="box-button"><i id="quatoHasRowTips" title="创建配额行" class="ic ic-question-mark-d"></i></a></h2><span>添加配额组<a ng-click="AddRowGroup('')" class="box-button dark"><i title="添加配额组" class="ic ic-plus-w"></i></a></span>
+        <div ng-show="QuesQuotaInfo.ShowRow" ng-repeat="rgroup in QuesQuotaInfo.RowGroup" class="sidebar-row">
+          <!-- 配额侧栏-设置区块--><span>{{rgroup.Name}}</span>
+          <div class="dropdown-event">
+            <ul class="floating strip downul">
+              <li>操作：</li>
+              <li ng-click="OpenEditName(rgroup)">重命名</li>
+              <li ng-click="DelGroup(rgroup,0)">删除</li>
+            </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+          </div><span>添加条件<a ng-click="AddSelect(rgroup,3)" class="box-button dark"><i title="添加条件" class="ic ic-plus-w"></i></a></span>
+          <div ng-repeat="GNodes in rgroup.Nodes" ng-mouseleave="GNodes.visibility={visibility:'hidden'}" class="select">
+            <button ng-click="GNodes.visibility={visibility:'visible'}" class="select right-ic"><span>{{GNodes.SelectName}}</span><i class="ic ic-down-1d"></i></button>
+            <ul style="z-index:1000;" ng-style="GNodes.visibility" ng-mouseleave="GNodes.visibility={visibility:'hidden'}" class="option">
+              <li ng-repeat="Node in GNodes.Nodes" ng-click="SelectNode(GNodes,Node.Title,Node.NodeID)">{{Node.Title}}</li>
+            </ul><a ng-click="DelSelect(GNodes.SortNo,rgroup.Nodes)" class="box-button"><i title="删除条件" class="ic ic-trash-d"></i></a>
+          </div>
+        </div>
+      </div>
+      <div ng-show="!QuesQuotaInfo.ShowCel" class="setting-row">
+        <h2>创建配额列<a class="box-button"><i id="quotaNoColTips" title="创建配额列" class="ic ic-question-mark-d"></i></a></h2><span>添加配额组<a ng-click="AddCelGroup('')" class="box-button dark"><i title="添加配额组" class="ic ic-plus-w"></i></a></span>
+        <div class="sidebar-row">
+          <!-- 配额侧栏-设置区块-->
+          <p>没有配额列条件</p>
+          <mark>点击右上角加号添加配额组。<a>更多帮助 »</a></mark>
+        </div>
+      </div>
+      <div ng-show="QuesQuotaInfo.ShowCel" class="setting-row">
+        <h2>创建配额列<a class="box-button"><i id="quotaHasColTips" title="创建配额列" class="ic ic-question-mark-d"></i></a></h2><span>添加配额组<a ng-click="AddCelGroup('')" class="box-button dark"><i title="添加配额组" class="ic ic-plus-w"></i></a></span>
+        <div ng-repeat="cgroup in QuesQuotaInfo.CelGroup" class="sidebar-row">
+          <!-- 配额侧栏-设置区块--><span>{{cgroup.Name}}</span>
+          <div class="dropdown-event">
+            <ul class="floating strip downul">
+              <li>操作：</li>
+              <li ng-click="OpenEditName(cgroup)">重命名</li>
+              <li ng-click="DelGroup(cgroup,1)">删除</li>
+            </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+          </div><span>添加条件<a ng-click="AddSelect(cgroup,2)" class="box-button dark"><i title="添加条件" class="ic ic-plus-w"></i></a></span>
+          <div ng-repeat="GNodes in cgroup.Nodes" ng-mouseleave="GNodes.visibility={visibility:'hidden'}" class="select">
+            <button ng-click="GNodes.visibility={visibility:'visible'}" class="select right-ic"><span>{{GNodes.SelectName}}</span><i class="ic ic-down-1d"></i></button>
+            <ul style="z-index:1000;" ng-style="GNodes.visibility" ng-mouseleave="GNodes.visibility={visibility:'hidden'}" class="option">
+              <li ng-repeat="Node in GNodes.Nodes" ng-click="SelectNode(GNodes,Node.Title,Node.NodeID)">{{Node.Title}}</li>
+            </ul><a ng-click="DelSelect(GNodes.SortNo,cgroup.Nodes)" class="box-button"><i title="删除条件" class="ic ic-trash-d"></i></a>
+          </div>
+        </div>
+      </div>
+      <button ng-click="CreateTable()" ng-show="QuesQuotaInfo.ShowCreateTableBtn" class="dark"><span>生成配额表格</span></button>
+    </div>
+    <div id="div-quota-input-parent" ng-show="QuesQuotaInfo.ShowTable" ng-style="QuesQuotaInfo.GridWidth" class="grid-position">
+      <div><a ng-click="SetDivShow()" class="box-button"><i class="ic ic-work"></i><span>{{QuesQuotaInfo.ShowSet}}</span></a></div>
+      <div id="div-quota-input"></div>
+      <div id="spanQuotaNum" class="total"><span>配额收集数合计：</span></div>
+    </div>
+  </div>
+</div>
+<input id="IsChange" type="hidden" name="IsChange" value="0"/>
+<!-- @*配额变更状态*@-->
+<input id="IsexisRow2" type="hidden" name="IsexisRow2" value="0"/>
+<!-- @*是否存在配额行2*@-->
+<div style="z-index:9000" ng-show="QuesQuotaInfo.Popupbackground!=0" ng-click="CloseDiv()" class="pop-ups-background">
+  <div ng-click="ShowPopup($event)" ng-show="QuesQuotaInfo.Popupbackground==1" class="pop-ups">
+    <div><i class="ic ic-folder-d"></i><span>重命名配额组</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form id="EditForm" name="EditForm" novalidate="">
+      <h3>名称：</h3>
+      <input id="EditName" type="text" placeholder="请输入名称" name="EditName" ng-model="QuesQuotaInfo.SelectChangeName" required="" ng-maxlength="10" oninput="notifyTextLength(this, 10)"/><br/>
+      <mark ng-show="EditForm.EditName.$dirty &amp;&amp; EditForm.EditName.$invalid" class="form-message">名称不可为空。</mark>
+      <button ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="EditQuotaName(EditForm.$valid)" class="blue"><span>重命名</span></button>
+    </form>
+  </div>
+</div>

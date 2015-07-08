@@ -1,0 +1,86 @@
+header.page-header
+   .w-container
+      a(href='#/QM')
+         i.ic.ic-24-dashboard-l(title='我的调查问卷')
+      h1#quesTile
+      button#quesTile.purple(ng-click="QuesSettBtn('Design')")
+         i.ic.ic-brush-w
+         span 设计问卷
+      #quesIconDIV.shortcut(style='display:none;')
+         a#preView.box-button(title='预览问卷', ng-click='PreViewCode($event)')
+            i.ic.ic-eye-f-d
+         a.box-button(ng-click='QuesSetMoveQues()', title='移动问卷')
+            i.ic.ic-folder-f-d
+         a.box-button(ng-click='QuesSetCopyQues()', title='复制问卷')
+            i.ic.ic-multiple-documents-f-d
+         a#delQuesaIcon.box-button(ng-click='OpenDelQues()', title='删除问卷')
+            i.ic.ic-trash-f-d
+// 顶部控制栏
+.w-container
+   .tabs.tabs-style
+      nav
+         ul
+            li(ng-attr-class="{{QQuesSet.QMSetAction=='Quota' && 'tab-current' || ''}}", ng-click="QuesSettTab('Quota')")
+               span 配额
+            li(ng-attr-class="{{QQuesSet.QMSetAction=='Publish' && 'tab-current' || ''}}", ng-click="QuesSettTab('Publish')")
+               span 发布
+            li(ng-attr-class="{{QQuesSet.QMSetAction=='AnalyzeResults' && 'tab-current' || ''}}", ng-click="QuesSettTab('AnalyzeResults')")
+               span 分析结果
+      div(ui-view='')
+
+.pop-ups-background(style='z-index:9000', ng-show='QQuesSet.QuesBtnFlag!=0', ng-click='cancelCon()')
+   .pop-ups.medium(ng-show='QQuesSet.QuesBtnFlag==2', ng-click='CancelPopup($event)')
+      div
+         i.ic.ic-trash-f-d
+         span 删除问卷
+         a.box-button(ng-click='cancelCon()')
+            i.ic.ic-x-d
+      form
+         p 当前问卷所有内容和数据将被永久删除，问卷访问链接也将随之失效。
+         h2
+            | 请输入
+            span choiceform
+            | 确认删除操作
+         input#delete-survey(type='text', name='delete-survey', ng-model='QQuesSet.DelPassWord', ng-keydown='enterOrEscOper(1)')
+         br
+         mark#delMessage.form-message  您输入的choiceform不正确，请重新输入。
+         button.border(type='button', ng-click='cancelCon()')
+            span 取 消
+         button.red(ng-click='QuesSetDelQuesByPwd()')
+            span 删除问卷
+   .pop-ups(ng-show='QQuesSet.QuesBtnFlag==1', ng-click='CancelPopup($event)')
+      div
+         i.ic.ic-folder-f-d
+         span 移动到文件夹
+         a.box-button(ng-click='cancelCon()')
+            i.ic.ic-x-d
+      form
+         h3 将当前问卷移动到文件夹：
+         .select.dropdown-event
+            button.select.right-ic.dropdown-bt
+               span {{QQuesSet.QuesSetInitFolder}}
+               i.ic.ic-down-1d
+            ul.option.downul
+               li(ng-if='MyFolderFlag', ng-click="SelectMoveFolder('','我的文件夹');") 我的文件夹
+               li(ng-click='SelectMoveFolder(Folder.FolderID,Folder.FolderName);', ng-repeat='Folder in QQuesSet.QuesSetFolderList') {{Folder.FolderName}}
+         button.border(type='button', ng-click='cancelCon()')
+            span 取 消
+         button.blue(ng-click='SaveMoveFolderData()')
+            span 移 动
+   #ques-review.pop-ups(ng-show='QQuesSet.QuesBtnFlag==3', ng-click='CancelPopup($event)')
+      div
+         i.ic.ic-eye-f-d
+         span 问卷预览
+         a.box-button(ng-click='cancelCon()')
+            i.ic.ic-x-d
+      form.ng-pristine.ng-valid
+         div
+            img#QuesPreviewURl
+         button.blue
+            span(ng-show='false') 下载二维码
+         mark.form-message 当前链接为预览链接，不作为正式的问卷向他人发送。
+         div
+            h3 问卷预览地址：
+            button.dark
+               span(ng-show='false') 复制链接
+            a#QuesPreviewHref.preViewLink(href='', target='_blank', style='height:auto;')

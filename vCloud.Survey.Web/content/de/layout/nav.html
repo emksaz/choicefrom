@@ -1,0 +1,12 @@
+
+<nav><a ng-click="handleBackIconClick()" class="leave"><i class="ic ic-leave"></i><i class="leave-icon"><span class="dashboard-loader"><span class="loader-inner"></span></span></i></a>
+  <div class="logo"><span>choice form</span><span>返回我的问卷</span></div>
+  <div ng-bind="designManager.startNode.nodeName" class="title"></div>
+  <div class="operation drop-closest"><a value="Tooltip" ng-click="handleReleaseIconClick()" class="publish v-tips"><i class="ic ic-publish"></i><span>发布</span></a><a value="Tooltip" ng-click="handleTestClick()" class="debug v-tips"><i class="ic ic-debug"></i><span>调试</span></a><a value="Tooltip" ng-click="handleReleaseIconClick()" class="save v-tips"><i class="sv sv-save"></i><span>保存</span></a>
+    <div class="history dropdown-item"><a ng-mouseenter="handleVersionHistoryMouseEnter()" class="drop-but"><i class="ic ic-history"></i></a>
+      <!--include ../content/-popup/history.jade-->
+      <div data-version-drop="designManager.versionHistoryManager" data-popupmessage-manager="designManager.PopupMessageManager"></div>
+    </div>
+    <div class="undo"><a value="Tooltip" ng-click="handleRedoClick()" class="v-tips"><i class="ic ic-redo"></i></a><a value="Tooltip" ng-click="handleUndoClick()" class="v-tips"><i class="ic ic-undo"></i></a></div>
+  </div>
+</nav>

@@ -1,0 +1,76 @@
+div
+   .w-tab-pane.w--tab-active.content-panel.border-silver.all-sides.radius-2px.settings(data-w-tab='Summary')
+      form#SummaryForm(name='SummaryForm', data-name='Que Title Form', novalidate='')
+         .content-panel-row.border-silver.bottom
+            .w-clearfix.content-panel-title
+               h4.content-panel-title-text 问卷摘要
+               a(ng-attr-class="{{QSummary.SFSubmitFlag && 'w-clearfix w-inline-block button float-right sea-green radius-3px save-settings-button' || 'w-clearfix w-inline-block button float-right silver radius-3px save-settings-button'}}", href='#', ng-click='SummarySubmit()')
+                  .icon.float-left.ic-save-w
+                  h5.float-left 保存更改
+            .form-title-text.margin-top-24px
+               h5 问卷标题：
+            .w-clearfix.postiton-relative
+               .w-form.survey-form
+                  input#SummaryQuesTitle.w-input.input.forced(type='text', placeholder='请输入问卷标题', name='SummaryQuesTitle', data-name='Que Title 2', ng-model='QSummary.SummaryQuesTitle', required='', ng-maxlength='100', ng-change='SFBtnSubmitCssChange(SummaryForm.$valid,SummaryForm.SummaryQuesTitle.$dirty)', maxlength='100')
+                  .w-form-done
+                     p Thank you! Your submission has been received!
+                  div(ng-show='SummaryForm.SummaryQuesTitle.$dirty && SummaryForm.SummaryQuesTitle.$invalid')
+                     .w-form-fail(ng-show='SummaryForm.SummaryQuesTitle.$error.required')
+                        p 问卷标题不可为空！
+                     .w-form-fail(ng-show='SummaryForm.SummaryQuesTitle.$error.maxlength')
+                        p {{::UserPageText.Summary_QTileMaximum}}
+               .right-help
+                  h6 {{::UserPageText.Summary_QTileMaximum}}
+            .form-title-text.margin-top-24px
+               h5 问卷简介：
+            .w-clearfix.postiton-relative
+               .w-form.survey-form
+                  textarea#SummaryQuesDescribe.w-input.survey-introduction(placeholder='请输入问卷简介', name='SummaryQuesDescribe', data-name='Que Intor Field', ng-maxlength='200', maxlength='200', ng-model='QSummary.SummaryQuesDescribe', ng-change='SFBtnSubmitCssChange(SummaryForm.$valid,SummaryForm.SummaryQuesDescribe.$dirty)')
+                  .w-form-done
+                     p Thank you! Your submission has been received!
+                  div(ng-show='SummaryForm.SummaryQuesDescribe.$dirty && SummaryForm.SummaryQuesDescribe.$invalid')
+                     .w-form-fail(ng-show='SummaryForm.SummaryQuesDescribe.$error.maxlength')
+                        p {{::UserPageText.Summary_QDescribeMaximum}}
+               .right-help
+                  h6 {{::UserPageText.Summary_QDescribeMaximum}}
+      .content-panel-row.border-silver.bottom.cover-pictures
+         .w-clearfix
+            h4.float-left 问卷封面：
+         .w-clearfix.margin-top-24px.postiton-relative
+            .survey-item.border-silver.all-sides.color-white.float-left.margin-right-24px
+               .survey-preview(style='background-image: url({{QSummary.SummaryQFacePpicture}}); background-size: cover; ')
+               .w-clearfix.collection-schedule.font-color-dark-gray.border-silver.top
+                  h6.float-right {{QSummary.FileSize}}
+               .pictures-upload-bar
+                  #progressbar.progress-bar(style='width:0%;')
+            .w-clearfix.upload-button.font-color-dark-gray
+               a.w-clearfix.w-inline-block.button.blue.float-left.radius-3px.btnUpload
+                  .icon.float-left.ic-upload-w
+                  h5.float-left 上 传
+               h6.cover-pictures-help {{::UserPageText.Summary_QFacePpicture}}
+      .content-panel-row
+         .w-clearfix
+            h4.float-left 问卷概述：
+         .margin-top-24px.postiton-relative
+            .overview
+               .overview-row
+                  h5.overview-column 创建者：
+                  h5.margin-right-15px {{::QSummary.SummaryCreateName}}
+               .overview-row
+                  h5.overview-column 修改者：
+                  h5.margin-right-15px {{QSummary.SummaryUpdateName}}
+               .overview-row
+                  h5.overview-column 创建时间：
+                  h5.margin-right-15px {{::QSummary.SummaryCreateDate}}
+               .overview-row
+                  h5.overview-column 修改时间：
+                  h5.margin-right-15px {{QSummary.SummaryUpdateDate}}
+               .overview-row
+                  h5.overview-column 节点数量：
+                  h5.margin-right-15px {{QSummary.SummaryNodeNum}}
+               .overview-row(style='display:none;')
+                  h5.overview-column 文件大小：
+                  h5.margin-right-15px 12.6 mb ( Files, Fonts, and Backups )
+            .right-help
+               h6 {{::UserPageText.Summary_QCommitment}}
+   #uploadDiv(style='display:none;')

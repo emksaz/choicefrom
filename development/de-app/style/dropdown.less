@@ -1,0 +1,186 @@
+//------------------------------------------------------------------------------------
+
+.dropdown-item {
+  &:hover .dropdown {
+    visibility: visible;
+    opacity: 1;
+  }
+  &:hover .dropdown div {
+    display: block;
+  }
+}
+
+.dropdown {
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  z-index: 99;
+  transform-style: preserve-3d;
+  > div {
+    display: none;
+    position: relative;
+    font-size: 12px;
+    background-color: @gray4a;
+    border-radius: 3px;
+    border: 1px solid @dark27-gray;
+    .windows-shadow;
+  }
+}
+
+.top-arrows {
+  &::after,
+  &::before {
+    bottom: 100%;
+    left: 50%;
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-bottom-color: darken(@dark39-gray, 2%);
+    border-width: 10px;
+    margin-left: -10px;
+  }
+  &::before {
+    border-bottom-color: @dark27-gray;
+    border-width: 11px;
+    margin-left: -11px;
+  }
+}
+
+.left-arrows(@top) {
+  &::after,
+  &::before {
+    right: 100%;
+    bottom: @top;
+    border: solid transparent;
+    content: " ";
+    position: absolute;
+    pointer-events: none;
+    border-color: transparent;
+    border-right-color: @gray4a;
+    border-width: 8px;
+    margin-bottom: -8px;
+  }
+  &::before {
+    border-right-color: @dark27-gray;
+    border-width: 9px;
+    margin-bottom: -9px;
+  }
+}
+
+//------------------------------------------------------------------------------------
+
+.dropdown.version {
+  padding: 24px 0 0 0;
+  position: absolute;
+  width: 256px;
+  top: 24px;
+  right: 164px;
+  > div {
+    .top-arrows;
+    > ul {
+      > li {
+        padding: 6px 12px;
+        overflow: hidden;
+        &:first-of-type {
+          .dark-gray-gradient;
+          border-bottom: 1px solid @dark27-gray;
+        }
+        &:nth-of-type(n+2) {
+          cursor: pointer;
+          &:hover {
+            background-color: fade(@dark27-gray, 24%);
+            > span {
+              color: @textd7;
+            }
+          }
+          > span {
+            float: left;
+            width: 75%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            color: lighten(@gray4a, 35%);
+          }
+          > a {
+            float: right;
+            margin-left: 6px;
+          }
+        }
+      }
+
+      li.version {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-top: 1px solid @dark27-gray;
+        &:hover .quick-help {
+          .translate3d(0,0,0);
+        }
+        .save-version {
+          float: left;
+          color: @textd7;
+          padding: 0 6px;
+          border-radius: 2px;
+          margin-right: 12px;
+          box-shadow: @purple 0 0 0 1px inset;
+          -webkit-box-shadow: @purple 0 0 0 1px inset;
+          -webkit-transition: background-color 0.3s, color 0.3s;
+          transition: background-color 0.3s, color 0.3s;
+          &:hover {
+            background-color: @purple;
+          }
+        }
+        > .quick-help {
+          float: none;
+          margin: 0;
+        }
+        > span {
+          float: left;
+          color: fade(@textd7, 35%);
+        }
+      }
+    }
+  }
+}
+
+//------------------------------------------------------------------------------------
+
+.dropdown.help-center {
+  padding: 0 0 0 24px;
+  position: absolute;
+  width: 140px;
+  bottom: 0;
+  left: 22px;
+  > div {
+    .left-arrows(16px);
+    > ul {
+      > li {
+        color: lighten(@gray4a, 35%);
+        overflow: hidden;
+        cursor: pointer;
+        padding: 5px 8px;
+        border-bottom: 1px solid @dark39-gray;
+        &:hover {
+          color: @textd7;
+          background-color: fade(@dark27-gray, 10%);
+          > i {
+            opacity: 1;
+          }
+        }
+        &:last-of-type {
+          border: hidden;
+        }
+        > i {
+          float: left;
+          margin-right: 8px;
+        }
+        > span {
+          float: left;
+        }
+      }
+    }
+  }
+}

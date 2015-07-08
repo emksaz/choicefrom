@@ -1,0 +1,11 @@
+
+<div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==1" class="pop-ups">
+  <div><i class="ic ic-add-folder-d"></i><span>新建文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form id="AddFolderForm" name="AddFolderForm" novalidate="">
+    <h3>文件夹名称：</h3>
+    <input id="AFolderName" type="text" placeholder="请输入文件夹名称" name="AFolderName" ng-model="EFolder.Name" ng-keydown="enterOrEscOper(4)" required="" ng-maxlength="20" oninput="notifyTextLength(this, 20)"/><br/>
+    <mark ng-show="AddFolderForm.AFolderName.$dirty &amp;&amp; AddFolderForm.AFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+    <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+    <button ng-click="SaveFolder(AddFolderForm.$valid)" class="green"><span>新 建</span></button>
+  </form>
+</div>

@@ -1,0 +1,11 @@
+mixin setting-row(title, add)
+    .setting-row
+        h2= title
+            a.box-button
+                i.ic.ic-question-mark-d
+        span= add
+            a.box-button.dark
+                i.ic.ic-plus-w
+        include ../template/quota-sidebar-row
+        +sidebar-row('配额行 1')
+        +sidebar-row('配额行 2')

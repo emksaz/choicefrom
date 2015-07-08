@@ -1,0 +1,10 @@
+
+<div id="save" class="popup vertical-centers">
+  <div class="popup-title"><i class="ic ic-document-1"></i>
+    <h3>保存一个版本</h3><a ng-click="handleCancleVersionClick()" class="close-popup"><i class="ic ic-close"></i></a>
+  </div>
+  <ul class="popup-content">
+    <input id="ver_name_input" type="text" placeholder="输入版本描述" maxlength="30" ng-attr-value="{{versionSaveManager.defaultName}}"/>
+    <div class="popup-control"><a ng-click="handleSaveVersionClick()"><span>确 定</span></a></div>
+  </ul>
+</div>

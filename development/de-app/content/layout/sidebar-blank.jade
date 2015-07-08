@@ -1,0 +1,26 @@
+#sidebar
+    .tab-panels
+        ul.tabs
+            li
+                a.tab.activ.v-tips(value="Tooltip" rel="sidebar_panel1")
+                    i.ic.ic-editor
+            li
+                a.tab.v-tips(value="Tooltip" rel="sidebar_panel2")
+                    i.ic.ic-advanced
+        .leading-section
+            div
+                i
+                span 选择题
+                .color-box
+            div
+                span 题目编号
+            input(type='text', placeholder='题目编号')
+            div
+                i.ic-m.ic-location
+                span common target
+        .panel.activ#sidebar_panel1
+            .kit-section-group
+                include ../sidebar/mc-options/nothing-selected.jade
+        .panel#sidebar_panel2
+            .kit-section-group
+                include ../sidebar/mc-options/nothing-selected.jade

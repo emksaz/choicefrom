@@ -1,0 +1,32 @@
+
+<div id="Register" ng-controller="RegisterCtrl" style=" display:none" class="main-container">
+  <div id="logo"><span onclick="turnToIndex()">choice form</span><span>beta</span></div>
+  <h2>注 册</h2>
+  <form name="RegisterForm" autocomplete="off" novalidate="novalidate">
+    <div class="input-sgin">
+      <input id="REmail" type="email" name="REmail" ng-keydown="enter()" placeholder="邮箱" autocomplete="off" ng-model="Reg.Email" maxlength="50" required="" ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.REmail.$dirty)"/>
+      <mark ng-show="RegisterForm.REmail.$dirty &amp;&amp; RegisterForm.REmail.$invalid &amp;&amp; RegisterForm.REmail.$error.required" class="form-message">请输入新邮箱地址。</mark>
+      <mark ng-show="RegisterForm.REmail.$dirty &amp;&amp; RegisterForm.REmail.$invalid &amp;&amp; RegisterForm.REmail.$error.email" class="form-message">请输入正确的邮箱地址。</mark>
+    </div>
+    <div class="input-sgin">
+      <input id="RName" type="text" ng-keydown="enter()" placeholder="您的名字" ng-model="Reg.Name" maxlength="50" autocomplete="off"/>
+    </div>
+    <div class="input-sgin">
+      <input type="password" style="display:none"/>
+      <input id="RPassWord" type="password" name="password" ng-keydown="enter()" placeholder="密码（至少6位）" ng-model="Reg.PassWord" ng-minlength="6" maxlength="12" required="" ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.password.$dirty)" autocomplete="off"/>
+      <mark ng-show="RegisterForm.password.$dirty &amp;&amp; RegisterForm.password.$invalid &amp;&amp; RegisterForm.password.$error.required" class="form-message">请输入新密码。</mark>
+      <mark ng-show="RegisterForm.password.$dirty &amp;&amp; RegisterForm.password.$invalid &amp;&amp; RegisterForm.password.$error.minlength" class="form-message">密码不能小于6个字符。</mark>
+    </div>
+    <div class="input-sgin">
+      <input id="RInviteCode" type="text" name="invitecode" ng-keydown="enter()" autocomplete="off" placeholder="请输入邀请码" ng-model="Reg.InviteCode" maxlength="8" required="" ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.invitecode.$dirty)"/>
+      <mark ng-show="RegisterForm.invitecode.$dirty &amp;&amp; RegisterForm.invitecode.$invalid &amp;&amp; RegisterForm.invitecode.$error.required" class="form-message">邀请码不能为空。</mark>
+      <mark ng-show="Reg.CheckInviteCodeFlag" class="form-message">邀请码错误。</mark>
+    </div>
+  </form>
+  <p id="sign_text">点击注册意味您了解并同意我们的<a>服务条款</a>和<a>隐私权条款</a><br/>没有邀请码？请发送邮件到sc@cform.io获得邀请码（邮件主题：邀请码）。</p>
+  <button ng-click="Register()" type="button" class="button blue"><span id="RegisterBtn">注 册</span></button>
+  <div class="create-account">
+    <p>已有<span onclick="turnToIndex()">choice form</span>账号？</p>
+    <h3 ng-click="ChangeToLogin()">登 录</h3>
+  </div>
+</div>

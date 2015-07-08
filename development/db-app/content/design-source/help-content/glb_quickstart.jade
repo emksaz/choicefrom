@@ -1,0 +1,268 @@
+h1 快速开始
+section
+   h2
+      i.ic-checkmark-2
+      | 创建新的调查问卷
+   p 在“问卷管理中心”点击“新建调查问卷”或者在问卷目录中点击带有“＋”标签的空白问卷创建新问卷。
+   img(src='images/help/glb_wjglzx.png', alt='问卷管理中心图例', width='600', height='auto')
+   p 输入问卷标题名称，点选开始设计问卷，页面切换进入问卷设计编辑器。
+   img(src='images/help/glb_xjdcwj.png', alt='问卷管理中心图例', width='600', height='auto')
+section
+   h2
+      i.ic-checkmark-2
+      | 设计与编辑问卷
+   h3 了解问卷设计编辑器：
+   p 问卷设计编辑器由问卷编辑区、问卷编辑工具栏、问卷节点工具栏、视图工具栏、节点操作工具栏、节点属性编辑面板和帮助工具栏构成，问卷设计编辑器为您提供了丰富的问卷设计与编辑功能，帮助您完成各类调研问卷的设计与编辑。
+   img(src='images/help/glb_wjsjbjq.png', alt='问卷管理中心图例', width='600', height='auto')
+   p 默认情况下，“问卷编辑区”已经为您生成了一个“开始”和一个“结束”节点，我们随后为您讲述这2个节点的具体作用。
+   h3 添加问卷题目节点：
+   p 点击“问卷节点工具栏”的“新增节点”按钮，在面板中点选“选择题”，创建一个新的“选择题”节点。
+   img(src='images/help/glb_wjsjbjqfc.png', alt='问卷管理中心图例', width='600', height='auto')
+   h3 编辑问卷题目节点内容和选项：
+   p 在“问卷编辑区”点选您刚才创建的选择题节点，“节点属性编辑面板”显示出该选择题的设置项。
+   h3 输入题目编号：
+   p 在“编号”输入框内输入该题在问卷中的编号，例如“Question 1”，或者“题目1”等，作为调研问卷题目的前缀。现在，我们输入“Question1”，作为题目编号。
+   include help-mark
+   +mark('题目编号是题目在问卷中的识别依据，一个题目编号严格对应一道题目。')
+   h3 输入问题内容：
+   p
+      | 在“问题描述”栏输入选择题的内容文字。
+      br
+      | 输入“您购车时，最注重汽车的哪个方面？”作为问题的内容文字。
+   h3 输入问题选项：
+   p
+      | 输入选择题的选项。
+      br
+      | 输入“动力”、“外观”、“品牌”、“油耗”、“内饰”、“价格”、“服务”、“产地”。
+      br
+      | 完成后的选择题节点如下所示：
+   img(src='images/help/glb_quickstart_nd1.png', alt='问卷管理中心图例', width='200', height='auto')
+   p
+      | 点击
+      img(src='images/help/btn_delete.png', alt='问卷管理中心图例', width='42', height='auto')
+      |  “删除”按钮，选项右侧显示
+      img(src='images/help/btn_lzt.png', alt='问卷管理中心图例', width='42', height='auto')
+      | 垃圾桶图标，点击选择题选项后的垃圾桶图标即可删除该选项。
+      br
+      | 现在，我们删除“产地”选项。
+   img(src='images/help/glb_wjsjbjq_xx.png', alt='问卷管理中心图例', width='200', height='auto')
+   h3 批量添加选项：
+   p
+      | 题目编号：Question2
+      br
+      | 问题：在您日常工作之余，您喜欢？
+      br
+      | 选项：自驾出游/市内购物/周边短途游
+   p
+      | 点选“Question1”选择题节点，点击节点操作工具栏中的“复制节点”
+      img(src='images/help/glb_gjl_fzjd.png', alt='问卷管理中心图例', width='200', height='auto')
+      | ，快速复制一个相同的选择题节点。
+      | 输入题目编号和问题内容。
+      br
+      | 点击“添加选项”按钮后面的箭头
+      img(src='images/help/btn_pltj.png', alt='问卷管理中心图例', width='100', height='auto')
+      | ，在批量添加对话框中批量添加选项。
+      br
+      img(src='images/help/dlg_pltj.png', alt='问卷管理中心图例', width='400', height='auto')
+      br
+      | 批量添加时，一行文字对应一个选项。添加完毕后系统自动为该题生成对应的选项与内容
+   include help-mark
+   +mark('可以使用快捷键或者鼠标右键菜单复制节点和批量添加选项。')
+section
+   h2
+      i.ic-checkmark-2
+      | 创建连续的题目：
+   h3 连接问卷题目节点：
+   p 现在您的问卷编辑区有4个节点，分别是“开始”节点、“结束”节点、“Question1”选择题节点和“Question2”选择题节点。
+   img(src='images/help/glb_quickstart_pic1.png', alt='问卷管理中心图例', width='600', height='auto')
+   br
+   h3 创建选择路径：
+   p
+      | 您可以看到，每个节点的边界排列着一些圆形端点，鼠标点击圆形端点并拖曳，随着鼠标的位置会显示一条曲线，这条曲线代表着选择路径，
+      | 鼠标移动到目标端点并释放鼠标，线条会连接到目标端点。这条从一个节点连接到另外一个节点的线条就代表着一条选择路径。
+   img(src='images/help/cht_connect.png', alt='问卷管理中心图例', width='500', height='auto')
+   include help-mark
+   +mark('并不是所有的节点端点间都能自由连接，当无法连接2个端点时，请注意错误提示。也可以将鼠标移动到节点右上角的红色惊叹号图标查看提示文字信息。')
+   h3 创建连续的选择路径：
+   p
+      | 从“开始”节点的输出端拖曳一条选择路径，在“Question1”选择题节点的输入节点上释放鼠标，连接“开始”节点和“Question1”选择题节点；
+      br
+      | 随后，在“Question1”选择题节点的“全部选项输出”端拖曳一条选择路径到“Question2”选择题节点；
+      br
+      | 最后，在“Question2”选择题节点的“全部选项输出”端拖曳一条选择路径到“结束”选择题节点；
+      br
+      br
+      | 连接3次线条，您就已经完成了一份最简单的、没有选择分支的问卷。问卷发布后，最终受访用户会看到一份从“Question1”开始，到“Question2”结束的问卷。
+      br
+      br
+      | 是不是很简单？
+   h3 在选择路径中插入一个题目节点：
+   p
+      | 新增一个选择题节点，该选择题节点的属性分别为：
+      br
+      | 题目编号：Question3
+      br
+      | 问题：如果购车的话，您的主要用途是？
+      br
+      | 选项：城市代步/周末全家出游/公司商务用车
+      br
+      br
+      | 鼠标移动到“Question2”选择题节点到“结束”节点的路径线条，线条变成黑色高亮状态。这时，点击线条并拖曳，线条会自动判断后松开起点或者终点，
+      | 将“Question3”选择题节点串接插入。问卷发布后，最终用户看到一份顺序为“Question1”、“Question2”、“Question3”的问卷。
+      br
+      br
+      | 或者，您也可以点选“Question2”选择题节点到“结束”节点的路径线条，线条变成红色选择状态，按键盘“Del”键，删除路径。随后将“Question3”选择题节点串接插入。
+      br
+      br
+      | 这时，您应该已经创建了一份类似下图的问卷。
+   img(src='images/help/glb_wjsjbjqfcwj.png', alt='问卷管理中心图例', width='600', height='auto')
+section
+   h2
+      i.ic-checkmark-2
+      | 保存和恢复问卷版本：
+   h3 保存问卷版本：
+   p 按组合键盘“Ctrl＋S”，在弹出窗口中输入问卷版本的名称，就可以为当前问卷保存一个版本。
+   img(src='images/help/glb_bcwjbb.png', alt='问卷管理中心图例', width='300', height='auto')
+   h3 恢复问卷版本：
+   p 鼠标移动到“问卷版本”按钮上，在下拉菜单中选择之前保存的问卷版本，可以在当前问卷编辑区中打开该问卷版本。
+   img(src='images/help/glb_hfwjbb.png', alt='问卷管理中心图例', width='300', height='auto')
+   include help-mark
+   +mark('打开问卷版本会覆盖您的当前问卷状态。问卷版本保存在问卷信息中，只有打开问卷才能在其中找到该问卷的历史版本。')
+section
+   h2
+      i.ic-checkmark-2
+      | 为题目选项设定不同的分支：
+   p
+      | 在很多情况下，您希望根据受访用户对问卷中某一题的不同选择，动态地生成后续的问题，以便更为精准地进行问卷调研。
+      br
+      br
+      | 例如，对于现有问卷，您希望当受访用户在“Question2”选择了“周边短途游”时，才让他回答“Question3”，而没有选择“周边短途游”时结束问卷，您就需要创建一份带有选择分支的问卷。
+   h3 创建带有分支的选择路径：
+   p 首先断开“Question2”和“Question3”的输入、输出路径。您可以按之前的操作选择线条进行删除.
+   include help-mark
+   +mark('更为方便的是，您可以选择一个节点后，在节点操作工具栏点击“断开节点连接”按钮，直接断开该节点的所有连接。')
+   p
+      | 随后，鼠标拖曳“Question2”选择题节点的第3个选项“周边短途游”的端点，将选择路径连接到“Question3”选择题节点的输入端。
+      | 随后，拖曳“Question2”选择题节点的“其他选项输出”连接到“结束”节点。
+      | 最后，将“Question3”选择题节点的输出也连接到“结束”节点。就这样，您就完成了一份带有选择分支的问卷设计。
+      br
+      | 当受访用户在“Question2”选择题选择“周边短途游”时，下一题将是“Question3”选择题。而没有选择“周边短途游”时，问卷自行结束。
+      br
+      br
+      | 这时，您应该已经创建了一份类似下图的问卷。是不是也很简单。
+   img(src='images/help/glb_wjsjbjqfcwj1.png', alt='问卷管理中心图例', width='600', height='auto')
+   p 如果希望对“Question2”选择题选择“自驾出游”时，也另行处理，只需要按照上述方法再串接一个题目节点即可实现。试试看！
+section
+   h2
+      i.ic-checkmark-2
+      | 设定问卷标题和封面
+   p
+      | 简洁明确的问卷标题和精美的问卷封面很容易喜迎受访者的关注，同时能直观地表述问卷设计的内容。
+      br
+   p
+      | 点选“开始”节点，在节点属性编辑面板中点击“添加媒体”
+      img(src='images/help/btn_tjmt.png', alt='问卷管理中心图例', width='80', height='auto')
+      | 按钮，在“媒体选项”下拉列表中点击上传图片。
+      | 上传完毕后，该图就是问卷的封面。
+      br
+      | 随后，在“问卷描述”中输入问卷的描述文字。设定完毕后，受访者回答问卷时，首先就会看到问卷的摘要描述和封面图片。
+   include help-mark
+   +mark('排列美观、整齐的问卷非常有利于您掌控问卷的整体选择逻辑，从线条的连接就可以看出问卷是否已经正确地反映了您问卷的选择逻辑。')
+section
+   h2
+      i.ic-checkmark-2
+      | 设定问卷结束语和封底
+   p
+      | 亲切的问卷结束语能拉近您与受访者的距离。
+      br
+   p
+      | 点选“结束”节点，在节点属性编辑面板中的“结束描述”中输入问卷的结束语。设定完毕后，当受访者完成问卷回答时，就会看到问卷的结束语。同问卷封面一样，您也可以上传一幅图片作为问卷的封底.
+   include help-mark
+   +mark('一份问卷可以有多个结束节点以满足不同的问卷结束条件，您可以对这些结束节点分别设定不同的结束文字和封底。您可以在媒体资源面板中上传所有图片，当需要使用时，在“媒体选项”下拉列表中选择需要的图片即可。')
+section
+   h2
+      i.ic-checkmark-2
+      | 让问卷更便于浏览
+   p 随着问卷题目节点的增加，问卷编辑区可能无法容下那么多节点，您可以拖动题目节点到空白的区域，位置的移动不会影响改节点的路径选择。
+   include help-mark
+   +mark('排列美观、整齐的问卷非常有利于您掌控问卷的整体选择逻辑，从线条的连接就可以看出问卷是否已经正确地反映了您问卷的选择逻辑。')
+   p
+      | 有时，您会无法浏览到全部的节点，这时点击拖动问卷编辑区的背景，问卷所有节点将跟随鼠标移动。或者，您也可以点击视图工具栏的“放大视图”或“缩小视图”，特别是点击“显示全部”按钮将自动以合适的比例显示您问卷的所有节点。
+   img(src='images/help/glb_gjl_stcz.png', alt='问卷管理中心图例', width='200', height='auto')
+   include help-mark
+   +mark('在编辑时，留意右下角的“鹰眼视图”，“鹰眼视图”在固定小窗内为您显示所有的问卷节点，您可以找到您所有的问卷节点。')
+section
+   h2
+      i.ic-checkmark-2
+      | 保存问卷
+   p 系统会定时自动保存您的操作步骤，您也可以点击“保存”按钮保存您的问卷。
+   img(src='images/help/glb_gjl_bcwj.png', alt='问卷管理中心图例', width='200', height='auto')
+section
+   h2
+      i.ic-checkmark-2
+      | 调试问卷
+   p
+      | 问卷设计完毕后，可能会有一些小问题您没有注意，您可以点击
+      img(src='images/help/btn_wjts.png', alt='问卷管理中心图例', width='80', height='auto')
+      |  “调试”按钮，对问卷进行调试。
+   ul.list-style-ul
+      li
+         span 当问卷有错误时：
+         br
+         span
+            | 系统会弹出对话框，对话框中会列出有问题的节点。点击对话框中的问题节点名称，
+            | 该节点将居中显示在问卷编辑界面中，便于您纠正错误。
+         br
+         img(src='images/help/dlg_tscc.png', alt='问卷管理中心图例', width='300', height='auto')
+      li
+         span 当问卷没有有错误时：
+         br
+         span 如果没有提示框，那么您已经正确创建了问卷。系统弹出问卷预览提示框，提示框中包含问卷预览Web连接地址和地址二维码。
+         br
+         img(src='images/help/dlg_wjyl.png', alt='问卷管理中心图例', width='300', height='auto')
+         br
+         span 点击预览提示框里的问卷Web链接地址，或者扫描地址二维码对问卷进行预览。
+      include help-mark
+      +mark('预览问卷与真实问卷完全一致，但仅用于问卷预览和纠错，不会对问卷数据进行收集。')
+section
+   h2
+      i.ic-checkmark-2
+      | 发布问卷
+   p
+      | 点击
+      img(src='images/help/btn_wjfb.png', alt='问卷管理中心图例', width='80', height='auto')
+      | “发布”按钮打开“问卷发布”设定页面。在页面中设定：
+      br
+      | 问卷发行数：100
+      br
+      | 问卷收集时限：30天
+      br
+      | 直接发布
+      br
+      | 每终端允许多次回复
+      br
+      br
+      | 其余设定保持不变，点击“发布收集方案”。发布成功后，页面中将返回：
+      br
+      | Web链接地址：通过网络访问问卷的地址。
+      br
+      | 地址二维码：问卷地址的二维码。
+      br
+      br
+      | 这时，您就完成了一份最简单的问卷的设计和分发。
+section
+   h1
+      i.ic-link-4
+      | 相关链接:
+   br
+   a(href='', target='_blank')
+      span 问卷编辑器使用入门（一）
+   br
+   a(href='', target='_blank')
+      span 问卷编辑器使用入门（二）
+   br
+   a(href='', target='_blank')
+      span 快捷键清单
+   br
+   a(href='', target='_blank')
+      span 问卷管理中心

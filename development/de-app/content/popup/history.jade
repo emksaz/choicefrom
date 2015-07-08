@@ -1,0 +1,19 @@
+.dropdown.version
+    div
+        ul
+            li
+                span 最近保存时间
+            li
+                span Mar 16, 2015 15:08:37
+        ul
+            li.version
+                a.save-version(ng-click="handleVersionSaveClick()") 保存版本
+                span command + s
+                a.quick-help
+                    i.ic-m.ic-question
+            li(ng-repeat="item in versionHistoryManager.getBackupList()", ng-click="handleVersionItemClick(item)")
+                span(title="{{item.verName}}") >{{item.verName}}
+                a(ng-click="handleDeleteIconClick(item,$event)")
+                    i.ic-m.ic-trash
+                a(ng-click="handleChangeIconClick(item,$event)")
+                    i.ic-m.ic-pan

@@ -1,0 +1,64 @@
+div
+    .content-wrap
+        div
+            #profile.content-row
+                #indicatorContainerWrap
+                    #RadioProgressBar
+                    i.ic-profile(style='background-image: url({{UserImageURL.ImgUrl}});')
+                div
+                    button.blue.btnUpload
+                        i.ic.ic-cloud-upload-w
+                        span 上 传
+                    p
+                        | {{::UserPageText.UserInfo_UserPicForm}}
+                        br
+                        | {{::UserPageText.UserInfo_UserPicSize}}
+            .content-row
+                .row-title
+                    h2 帐户信息
+                    button.green(ng-disabled='!UUserInfo.UserInfoSubmitFlag', ng-click='SubmitUserInfo()')
+                        i.ic.ic-2dot-w
+                        span 保存更改 
+                form(name='UserInfoNameForm')
+                    h3 使用者名称：
+                    input(type='text', ng-minlength='2', ng-maxlength='20', maxlength='20', ng-keydown='enter()', placeholder='请输入使用者名称', name='accountName', ng-model='UUserInfo.accountName', ng-change='userInfoEditChange(UserInfoNameForm.$valid,UserInfoNameForm.accountName.$dirty)')
+                    br
+                    mark.form-message(style='display:block', ng-show='UserInfoNameForm.accountName.$dirty && UserInfoNameForm.accountName.$invalid && UserInfoNameForm.accountName.$error.minlength') 使用者名称最少输入2位。
+                    mark.form-message(style='display:block', ng-show='UserInfoNameForm.accountName.$dirty && UserInfoNameForm.accountName.$invalid && UserInfoNameForm.accountName.$error.maxlength') {{::UserPageText.UserInfo_UserName}}
+                    p {{::UserPageText.UserInfo_UserName}}
+                form(name='UserInfoEmailForm')
+                    h3 Email 地址：
+                    input(type='text', name='accountEmail', ng-keydown='enter()', placeholder='请输入 Email 地址', ng-model='UUserInfo.accountEmail', ng-maxlength='50', required='', ng-change='emailCheck(UserInfoEmailForm.$valid,UserInfoEmailForm.accountEmail.$dirty,this.UUserInfo.accountEmail)', maxlength='50')
+                    br
+                    mark.form-message(style='display:block', ng-show='UserInfoEmailForm.accountEmail.$dirty && UserInfoEmailForm.accountEmail.$invalid && UserInfoEmailForm.accountEmail.$error.required') 请输入Email地址
+                    mark.form-message(style='display:block', ng-show='UserInfoEmailForm.accountEmail.$dirty && UserInfoEmailForm.accountEmail.$invalid && UserInfoEmailForm.accountEmail.$error.maxlength') {{::UserPageText.UserInfo_Email}}
+                    mark.form-message(style='display:block', ng-show='emailCheckFlag') 邮箱格式错误！
+                    p {{::UserPageText.UserInfo_Email}}
+            #fast_binding.content-row.fast_login
+              span 快捷绑定: 
+              div
+                a.qq_logo_h(style='background-image: url({{UUserInfo.QQQuickLoginPic}}); ')
+                span {{UUserInfo.QQQuickNickName}}
+                button#QQBindBtn.green(ng-click="turnToOuter('QQ')") 绑 &nbsp定
+              div
+                a.sina_logo_h(style='background-image: url({{UUserInfo.SinaQuickLoginPic}}); ')
+                span {{UUserInfo.SinaQuickNickName}}
+                button#SinaBindBtn.green(ng-click="turnToOuter('sina')") 绑 &nbsp定
+            #overview.content-row
+                h2 使用详情
+                ul
+                    li
+                        span 账户创建时间：
+                        span {{::UUserInfo.CreateDate}}
+                    li
+                        span 创建问卷数量：
+                        span {{UUserInfo.CreateSum}}
+                    li
+                        span 发布问卷数量：
+                        span {{UUserInfo.PublishSum}}
+                    li(style='display:none;')
+                        span 存储容量：
+                        span 759.6 mb
+                    p {{::UserPageText.UserInfo_Commitment}}
+
+    #uploadDiv(style='display:none;')

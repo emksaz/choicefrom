@@ -1,0 +1,118 @@
+header#sample-page.page-header
+    .w-container
+        h1 新建调查问卷
+        button#create-surveys.button.blue.right-ic(ng-disabled='QCreate.QFBtnSubmitFlag', ng-click='QuesSubmit()' ,has-authority="QCreatePage-DesignQuesBtn")
+            span 开始设计问卷
+            i.ic.ic-right-2w
+        button#create-surveys.button.gray(ng-click='GoToQM()',has-authority="QCreatePage-CancalBtn")
+            span 取 消
+#sample-w.w-container
+    .too-small-alert
+        p 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。
+    .content-wrapper
+        .creating
+            form(novalidate='')
+                div
+                    h3 问卷标题：
+                    .dropdown-event
+                        button.right-ic.dropdown-bt
+                            i.ic.ic-folder-l
+                            span {{QCreate.InitFolderName}}
+                            i.ic.ic-down-2d
+                        ul.dropdown.c-folder.right-ic.downul(ng-style='QCreate.ShowDownFolder')
+                            li.dropdown-tips 切换文件夹
+                            .overauto
+                                li(ng-click='ChangeFolderCss(Folder);', ng-repeat='Folder in QCreate.DataFolderList', title='{{Folder.FolderName}}')
+                                    i.ic.ic-folder-d
+                                    | {{Folder.FolderName}}
+                                    i.ic.ic-checkmark-b(ng-show='Folder.IsSelect')
+                            li(ng-click='CreateFolder()')
+                                i.ic.ic-add-folder-d
+                                | 创建新的文件夹
+                input#QueTitle(type='text', placeholder='请输入问卷标题', name='QueTitle', ng-model='QCreate.QueTitle', required='', ng-maxlength='100', ng-change='QFbtnSubmitCssChange()', oninput='notifyTextLength(this, 100)', maxlength='100')
+                br
+                p {{UserPageText.Summary_QTileMaximum}}
+        .separator-bar
+            h1 使用范本
+            .dropdown-event
+                button.right-ic.dropdown-bt
+                    span {{QCreate.CurrentModelName}}
+                    i.ic.ic-down-2d
+                ul.dropdown.sample.right-ic.downul
+                    li.dropdown-tips 范本分类
+                    li(ng-repeat='modelType in ModelTypeList', ng-click='selectModel(modelType,ModelTypeList,1,0,true)')
+                        | {{modelType.ModelTypeName}}
+                        i.ic.ic-checkmark-b(ng-show='modelType.IsSelect')
+    // 文件夹控制栏
+    .surveys
+        .survey-column(ng-repeat='quesInfo in QuesList')
+            .survey-item(ng-class='quesInfo.SelectClass')
+                .open-design(ng-click='showSelectDiv(quesInfo,QuesList)')
+                    .survey-mask
+                        .survey-operations
+                            a(ng-click='PreViewModel(quesInfo.QuesID,$event)', ng-show='quesInfo.IsViewModelShow')
+                                i.ic.ic-eye-d-w
+                                span 查看范本
+                        a.design-enter 选择范本
+                    h1(ng-show="quesInfo.BlankContent!=''") 空 白
+                    .survey-preview(ng-show="quesInfo.BlankContent==''", style='background-image: url({{quesInfo.ImgUrl}});')
+                .collection-schedule
+                    span {{quesInfo.Price}}
+                    div(ng-if='quesInfo.IsSelectFlag') 已选择
+            .survey-footer.ellipsis
+                span(title='{{quesInfo.Title}}')
+                    | {{quesInfo.Title}}
+                div(title='{{quesInfo.Descript}}') {{quesInfo.Descript}}
+    a.load-more(ng-click='addMoreQues()', ng-show='QCreate.AddMoreFlag' ,has-authority="QCreatePage-AddMoreBtn")
+        p 加载更多...
+.pop-ups-background(style='z-index:9000', ng-show="QCreate.CreateFolderFlag!='hide'", ng-click='QuesCreateClose()')
+    .pop-ups(ng-show="QCreate.CreateFolderFlag=='Show'", ng-click='QuesCreatePopup($event)')
+        div
+            i.ic.ic-add-folder-d
+            span 新建文件夹
+            a.box-button(ng-click='concelWin()')
+                i.ic.ic-x-d
+        form#FolderForm(name='FolderForm', novalidate='')
+            h3 文件夹名称：
+            input#AFolderName(type='text', placeholder='请输入文件夹名称', name='AFolderName', ng-model='QCreate.newFolderName', ng-keydown='enterOrEscOper(1)', required='', ng-maxlength='20', oninput='notifyTextLength(this, 20)')
+            br
+            mark.form-message(ng-show='FolderForm.AFolderName.$dirty && FolderForm.AFolderName.$invalid') 文件夹名称不可为空。
+            button.border(type='button', ng-click='concelWin()')
+                span 取 消
+            button.green(ng-click='SaveNewFolder(FolderForm.$valid)')
+                span 新 建
+
+    //.pop-ups(ng-show="QCreate.CreateFolderFlag=='Preview'", ng-click='QuesCreatePopup($event)')
+       div
+          i.ic.ic-eye-f-d
+          span 问卷预览
+          a.box-button(ng-click='QuesCreateClose()')
+             i.ic.ic-x-d
+       form
+          h3 问卷预览地址：
+          br
+          a#QuesCreatePreviewHref.preViewLink(href='', target='_blank', style='height:auto;')
+          br
+          h3 问卷预览二维码：
+          br
+          #QuesCreatePreviewURl
+          br
+          h6 当前链接为预览链接，不记录结果，请不要作为正式的问卷向他人发送。
+
+    #ques-review.pop-ups(ng-show="QCreate.CreateFolderFlag=='Preview'", ng-click='QuesCreatePopup($event)')
+        div
+            i.ic.ic-eye-f-d
+            span 问卷预览
+            a.box-button(ng-click='QuesCreateClose()')
+                i.ic.ic-x-d
+        form.ng-pristine.ng-valid
+            div
+                img#QuesPreviewURl
+            button.blue
+                span(ng-show='false') 下载二维码
+            mark.form-message 当前链接为预览链接，不作为正式的问卷向他人发送。
+            div
+                h3 问卷预览地址：
+                button.dark
+                    span(ng-show='false') 复制链接
+                a#QuesPreviewHref.preViewLink(href='', target='_blank', style='height:auto;')

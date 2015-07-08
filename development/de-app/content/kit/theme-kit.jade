@@ -1,0 +1,126 @@
+.kit#theme-kit.mobile
+    .kit-title
+        h3 问卷预览
+        a.switch-buton
+            span 锁定
+            .switch
+        a.bt-close-left-panel
+            div
+                i.ic.ic-close
+    .kit-section.nano
+        ul.kit-content.nano-content
+            .kit-scroll-group
+                .check-item
+                    a.theme-mobile
+                        i.ic.ic-iphone
+                    a.theme-pad
+                        i.ic.ic-ipad
+                    a.theme-pc
+                        i.ic.ic-imac
+                .theme-nav
+                    a.gradient#preset-theme
+                        span 选择主题
+                    a.gradient#custom-theme
+                        span 保存自定义主题
+                .preview-screen
+                    .survey-screen#survey-screen
+                        iframe#preview-screen(src='')
+                .theme-control
+                    h4 自定义颜色
+                    ul.theme-color
+                        li
+                            .color-box
+                            span 背景
+                        li
+                            .color-box
+                            span 问题文字
+                        li
+                            .color-box
+                            span 按钮
+                        li
+                            .color-box
+                            span 按钮文字
+                        li
+                            .color-box
+                            span 选项文字
+        .theme-col
+            .theme-title
+                i.ic.ic-preset
+                span 选择主题
+                a#close-col
+                    i.ic.ic-close
+            .preset.tab-panels
+                ul.tabs
+                    li
+                        a.tab.activ(rel="theme_panel1")
+                            span 预设主题
+                    li
+                        a.tab(rel="theme_panel2")
+                            span 自定义主题
+                .panel.activ#theme_panel1
+                    ul
+                        mixin coloricon(name)
+                            li.icolor
+                                i.ic-m.ic-tick
+                                span= name
+                                div +
+                                div +
+                                div +
+                                div +
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                .panel#theme_panel2
+                    ul
+                        mixin coloricon(name)
+                            li.icolor
+                                i.ic-m.ic-tick
+                                a
+                                    i.ic-m.ic-trash
+                                span= name
+                                div +
+                                div +
+                                div +
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        +coloricon('coloricon')
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                        .justify-fix &nbsp;
+                .teme-save
+                    a#close-teme-save
+                        i.ic.ic-close
+                    .icolor
+                        span= name
+                        div +
+                        div +
+                        div +
+                    h4 输入自定义主题名字:
+                    input(type='text', placeholder='')
+                    a.gradient
+                        span 保存

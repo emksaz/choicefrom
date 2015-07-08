@@ -1,0 +1,55 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Script/js/jquery-2.1.3.min.js"></script>
+    <script>
+    $(function () {
+        var email = '@ViewData["Email"].ToString()';
+        var password = '@ViewData["Password"].ToString()';
+        var msg = '@ViewData["Message"].ToString()';
+        //$.ajax({
+        //    type: "post",
+        //    url: "/Home/ValidateUser",
+        //    data: { email: email, password: password, isCheck: 2, loginType: "quicklogin" },
+        //    dataType: "json",
+        //    success: function (data) {
+        //        if (!data.Islogin) {
+        //            alert(data.Message, "red");
+        //        }
+        //        else {
+        //            location.href = "/Home/DashBoard#/UC/User_info";
+        //        }
+        //    }
+        //})
+        if (msg != "") {
+            location.href = "/Home/DashBoard#/UC/User_info/" + msg;
+        }
+        else {
+            location.href = "/Home/DashBoard#/UC/User_info/";
+        }
+       
+    })
+
+    </script>
+</head>
+<body>
+    @*<div>
+    @ViewData["Code"].ToString()
+        <br />
+                @ViewData["accessToken"].ToString()
+        <br />
+                @ViewData["UID"].ToString()
+        <br />
+                @ViewData["pic"].ToString()
+        <br />
+        @ViewData["Name"].ToString()
+    </div>*@
+</body>
+</html>

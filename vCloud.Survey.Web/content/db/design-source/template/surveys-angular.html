@@ -1,0 +1,25 @@
+
+<div class="surveys">
+  <div ng-repeat="myques in QList.MyQuesList" class="survey-column">
+    <div class="survey-item">
+      <div class="open-design">
+        <div ng-class="myques.QStatusClass" class="status"><i ng-class="myques.QStatusIconClass" class="ic"></i></div>
+        <div ng-click="ReturnQuestionnairDesign(myques)" class="survey-mask">
+          <div class="survey-operations"><i ng-click="OpenDelQues(myques,0,$event)" ng-show="myques.QStatus!=5" title="删除问卷" class="ic ic-trash-w"></i><i ng-click="CopyQues(myques,0,$event)" title="复制问卷" class="ic ic-multiple-documents-w"></i><i ng-click="OpenMoveQues(myques,0,$event)" title="移动问卷" class="ic ic-folder-w"></i><i ng-show="myques.QStatus==5 || myques.QStatus==8 " title="发布设置" ng-click="GoToDataTrends(myques,$event)" class="ic ic-rocket-f-w"></i><i ng-show="myques.PreViewFlag" title="预览问卷" ng-click="PreViewClick(myques.QuestionnaireID,$event)" class="ic ic-eye-d-w"></i></div><a class="design-enter">设计问卷</a>
+        </div>
+        <div style="background-image: url({{myques.ImgUrl}});  background-position: center; background-size: cover; background-repeat: no-repeat" class="survey-preview"></div>
+      </div>
+      <div class="collection-schedule">
+        <!--a(href='#/QMSet/AnalyzeResults/{{myques.QuestionnaireID}}/DataTrends', title='分析结果')--><a ng-click="turnToAnalyzeResults(myques.QuestionnaireID)" title="分析结果">
+          <div class="collection-progress ellipsis"><i class="ic ic-activity-g"></i><span>回复数: {{myques.QuesSubmitNum}}</span>
+            <div ng-style="myques.ProgressWidth" class="progress-bar"></div>
+          </div></a><a ng-click="turnToPublish(myques.QuestionnaireID)" title="发布设置" class="box-button settings"><i class="ic ic-settings-d"></i></a>
+      </div>
+    </div>
+    <div class="survey-footer ellipsis"><span title="{{myques.QTitle}}">{{myques.QTitle}}</span>
+      <div>{{myques.SortDate}}</div>
+    </div>
+  </div>
+  <div class="survey-column"><a ng-click="GoToUrl('/QMCreate/','');">
+      <div class="create-item"><span>+</span></div></a></div>
+</div>

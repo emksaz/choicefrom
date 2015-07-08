@@ -1,0 +1,236 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VQ.Common", "VQ.Common\VQ.Common.csproj", "{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VQ.SessionManage", "VQ.SessionManage\VQ.SessionManage.csproj", "{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VQ.WebAPIHelper", "VQ.WebAPIHelper\VQ.WebAPIHelper.csproj", "{04B4A18D-BEE9-4C83-9104-78C9A92C5D02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Controllers", "vCloud.Survey.Controllers\vCloud.Survey.Controllers.csproj", "{FA81E84C-D759-40E3-A81B-15E9B08B4D3A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.AdminControllers", "vCloud.Survey.AdminControllers\vCloud.Survey.AdminControllers.csproj", "{793847F6-8D02-4676-A9E2-A8688FCA8316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyAdminInfo", "vCloud.Survey.Model.SurveyAdminInfo\vCloud.Survey.Model.SurveyAdminInfo.csproj", "{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyClientInfo", "vCloud.Survey.Model.SurveyClientInfo\vCloud.Survey.Model.SurveyClientInfo.csproj", "{CB985A41-84FB-42CF-BF3C-71915FCE78F5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyInfo", "vCloud.Survey.Model.SurveyInfo\vCloud.Survey.Model.SurveyInfo.csproj", "{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyWebInfo", "vCloud.Survey.Model.SurveyWebInfo\vCloud.Survey.Model.SurveyWebInfo.csproj", "{0AC43A0F-0CEE-4D76-A954-CE175B16098B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyUser", "vCloud.Survey.Model.SurveyUser\vCloud.Survey.Model.SurveyUser.csproj", "{3F0C3C7F-3089-467E-89AE-4424926DC8ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyUBInfo", "vCloud.Survey.Model.SurveyUB\vCloud.Survey.Model.SurveyUBInfo.csproj", "{45A8942E-87E9-490A-B159-79522601CDBC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Web", "vCloud.Survey.Web\vCloud.Survey.Web.csproj", "{6872B0C4-C49D-4F77-B71E-D635457059E0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.AdminWeb", "vCloud.Survey.AdminWeb\vCloud.Survey.AdminWeb.csproj", "{D3926CD0-6533-4ED5-8A29-E6F5C17588CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Business", "vCloud.Survey.Business\vCloud.Survey.Business.csproj", "{67A086A9-D2B0-48AD-B397-40AB3C629859}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.AdminBusiness", "vCloud.Survey.AdminBusiness\vCloud.Survey.AdminBusiness.csproj", "{AE540E21-0054-4A04-BBFB-9C3A74860E04}"
+	ProjectSection(ProjectDependencies) = postProject
+		{67A086A9-D2B0-48AD-B397-40AB3C629859} = {67A086A9-D2B0-48AD-B397-40AB3C629859}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.WebAPI", "vCloud.Survey.WebAPI\vCloud.Survey.WebAPI.csproj", "{6A3ED1A7-340C-41C3-9D53-7B38428F09F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrmStateUpdate", "FrmStateUpdate\FrmStateUpdate.csproj", "{D1A3D633-0494-4D19-82E8-65C8E2837417}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrmQuesResult", "FrmQuesResult\FrmQuesResult.csproj", "{C0D0D774-218E-4F75-982E-E139400D9808}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost:7092", "http://localhost:7092", "{5670053C-393F-43B3-9D24-9A53D8B84DC3}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}|vCloud.Survey.Model.SurveyAdminInfo.dll;{CB985A41-84FB-42CF-BF3C-71915FCE78F5}|vCloud.Survey.Model.SurveyClientInfo.dll;{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}|vCloud.Survey.Model.SurveyInfo.dll;{45A8942E-87E9-490A-B159-79522601CDBC}|vCloud.Survey.Model.SurveyUB.dll;{3F0C3C7F-3089-467E-89AE-4424926DC8ED}|vCloud.Survey.Model.SurveyUser.dll;{0AC43A0F-0CEE-4D76-A954-CE175B16098B}|vCloud.Survey.Model.SurveyWebInfo.dll;{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}|VQ.Common.dll;{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}|VQ.SessionManage.dll;{5280AA10-845E-444D-A830-7D27D1CB8DAC}|vCloud.Survey.Model.SurveyWebUBInfo.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_7092"
+		Debug.AspNetCompiler.PhysicalPath = "..\SurveyWebApp\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7092\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_7092"
+		Release.AspNetCompiler.PhysicalPath = "..\SurveyWebApp\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7092\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "..\SurveyWebApp\"
+	EndProjectSection
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "http://localhost:7093", "http://localhost:7093", "{B9A3F06F-18D1-4402-9466-FF3BB939A450}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "false"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		ProjectReferences = "{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}|vCloud.Survey.Model.SurveyAdminInfo.dll;{CB985A41-84FB-42CF-BF3C-71915FCE78F5}|vCloud.Survey.Model.SurveyClientInfo.dll;{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}|vCloud.Survey.Model.SurveyInfo.dll;{45A8942E-87E9-490A-B159-79522601CDBC}|vCloud.Survey.Model.SurveyUB.dll;{3F0C3C7F-3089-467E-89AE-4424926DC8ED}|vCloud.Survey.Model.SurveyUser.dll;{0AC43A0F-0CEE-4D76-A954-CE175B16098B}|vCloud.Survey.Model.SurveyWebInfo.dll;{5280AA10-845E-444D-A830-7D27D1CB8DAC}|vCloud.Survey.Model.SurveyWebUBInfo.dll;{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}|VQ.Common.dll;{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}|VQ.SessionManage.dll;"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_7093"
+		Debug.AspNetCompiler.PhysicalPath = "vCloud.Survey.WebAPI\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7093\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_7093"
+		Release.AspNetCompiler.PhysicalPath = "vCloud.Survey.WebAPI\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_7093\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "vCloud.Survey.WebAPI\"
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "vCloud.Survey.Model.SurveyWebUBInfo", "vCloud.Survey.Model.SurveyWebUBInfo\vCloud.Survey.Model.SurveyWebUBInfo.csproj", "{5280AA10-845E-444D-A830-7D27D1CB8DAC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CopeQuesForm", "CopeQuesForm\CopeQuesForm.csproj", "{6C802851-B0FE-474E-B1DB-922AC7C90BB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WFormTestWebAPI", "WFormTestWebAPI\WFormTestWebAPI.csproj", "{FC0CD93E-A367-498F-AE76-886374FBD529}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VQ.WeiXinHelper", "VQ.WeiXinHelper\VQ.WeiXinHelper.csproj", "{5A5EFA2E-3CB9-41DA-85B8-C8A32C14DEF2}"
+EndProject
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "development", "http://localhost:28425", "{34AF4B43-2AE9-4B03-8C37-0A752B4C0CB5}"
+	ProjectSection(WebsiteProperties) = preProject
+		UseIISExpress = "true"
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_28425"
+		Debug.AspNetCompiler.PhysicalPath = "development\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_28425\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_28425"
+		Release.AspNetCompiler.PhysicalPath = "development\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_28425\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		SlnRelativePath = "development\"
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{FE51A298-14CC-4D15-96AB-CE9316B3C4E8}"
+	ProjectSection(SolutionItems) = preProject
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		gruntfile.js = gruntfile.js
+		package.json = package.json
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0AB3D62-5A76-4433-8630-D7ED28FEA1AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BDDD926A-4A3B-4A2B-A0A8-27D0B7DCF7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04B4A18D-BEE9-4C83-9104-78C9A92C5D02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04B4A18D-BEE9-4C83-9104-78C9A92C5D02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04B4A18D-BEE9-4C83-9104-78C9A92C5D02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04B4A18D-BEE9-4C83-9104-78C9A92C5D02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA81E84C-D759-40E3-A81B-15E9B08B4D3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA81E84C-D759-40E3-A81B-15E9B08B4D3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA81E84C-D759-40E3-A81B-15E9B08B4D3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA81E84C-D759-40E3-A81B-15E9B08B4D3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{793847F6-8D02-4676-A9E2-A8688FCA8316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{793847F6-8D02-4676-A9E2-A8688FCA8316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{793847F6-8D02-4676-A9E2-A8688FCA8316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{793847F6-8D02-4676-A9E2-A8688FCA8316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2C5BE5A-458B-4B0C-8340-4B6A2D43732A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB985A41-84FB-42CF-BF3C-71915FCE78F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB985A41-84FB-42CF-BF3C-71915FCE78F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB985A41-84FB-42CF-BF3C-71915FCE78F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB985A41-84FB-42CF-BF3C-71915FCE78F5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1682303-5E62-4A68-AF56-6FC2B8E4C7EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AC43A0F-0CEE-4D76-A954-CE175B16098B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AC43A0F-0CEE-4D76-A954-CE175B16098B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AC43A0F-0CEE-4D76-A954-CE175B16098B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AC43A0F-0CEE-4D76-A954-CE175B16098B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0C3C7F-3089-467E-89AE-4424926DC8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0C3C7F-3089-467E-89AE-4424926DC8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0C3C7F-3089-467E-89AE-4424926DC8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0C3C7F-3089-467E-89AE-4424926DC8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45A8942E-87E9-490A-B159-79522601CDBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A8942E-87E9-490A-B159-79522601CDBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A8942E-87E9-490A-B159-79522601CDBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A8942E-87E9-490A-B159-79522601CDBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6872B0C4-C49D-4F77-B71E-D635457059E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6872B0C4-C49D-4F77-B71E-D635457059E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6872B0C4-C49D-4F77-B71E-D635457059E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6872B0C4-C49D-4F77-B71E-D635457059E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3926CD0-6533-4ED5-8A29-E6F5C17588CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3926CD0-6533-4ED5-8A29-E6F5C17588CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3926CD0-6533-4ED5-8A29-E6F5C17588CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3926CD0-6533-4ED5-8A29-E6F5C17588CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{67A086A9-D2B0-48AD-B397-40AB3C629859}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{67A086A9-D2B0-48AD-B397-40AB3C629859}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{67A086A9-D2B0-48AD-B397-40AB3C629859}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{67A086A9-D2B0-48AD-B397-40AB3C629859}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE540E21-0054-4A04-BBFB-9C3A74860E04}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE540E21-0054-4A04-BBFB-9C3A74860E04}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE540E21-0054-4A04-BBFB-9C3A74860E04}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE540E21-0054-4A04-BBFB-9C3A74860E04}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A3ED1A7-340C-41C3-9D53-7B38428F09F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A3ED1A7-340C-41C3-9D53-7B38428F09F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A3ED1A7-340C-41C3-9D53-7B38428F09F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A3ED1A7-340C-41C3-9D53-7B38428F09F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A3D633-0494-4D19-82E8-65C8E2837417}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A3D633-0494-4D19-82E8-65C8E2837417}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1A3D633-0494-4D19-82E8-65C8E2837417}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1A3D633-0494-4D19-82E8-65C8E2837417}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C0D0D774-218E-4F75-982E-E139400D9808}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C0D0D774-218E-4F75-982E-E139400D9808}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C0D0D774-218E-4F75-982E-E139400D9808}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C0D0D774-218E-4F75-982E-E139400D9808}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5670053C-393F-43B3-9D24-9A53D8B84DC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5670053C-393F-43B3-9D24-9A53D8B84DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5670053C-393F-43B3-9D24-9A53D8B84DC3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{5670053C-393F-43B3-9D24-9A53D8B84DC3}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B9A3F06F-18D1-4402-9466-FF3BB939A450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A3F06F-18D1-4402-9466-FF3BB939A450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A3F06F-18D1-4402-9466-FF3BB939A450}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A3F06F-18D1-4402-9466-FF3BB939A450}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{5280AA10-845E-444D-A830-7D27D1CB8DAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5280AA10-845E-444D-A830-7D27D1CB8DAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5280AA10-845E-444D-A830-7D27D1CB8DAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5280AA10-845E-444D-A830-7D27D1CB8DAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C802851-B0FE-474E-B1DB-922AC7C90BB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C802851-B0FE-474E-B1DB-922AC7C90BB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C802851-B0FE-474E-B1DB-922AC7C90BB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C802851-B0FE-474E-B1DB-922AC7C90BB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC0CD93E-A367-498F-AE76-886374FBD529}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC0CD93E-A367-498F-AE76-886374FBD529}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC0CD93E-A367-498F-AE76-886374FBD529}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC0CD93E-A367-498F-AE76-886374FBD529}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5EFA2E-3CB9-41DA-85B8-C8A32C14DEF2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5EFA2E-3CB9-41DA-85B8-C8A32C14DEF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5EFA2E-3CB9-41DA-85B8-C8A32C14DEF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5EFA2E-3CB9-41DA-85B8-C8A32C14DEF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34AF4B43-2AE9-4B03-8C37-0A752B4C0CB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34AF4B43-2AE9-4B03-8C37-0A752B4C0CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34AF4B43-2AE9-4B03-8C37-0A752B4C0CB5}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{34AF4B43-2AE9-4B03-8C37-0A752B4C0CB5}.Release|Any CPU.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

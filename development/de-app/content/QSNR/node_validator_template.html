@@ -1,0 +1,40 @@
+﻿
+<div class="popup_windows color_gary_kit_title border_dark_gary_262626 all_sides radius_3px calibration"
+     id="node_validate_result"
+     ng-attr-style="{{designManager.validateManager.getStyle()}}"
+     ng-mousedown="handleValidatorMouseDown($event)">
+    <div class="w-clearfix popup_title font_color_light_d6d6d6 border_light_gary_3c3c3c buttom">
+        <div class="design_icon size_20px float_l margin_r_5px ic_inspector"></div>
+        <h2 class="float_l cursor_default">校验结果</h2>
+        <div class="w-inline-block close_button color_gary_gradient_icon_button border_light_gary_3c3c3c all_sides radius_2px cursor_pointer">
+            <div class="design_icon size_20px ic_close"
+                 ng-click="handleCloseValidatorClick()"></div>
+        </div>
+    </div>
+    <p class="calibration_prompt font_size_12px font_color_light_d6d6d6 border_light_gary_3c3c3c buttom cursor_default"
+       ng-if="!designManager.validateManager.valid">请修正该问题（检查以下系统提示节点），再次执行调试功能。</p>
+    <p class="calibration_prompt font_size_12px font_color_light_d6d6d6 border_light_gary_3c3c3c buttom cursor_default"
+       ng-if="designManager.validateManager.valid">通过校验,可以扫下面的二维码或者直接打开下面的连接进行测试</p>
+    <div class="search_content">
+        <div class="w-clearfix calibration_item border_light_gary_3c3c3c buttom cursor_pointer"
+             ng-repeat="result in designManager.validateManager.invalidList"
+             ng-class="{'calibration_item_selected':result.node.isSelected()}"
+             ng-click="handleValidatorItemClick(result.node)">
+            <div class="calibration_item_right">
+                <div class="calibration_subitem font_color_light_d6d6d6 font_size_12px border" style="word-break:break-all">{{result.node.nodeName}}</div>
+                <div class="calibration_subitem font_color_light_d6d6d6 font_size_12px">{{result.message}}</div>
+            </div>
+            <div class="design_icon ic_warning_2"></div>
+        </div>
+        <div ng-if="designManager.validateManager.valid">
+            <!--<div id="qrcode_renderer" class="marginTop15"></div>-->
+            <div class="marginTop15" style="text-align:center;">
+                <img src="" id="qrcode_renderer" />
+            </div>
+            <a id="text_renderer" class="text_rendererPadding" target="_blank"></a>
+        </div>
+    </div>
+
+    <p class="calibration_prompt font_size_12px font_color_light_d6d6d6 buttom cursor_default paddingTop7"
+       ng-if="designManager.validateManager.valid">当前链接为预览链接，不作为正式的问卷向他人发送。</p>
+</div>

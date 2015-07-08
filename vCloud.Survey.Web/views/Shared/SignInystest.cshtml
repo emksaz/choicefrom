@@ -1,0 +1,167 @@
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!-- Last Published: Sat Mar 14 2015 03:49:50 GMT+0000 (UTC) -->
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>&#24039;&#24605; choice form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="Dashboard" content="Survey-Best">
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/cs-web.css">
+    <!--<link rel="stylesheet/less" type="text/css" href="less/main.less">-->
+    <script src="~/Script/js/jquery-2.1.3.min.js"></script>
+    <script src="~/Script/js/jquery.validate.vq.js"></script>
+    <script src="~/Script/js/fastclick.js"></script>
+    <script src="~/Script/js/event.js"></script>
+    <script src="~/Script/js/modernizr.js"></script>
+    <script src="~/Script/js/windowAlert-custom.js"></script>
+    <script src="~/Script/angular/angular.js"></script>
+    <script src="~/Script/angular/angular-ui-router.js"></script>
+    <script src="~/Script/js/loading.js"></script>
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
+            data-appid="101221559" data-redirecturi="http://www.csvfx.com/Home/QQLogin" charset="utf-8"></script>
+    <!--&#24320;&#21457;&#20351;&#29992;&#25511;&#21046;&#22120;&#21152;&#36733;&#9660;-->
+    <script src="~/Script/SignIn/SignIn.js"></script>
+    <!--&#24320;&#21457;&#20351;&#29992;&#25511;&#21046;&#22120;&#21152;&#36733;&#9650;-->
+     <!--&#21457;&#24067;&#20351;&#29992;&#25511;&#21046;&#22120;&#21152;&#36733;&#9650;-->
+    @*<script src="~/ReleaseJS/zySI.min.js"></script>*@
+    <!--&#21457;&#24067;&#20351;&#29992;&#25511;&#21046;&#22120;&#21152;&#36733;&#9650;-->
+
+    <link rel="shortcut icon" type="image/x-icon" href="/Images/favicon.ico">
+    <link rel="apple-touch-icon" href="/Images/cf.svg">
+
+</head>
+
+<body class="member-bg" ng-app="myapp">
+    <input type="hidden" value="@Request.QueryString["type"]" id="Type" >
+    <div class='loading' id="LoadingDiv" style="display:none">
+        <div class='lot lot1'></div>
+        <div class='lot lot2'></div>
+        <div class='lot lot3'></div>
+        <div class='lot lot4'></div>
+    </div>
+    <div class="center-wrapper">
+
+        <!--&#30331;&#24405;&#9660;-->
+        <div class="main-container" id="Login" ng-controller="LoginCtrl">
+            <div id="logo"><span onclick="turnToIndex()">choice form</span><span>beta</span></div>
+            <h2>&#30331; &#24405;</h2>
+            <form autocomplete="off" novalidate="novalidate" name="LoginForm">
+                <div class="input-login">
+                    <input type="email" name="loginEmail" placeholder="&#27880;&#20876;&#37038;&#31665;" required  ng-model="Email" id="name" value="@ViewData["Email"]" ng-keydown="Enter();" maxlength="50" ng-change="loginInputChange(LoginForm.$valid,LoginForm.loginEmail.$dirty)">
+                    <mark class="form-message"  ng-show="LoginForm.loginEmail.$dirty && LoginForm.loginEmail.$invalid && LoginForm.loginEmail.$error.required">&#35831;&#36755;&#20837;&#37038;&#31665;&#22320;&#22336;&#12290;</mark>
+                    <mark class="form-message"  ng-show="LoginForm.loginEmail.$dirty && LoginForm.loginEmail.$invalid && LoginForm.loginEmail.$error.email">&#35831;&#36755;&#20837;&#27491;&#30830;&#30340;&#37038;&#31665;&#26684;&#24335;&#12290;</mark>
+                </div>
+                <div class="input-login">
+                    @*<input type="password" style="display:none" />*@
+                    <input type="password" name="loginPassword" placeholder="&#23494;&#30721;" required autocomplete="off" id="password" ng-model="Login.Password" ng-keydown="Enter();" maxlength="12" ng-change="loginInputChange(LoginForm.$valid,LoginForm.loginPassword.$dirty)">
+                    <mark class="form-message" ng-show="LoginForm.loginPassword.$dirty && LoginForm.loginPassword.$invalid && LoginForm.loginPassword.$error.required" id="PwMsg">&#35831;&#36755;&#20837;&#23494;&#30721;&#12290;</mark>
+                </div>
+                <div class="input-login">
+                    <div>
+                        <input type="checkbox" name="checkboxG1" id="checkboxG1" class="css-checkbox" onclick="changeCheck()"
+                               checked="checked" />
+                        <label for="checkboxG1" class="checkbox-label">30 &#22825;&#20869;&#35760;&#20303;&#25105;</label>
+                    </div>
+                    <div class="forgot-password" onclick="ChangeToForget()"><span>&#24536;&#35760;&#23494;&#30721;</span></div>
+                </div>
+            </form>
+            <button class="button blue" ng-click="login()">
+                <span>&#30331; &#24405;</span>
+            </button>
+            <div class="fast_login">
+                <span>&#24555;&#25463;&#30331;&#24405;</span>
+                <div><a class="qq_logo" href="http://openapi.qzone.qq.com/oauth/show?which=ConfirmPage&display=pc&client_id=101221559&response_type=token&scope=get_user_info&redirect_uri=http%3A%2F%2Fwww.csvfx.com%2FHome%2FQQLogin?type=0"></a></div>
+                <div><a class="sina_logo" href="https://api.weibo.com/oauth2/authorize?client_id=3780257084&response_type=code&redirect_uri=http%3A%2F%2Fwww.csvfx.com%2FHome%2FSinaLogin?type=0"></a></div>
+            </div>
+            <div class="create-account">
+                <p>&#36824;&#27809;&#26377;<span onclick="turnToIndex()">choice form</span>&#36134;&#21495;&#65311;</p>
+                <h3 onclick="ChangeToRegister()">&#20813;&#36153;&#27880;&#20876;</h3>
+            </div>
+        </div>
+        <!--&#30331;&#24405;&#9650;-->
+
+
+        <!--&#27880;&#20876;&#9660;-->
+        <div class="main-container" ng-controller="RegisterCtrl" id="Register" style=" display:none">
+            <div id="logo"><span onclick="turnToIndex()">choice form</span><span>beta</span></div>
+            <h2>&#27880; &#20876;</h2>
+            <form name="RegisterForm" autocomplete="off" novalidate="novalidate">
+                <div class="input-sgin">
+                    <input type="email" name="REmail" ng-keydown="enter()" placeholder="&#37038;&#31665;" id="REmail" autocomplete="off" ng-model="Reg.Email" maxlength="50" required ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.REmail.$dirty)">
+                    <mark class="form-message"  ng-show="RegisterForm.REmail.$dirty && RegisterForm.REmail.$invalid && RegisterForm.REmail.$error.required">&#35831;&#36755;&#20837;&#26032;&#37038;&#31665;&#22320;&#22336;&#12290;</mark>
+                    <mark class="form-message"  ng-show="RegisterForm.REmail.$dirty && RegisterForm.REmail.$invalid && RegisterForm.REmail.$error.email">&#35831;&#36755;&#20837;&#27491;&#30830;&#30340;&#37038;&#31665;&#22320;&#22336;&#12290;</mark>
+                </div>
+                <div class="input-sgin">
+                    <input type="text" id="RName" ng-keydown="enter()" placeholder="&#24744;&#30340;&#21517;&#23383;" ng-model="Reg.Name" maxlength="50" autocomplete="off">
+                </div>
+                <div class="input-sgin">
+                    <input type="password" style="display:none"/>
+                    <input type="password" name="password" ng-keydown="enter()" id="RPassWord" placeholder="&#23494;&#30721;&#65288;&#33267;&#23569;6&#20301;&#65289;" ng-model="Reg.PassWord" ng-minlength="6" maxlength="12" required ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.password.$dirty)" autocomplete="off">
+                    <mark class="form-message"  ng-show="RegisterForm.password.$dirty && RegisterForm.password.$invalid && RegisterForm.password.$error.required">&#35831;&#36755;&#20837;&#26032;&#23494;&#30721;&#12290;</mark>
+                    <mark class="form-message"  ng-show="RegisterForm.password.$dirty && RegisterForm.password.$invalid && RegisterForm.password.$error.minlength">&#23494;&#30721;&#19981;&#33021;&#23567;&#20110;6&#20010;&#23383;&#31526;&#12290;</mark>
+                </div>
+                <div class="input-sgin">
+                    <input type="text" name="invitecode" ng-keydown="enter()" id="RInviteCode" autocomplete="off" placeholder="&#35831;&#36755;&#20837;&#36992;&#35831;&#30721;" ng-model="Reg.InviteCode" maxlength="8" required ng-change="registerInputChange(RegisterForm.$valid,RegisterForm.invitecode.$dirty)">
+                    <mark class="form-message"  ng-show="RegisterForm.invitecode.$dirty && RegisterForm.invitecode.$invalid && RegisterForm.invitecode.$error.required">&#36992;&#35831;&#30721;&#19981;&#33021;&#20026;&#31354;&#12290;</mark>
+                    <mark class="form-message"  ng-show="Reg.CheckInviteCodeFlag">&#36992;&#35831;&#30721;&#38169;&#35823;&#12290;</mark>
+                </div>
+            </form>
+            <p id="sign_text">&#28857;&#20987;&#27880;&#20876;&#24847;&#21619;&#24744;&#20102;&#35299;&#24182;&#21516;&#24847;&#25105;&#20204;&#30340;<a>&#26381;&#21153;&#26465;&#27454;</a>&#21644;<a>&#38544;&#31169;&#26435;&#26465;&#27454;</a><br>&#27809;&#26377;&#36992;&#35831;&#30721;&#65311;&#35831;&#21457;&#36865;&#37038;&#20214;&#21040;sc@cform.io&#33719;&#24471;&#36992;&#35831;&#30721;&#65288;&#37038;&#20214;&#20027;&#39064;&#65306;&#36992;&#35831;&#30721;&#65289;&#12290;</p>
+            <button class="button blue" ng-click="Register()" type="button">
+                <span id="RegisterBtn">&#27880; &#20876;</span>
+            </button>
+            <div class="create-account">
+                <p>&#24050;&#26377;<span onclick="turnToIndex()">choice form</span>&#36134;&#21495;&#65311;</p>
+                <h3 ng-click="ChangeToLogin()">&#30331; &#24405;</h3>
+            </div>
+        </div>
+        <!--&#27880;&#20876;&#9650;-->
+
+
+        <!--&#24536;&#35760;&#23494;&#30721;&#9660;-->
+        <div class="main-container" style="display:none" id="ForgetPassword" ng-controller="FindPWCtrl">
+            <div id="logo"><span onclick="turnToIndex()">choice form</span><span>beta</span></div>
+            <h2>&#24536;&#35760;&#23494;&#30721;</h2>
+            <div id="find_password">
+                <form name="ForgetPwForm" autocomplete="off" novalidate="novalidate">
+                    <div class="input-forget">
+                        <input type="email" name="fogetEmail" id="ForgetEmail" autocomplete="off" placeholder="&#35831;&#36755;&#20837;&#27880;&#20876;&#37038;&#31665;" ng-model="ForgetPW.Email" required ng-change="findPwInfoChange(ForgetPwForm.$valid,ForgetPwForm.fogetEmail.$dirty)" ng-keydown="enterOper()">
+                        <mark class="form-message" ng-show="!ForgetPW.EmailFlag">&#24744;&#36755;&#20837;&#30340;&#37038;&#31665;&#27809;&#26377;&#27880;&#20876;&#36807;&#12290;</mark>
+                        <mark class="form-message" ng-show="ForgetPwForm.fogetEmail.$dirty && ForgetPwForm.fogetEmail.$invalid && ForgetPwForm.fogetEmail.$error.required">&#35831;&#36755;&#20837;&#27880;&#20876;&#37038;&#31665;&#12290;</mark>
+                        <mark class="form-message" ng-show="ForgetPwForm.fogetEmail.$dirty && ForgetPwForm.fogetEmail.$invalid && ForgetPwForm.fogetEmail.$error.email">&#37038;&#31665;&#26684;&#24335;&#38169;&#35823;&#12290;</mark>
+                    </div>
+                    <div class="input-forget">
+                        <input type="text" name="ValidCode" id="ForgetValidCode" placeholder="&#39564;&#35777;&#30721;" autocomplete="off" ng-model="ForgetPW.VaildCode" required style="width:150px" ng-change="findPwInfoChange(ForgetPwForm.$valid,ForgetPwForm.ValidCode.$dirty)" ng-keydown="enterOper()">
+                        <div class="verification">
+                            <img class="login_block float_l " src="/Home/GetCode" id="imgcode" style="width: 122px; height: 35px;" />
+                        </div>
+                        <a class="box-button" ng-click="reloadimg('imgcode')"><i class="ic ic-refresh"></i></a>
+                        <mark class="form-message" ng-show="!ForgetPW.ValiaCodeFlag">&#39564;&#35777;&#30721;&#36755;&#20837;&#38169;&#35823;&#12290;</mark>
+                        <mark class="form-message" ng-show="ForgetPwForm.ValidCode.$dirty && ForgetPwForm.ValidCode.$invalid && ForgetPwForm.ValidCode.$error.required">&#35831;&#36755;&#20837;&#39564;&#35777;&#30721;&#12290;</mark>
+                    </div>
+                </form>
+                <p>&#36755;&#20837;&#24744;&#30340;&#27880;&#20876;&#37038;&#31665;&#22320;&#22336;&#20197;&#37325;&#32622;&#23494;&#30721;&#12290;&#24744;&#21487;&#33021;&#38656;&#35201;&#26597;&#30475;&#22403;&#22334;&#37038;&#20214;&#65292;&#25110;&#21462;&#28040;&#38459;&#27490; sc@cform.io&#12290;</p>
+                <button class="button dark" ng-click="findPassword()">
+                    <span>&#25214;&#22238;&#23494;&#30721;</span>
+                </button>
+            </div>
+            <div class="sand-mail" style="display:block" ng-show="ForgetPW.IsSendAgainFlag" id="SendAgainDiv">
+                <p>&#25105;&#20204;&#24050;&#21521;&#24744;&#30340;<span id="GmailSite"></span>&#37038;&#31665;&#21457;&#36865;&#20102;&#37325;&#32622;&#23494;&#30721;&#37038;&#20214;,&#35831;&#26597;&#25910;&#24182;&#28857;&#20987;&#37038;&#20214;&#20013;&#30340;&#38142;&#25509;&#12290;</p>
+                <p>&#27809;&#26377;&#25910;&#21040;&#37038;&#20214;?&#35831;&#26816;&#26597;&#24744;&#30340;&#22403;&#22334;&#37038;&#20214;&#25110;&#28857;&#20987;</p>
+                <h3><button ng-click="sendAgain('#SendAgain')" id="SendAgain">&#37325;&#26032;&#21457;&#36865;</button></h3>
+            </div>
+            <div class="back_login">
+                <h3 ng-click="forgetToLogin()">&#36820;&#22238;&#30331;&#24405;</h3>
+            </div>
+            
+        </div>
+        <!--&#24536;&#35760;&#23494;&#30721;&#9650;-->
+    </div>
+</body>
+</html>

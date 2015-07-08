@@ -1,0 +1,71 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('我的问卷')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            // 导航菜单
+            header.page-header
+                .w-container
+                    h1 我的调查问卷
+                    #switching-accounts.dropdown-event
+                        button.border.switching-accounts.right-ic
+                            i.ic.ic-user-f
+                            span Westercloud
+                            i.ic.ic-down-2d
+                        include ./template/dropdown-accounts
+                    #sorting.dropdown-event
+                        button.sorting.right-ic
+                            i.ic.ic-download-document-d
+                            span 问卷创建时间
+                            i.ic.ic-down-2d
+                        include ./template/dropdown-sorting
+                    button#create-surveys.button.blue
+                        i.ic.ic-plus-w
+                        span 新建调查问卷
+            // 顶部控制栏
+            .w-container
+                .too-small-alert
+                    p 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。
+                .surveys
+                    include ./template/survey-column
+                    +survey-column('blue', 'ic-brush-w')
+                    +survey-column('green', 'ic-rocket-f-w')
+                    +survey-column('purple', 'ic-stopwatch-w')
+                    +survey-column('red', 'ic-lock-w')
+                    +survey-column('gray', 'ic-stop-w')
+                    .survey-column
+                        .create-item
+                            span +
+                a.load-more
+                    p 加载更多...
+            .w-container
+                .content-wrapper
+                    .separator-bar
+                        #folder.dropdown-event
+                            button.border.folder.right-ic
+                                i.ic.ic-folder-d
+                                span Dashboard
+                                i.ic.ic-down-2d
+                            include ./template/dropdown-folder
+                            +folder('folder')
+                        .dropdown-event
+                            include ./template/floating-strip
+                            +item('文件夹操作：', '重命名', '删除')
+                .surveys
+                    include ./template/survey-column
+                    +survey-column('blue', 'ic-brush-w')
+                    +survey-column('green', 'ic-rocket-f-w')
+                    +survey-column('purple', 'ic-stopwatch-w')
+                    +survey-column('red', 'ic-lock-w')
+                    +survey-column('gray', 'ic-stop-w')
+                    .survey-column
+                        .create-item
+                            span +
+
+                a.load-more
+                    p 加载更多...
+    include layout/footer

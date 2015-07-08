@@ -1,0 +1,202 @@
+//输入框
+textarea,
+input[type='text'],
+input[type='number'],
+input[type='Password'],
+input[type='email'],
+input[type='tel'],
+input[type='date'],
+input[type='datetime'] {
+  line-height: inherit;
+  border-radius: 2px;
+  background-color: transparent;
+  clear: left;
+  float: left;
+  padding: 8px 12px;
+  border: 1px solid @silver;
+  &:hover {
+    outline: none;
+    .box-shadow(inset fade(@silver, 20%) 0 0 0 2px);
+  }
+  &:focus {
+    outline: none;
+    border: 1px solid @dodger_blue;
+    .box-shadow(inset fade(@dodger_blue, 15%) 0 0 0 2px);
+  }
+}
+
+//输入框禁用样式
+input[type='text']:read-only,
+input[type='number']:read-only,
+input[type='Password']:read-only,
+input[type='email']:read-only,
+input[type='tel']:read-only,
+input[type='date']:read-only,
+input[type='datetime']:read-only {
+  background-color: fade(@silver, 18%);
+  border: 1px dotted @silver;
+  cursor: not-allowed;
+  &:hover {
+    .box-shadow(none);
+  }
+  &:focus {
+    .box-shadow(none);
+  }
+}
+
+//复选框禁用样式
+input[type=checkbox] {
+  &:hover {
+    outline: none;
+    .box-shadow(none);
+  }
+  &:focus {
+    outline: none;
+    .box-shadow(none);
+  }
+}
+
+//多行输入框
+textarea {
+  min-width: 55%;
+  max-width: 55%;
+  @media (max-width: 991px) {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+//单选框
+input[type=radio].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+input[type=radio].css-checkbox + label.radio-label {
+  padding-left: 34px;
+  height: 20px;
+  display: inline-block;
+  line-height: 20px;
+  background-repeat: no-repeat;
+  background-position: 0 -20px;
+  font-size: 14px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+input[type=radio][disabled].css-checkbox + label.radio-label {
+  cursor: not-allowed;
+  color: @dark_gray;
+}
+
+input[type=radio].css-checkbox:checked + label.radio-label {
+  background-position: 0 -60px;
+}
+
+label.radio-label {
+  margin-right: 32px;
+  background-size: 20px;
+  background-image: url('../images/db/checkbox.png');
+
+}
+
+//复选框
+input[type=checkbox].css-checkbox {
+  position: absolute;
+  z-index: -1000;
+  left: -1000px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+}
+
+input[type=checkbox].css-checkbox + label.checkbox-label {
+  padding-left: 34px;
+  height: 20px;
+  display: inline-block;
+  line-height: 20px;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  font-size: 14px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+input[type=checkbox][disabled].css-checkbox + label.checkbox-label {
+  cursor: not-allowed;
+  color: @dark_gray;
+}
+
+input[type=checkbox].css-checkbox:checked + label.checkbox-label {
+  background-position: 0 -40px;
+}
+
+label.checkbox-label {
+  background-size: 20px;
+  background-image: url('../images/db/checkbox.png');
+}
+
+
+// ios 开关
+input[type=checkbox].ios-toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  //box-shadow: inset 0px 0px 0px 1px @silver;
+  border-radius: 15px;
+  background-color: @silver;
+  padding: 1px;
+  display: inline-block;
+  width: 49px;
+  height: 28px;
+  position: relative;
+  cursor: pointer;
+  transition: all .3s ease-out;
+  margin: 0px;
+  transform: scale(1);
+  -webkit-transform: scale(1); /* Adjust size here */
+}
+
+input[type=checkbox].ios-toggle:checked {
+  box-shadow: inset 0px 0px 0px 20px @purple;
+}
+
+input[type=checkbox].ios-toggle:after {
+  content: '';
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  border-radius: 15px;
+  box-shadow: 0px 2px 2px 1px rgba(0,0,0,.2);
+  cursor: pointer;
+  background-color: @white;
+  transition: all 0.1s ease-in .1s;
+}
+
+input[type="checkbox"]:checked.ios-toggle:after {
+  left: 22px;
+}
+
+//输入框提示信息
+.form-message {
+  display: block;
+  background-color: fade(@tomato, 20%);
+  color: @tomato;
+  font-size: 12px;
+  clear: left;
+  float: left;
+  padding: 0 8px;
+  border-radius: 2px;
+/*  display: none;*/
+}

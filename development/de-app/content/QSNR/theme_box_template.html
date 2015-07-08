@@ -1,0 +1,109 @@
+﻿<div class="w-clearfix design_theme_kit_section font_color_light_d6d6d6 border_dark_gary_262626 right elementShow" style="width:500px;">
+    <div class="toolbar_sidebar color_gary_toolbar_select float_l">
+        <div class="toolbar_select theme color_gary_toolbar_select border_dark_gary_262626 buttom top"></div>
+    </div>
+    <div class="theme_kit float_l color_dark_slate_gary_kit border_dark_gary_262626 left" style="width:494px;">
+        <div class="w-clearfix kit_title color_gary_kit_title padding_tb_8px padding_lr_10px border_dark_gary_262626 buttom">
+            <h2 class="float_l">背景主题</h2>
+            <div class="w-inline-block close_button color_gary_gradient_icon_button border_light_gary_3c3c3c all_sides radius_2px">
+                <div class="design_icon size_20px ic_close"
+                     ng-click="handleCloseIconClick()"></div>
+            </div>
+        </div>
+        <div class="kit_section_group">
+            <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                             width_100per font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                 ng-click="themeBoxManager.themeSetHide = !themeBoxManager.themeSetHide">
+                <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                     ng-class=" {'rotate_m90_dur_300':themeBoxManager.themeSetHide,
+                     'rotate_0_dur_300':!themeBoxManager.themeSetHide}"></div>
+                <h4 class="float_l">主题设置</h4>
+            </div>
+            <div ng-class="{'elementHide':themeBoxManager.themeSetHide}">
+                <div class="my-survey ">
+                    <iframe class="phone_iframe" id="show_phone"
+                            src="http://q.csvfx.com/template.html"></iframe>
+                </div>
+
+                <div class="theme_color_list">
+                    <div class="color_picker size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-attr-style="{{::themeBoxManager.theme.getColorStyle('bgColor')}}"
+                         data-id="bgColor"></div>
+                    <div class="color_picker size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-attr-style="{{::themeBoxManager.theme.getColorStyle('quesColor')}}"
+                         data-id="quesColor"></div>
+                    <div class="color_picker size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-attr-style="{{::themeBoxManager.theme.getColorStyle('btnBgColor')}}"
+                         data-id="btnBgColor"></div>
+                    <div class="color_picker size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-attr-style="{{::themeBoxManager.theme.getColorStyle('btnColor')}}"
+                         data-id="btnColor"></div>
+                    <div class="color_picker size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-attr-style="{{::themeBoxManager.theme.getColorStyle('selColor')}}"
+                         data-id="selColor"></div>
+
+                    <div class="size_20px float_l border_dark_gary_262626 color_blue_3498db all_sides cursor_pointer"
+                         ng-click="handleAAddCustomClick()"
+                         style="margin-left:10px;display:none;">加入</div>
+                </div>
+                <div class="theme_text_list cursor_default">
+                    <div class="color_text">背景</div>
+                    <div class="color_text">题目文字</div>
+                    <div class="color_text">按钮</div>
+                    <div class="color_text">按钮文字</div>
+                    <div class="color_text">选项文字</div>
+                </div>
+
+                <div class="theme_case_list">
+                    <div class="theme_case_item cursor_pointer" ng-repeat="theme in themeBoxManager.themeList"
+                         ng-click="handleThemeCaseClick(theme)">
+                        <div class="color_example_list">
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('bgColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('quesColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('btnBgColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('btnColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('selColor')}}"></div>
+                        </div>
+                        <div class="color_example_text">
+                            <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                                <div class="position_div size_20px">
+                                    <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                    <div class="design_icon size_20px ic_radio_on radio_on"
+                                         ng-class="{'elementShow':theme.isSelected}"></div>
+                                </div>
+                            </div>
+                            <h4 class="float_l">{{::"方案" + ($index + 1)}}</h4>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="theme_case_list" style="display:none;">
+                    <div class="theme_case_item cursor_pointer" ng-repeat="theme in themeBoxManager.customList"
+                         ng-click="handleThemeCaseClick(theme)">
+                        <div class="color_example_list">
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('bgColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('quesColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('btnBgColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('btnColor')}}"></div>
+                            <div class="color_example_item" ng-attr-style="{{::theme.getColorStyle('selColor')}}"></div>
+                        </div>
+                        <div class="color_example_text">
+                            <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                                <div class="position_div size_20px">
+                                    <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                    <div class="design_icon size_20px ic_radio_on radio_on"
+                                         ng-class="{'elementShow':theme.isSelected}"></div>
+                                </div>
+                            </div>
+                            <h4 class="float_l">{{::"自定" + ($index + 1)}}</h4>
+                        </div>
+                        <div style="width: 100%; height: 20px; background-color: red;" ng-click="handleDelCustomClick(theme)">delete</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+

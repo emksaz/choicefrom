@@ -1,0 +1,86 @@
+//浏览器尺寸提示
+
+.too-small-alert {
+  display: none;
+  @media (max-width: 991px) {
+
+    display: block;
+    padding: 0 6.5%;
+    margin-top: 24px;
+    > p {
+      color:#4e5b68;
+      visibility: visible;
+      padding: 12px;
+      border: 1px solid @silver;
+      background-color: fade(@silver, 25%);
+    }
+  }
+  @media (max-width: 767px) {
+    padding: 0;
+    margin-top: 24px 24px 0 24px;
+  }
+  @media (max-width: 479px) {
+    width: 270px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+#error {
+  //居中窗口
+  div {
+    margin-bottom: 64px;
+    @media (max-width: 767px) {
+      padding: 24px;
+      text-align: center;
+    }
+    //404
+    > p {
+      line-height: 200px;
+      font-size: 200px;
+      color: lighten(@silver, 18%);
+      text-shadow: @dodger_blue 0 0 12px;
+      font-family: Kiro-Regular, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      @media (max-width: 479px) {
+        font-size: 120px;
+      }
+    }
+    //404下方文字
+    > span {
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  //(返回首页)按钮
+  button {
+    margin-top: 24px;
+  }
+
+  #logo {
+    position: absolute;
+    margin: 0;
+    top: 24px;
+    left: 36px;
+    @media (max-width: 767px) {
+      position: relative;
+      top: 0;
+      left: 0;
+    }
+    span {
+      &:nth-of-type(1) {
+        font-size: 36px;
+        @media (max-width: 479px) {
+          font-size: 28px;
+        }
+      }
+      &:nth-of-type(2) {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+
+

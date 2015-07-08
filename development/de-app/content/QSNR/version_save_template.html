@@ -1,0 +1,30 @@
+﻿<div class="popup_masker">
+    <div class="popup_windows save_version color_gary_kit_title border_dark_gary_262626 all_sides radius_3px margin_t_150px">
+        <div class="popup_title font_color_light_d6d6d6">
+            <h2 class="cursor_default">{{versionSaveManager.getTitle()}}</h2>
+            <div class="w-inline-block close_button color_gary_gradient_icon_button
+                 border_light_gary_3c3c3c all_sides radius_2px cursor_pointer"
+                 ng-click="handleCancleVersionClick()"
+                 ng-mouseenter="cancelHover = true"
+                 ng-mouseleave="cancelHover = false">
+                <div class="design_icon size_20px ic_close"
+                     ng-class="{'opacity_100_dur_200':cancelHover,'opacity_75_dur_200':!cancelHover}"></div>
+            </div>
+        </div>
+        <div class="save-_version_name font_color_light_d6d6d6">
+            <input class="design_input radius_2px border_dark_gary_262626 padding_lr_10px
+                   padding_tb_5px height_30px all_sides color_dark_gary_gradient_input"
+                   ng-attr-value="{{versionSaveManager.defaultName}}"
+                   id="ver_name_input"
+                    maxlength="30"
+                   placeholder="请输入版本描述" />
+        </div>
+        <div class="popup_control save_version">
+            <div class="w-inline-block design_button save-_version padding_tb_5px radius_3px cursor_pointer
+                 color_gary_gradient_text_button border_light_gary_3c3c3c all_sides font_color_light_d6d6d6"
+                 ng-click="handleSaveVersionClick()">
+                <div class="font_center">{{versionSaveManager.getBtnName()}}</div>
+            </div>
+        </div>
+    </div>
+</div>

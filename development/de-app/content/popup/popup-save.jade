@@ -1,0 +1,11 @@
+.popup.vertical-centers#save
+    .popup-title
+        i.ic.ic-document-1
+        h3 保存一个版本
+        a.close-popup(ng-click="handleCancleVersionClick()")
+            i.ic.ic-close
+    ul.popup-content
+        input#ver_name_input(type='text', placeholder='输入版本描述', maxlength="30", ng-attr-value="{{versionSaveManager.defaultName}}")
+        .popup-control
+            a(ng-click="handleSaveVersionClick()")
+                span 确 定

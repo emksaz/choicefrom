@@ -1,0 +1,35 @@
+﻿<div class="history_submenu elementShow">
+    <div class="history_dropdown radius_3px border_dark_gary_262626 all_sides color_dark_slate_gary_kit font_color_light_d6d6d6 kit_shadow">
+        <div class="w-clearfix history_header color_dark_gary_title_local border_dark_gary_262626 buttom" style="display:none">
+            <h4 class="float_l">自动保存</h4>
+        </div>
+        <div class="dropdown_overflow_auto" style="display:none">
+            <div class="w-inline-block font_color_light_d6d6d6 backup_snapshots border_dark_gary_262626 buttom">
+                <h4>Mar 16, 2015 15:08:37</h4>
+            </div>
+        </div>
+        <div class="w-clearfix history_header color_dark_gary_title_local border_dark_gary_262626 buttom cursor_default">
+            <h4 class="float_l ver_save_btn cursor_pointer" ng-click="handleVersionSaveClick()"
+                ng-class="{'ver_save_disable':!versionHistoryManager.isAllowSave()}">
+                保存版本
+            </h4>
+            <h4 class="float_r font_color_gary_9e9e9e">(Ctrl+Shift+S)</h4>
+        </div>
+        <div class="dropdown_overflow_auto">
+            <div class="w-clearfix w-inline-block backup_snapshots font_color_light_d6d6d6 border_dark_gary_262626 buttom"
+                 ng-repeat="item in versionHistoryManager.getBackupList()"
+                 ng-click="handleVersionItemClick(item)">
+                <h4 class="float_l text_ellipsis width160" title="{{item.verName}}">{{item.verName}}</h4>
+                <div class="history_button"
+                     ng-click="handleDeleteIconClick(item,$event)">
+                    <div class="design_icon size_20px ic_trash"></div>
+                </div>
+                <div class="history_button edit"
+                     ng-click="handleChangeIconClick(item,$event)">
+                    <div class="design_icon ic_edit size_20px"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="arrow_history border_dark_gary_262626 top left color_dark_gary_title_local"></div>
+</div>

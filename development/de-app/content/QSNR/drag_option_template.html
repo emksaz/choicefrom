@@ -1,0 +1,103 @@
+﻿<div>
+    <div class="w-clearfix nodes_options drag_option_item"
+         ng-repeat="option in optionList"
+         ng-class="{'margin_t_10px':!$first}"
+         ng-if="!option.isOtherOption"
+         data-option-index="{{option.index}}"
+         data-option-belong="{{::option.belong}}">
+        <!--图片选择 仅图片题使用▼-->
+        <div ng-if="node.isTypeOf('SELECTPIC')" style="margin-bottom:5px;">
+            <div data-image-select="option" data-image-lib="designManager.imageUploadManager"></div>
+        </div>
+        <!--图片选择 仅图片题使用▲-->
+        <!--文字与编号▼-->
+        <div style="overflow:hidden;position:relative;">
+            <!--选项文字与按钮 排序题不用▼-->
+            <div class="design_input padding_t_5px padding_l_5px padding_r_30px float_r border_dark_gary_262626
+                    radius_2px mc_options_input width_100per all_sides color_dark_gary_gradient_input"
+                 ng-class="{'width_250_dur_300':node.optionNumberOpen,'width_280_dur_300':!node.optionNumberOpen}"
+                 ng-if="!node.isTypeOf('SEQUENCE')"
+                 style="position:relative;">
+                <!--选项文字编辑▼-->
+                <textarea class="options_paragraph option_editor_input option_editor"
+                          ng-model="option.originText"
+                          ng-model-options="{debounce:150}"
+                          placeholder="请输入选项描述"
+                          ng-focus="handleOptionTextChange(option,-1)"
+                          ng-change="handleOptionTextChange(option)"
+                          ng-blur="handleOptionTextChange(option,1)"
+                          ng-class="{'width_205_mi':node.optionNumberOpen,'width_235_mi':!node.optionNumberOpen}"></textarea>
+
+                <!--选项文字编辑▲-->
+                <!--选项删除与拖拽按钮▼-->
+                <div class="w-inline-block mc_options_addon_button border_dark_gary_262626 left option_dragger cursor_pointer"
+                     ng-class="{'elementHide':node.optionDeleting,'elementShow':!node.optionDeleting}"
+                     ng-mousedown="onOptionMouseDown($event,option)">
+                    <div class="design_icon ic_drag size_20px drag_tager"></div>
+                </div>
+                <div class="w-inline-block mc_options_addon_button border_dark_gary_262626 left cursor_pointer"
+                     ng-class="{'elementShow':node.optionDeleting,'elementHide':!node.optionDeleting}">
+                    <div class="design_icon size_20px ic_remove remove_tager option_delete_icon elementShow"
+                         ng-click="handleDeleteOptionClick(node,option)"></div>
+                </div>
+                <!--选项删除与拖拽按钮▲-->
+            </div>
+            <!--选项文字与按钮 排序题不用▲-->
+            <!--选项文字与按钮 排序题专用▼-->
+            <div class="design_input padding_t_5px padding_l_5px padding_r_30px float_r border_dark_gary_262626 radius_2px
+                                         mc_options_input width_100per all_sides color_dark_gary_gradient_input margin_r_30px"
+                 ng-class="{'width_220_dur_300':node.optionNumberOpen,'width_250_dur_300':!node.optionNumberOpen}"
+                 ng-if="node.isTypeOf('SEQUENCE')">
+                <!--选项文字编辑▼-->
+                <textarea class="options_paragraph option_editor_input option_editor" ng-model="option.originText"
+                          ng-focus="handleOptionTextChange(option,-1)"
+                          ng-change="handleOptionTextChange(option)"
+                          ng-blur="handleOptionTextChange(option,1)"
+                          ng-model-options="{debounce:150}"
+                          placeholder="请输入选项描述"
+                          ng-class="{'width_175_mi':node.optionNumberOpen,'width_205_mi':!node.optionNumberOpen}"></textarea>
+
+                <!--选项文字编辑▲-->
+                <!--选项删除与拖拽按钮▼-->
+                <div class="w-inline-block mc_options_addon_button border_dark_gary_262626 left option_dragger cursor_pointer">
+                    <div class="design_icon ic_drag size_20px drag_tager"
+                         ng-mousedown="onOptionMouseDown($event,option)"
+                         ng-class="{'elementHide':node.optionDeleting,'elementShow':!node.optionDeleting}"></div>
+                    <div class="design_icon size_20px ic_remove remove_tager option_delete_icon cursor_pointer"
+                         ng-click="handleDeleteOptionClick(node,option)"
+                         ng-class="{'elementShow':node.optionDeleting,'elementHide':!node.optionDeleting}"></div>
+                </div>
+                <!--选项删除与拖拽按钮▲-->
+            </div>
+            <!--选项文字与按钮 排序题专用▲-->
+            <!--选项编号▼-->
+            <div class="mc_number font_size_12px padding_tb_5px border_dark_gary_262626 radius_2px all_sides color_slate_gary_gradient_field"
+                 ng-class="{'elementShow':node.optionNumberOpen,'elementHide':!node.optionNumberOpen}">
+                <!--选项编号编辑▼-->
+                <input type="text" class="option_number_input" ng-model="option.number"
+                       ng-model-options="{debounce:150}"
+                       maxlength="3"
+                       ng-focus="handleOptionNumberChange(option,-1)"
+                       ng-change="handleOptionNumberChange(option)"
+                       ng-blur="handleOptionNumberChange(option,1)"
+                       ng-keydown="handleOnlyNumberInputKeyDown($event)" />
+                <!--选项编号编辑▲-->
+            </div>
+            <!--选项编号▲-->
+            <!--是否目标控制按钮 排序题专用▼-->
+            <div class="options_radio_button" ng-click="handleChangeSeqTargetClick(node,option)"
+                 ng-if="node.isTypeOf('SEQUENCE')">
+                <div class="w-inline-block design_checkbox font_color_light_d6d6d6 margin_r_5px">
+                    <div class="position_div size_20px">
+                        <div class="design_icon size_20px ic_radio_off radio_off"
+                             ng-class="{'elementHide':option.seqTarget,'elementShow':!option.seqTarget}"></div>
+                        <div class="design_icon size_20px ic_radio_on radio_on"
+                             ng-class="{'elementShow':option.seqTarget,'elementHide':!option.seqTarget}"></div>
+                    </div>
+                </div>
+            </div>
+            <!--是否目标控制按钮 排序题专用▲-->
+        </div>
+        <!--文字与编号▲-->
+    </div>
+</div>

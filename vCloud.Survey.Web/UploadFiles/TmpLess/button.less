@@ -1,0 +1,53 @@
+.button-wrapper {
+  text-align: left;
+  z-index: 5;
+  .animation-delay(0.5s);
+}
+
+.button {
+  float: left;
+  width: auto;
+  position: relative;
+  display: inline-block;
+  padding: 0 4.8rem;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+  line-height: 4.8rem;
+  .transition-property(background-color);
+  .transition-duration(500ms);
+  cursor: pointer;
+  background-color: @button_color;
+  color: @button_text;
+
+  &:hover {
+    background-color: @choices_text;
+  }
+}
+
+.enter {
+  display: block;
+  float: left;
+  padding: 0 0.5em;
+  margin: 1.6rem 0 1.6rem 1.6rem;
+  position: relative;
+  border-radius: 2px;
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+  text-align: center;
+  border: 1px solid fade(@choices_text, 70%);
+  color: fade(@choices_text, 70%);
+
+  &:before {
+    content: "ENTER";
+  }
+}
+
+.stick {
+  padding-top: 2.4rem;
+  clear: both;
+  position: relative;
+  z-index: 10;
+  height: 16rem;
+  margin-top: -16rem;
+}

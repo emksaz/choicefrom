@@ -1,0 +1,167 @@
+//发布 .content-row 调整
+#published .content-row {
+  &:first-child {
+    border: none;
+  }
+}
+
+//二维码文字调整
+#web-link h3 {
+  &:last-of-type {
+    float: left;
+    clear: left;
+    margin-top: 24px;
+  }
+}
+
+//表单区块设置 (第一个取消下划线)
+#publish > form {
+  padding-top: 12px;
+  margin-bottom: 24px;
+  border-top: 1px solid @silver;
+  &:first-of-type {
+    border: none;
+  }
+}
+
+// 输入框尺寸调整
+#publish > form > mark,
+#publish > form > input {
+  width: 20%;
+  min-width: 200px;
+  margin-top: 12px;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+//下拉菜单尺寸,位置
+#publish > form > div.select {
+  position: relative;
+  padding: 0;
+  margin-top: 12px;
+  width: 20%;
+  min-width: 200px;
+  @media (max-width: 767px) {
+    width: 100%;
+    min-width: none;
+  }
+}
+
+//下拉菜单(按钮)尺寸,位置
+#publish > form > div.select > ul,
+#publish > form > div.select > button {
+  border: none;
+  width: 100%;
+}
+
+//快速帮助尺寸调整
+#publish > form > p {
+  width: 70%;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+
+}
+
+#publish > form{
+  &:last-of-type p{
+    top:20px;
+    min-height:40px;
+  }
+  &:last-of-type div{
+    max-width: 28%;
+    @media (max-width: 991px) {
+      max-width: 100%;
+    }
+    //white-space: normal;
+  }
+}
+
+
+//渠道设置-二级 Tabs 位置
+#collection > .tabs {
+  margin-top: 12px;
+}
+
+//渠道设置-二级 Tabs-导航栏
+#collection > div > nav{
+  border: none;
+  top: 1px;
+}
+
+//渠道设置-二级 Tabs-导航栏
+#collection > div > nav > ul {
+  padding: 0;
+}
+
+//渠道设置-二级 Tabs-右侧设置按钮 位置
+#collection > div > nav > .dropdown-event {
+  right: 0;
+}
+
+//渠道设置-二级 Tabs-按钮
+#collection > div > nav > ul > li {
+  padding: 8px 48px;
+}
+
+//渠道设置窗口
+#collection .collection {
+  padding: 12px 24px 48px 24px;
+  border-radius: 3px;
+  border: 1px solid @silver;
+  @media (max-width: 479px) {
+    padding: 12px 12px 48px 12px;
+  }
+}
+
+//渠道设置窗口-表单位置
+#collection .collection > form {
+  &:nth-of-type(2) {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid @silver;
+  }
+}
+
+//渠道设置窗口-收集信息帮助
+#collection .collection > form {
+  &:first-of-type{
+    min-height: 40px;
+    & p {
+      top: 0px;
+      /*width: 60%;*/
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+  }
+}
+
+//渠道设置窗口-灰色按钮
+#collection .collection > form > button {
+  float: left;
+  clear: left;
+  margin-top: 12px;
+}
+
+.content-row.disabled {
+  background-color: lighten(@silver, 18%);
+  > .tabs-style-sub > nav > ul > li.sub-tab-current:after {
+    background-color: lighten(@silver, 18%);
+  }
+}
+
+//显示当前收集器状态
+#publishtext,#RestTime{
+  display: block;
+  position: relative;
+  clear: left;
+  float: left;
+  @media (max-width: 767px){
+    float: none;
+  }
+}
+#publishtext{
+  color: green;
+}

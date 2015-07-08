@@ -1,0 +1,58 @@
+#data_analysis.pop-ups.medium
+    div
+        i.ic.ic-document-d
+        span 数据导出
+        a.box-button
+            i.ic.ic-x-d
+    form
+        #export_data
+            ul#bp-tabs.tabs
+                li.tab.activ
+                    a(rel='panel1') 数据结果
+                li.tab
+                    a(rel='panel2') 数据分析
+            .panel.activ
+                div
+                    span 数据视图
+                    div
+                        include ../template/radio-button
+                        +radio('radio11','当前选择视图','checked')
+                    div
+                        +radio('radio12','原始视图')
+                div
+                    span 数据内容
+                    div
+                        +radio('radio13','选择文本','checked')
+                    div
+                        +radio('radio14','数值')
+                div
+                    span 文件名
+                    input(type='text', name='out_xlsx', placeholder='问卷编号 + 汇总数据/结果数据 + 年月时分秒')
+                    span .xlsx
+            .panel
+                div
+                    span 数据视图
+                    div
+                        +radio('radio15','当前选择视图','checked')
+                    div
+                        +radio('radio16','原始视图')
+                #out_type
+                    span 输出类型
+                    div
+                        +radio('radio17','','checked')
+                        img(src='images/xlsx.png')
+                    div
+                        +radio('radio18')
+                        img(src='images/pdf.png')
+                div
+                    span 文件名
+                    input(type='text', name='out_pdf', placeholder='问卷编号 + 汇总数据/结果数据 + 年月时分秒')
+                    span .pdf
+            button.border
+                span 取 消
+            button.green
+                span 导 出
+                div
+                    .load_point01
+                    .load_point02
+                    .load_point03

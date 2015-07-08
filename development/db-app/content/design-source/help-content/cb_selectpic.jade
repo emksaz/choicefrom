@@ -1,0 +1,104 @@
+h1 图片题节点
+section
+   img(src='../../images/help/nd_selectpic.png', alt='图片题节点图例', width='200', height='auto')
+
+section
+   h2
+      i.ic-checkmark-2
+      | 基本设置
+
+   h3 题目编号：
+   p 图片题节点的编号。例如，“Question1”、“题目1”、“Q1”等，也可以是一个用于统计工具分析的题目代码，例如，“701”等。
+
+   h3 问题描述：
+   p 图片题的问题内容，例如，“请问您描述一下对本产品外观的整体评价？”。
+
+   h3 添加媒体：
+   p
+      | 为图片题节点添加一幅图片。
+      br
+      | 点击后，图片题基本设置中增加“媒体选项”，在“媒体选项”的下拉菜单中选择“添加图片”上传新的图片作为开始节点的图片，或者在下拉菜单中选择已上传的图片。
+
+section
+   h2
+      i.ic-checkmark-2
+      | 通用设置
+
+   h3 必答题，须有答案：
+   p 勾选后受访用户将无法跳过此题。默认为勾选。
+
+   h3 多选题：
+   p 勾选后将本题设定为多选题。默认为单选题。
+
+   h3 选项随机：
+   p 勾选后本题将随机打乱所有选项后再呈现给受访用户。不同受访用户回答问卷时将看到不同排列次序的选项。
+
+section
+   h2
+      i.ic-checkmark-2
+      | 图片模式设置：
+   p 图片模式决定了图片题最终在问卷中的呈现方式。
+
+   h3 布局样式：
+   p 系统预置了3种不同的图片布局样式，分别为：
+      ul.list-style-ul
+         li
+            span 单行：文档待更新。
+            br
+         li
+            span 瀑布流：点选设定图形的数量。
+            br
+            img(src='../../images/help/smp_tpt.png', alt='打分题节点图例', width='300', height='auto')
+            br
+            span 图片样式：瀑布流布局可选择三种不同的图片样式，用于控制图片卡片的外观，分别为：直角、圆角、圆形。
+         li
+            span 网格：文档待更新。
+            br
+
+section
+   h2
+      i.ic-checkmark-2
+      | 选项：
+   p 选择题的备选项，例如，“高铁或动车”、“飞机”、“邮轮”、“自驾”、“长途汽车”。
+   p
+      | 选项数值与题目编号通常用于对问卷数据的深度统计和分析时，计算机利用题目编号和选项数值完成对问卷题目和选项的统计分析。
+      br
+      | 点击
+      img(src='../../images/help/btn_xxshz.png', alt='打分题节点图例', width='150', height='auto')
+      | “选项数值”按钮打开选项编号输入框，
+      | 在选项数值输入框中
+      img(src='../../images/help/btn_xxshz1.png', alt='打分题节点图例', width='260', height='auto')
+      | 输入您预先设定的选项数值。再次点击后关闭选项数值输入对话框。
+      br
+      | 普通用户通常并不会用到。
+
+   h3 添加选项：
+   p 点击“添加选项”在选项列表的最后新增一个图片选项。
+      img(src='../../images/help/btn_tpt_shch.png', alt='打分题节点图例', width='300', height='auto')
+      br
+   p
+      | 图片题的每个选项由图片选择下拉菜单、图片缩略图和描述文字构成。
+      br
+      | 点击图片选择下拉菜单选择图片或者上传图片，上传完毕后会显示图片的缩略图像。
+      br
+      |  最后在选项描述中输入该图片的描述文字。
+   h3 批量添加选项：
+   p 点击“添加选项”右侧箭头，打开“批量添加选项”对话框。
+   include help-mark
+   +mark('鼠标点击并上下拖动选项右边拖曳把手可以改变选项的显示顺序。')
+
+section
+   h1
+      i.ic-link-4  相关链接:
+   br
+   a(href='glb_surveymanager.html', target='_blank')
+      span 问卷管理中心
+   br
+   a(href='glb_designcenter.html', target='_blank')
+      span 问卷编辑器使用入门（一）
+   br
+   a(href='glb_designcenter2.html', target='_blank')
+      span 问卷编辑器使用入门（二）
+   br
+   a(href='glb_shortcutlist.html', target='_blank')
+      span 快捷键清单

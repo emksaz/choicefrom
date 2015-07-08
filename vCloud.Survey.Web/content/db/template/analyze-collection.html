@@ -1,0 +1,54 @@
+
+<div id="collection" ng-attr-class="{{publishManager.otherFlag4 &amp;&amp; 'content-row disabled'||'content-row'}}">
+  <div class="row-title">
+    <h2>渠道设置</h2>
+    <button disabled="disabled" ng-if="false" class="blue"><i class="ic ic-plus-w"></i><span>添加收集渠道</span></button>
+  </div>
+  <div class="tabs tabs-style-sub">
+    <nav>
+      <ul>
+        <li class="sub-tab-current"><span>微信</span></li>
+      </ul>
+      <div class="dropdown-event">
+                <ul class="floating strip">
+                  <li>选中收集渠道操作：</li>
+                  <li>复制</li>
+                  <li>重命名</li>
+                  <li></li>
+                </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+      </div>
+    </nav>
+    <div class="collection">
+      <form>
+        <div ng-if="false">
+          <input id="checkboxG4" type="checkbox" name="checkboxG4" class="css-checkbox"/>
+          <label for="checkboxG4" onselectstart="return false;" class="checkbox-label">关注服务号的受访者，才能回复。</label>
+        </div>
+        <div>
+          <input id="checkboxG5" type="checkbox" name="checkboxG5" ng-click="toggleCollectionEnable()" ng-disabled="publishManager.DisableAll" ng-checked="publishManager.collectionEnable" class="css-checkbox"/>
+          <label for="checkboxG5" onselectstart="return false;" class="checkbox-label">收集受访者的微信基础信息</label>
+        </div>
+        <p>{{::UserPageText.Publish_publishIntervieweeInfo}}</p>
+      </form>
+      <form name="WeichatForm" novalidate="">
+        <h3>绑定微信服务号</h3>
+        <input type="text" name="WeChatName" placeholder="名称：" ng-readonly="!publishManager.collectionEnable" ng-model="publishManager.WeChatName"/><br/>
+        <!--mark.form-message(ng-show="WeichatForm.WeChatName.$dirty && WeichatForm.WeChatName.$invalid && WeichatForm.WeChatName.$error.required") 请输入微信名称！--><br/>
+        <input type="text" name="WeChatNameId" placeholder="微信号：" ng-readonly="!publishManager.collectionEnable" ng-model="publishManager.WeChatNameId"/><br/>
+        <!--mark.form-message(ng-show="WeichatForm.WeChatNameId.$dirty && WeichatForm.WeChatNameId.$invalid && WeichatForm.WeChatNameId.$error.required") 请输入微信号-->
+        <input type="text" required="" name="WeChatNameAppID" placeholder="APP ID：" ng-readonly="!publishManager.collectionEnable" ng-model="publishManager.WeChatNameAppID" ng-change="QuesSetWebChatBtnChange(WeichatForm.$valid,WeichatForm.WeChatNameAppID.$dirty)"/><br/>
+        <mark ng-show="WeichatForm.WeChatNameAppID.$dirty &amp;&amp; WeichatForm.WeChatNameAppID.$invalid &amp;&amp; WeichatForm.WeChatNameAppID.$error.required" class="form-message">请输入APP ID！</mark><br/>
+        <input type="text" name="WeChatAppSecret" placeholder="APP Secret:" ng-readonly="!publishManager.collectionEnable" ng-model="publishManager.WeChatAppSecret" ng-change="QuesSetWebChatBtnChange(WeichatForm.$valid,WeichatForm.WeChatAppSecret.$dirty)" required=""/><br/>
+        <mark ng-show="WeichatForm.WeChatAppSecret.$dirty &amp;&amp; WeichatForm.WeChatAppSecret.$invalid &amp;&amp; WeichatForm.WeChatAppSecret.$error.required" class="form-message">请输入APP Secret！</mark>
+        <button ng-class="{'green':publishManager.WeChatBtnFlag,'gray':!publishManager.WeChatBtnFlag}" ng-click="WeiChatVerify()"><span onselectstart="return false;">验证并保存</span></button>
+        <p>{{::UserPageText.Publish_publishWeiXinInfo}}</p>
+      </form>
+      <form>
+        <div>配置 OAuth 域名：</div>
+        <input id="weichat-oauth" type="text" placeholder="" name="weichat-oauth" readonly=""/><br/>
+        <button ng-class="{'green':publishManager.WeichatOauthFlag,'gray':!publishManager.WeichatOauthFlag}" ng-click="QuesSetWebChatOauthBtn()"><span onselectstart="return false;">立即验证</span></button>
+        <p>{{::UserPageText.Publish_publishOauthConfig}}<br/>{{::UserPageText.Publish_publishImmediatelyVerify}}</p>
+      </form>
+    </div>
+  </div>
+</div>

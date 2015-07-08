@@ -1,0 +1,93 @@
+header.page-header
+    .w-container
+        h1 我的调查问卷
+        #switching-accounts.dropdown-event
+            button.border.switching-accounts.right-ic.dropdown-bt(title='{{QList.CompanyName}}')
+                i#liCompanyImg.ic-profile
+                span {{QList.CompanyName}}
+                i.ic.ic-down-2d
+            include ../template/dropdown-accounts
+
+        #sorting.dropdown-event
+            button.sorting.right-ic.dropdown-bt
+                i.ic(ng-class='QList.SortClass')
+                span {{QList.SortName}}
+                i.ic.ic-down-2d
+            include ../template/dropdown-sorting
+
+        button#create-surveys.button.blue(ng-click="GoToUrl('/QMCreate/','');",has-authority="QListPage-CreateQuesBtn")
+            i.ic.ic-plus-w
+            span 新建调查问卷
+// 顶部控制栏
+.w-container
+    .too-small-alert
+        p 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。
+
+    include ../template/surveys
+
+    a.load-more(ng-show='QList.MyAddQues', ng-click="AddMoreQues('0')")
+        p 加载更多...
+.w-container
+    .content-wrapper
+        .separator-bar
+            #folder.dropdown-event
+                button.border.folder.right-ic.dropdown-bt
+                    i.ic.ic-folder-d
+                    span {{QList.FolderName}}
+                    i.ic.ic-down-2d
+                ul.dropdown.folder.right-ic.downul
+                    li.dropdown-tips 切换文件夹
+                    .overauto
+                        li(ng-click='ChangeFolder(Folder);', ng-repeat='Folder in QList.FolderList', title='{{Folder.FolderName}}')
+                            i.ic.ic-folder-d
+                            | {{Folder.FolderName}}
+                            i.ic.ic-checkmark-b(ng-show='Folder.IsSelect')
+                    li(ng-click='OpenAddFolder()')
+                        i.ic.ic-add-folder-d
+                        | 创建新的文件夹
+            .dropdown-event(ng-show='QList.FolderSetShow')
+                ul.floating.strip.downul
+                    li 文件夹操作：
+                    li(ng-click='OpenEditFolder()') 重命名
+                    li(ng-click='QList.Popupbackground=3') 删除
+                a.box-button.setup.dropdown-bt
+                    i.ic.ic-wrench-d
+    .surveys(ng-show='QList.OtherQuesHide')
+        .survey-column(ng-repeat='otherques in QList.OtherQuesList')
+            .survey-item
+                .open-design
+                    .status(ng-class='otherques.QStatusClass')
+                        i.ic(ng-class='otherques.QStatusIconClass')
+                    .survey-mask(ng-click='ReturnQuestionnairDesign(otherques)')
+                        .survey-operations
+                            i.ic.ic-trash-w(ng-click='OpenDelQues(otherques,1,$event)', ng-show='otherques.QStatus!=5', title='删除问卷')
+                            i.ic.ic-multiple-documents-w(ng-click='CopyQues(otherques,1,$event)', title='复制问卷')
+                            i.ic.ic-folder-w(ng-click='OpenMoveQues(otherques,1,$event)', title='移动问卷')
+                            i.ic.ic-rocket-f-w(ng-show='otherques.QStatus==5 || otherques.QStatus==8 ', title='发布设置', ng-click='GoToDataTrends(otherques,$event)')
+                            i.ic.ic-eye-d-w(ng-show='otherques.PreViewFlag', title='预览问卷', ng-click='PreViewClick(otherques.QuestionnaireID,$event)')
+                        a.design-enter 设计问卷
+                    .survey-preview(style='background-image: url({{otherques.ImgUrl}}); background-position: center; background-size: cover; background-repeat: no-repeat;')
+                .collection-schedule
+                    a(ng-click='turnToAnalyzeResults(otherques.QuestionnaireID)', title='分析结果')
+                        .collection-progress.ellipsis
+                            i.ic.ic-activity-g
+                            span 回复数: {{otherques.QuesSubmitNum}}
+                            .progress-bar(ng-style='otherques.ProgressWidth')
+                    a.box-button.settings(title='发布设置', ng-click='turnToPublish(otherques.QuestionnaireID)')
+                        i.ic.ic-settings-d
+            .survey-footer.ellipsis
+                span(title='{{otherques.QTitle}}') {{otherques.QTitle}}
+                div {{otherques.SortDate}}
+        .survey-column
+            a(ng-click="GoToUrl('/QMCreate/',QList.FolderID);")
+                .create-item
+                    span +
+    a.load-more(ng-show='QList.OtherAddQues', ng-click="AddMoreQues('1')")
+        p 加载更多...
+.pop-ups-background(style='z-index:9000', ng-show='QList.Popupbackground!=0', ng-click='CloseDiv()')
+    include ../popup/new-folder
+    include ../popup/rename-folder
+    include ../popup/delete-folder
+    include ../popup/delete-files
+    include ../popup/move-to-folder
+    include ../popup/survey-preview

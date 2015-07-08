@@ -1,0 +1,34 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('分析结果-数据结果')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 Here are some quick tips for a first-time organization member.
+                    button.purple
+                        i.ic.ic-brush-w
+                        span 设计问卷
+                    include ./template/shortcut
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-analyze
+                    #question-summaries.content-wrap
+                        .tabs.tabs-style-sub
+                            nav
+                                ul
+                                    li
+                                        span 收集进度
+                                    li.sub-tab-current
+                                        span 数据结果
+                                    li
+                                        span 个人结果
+                            include ./template/analyze-sidebar
+                            include ./template/analyze-chart
+    include layout/footer

@@ -1,0 +1,44 @@
+.stitches-ic-m(@x: 0, @y: 0, @width: 0, @height: 0) {
+  background-position: @x / 2 @y / 2;
+  width: @width / 2;
+  height: @height / 2;
+}
+
+.ic-m {
+  background-image: url(../images/de/ic-mini.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-size: 60px;
+
+  &.ic-drag {
+    .stitches-ic(0, 0, 40px, 40px);
+  }
+
+  &.ic-location {
+    .stitches-ic(-40px, 0, 40px, 40px);
+  }
+
+  &.ic-pan {
+    .stitches-ic(0, -40px, 40px, 40px);
+  }
+
+  &.ic-prompt {
+    .stitches-ic(-40px, -40px, 40px, 40px);
+  }
+
+  &.ic-question {
+    .stitches-ic(-80px, 0, 40px, 40px);
+  }
+
+  &.ic-tick {
+    .stitches-ic(-80px, -40px, 40px, 40px);
+  }
+
+  &.ic-trash {
+    .stitches-ic(0, -80px, 40px, 40px);
+  }
+
+  &.ic-warning {
+    .stitches-ic(-40px, -80px, 40px, 40px);
+  }
+}

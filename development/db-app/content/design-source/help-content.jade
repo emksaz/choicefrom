@@ -1,0 +1,27 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('快速开始')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 帮助中心
+            .w-container
+                .help-contents
+                    .help-menu
+                        i.ic.ic-window-f
+                        h2.scrolltop 快速开始
+                        ul
+                            each val, index in ['创建新的调查问卷', '设计与编辑问卷', '创建连续的题目', '保存和恢复问卷版本', '为题目选项设定不同的分支', '设定问卷标题和封面']
+                                li
+                                    i.ic.ic-multiple-documents-f-d
+                                    a.help-list(rel= 'section' + index)= val
+                    #help_content.help-content
+                        include help-content/glb_designcenter2.jade
+    include layout/footer

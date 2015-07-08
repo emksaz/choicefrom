@@ -1,0 +1,82 @@
+﻿<div>
+    <div class="w-clearfix title_selector padding_tb_8px border_light_gary_3c3c3c top"
+         ng-mouseenter="target.verifyHover=true"
+         ng-mouseleave="target.verifyHover=false">
+        <h4 class="float_l cursor_default">验证：</h4>
+        <div class="design_icon size_20px ic_help cursor_pointer"
+             style="margin: 0px 0px 0px 32px; "
+             ng-click="handleValidateHelpClick($event,'verify')"></div>
+    </div>
+    <!--验证下拉列表▼-->
+    <div class="position_div">
+        <div class="w-clearfix w-inline-block nodes_dropdown color_gary_gradient_text_button
+             border_light_gary_3c3c3c all_sides radius_2px font_color_light_d6d6d6 width_100per cursor_pointer"
+             ng-click="handleCurrTypeClick(target)">
+            <div class="design_icon size_20px ic_arrow_drop_down float_r"></div>
+            <h4 class="cursor_default">{{dict.getItemById(target.validateType).text}}</h4>
+            <div ng-mouseleave="handleListMouseLeave(target)">
+                <div class="nodes_dropdown_menu border_light_gary_3c3c3c all_sides elementShow nodes_dropdown_menu_OtherValidSelect"
+                     ng-if="target.showValidateList">
+                    <div class="dropdown_list"
+                         ng-repeat="item in dict.list"
+                         ng-click="handleTypeItemClick(target,item,$event)">
+                        <h4>{{item.text}}</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--验证下拉列表▲-->
+    <!--范围设定▼-->
+    <div class="padding_tb_6px padding_lr_5px" ng-if="target.validateType < 4">
+        <h4 class="font_line_height_24px margin_r_5px cursor_default">在以下范围之内：</h4>
+        <div class="w-clearfix">
+            <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px padding_lr_10px
+                                             all_sides color_dark_gary_gradient_input width_100px float_l margin_r_10px">
+                <input class="validate_input" ng-model="target.validateStart"
+                       maxlength="5"
+                       ng-focus="handleValidateStartChange(target,-1)"
+                       ng-change="handleValidateStartChange(target)"
+                       ng-blur="handleValidateStartChange(target,1)" />
+                <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button"
+                     ng-click="handleValidateStartChangeClick(target,1)">
+                    <div class="design_icon ic_up"></div>
+                </div>
+                <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button"
+                     ng-click="handleValidateStartChangeClick(target,-1)">
+                    <div class="design_icon ic_down"></div>
+                </div>
+            </div>
+            <h4 class="float_l font_line_height_24px margin_r_5px margin_r_10px cursor_default">至</h4>
+            <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px padding_lr_10px
+                                             all_sides color_dark_gary_gradient_input width_100px float_l margin_r_5px">
+                <input class="validate_input" ng-model="target.validateEnd"
+                       maxlength="5"
+                       ng-focus="handleValidateEndChange(target,-1)"
+                       ng-change="handleValidateEndChange(target)"
+                       ng-blur="handleValidateEndChange(target,1)" />
+                <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button"
+                     ng-click="handleValidateEndChangeClick(target,1)">
+                    <div class="design_icon ic_up"></div>
+                </div>
+                <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button"
+                     ng-click="handleValidateEndChangeClick(target,-1)">
+                    <div class="design_icon ic_down"></div>
+                </div>
+            </div>
+            <h4 class="font_line_height_24px margin_r_5px font_color_gary_9e9e9e cursor_default" ng-if="target.validateType == 1">个字</h4>
+        </div>
+    </div>
+    <!--范围设定▲-->
+    <div class="w-clearfix title_selector padding_tb_8px">
+        <h4 class="float_l cursor_default">当答案验证无效时，显示此错误讯息：</h4>
+    </div>
+    <input class="design_input padding_tb_5px border_dark_gary_262626 radius_2px
+           width_100per all_sides color_dark_gary_gradient_input padding_lr_5px"
+           maxlength="30"
+           ng-focus="handleErrorMsgChange(target,-1)"
+           ng-change="handleErrorMsgChange(target)"
+           ng-blur="handleErrorMsgChange(target,1)"
+           ng-model-options="{debounce:150}"
+           ng-model="target.errorMsg" />
+</div>

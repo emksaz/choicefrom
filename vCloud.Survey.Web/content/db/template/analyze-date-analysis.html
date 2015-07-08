@@ -1,0 +1,70 @@
+
+<div id="Data_analysis" ng-click="ShowPopup($event)" ng-show="QuestionSummaries.Popupbackground==2" class="pop-ups medium">
+  <div><i class="ic ic-document-d"></i><span>输出结果</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form>
+    <div id="export_data">
+      <ul id="bp-tabs" class="tabs">
+        <li ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]" ng-click="QuestionSummaries.DataTabClass=1" class="tab"><a rel="panel1">数据结果</a></li>
+        <li ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]" ng-click="QuestionSummaries.DataTabClass=2" class="tab"><a rel="panel2">统计图表</a></li>
+      </ul>
+      <div ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]" class="panel">
+        <div><span>数据视图</span>
+          <div>
+            <input id="radio11" type="radio" name="data_type_1" value="0" ng-model="QuestionSummaries.DataViewType" class="css-checkbox"/>
+            <label for="radio11" class="radio-label radGroup1">当前显示</label>
+          </div>
+          <div>
+            <input id="radio12" type="radio" name="data_type_1" value="1" ng-model="QuestionSummaries.DataViewType" class="css-checkbox"/>
+            <label for="radio12" class="radio-label radGroup1">全部</label>
+          </div>
+        </div>
+        <div><span>数据内容</span>
+          <div>
+            <input id="radio13" type="checkbox" name="data_type_2" ng-model="QuestionSummaries.DataViewSelectText" class="css-checkbox"/>
+            <label for="radio13" class="checkbox-label radGroup1">选项文本</label>
+          </div>
+          <div>
+            <input id="radio14" type="checkbox" name="data_type_5" ng-model="QuestionSummaries.DataViewSelectValue" class="css-checkbox"/>
+            <label for="radio14" class="checkbox-label radGroup1">选项值</label>
+          </div>
+        </div>
+        <div><span>文件名</span>
+          <input type="text" maxlength="30" name="out_xlsx" ng-model="QuestionSummaries.DataViewTypeDownLoadFileName" placeholder="问卷编号 + 结果数据 + 年月时分秒"/><span>.xlsx</span>
+        </div>
+      </div>
+      <div ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]" class="panel">
+        <div><span>数据视图</span>
+          <div>
+            <input id="radio15" type="radio" name="data_type_3" value="0" ng-model="QuestionSummaries.DataAnalysisViewType" class="css-checkbox"/>
+            <label for="radio15" class="radio-label radGroup1">当前显示</label>
+          </div>
+          <div>
+            <input id="radio16" type="radio" name="data_type_3" value="1" ng-model="QuestionSummaries.DataAnalysisViewType" class="css-checkbox"/>
+            <label for="radio16" class="radio-label radGroup1">全部</label>
+          </div>
+        </div>
+        <div><span>输出类型</span>
+          <div>
+            <input id="radio17" type="radio" name="data_type_4" value="0" ng-model="QuestionSummaries.DataAnalysisViewFileType" class="css-checkbox"/>
+            <label for="radio17" class="radio-label radGroup1">EXCEL</label>
+          </div>
+          <div>
+            <input id="radio18" type="radio" name="data_type_4" value="1" ng-model="QuestionSummaries.DataAnalysisViewFileType" class="css-checkbox"/>
+            <label for="radio18" class="radio-label radGroup1">PDF</label>
+          </div>
+        </div>
+        <div><span>文件名</span>
+          <input type="text" maxlength="30" name="out_pdf" ng-model="QuestionSummaries.DataAnalysisViewTypeDownLoadFileName" placeholder="问卷编号 + 汇总数据 + 年月时分秒"/><span>.{{QuestionSummaries.DataAnalysisViewFileType==1?"pdf":"xlsx"}}</span>
+        </div>
+      </div>
+      <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+      <button ng-click="CreateFileInfo();" class="green"><span>导 出</span>
+        <div ng-show="QuestionSummaries.IsCreateFileIng">
+          <div class="load_point01"></div>
+          <div class="load_point02"></div>
+          <div class="load_point03"></div>
+        </div>
+      </button>
+    </div>
+  </form>
+</div>

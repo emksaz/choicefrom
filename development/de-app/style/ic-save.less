@@ -1,0 +1,24 @@
+.stitches-sv(@x: 0, @y: 0, @width: 0, @height: 0) {
+  background-position: @x / 2 @y / 2;
+  width: @width / 2;
+  height: @height / 2;
+}
+
+.sv {
+  background-image: url(../images/de/ic-save.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-size: 60px;
+
+  &.sv-cloud-checkmark {
+    .stitches-sv(0, 0, 40px, 40px);
+  }
+
+  &.sv-save {
+    .stitches-sv(-40px, 0, 40px, 40px);
+  }
+
+  &.sv-wifi {
+    .stitches-sv(-80px, 0, 40px, 40px);
+  }
+}

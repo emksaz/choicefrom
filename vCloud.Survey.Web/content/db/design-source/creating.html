@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>新建问卷</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/db-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../../images/cf.svg">
+        <script type="text/javascript" src="../../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../script/lib/datetimepicker.js"></script>
+        <script type="text/javascript" src="../../../script/lib/scrollTo.js"></script>
+        <script type="application/javascript" src="../../../script/lib/fastclick.js"></script>
+        <script type="text/javascript" src="../../../script/lib/modernizr.js"></script>
+        <script src="../../../script/db-index.js"></script>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="lot lot1"></div>
+      <div class="lot lot2"></div>
+      <div class="lot lot3"></div>
+      <div class="lot lot4"></div>
+    </div>
+    <div class="main-wrapper">
+      <nav class="nav">
+        <div class="w-container">
+          <div class="logo"><span>choices form</span><span>beta</span></div><a class="menu-button"><i class="ic ic-menu-w"></i></a>
+          <div class="menu"><a class="nav-current">我的调查问卷</a><a>问卷模版</a><a>教学</a><a>方案与定价</a><a>账户设置</a>
+            <div id="accounts-settings" class="dropdown-event">
+              <button class="accounts-settings right-ic"><i class="ic-profile"></i><span>账户设置</span><i class="ic ic-down-2w"></i></button>
+              <ul class="dropdown accounts-settings">
+                <li><i class="ic ic-work"></i>用户设置</li>
+                <li><i class="ic ic-building-2d"></i>组织设置</li>
+                <li><i class="ic ic-star"></i>方案类型</li>
+                <li><i class="ic ic-megaphone-d"></i>更新通知</li>
+                <li><i class="ic ic-question-mark-d"></i>帮助中心</li>
+                <li><i class="ic ic-logout-d"></i>退出登录</li>
+              </ul>
+            </div>
+            <div class="dropdown-event"><a class="notifications"><i class="ic ic-24-notifications"></i></a>
+              <ul class="dropdown notification-center">
+                <li>没有新通知</li>
+                <li>查看全部通知</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- 导航菜单-->
+      <header id="sample-page" class="page-header">
+        <div class="w-container">
+          <h1>新建调查问卷</h1>
+          <button id="create-surveys" class="button blue right-ic"><span>开始设计问卷</span><i class="ic ic-right-2w"></i></button>
+          <button id="create-surveys" class="button gray"><span>取 消</span></button>
+        </div>
+      </header>
+      <div id="sample-w" class="w-container">
+        <div class="too-small-alert">
+          <p>您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+        </div>
+        <div class="content-wrapper">
+          <div class="creating">
+            <form>
+              <div>
+                <h3>问卷标题：</h3>
+                <div class="dropdown-event">
+                  <button class="right-ic"><i class="ic ic-folder-l"></i><span>未加入文件夹</span><i class="ic ic-down-2d"></i></button>
+                                    <ul class="dropdown right-ic c-folder">
+                                      <li class="dropdown-tips">切换文件夹</li>
+                                      <ul class="overauto">
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i class="ic ic-checkmark-b"></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                                              <li><i class="ic ic-folder-d"></i>Drop Down Menus | CSS MenuMaker<i></i>
+                                                              </li>
+                                      </ul>
+                                      <li><i class="ic ic-add-folder-d"></i>Drop Down Menus | CSS MenuMaker</li>
+                                    </ul>
+                </div>
+              </div>
+              <input type="text" name="name" placeholder="请输入问卷标题"><br>
+              <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+              <p>您最多可以输入120个汉字。</p>
+            </form>
+          </div>
+          <div class="separator-bar">
+            <h1>使用范本</h1>
+            <div class="dropdown-event">
+              <button class="right-ic"><span>范 本</span><i class="ic ic-down-2d"></i></button>
+              <ul class="dropdown sample right-ic">
+                <li class="dropdown-tips">范本分类</li>
+                <li>全部<i class="ic ic-checkmark-b"></i></li>
+                <li>教育</li>
+                <li>市场调查</li>
+                <li>客户满意度</li>
+                <li>员工</li>
+                <li>医疗</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="surveys">
+          <div class="survey-column">
+            <div class="survey-item select-sample">
+              <div class="open-design">
+                <div class="survey-mask">
+                  <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择</a>
+                </div>
+                <h1>空 白</h1>
+              </div>
+              <div class="collection-schedule">
+                <div>已选择</div>
+              </div>
+            </div>
+            <div class="survey-footer ellipsis"><span>不使用范本</span></div>
+          </div>
+                    <div class="survey-column">
+                      <div class="survey-item">
+                        <div class="open-design">
+                          <div class="survey-mask">
+                            <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+                          </div>
+                          <div class="survey-preview"></div>
+                        </div>
+                        <div class="collection-schedule"><span>￥ 120</span></div>
+                      </div>
+                      <div class="survey-footer ellipsis"><span>大学学生满意度范本</span>
+                        <div>Use the switch context button in the upper left corner of this page to switch between your personal context (Wester1220) and organizations you are a member of.</div>
+                      </div>
+                    </div>
+                    <div class="survey-column">
+                      <div class="survey-item">
+                        <div class="open-design">
+                          <div class="survey-mask">
+                            <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+                          </div>
+                          <div class="survey-preview"></div>
+                        </div>
+                        <div class="collection-schedule"><span>￥ 120</span></div>
+                      </div>
+                      <div class="survey-footer ellipsis"><span>大学学生满意度范本</span>
+                        <div>Use the switch context button in the upper left corner of this page to switch between your personal context (Wester1220) and organizations you are a member of.</div>
+                      </div>
+                    </div>
+                    <div class="survey-column">
+                      <div class="survey-item">
+                        <div class="open-design">
+                          <div class="survey-mask">
+                            <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+                          </div>
+                          <div class="survey-preview"></div>
+                        </div>
+                        <div class="collection-schedule"><span>￥ 120</span></div>
+                      </div>
+                      <div class="survey-footer ellipsis"><span>大学学生满意度范本</span>
+                        <div>Use the switch context button in the upper left corner of this page to switch between your personal context (Wester1220) and organizations you are a member of.</div>
+                      </div>
+                    </div>
+                    <div class="survey-column">
+                      <div class="survey-item">
+                        <div class="open-design">
+                          <div class="survey-mask">
+                            <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+                          </div>
+                          <div class="survey-preview"></div>
+                        </div>
+                        <div class="collection-schedule"><span>￥ 120</span></div>
+                      </div>
+                      <div class="survey-footer ellipsis"><span>大学学生满意度范本</span>
+                        <div>Use the switch context button in the upper left corner of this page to switch between your personal context (Wester1220) and organizations you are a member of.</div>
+                      </div>
+                    </div>
+                    <div class="survey-column">
+                      <div class="survey-item">
+                        <div class="open-design">
+                          <div class="survey-mask">
+                            <div class="survey-operations"><a><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+                          </div>
+                          <div class="survey-preview"></div>
+                        </div>
+                        <div class="collection-schedule"><span>￥ 120</span></div>
+                      </div>
+                      <div class="survey-footer ellipsis"><span>大学学生满意度范本</span>
+                        <div>Use the switch context button in the upper left corner of this page to switch between your personal context (Wester1220) and organizations you are a member of.</div>
+                      </div>
+                    </div>
+        </div><a class="load-more">
+          <p>加载更多...</p></a>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="w-container"><span>关于我们</span><span>关于我们</span><span>关于我们</span><span>关于我们</span>
+      <p>© 2015,<a>choices form</a> , Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+</html>

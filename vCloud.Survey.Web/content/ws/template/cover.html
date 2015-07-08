@@ -1,0 +1,49 @@
+
+<div id="home" data-ix="show-nav" class="w-section section home">
+  <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" data-ix="display-none-scroll-nav" class="navbar-scroll">
+    <div class="w-container"><a href="#home">
+        <p class="logo">choice form<span>beta</span></p></a>
+      <nav role="navigation">
+        @if ((bool)ViewData["IsLogin"])
+        {<a href="/home/DashBoard" class="button sign-up">我的调查问卷</a>}
+        else
+        {<a href="/home/signin?type=1" class="button log-in">登 录</a><a href="/home/signin?type=2" class="button sign-up">注 册</a>}
+      </nav>
+    </div>
+  </div>
+  <div data-collapse="none" data-animation="default" data-duration="400" class="navbar">
+    <div class="w-container">
+      <p class="logo">choice form<span>beta</span></p>
+      <nav role="navigation">
+        @if ((bool)ViewData["IsLogin"])
+        {<a href="/home/DashBoard" class="button sign-up">我的调查问卷</a>}
+        else
+        {<a href="/home/signin?type=1" class="button log-in">登 录</a><a href="/home/signin?type=2" class="button sign-up">注 册</a>}
+      </nav>
+    </div>
+  </div>
+  <div>
+    <div id="home" class="w-container">
+      <div class="w-row">
+        <div class="w-col w-col-6">
+          <div class="hero-text">
+            <h1 data-ix="hero-headline"><span>巧思</span>
+              <p class="logo">choice form<span>beta</span></p><br/><span>在线问卷系统</span>
+            </h1>
+            <h2 data-ix="hero-headline-2">Best online survey software & questionnaire tool</h2>@if ((bool)ViewData["IsLogin"])
+            {<a href="/home/DashBoard" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>开始设计问卷</strong></a>}
+            else
+            {<a href="/home/signin?type=1" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>开始设计问卷</strong></a>}<a style="display:none;" href="#" data-ix="hero-button" class="button board"><i class="sprite sprite-play-4"></i><strong>观看视频</strong></a>
+          </div>
+        </div>
+        <div class="w-col w-col-6 cover-phone">
+          <div data-ix="phone-3" class="my-survey">
+            <div class="survey-screen">
+              <!-- | <iframe src="@Request["quesID"]" style="overflow:hidden;">--><iframe src="@ViewData["QuesUrl"]" style="overflow:hidden;"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+#question-summaries.content-wrap
+   .tabs.tabs-style-sub
+      nav
+         ul
+            li(ng-click='AnalyzeResultTabSelect()')
+               span 收集进度
+            li.sub-tab-current
+               span 统计图表
+            li(ng-show="IsDemo=='1'")
+               span 数据结果
+      include ../template/analyze-slidebar
+      include ../template/analyze-summaries-list
+.pop-ups-background(style='z-index:9000', ng-show='QuestionSummaries.Popupbackground!=0', ng-click='CloseDiv()')
+   .pop-ups(ng-click='ShowPopup($event)', ng-show='QuestionSummaries.Popupbackground==1')
+      div
+         i.ic.ic-folder-d
+         span 重命名显示规则名称
+         a.box-button(ng-click='CloseDiv()')
+            i.ic.ic-x-d
+      form#EditForm(name='EditForm', novalidate='')
+         h3 名称：
+         input#EditName(type='text', placeholder='请输入名称', name='EditName', ng-model='QuestionSummaries.SelectShowChangeName', required='', ng-maxlength='100', oninput='notifyTextLength(this, 100)')
+         br
+         mark.form-message(ng-show='EditFForm.EditFolderName.$dirty && EditFForm.EditFolderName.$invalid') 文件夹名称不可为空。
+         button.border(type='button', ng-click='CloseDiv()')
+            span 取 消
+         button.blue(ng-click='EditShowChangeName(EditForm.$valid)')
+            span 重命名
+   include ../template/analyze-date-analysis

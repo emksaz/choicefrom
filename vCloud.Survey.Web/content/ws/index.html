@@ -1,0 +1,305 @@
+
+@{
+Layout = null;
+}<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+  <head>
+        <title>巧思科技 choices form</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../css/ws-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../images/cf.svg">
+        <script type="text/javascript" src="../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/jquery.validate.vq.js"></script>
+        <script type="text/javascript" src="../../script/lib/angular.min.js"></script>
+        <script type="text/javascript" src="../../script/lib/modernizr.js"></script>
+        <script type="application/javascript" src="../../script/lib/fastclick.js"></script>
+        <script src="../../script/ws-index.js"></script>@if (ViewData["IsShowDemo"].ToString()=="1")
+    {
+    <meta name="巧思 choice form" content="最专业的在线问卷系统">
+    <meta name="description" content="巧思 choice form 最专业的在线问卷系统">
+    <meta name="keywords" content="choice form,form,forms,choice,巧思问卷,调研,表单,在线问卷,问卷设计,">}
+    <script>
+      var _hmt = _hmt || [];
+      (function () {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?@System.Configuration.ConfigurationManager.AppSettings["BaiduWeb"].ToString()";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  </head>
+  <body>
+    @if (ViewData["IsShowDemo"].ToString()=="1")
+    {
+    <!--script.window.location.href = "http://www.cform.io";
+    -->
+    <div style="position: absolute;z-index:90000;padding-left:200px;top:10px;width: 50px;text-align: center;font-size:32px;line-height:38px;color:snow;text-shadow:black 0px 0px 8px">Demo</div>}
+    <div style="margin:0 auto;display:none;"><img src="../../images/share.jpg"></div>
+    <div id="home" data-ix="show-nav" class="w-section section home">
+      <div data-collapse="medium" data-animation="default" data-duration="400" data-contain="1" data-ix="display-none-scroll-nav" class="navbar-scroll">
+        <div class="w-container"><a href="#home">
+            <p class="logo">choice form<span>beta</span></p></a>
+          <nav role="navigation">
+            @if ((bool)ViewData["IsLogin"])
+            {<a href="/home/DashBoard" class="button sign-up">我的调查问卷</a>}
+            else
+            {<a href="/home/signin?type=1" class="button log-in">登 录</a><a href="/home/signin?type=2" class="button sign-up">注 册</a>}
+          </nav>
+        </div>
+      </div>
+      <div data-collapse="none" data-animation="default" data-duration="400" class="navbar">
+        <div class="w-container">
+          <p class="logo">choice form<span>beta</span></p>
+          <nav role="navigation">
+            @if ((bool)ViewData["IsLogin"])
+            {<a href="/home/DashBoard" class="button sign-up">我的调查问卷</a>}
+            else
+            {<a href="/home/signin?type=1" class="button log-in">登 录</a><a href="/home/signin?type=2" class="button sign-up">注 册</a>}
+          </nav>
+        </div>
+      </div>
+      <div>
+        <div id="home" class="w-container">
+          <div class="w-row">
+            <div class="w-col w-col-6">
+              <div class="hero-text">
+                <h1 data-ix="hero-headline"><span>巧思</span>
+                  <p class="logo">choice form<span>beta</span></p><br><span>在线问卷系统</span>
+                </h1>
+                <h2 data-ix="hero-headline-2">Best online survey software & questionnaire tool</h2>@if ((bool)ViewData["IsLogin"])
+                {<a href="/home/DashBoard" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>开始设计问卷</strong></a>}
+                else
+                {<a href="/home/signin?type=1" data-ix="hero-button" class="button green"><i class="sprite sprite-brush-1"></i><strong>开始设计问卷</strong></a>}<a style="display:none;" href="#" data-ix="hero-button" class="button board"><i class="sprite sprite-play-4"></i><strong>观看视频</strong></a>
+              </div>
+            </div>
+            <div class="w-col w-col-6 cover-phone">
+              <div data-ix="phone-3" class="my-survey">
+                <div class="survey-screen">
+                  <!-- | <iframe src="@Request["quesID"]" style="overflow:hidden;">--><iframe src="@ViewData["QuesUrl"]" style="overflow:hidden;"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="features" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2>设计，而非编写</h2><span>designing rather than writing</span>
+          <p>巧思独有的图形化问卷设计系统－nodes flow ，颠覆在线问卷编写创建方式。<br>nodes flow 以流程图方式设计问卷，摆放题型节点创建问卷题目，拖动节点连线设定问卷跳转逻辑，操作简单快捷，菜鸟用户也能快速上手。nodes flow 直观展现问卷流程，方便查找、修改、归类，问卷逻辑清晰明了，再复杂的问卷也能轻松完成。</p>
+        </div><img src="../../images/ws/web-ui.png" width="940" data-ix="phone">
+      </div>
+    </div>
+    <div id="function" class="w-section section function">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s1.png" width="1442" data-ix="show-up-from-left" class="left-image"></div>
+          <div class="w-col w-col-6">
+            <h2>不仅功能强大，而且直观易用</h2>
+            <p>友好的操作界面整合众多问卷设计功能，常用工具栏、隐藏式面板、属性设定面板、媒体资源管理...通过对功能的分类梳理，带给您简洁、清晰的视觉感受和简单、易用的操作体验。<br>Ctrl+S、Ctrl+C、Ctrl+V...操作快捷键、鹰眼视图等贴心功能加速问卷设计进程。</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>丰富的题型</h2>
+            <p>丰富的题型节点库、甄别节点库，满足各类调研问卷需求。以及选项逻辑运算、题目随机、题目循环、动态自定义变量等高级功能节点，轻松设计专业问卷。</p>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s2.png" width="1442" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6"><img src="../../images/ws/web-ui-s3.png" width="1442" data-ix="show-up-from-left" class="left-image"></div>
+          <div class="w-col w-col-6">
+            <h2>实时预览</h2>
+            <p>问卷设计过程中，可对单个节点进行实时预览，把控问卷设计的每个重要细节。<br>问卷设计完毕后，支持对整个问卷的实时预览，所见即所得。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="and-more" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2>越简便，越不简单...</h2><span>less is more</span>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/icon-nodes.png">
+            <h3>可扩充题型库</h3>
+            <p>除了内置20余款经典题型节点，我们还会不定期增加新题型节点。</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/Nodes.png">
+            <h3>跳转逻辑清晰明了</h3>
+            <p>nodes flow 图形化问卷设计新理念！拖节点，连线条，轻松设计复杂问卷。</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/logic-nodes.png">
+            <h3>高级功能</h3>
+            <p>题目循环、题目随机、选项逻辑运算...高级功能节点为专业问卷而设。</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/custom-variables.png">
+            <h3>支持动态自定义变量</h3>
+            <p>在问卷内容中动态嵌入前题的选择答案，帮助您更精准地分析目标群体。</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/auto-save-versions.png">
+            <h3>历史版本</h3>
+            <p>问卷设计过程中可随时保存版本，当需要版本回溯时，可快速返回到所需的问卷设计阶段。</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/custom-theme.png">
+            <h3>个性化问卷皮肤</h3>
+            <p>可定制问卷皮肤，满足您的个性化需求。支持Markdown标记语言，还有什么不能变？</p>
+          </div>
+        </div>
+        <div class="w-row">
+          <div data-ix="show-up-1" class="w-col w-col-4"><img src="../../images/ws/quota.png">
+            <h3>灵活的配额设定</h3>
+            <p>交叉配额、非交叉配额、多方案多渠道自动配额合并等配额设定，助您精准锁定目标群体。</p>
+          </div>
+          <div data-ix="show-up-2" class="w-col w-col-4"><img src="../../images/ws/chart.png">
+            <h3>问卷数据可视化展示</h3>
+            <p>无图无真相，问卷数据可视化把真相送给你。数据筛选和数据下载用于深度数据统计分析。</p>
+          </div>
+          <div data-ix="show-up-3" class="w-col w-col-4"><img src="../../images/ws/organizations.png">
+            <h3>支持企业账号</h3>
+            <p>通过账号角色设定分配不同的企业目录和问卷权限，团队成员分工协作以及成果分享。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="process" class="w-section section process">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>快速而高效的配额设置</h2>
+            <p>高度灵活的问卷配额设定满足您各种严苛的问卷回收要求，内置甄别节点库预设常用的甄别设置，降低问卷甄别设定难度，帮助您精准锁定目标群体。</p>
+            <ul>
+              <li><i class="ic ic-quota-c"></i><span>交叉配额</span></li>
+              <li><i class="ic ic-quota-n"></i><span>非交叉配额</span></li>
+              <li class="quota-m"><i class="ic ic-quota-m"></i><span>多方案、多渠道自动配额合并</span></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/settings-quota.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>各种渠道齐集一堂</h2>
+            <p>巧思具备完善的问卷发布渠道，帮助您将调研问卷发布到各种主流渠道。还支持对不同渠道设定独立的配额，以更精准地进行问卷回收。</p>
+            <ul>
+              <li><i class="ic ic-weichat"></i><span>微信</span></li>
+              <li><i class="ic ic-weibo"></i><span>微博</span></li>
+              <li><i class="ic ic-mail"></i><span>邮件</span></li>
+              <li><i class="ic ic-www"></i><span>网站</span></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/settings-publish.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-6">
+            <h2>数据筛选、视图和下载</h2>
+            <p>问卷回收进程全程实时跟踪，实时数据视图一目了然。<br>各项问卷题目分布数据云端汇总统计，全面掌控调研问卷数据。<br>灵活的自定义数据筛选，帮助您聚焦最重要的数据。</p>
+            <ul>
+              <li><i class="ic ic-xls"></i></li>
+              <li><i class="ic ic-spss"></i></li>
+              <li><i class="ic ic-csv"></i></li>
+            </ul>
+            <h3>多种数据格式下载。</h3>
+          </div>
+          <div class="w-col w-col-6"><img src="../../images/ws/data-trends.png" width="940" data-ix="show-up-from-right"></div>
+        </div>
+      </div>
+    </div>
+    <div id="theme" class="w-section section theme">
+      <div class="w-container">
+        <div class="w-row">
+          <div class="w-col w-col-7">
+            <ul data-ix="phone-2">
+              <li class="sc-01"></li>
+              <li class="sc-02"></li>
+              <li class="sc-03"></li>
+              <li class="sc-04"></li>
+            </ul>
+          </div>
+          <div class="w-col w-col-5">
+            <h2>精于思，巧于形</h2><span>delicate concept and wealth design</span>
+            <p>多种多样的问卷皮肤模板，一键换肤，高颜值问卷拉近您与目标群体的距离。<br><br>巧思支持 Markdown 标记语言，方便您自己设定问卷皮肤，更灵活地控制问卷显示效果，满足您高度个性化的需求。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="screenshoots" class="w-section section screenshoots">
+      <div class="w-container">
+        <div class="title">
+          <h2 class="dark-tittle">新平台，为新一代在线问卷打造</h2><span>brandnew platform,brandnew online sruvery tool</span>
+        </div>
+        <div data-animation="slide" data-duration="500" data-infinite="1" data-delay="2500" data-autoplay="1" data-easing="ease-out" data-nav-spacing="1" class="w-slider screenshoots-slider">
+          <div class="w-slider-mask">
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-01.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-02.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-03.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-04.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-05.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-06.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-07.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-08.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-09.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-10.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-11.png" width="217"></div>
+            <div class="w-slide slider screen"><img src="../../images/ws/ip-screens-12.png" width="217"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="contact" class="w-section section">
+      <div class="w-container">
+        <div class="title">
+          <h2 class="dark-tittle">联系我们</h2><span>contact us</span>
+          <p>choice form 非常重视您的意见和建议，请您把您的使用感受，或者批评意见告诉我们，这将是我们更好地完善系统的动力。</p>
+        </div>
+        <div class="w-row">
+          <div class="w-col w-col-9">
+            <div class="contact-form">
+              <form id="email-form" method="post" class="w-clearfix">
+                <input id="name" type="text" placeholder="如何称呼您?" name="name" data-name="Name" required="required">
+                <input id="email" type="email" placeholder="如何回复您? ( email )" name="email" data-name="Email" required="required">
+                <input id="email-2" type="text" placeholder="主题" name="email-2" data-name="Email 2" required="required">
+                <textarea id="field" placeholder="内容" name="field" required="required"></textarea>
+                <input id="submit_button" type="button" value="发送信息" onclick="SendMail()" data-wait="发送中..." class="button blue">
+              </form>
+              <div id="emilsucc" class="w-form-done success-message">
+                <p>您的信息已发送, 我们会通过邮件的形式回复您.</p>
+              </div>
+              <div id="emailfail" class="w-form-fail">
+                <p>(⊙o⊙)哦, 信息发送失败,请重试.(</p>
+              </div>
+            </div>
+          </div>
+          <div class="w-col w-col-3">
+            <h4>联系地址:</h4>
+            <p>上海市徐汇区龙华中路600号绿地中心B座701单元<br><br>Phone: 86 021-54591660<br>Email: sc@cform.io<br>Web: cform.io</p>
+            <h4>工作时间:</h4>
+            <p>周一至周五: 10 AM – 18 PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-section footer">
+      <div class="w-container"><a href="#home">
+          <p class="logo">choice form<span>beta</span></p></a>
+        <div><span>关于我们</span><span>帮助中心</span><span>法律条款</span><span>联系我们</span>
+          <p>&copy; 2015,<a>choice form</a> , Inc. All Rights Reserved.</p>
+        </div>
+      </div>
+    </div>
+    <div id="browser-bg">
+      <div id="Browser-low">
+        <h1 id="choices-left"><span>检测到在当前浏览器上可能出现部分功能体验不佳或无法使用的情况,是否仍然要继续?<br>Tips:建议使用谷歌Chrome浏览器或苹果Safari浏览器。</span></h1>
+      </div>
+      <script>
+        $(function () {
+            $("img").scrollLoading();
+        });
+      </script>
+    </div>
+  </body>
+</html>

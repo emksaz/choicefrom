@@ -1,0 +1,107 @@
+
+<header id="sample-page" class="page-header">
+  <div class="w-container">
+    <h1>新建调查问卷</h1>
+    <button id="create-surveys" ng-disabled="QCreate.QFBtnSubmitFlag" ng-click="QuesSubmit()" has-authority="QCreatePage-DesignQuesBtn" class="button blue right-ic"><span>开始设计问卷</span><i class="ic ic-right-2w"></i></button>
+    <button id="create-surveys" ng-click="GoToQM()" has-authority="QCreatePage-CancalBtn" class="button gray"><span>取 消</span></button>
+  </div>
+</header>
+<div id="sample-w" class="w-container">
+  <div class="too-small-alert">
+    <p>您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+  </div>
+  <div class="content-wrapper">
+    <div class="creating">
+      <form novalidate="">
+        <div>
+          <h3>问卷标题：</h3>
+          <div class="dropdown-event">
+            <button class="right-ic dropdown-bt"><i class="ic ic-folder-l"></i><span>{{QCreate.InitFolderName}}</span><i class="ic ic-down-2d"></i></button>
+            <ul ng-style="QCreate.ShowDownFolder" class="dropdown c-folder right-ic downul">
+              <li class="dropdown-tips">切换文件夹</li>
+              <div class="overauto">
+                <li ng-click="ChangeFolderCss(Folder);" ng-repeat="Folder in QCreate.DataFolderList" title="{{Folder.FolderName}}"><i class="ic ic-folder-d"></i>{{Folder.FolderName}}<i ng-show="Folder.IsSelect" class="ic ic-checkmark-b"></i></li>
+              </div>
+              <li ng-click="CreateFolder()"><i class="ic ic-add-folder-d"></i>创建新的文件夹</li>
+            </ul>
+          </div>
+        </div>
+        <input id="QueTitle" type="text" placeholder="请输入问卷标题" name="QueTitle" ng-model="QCreate.QueTitle" required="" ng-maxlength="100" ng-change="QFbtnSubmitCssChange()" oninput="notifyTextLength(this, 100)" maxlength="100"/><br/>
+        <p>{{UserPageText.Summary_QTileMaximum}}</p>
+      </form>
+    </div>
+    <div class="separator-bar">
+      <h1>使用范本</h1>
+      <div class="dropdown-event">
+        <button class="right-ic dropdown-bt"><span>{{QCreate.CurrentModelName}}</span><i class="ic ic-down-2d"></i></button>
+        <ul class="dropdown sample right-ic downul">
+          <li class="dropdown-tips">范本分类</li>
+          <li ng-repeat="modelType in ModelTypeList" ng-click="selectModel(modelType,ModelTypeList,1,0,true)">{{modelType.ModelTypeName}}<i ng-show="modelType.IsSelect" class="ic ic-checkmark-b"></i></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- 文件夹控制栏-->
+  <div class="surveys">
+    <div ng-repeat="quesInfo in QuesList" class="survey-column">
+      <div ng-class="quesInfo.SelectClass" class="survey-item">
+        <div ng-click="showSelectDiv(quesInfo,QuesList)" class="open-design">
+          <div class="survey-mask">
+            <div class="survey-operations"><a ng-click="PreViewModel(quesInfo.QuesID,$event)" ng-show="quesInfo.IsViewModelShow"><i class="ic ic-eye-d-w"></i><span>查看范本</span></a></div><a class="design-enter">选择范本</a>
+          </div>
+          <h1 ng-show="quesInfo.BlankContent!=''">空 白</h1>
+          <div ng-show="quesInfo.BlankContent==''" style="background-image: url({{quesInfo.ImgUrl}});" class="survey-preview"></div>
+        </div>
+        <div class="collection-schedule"><span>{{quesInfo.Price}}</span>
+          <div ng-if="quesInfo.IsSelectFlag">已选择</div>
+        </div>
+      </div>
+      <div class="survey-footer ellipsis"><span title="{{quesInfo.Title}}">{{quesInfo.Title}}</span>
+        <div title="{{quesInfo.Descript}}">{{quesInfo.Descript}}</div>
+      </div>
+    </div>
+  </div><a ng-click="addMoreQues()" ng-show="QCreate.AddMoreFlag" has-authority="QCreatePage-AddMoreBtn" class="load-more">
+    <p>加载更多...</p></a>
+</div>
+<div style="z-index:9000" ng-show="QCreate.CreateFolderFlag!='hide'" ng-click="QuesCreateClose()" class="pop-ups-background">
+  <div ng-show="QCreate.CreateFolderFlag=='Show'" ng-click="QuesCreatePopup($event)" class="pop-ups">
+    <div><i class="ic ic-add-folder-d"></i><span>新建文件夹</span><a ng-click="concelWin()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form id="FolderForm" name="FolderForm" novalidate="">
+      <h3>文件夹名称：</h3>
+      <input id="AFolderName" type="text" placeholder="请输入文件夹名称" name="AFolderName" ng-model="QCreate.newFolderName" ng-keydown="enterOrEscOper(1)" required="" ng-maxlength="20" oninput="notifyTextLength(this, 20)"/><br/>
+      <mark ng-show="FolderForm.AFolderName.$dirty &amp;&amp; FolderForm.AFolderName.$invalid" class="form-message">文件夹名称不可为空。</mark>
+      <button type="button" ng-click="concelWin()" class="border"><span>取 消</span></button>
+      <button ng-click="SaveNewFolder(FolderForm.$valid)" class="green"><span>新 建</span></button>
+    </form>
+  </div>
+  <!--.pop-ups(ng-show="QCreate.CreateFolderFlag=='Preview'", ng-click='QuesCreatePopup($event)')
+  div
+     i.ic.ic-eye-f-d
+     span 问卷预览
+     a.box-button(ng-click='QuesCreateClose()')
+        i.ic.ic-x-d
+  form
+     h3 问卷预览地址：
+     br
+     a#QuesCreatePreviewHref.preViewLink(href='', target='_blank', style='height:auto;')
+     br
+     h3 问卷预览二维码：
+     br
+     #QuesCreatePreviewURl
+     br
+     h6 当前链接为预览链接，不记录结果，请不要作为正式的问卷向他人发送。
+  
+  -->
+  <div id="ques-review" ng-show="QCreate.CreateFolderFlag=='Preview'" ng-click="QuesCreatePopup($event)" class="pop-ups">
+    <div><i class="ic ic-eye-f-d"></i><span>问卷预览</span><a ng-click="QuesCreateClose()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+    <form class="ng-pristine ng-valid">
+      <div><img id="QuesPreviewURl"/></div>
+      <button class="blue"><span ng-show="false">下载二维码</span></button>
+      <mark class="form-message">当前链接为预览链接，不作为正式的问卷向他人发送。</mark>
+      <div>
+        <h3>问卷预览地址：</h3>
+        <button class="dark"><span ng-show="false">复制链接</span></button><a id="QuesPreviewHref" href="" target="_blank" style="height:auto;" class="preViewLink"></a>
+      </div>
+    </form>
+  </div>
+</div>

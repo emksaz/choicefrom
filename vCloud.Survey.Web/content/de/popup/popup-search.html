@@ -1,0 +1,11 @@
+
+<div id="search" ng-attr-style="{{designManager.searchManager.getStyle()}}" ng-mousedown="handleResultMouseDown($event)" class="popup drag">
+  <div class="popup-title"><i class="ic ic-search"></i>
+    <h3>搜索</h3><a ng-click="handleCloseResultClick()" class="close-popup"><i class="ic ic-close"></i></a>
+  </div>
+  <div ng-attr-style="{{designManager.searchManager.getSearchListStyle()}}" class="popup-content nano">
+    <ul class="nano-content">
+      <li ng-repeat="node in designManager.searchManager.nodes" ng-click="handleResultItemClick(node)" ng-class="{'list-activ':node.isSelected()}"><span>{{node.nodeName}}</span></li>
+    </ul>
+  </div>
+</div>

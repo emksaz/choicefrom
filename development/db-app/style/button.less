@@ -1,0 +1,375 @@
+button {
+  position: relative;
+  display: inline-block;
+  padding: 8px 12px 7px 12px;
+  cursor: pointer;
+  border-radius: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  background-color: transparent;
+  .transition-property(background-color);
+  .transition-property(color);
+  .transition-property(opacity);
+  .transition-property(border-color);
+  .transition-duration(500ms);
+  border: 0;
+  outline: 0;
+  outline-style: none;
+  outline-width: 0;
+  .user-select(none);
+  &:hover {
+    outline: 0;
+  }
+  &active {
+    outline: none;
+    border: none;
+  }
+  &:focus {
+    outline: 0;
+  }
+}
+
+//按钮文字
+button > span {
+  .transition(color, 500ms, ease);
+  line-height: 22px;
+}
+
+//按钮图标
+button > i {
+  .transition(opacity, 500ms, ease);
+  &:first-child {
+    float: left;
+    margin-right: 6px;
+  }
+}
+
+//右侧下拉提示图标
+button > i.ic-right-2w,
+button > i.ic-down-2d,
+button > i.ic-down-1d,
+button > i.ic-down-1w,
+button > i.ic-down-2w {
+  position: absolute;
+  right: 6px;
+  top: 8px;
+  float: right;
+  opacity: 0.6;
+  margin-left: 6px;
+}
+
+//右侧图标 悬浮效果
+  button:hover > i {
+    &:last-of-type {
+      opacity: 1;
+    }
+}
+
+//右侧图标位置
+button.right-ic {
+  padding-right: 33px;
+}
+
+//勾线样式
+button.border {
+  border: 1px solid @silver;
+  &:hover {
+    border: 1px solid @dark_slate;
+  }
+}
+
+button.medium {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+
+button.small {
+  .transition-property(border-color);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  border: 1px solid @silver;
+  background-color: fade(@white, 50%);
+  &:hover {
+    border: 1px solid @dark_gray;
+  }
+}
+
+button.small > i.ic-down-2d {
+  top: 2px;
+}
+
+//蓝色样式
+button.blue {
+  .transition-property(background-color);
+  background-color: @dodger_blue;
+  color: @white;
+  &:hover {
+    background-color: darken(@dodger_blue, 12%);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: @silver;
+  }
+}
+
+//绿色样式
+button.green {
+  .transition-property(background-color);
+  background-color: @sea_green;
+  color: @white;
+  &:hover {
+    background-color: darken(@sea_green, 12%);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background-color: @silver;
+  }
+}
+
+//紫色样式
+button.purple {
+  .transition-property(background-color);
+  background-color: @purple;
+  color: @white;
+  &:hover {
+    background-color: darken(@purple, 12%);
+  }
+}
+
+//红色样式
+button.red {
+  .transition-property(background-color);
+  background-color: @tomato;
+  color: @white;
+  &:hover {
+    background-color: darken(@tomato, 12%);
+  }
+}
+
+//深色样式
+button.dark {
+  .transition-property(background-color);
+  background-color: @dark_slate;
+  color: @white;
+  &:hover {
+    background-color: darken(@dark_slate, 12%);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    background: none;
+    border: 1px dashed @silver;
+    color: @silver;
+  }
+}
+
+//灰色样式
+button.gray {
+  .transition-property(background-color);
+  background-color: fade(@silver, 50%);
+  color: @dark_gray;
+  &:hover {
+    background-color: @silver;
+    color: @dark_slate;
+  }
+}
+
+//用户设置(右上角)
+button.accounts-settings {
+  color: @white;
+  line-height: 24px;
+  float: right;
+  padding-top: 18px;
+  padding-bottom: 18px;
+}
+
+button.accounts-settings > span {
+  @media (max-width: 991px) {
+    display: block;
+    padding: 20px 24px;
+  }
+}
+
+//用户设置-图标
+button.accounts-settings > i {
+  &:first-of-type {
+    margin-right: 12px;
+  }
+  &:last-of-type {
+    top: 18px;
+  }
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
+//通知按钮
+.notifications {
+  float: right;
+  display: inline-block;
+  cursor: pointer;
+  padding: 18px;
+  @media (max-width: 991px) {
+    display: none;
+  }
+}
+
+//通知按钮-图标
+.notifications > i {
+  opacity: 0.6;
+  .transition(opacity, 500ms, ease);
+}
+
+//通知按钮-图标 悬浮效果
+.notifications:hover > i {
+  & {
+    opacity: 1;
+  }
+}
+
+//响应式菜单按钮
+.menu-button {
+  display: none;
+  @media (max-width: 991px) {
+    display: block;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    opacity: 0.6;
+    .transition(opacity, 500ms, ease);
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+//切换用户按钮
+button.switching-accounts {
+  max-width: 220px;
+}
+
+#sorting button{
+  min-height: 37px;
+}
+
+//排序按钮
+button.sorting {
+
+  border-radius: 0;
+  border-left: 1px solid @silver;
+  margin-left: 16px;
+  color: @dark_gray;
+  @media (max-width: 767px) {
+    margin: 0;
+    border: none;
+  }
+}
+
+//排序按钮-图标
+button.sorting > i {
+  &:first-child {
+    opacity: 0.6;
+  }
+}
+
+//排序按钮-图标 悬浮效果
+button.sorting:hover > i {
+  opacity: 1;
+}
+
+//排序按钮-文字
+button.sorting:hover > span {
+  color: @dark_slate;
+}
+
+//文件夹操作按钮
+button.folder {
+  text-align: left;
+  max-width: 200px;
+  @media (max-width: 767px) {
+    width: 270px;
+    max-width: none;
+    margin: 0 auto;
+  }
+}
+
+//(点击)下拉菜单按钮
+button.select {
+  text-align: left;
+  display: inline-block;
+  border-radius: 2px;
+  border: 1px solid @silver;
+  font-size: 12px;
+  padding: 6px 33px 6px 12px;
+}
+
+//(点击)下拉菜单按钮-文字
+button.select span {
+  line-height: 20px;
+  padding: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+//方形按钮
+.box-button {
+  display: inline-block;
+  position: relative;
+  opacity: 0.5;
+  cursor: pointer;
+  .transition(opacity, 500ms, ease);
+  &:hover {
+    opacity: 1;
+  }
+}
+
+//方形按钮-图标
+.box-button i {
+  margin: 8px;
+}
+
+//方形按钮-问卷卡片右下角-设置按钮
+.box-button.settings {
+  float: right;
+}
+
+//方形按钮-深色
+.box-button.dark {
+  opacity: 1;
+  border-radius: 3px;
+  background-color: @dark_slate;
+  &:hover {
+    background-color: darken(@dark_slate, 12%);
+  }
+}
+
+//方形按钮-蓝色
+.box-button.blue {
+  opacity: 1;
+  border-radius: 3px;
+  background-color: @dodger_blue;
+  &:hover {
+    background-color: darken(@dodger_blue, 12%);
+  }
+}
+
+//方形按钮-绿色
+.box-button.green {
+  opacity: 1;
+  border-radius: 3px;
+  background-color: @sea_green;
+  &:hover {
+    background-color: darken(@sea_green, 12%);
+  }
+}
+
+//方形按钮-图标 (小)
+.box-button.green i,
+.box-button.blue i,
+.box-button.dark i {
+  margin: 2px;
+}

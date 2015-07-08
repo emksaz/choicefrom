@@ -1,0 +1,15 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('弹出窗口')
+    body
+        .main-wrapper
+            include ./popup/data-analysis
+            include ./popup/new-folder
+            include ./popup/rename
+            include ./popup/move-to-folder
+            include ./popup/delete-folder
+            include ./popup/relogin
+            include ./popup/survey-preview
+            include ./popup/delete-files

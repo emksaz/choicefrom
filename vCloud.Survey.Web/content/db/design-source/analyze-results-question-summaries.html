@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>分析结果-数据结果</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/db-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../../images/cf.svg">
+        <script type="text/javascript" src="../../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../script/lib/datetimepicker.js"></script>
+        <script type="text/javascript" src="../../../script/lib/scrollTo.js"></script>
+        <script type="application/javascript" src="../../../script/lib/fastclick.js"></script>
+        <script type="text/javascript" src="../../../script/lib/modernizr.js"></script>
+        <script src="../../../script/db-index.js"></script>
+  </head>
+  <body>
+    <div class="loading">
+      <div class="lot lot1"></div>
+      <div class="lot lot2"></div>
+      <div class="lot lot3"></div>
+      <div class="lot lot4"></div>
+    </div>
+    <div class="main-wrapper">
+      <nav class="nav">
+        <div class="w-container">
+          <div class="logo"><span>choices form</span><span>beta</span></div><a class="menu-button"><i class="ic ic-menu-w"></i></a>
+          <div class="menu"><a class="nav-current">我的调查问卷</a><a>问卷模版</a><a>教学</a><a>方案与定价</a><a>账户设置</a>
+            <div id="accounts-settings" class="dropdown-event">
+              <button class="accounts-settings right-ic"><i class="ic-profile"></i><span>账户设置</span><i class="ic ic-down-2w"></i></button>
+              <ul class="dropdown accounts-settings">
+                <li><i class="ic ic-work"></i>用户设置</li>
+                <li><i class="ic ic-building-2d"></i>组织设置</li>
+                <li><i class="ic ic-star"></i>方案类型</li>
+                <li><i class="ic ic-megaphone-d"></i>更新通知</li>
+                <li><i class="ic ic-question-mark-d"></i>帮助中心</li>
+                <li><i class="ic ic-logout-d"></i>退出登录</li>
+              </ul>
+            </div>
+            <div class="dropdown-event"><a class="notifications"><i class="ic ic-24-notifications"></i></a>
+              <ul class="dropdown notification-center">
+                <li>没有新通知</li>
+                <li>查看全部通知</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <header class="page-header">
+        <div class="w-container"><a><i class="ic ic-24-dashboard-l"></i></a>
+          <h1>Here are some quick tips for a first-time organization member.</h1>
+          <button class="purple"><i class="ic ic-brush-w"></i><span>设计问卷</span></button>
+          <div class="shortcut"><a class="box-button"><i class="ic ic-24-Transfer-f-24"></i></a><a class="box-button"><i class="ic ic-eye-f-d"></i></a><a class="box-button"><i class="ic ic-folder-f-d"></i></a><a class="box-button"><i class="ic ic-multiple-documents-f-d"></i></a><a class="box-button"><i class="ic ic-trash-f-d"></i></a></div>
+        </div>
+      </header>
+      <div class="w-container">
+        <div class="tabs tabs-style">
+          <nav>
+            <ul>
+              <li><span>摘要</span></li>
+              <li><span>预览</span></li>
+              <li><span>配额</span></li>
+              <li><span>发布</span></li>
+              <li class="tab-current"><span>分析结果</span></li>
+            </ul>
+          </nav>
+          <div id="question-summaries" class="content-wrap">
+            <div class="tabs tabs-style-sub">
+              <nav>
+                <ul>
+                  <li><span>收集进度</span></li>
+                  <li class="sub-tab-current"><span>数据结果</span></li>
+                  <li><span>个人结果</span></li>
+                </ul>
+              </nav>
+              <div class="sidebar">
+                <div class="setting-row">
+                  <h2>定义视图<a class="box-button"><i class="ic ic-question-mark-d"></i></a></h2>
+                  <div class="sidebar-row">
+                    <!-- 侧栏-设置区块--><span>显示规则</span><a class="box-button blue"><i class="ic ic-plus-w"></i></a>
+                    <form id="rules">
+                      <div>
+                                                <input id="radio1" type="radio" name="radio1" checked="checked" class="css-checkbox">
+                                                <label for="radio1" class="radio-label radGroup1">选择题1,选择题2,选择题1,选择题2,选择题1,选择题1,选择题2,选择题1,选择题2,选择题1</label>
+                        <div class="dropdown-event">
+                                                    <ul class="floating strip">
+                                                      <li>操作：</li>
+                                                      <li>编辑</li>
+                                                      <li>重命名</li>
+                                                      <li></li>
+                                                    </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                      </div>
+                      <div>
+                                                <input id="radio2" type="radio" name="radio2" class="css-checkbox">
+                                                <label for="radio2" class="radio-label radGroup1">选择题1,选择题2,选择题1,选择题2,选择题1,选择题1,选择题2,选择题1,选择题2,选择题1</label>
+                        <div class="dropdown-event">
+                                                    <ul class="floating strip">
+                                                      <li>操作：</li>
+                                                      <li>编辑</li>
+                                                      <li>重命名</li>
+                                                      <li></li>
+                                                    </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                      </div>
+                    </form>
+                    <form id="sub-rules">
+                      <div>
+                                                <input id="checkboxG1" type="checkbox" name="checkboxG1" class="css-checkbox">
+                                                <label for="checkboxG1" class="checkbox-label">全选</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG2" type="checkbox" name="checkboxG2" class="css-checkbox">
+                                                <label for="checkboxG2" class="checkbox-label">反选</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG3" type="checkbox" name="checkboxG3" class="css-checkbox">
+                                                <label for="checkboxG3" class="checkbox-label">Q1: 多选题</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG4" type="checkbox" name="checkboxG4" class="css-checkbox">
+                                                <label for="checkboxG4" class="checkbox-label">Q2: 多选题</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG5" type="checkbox" name="checkboxG5" class="css-checkbox">
+                                                <label for="checkboxG5" class="checkbox-label">Q3: 多选题</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG6" type="checkbox" name="checkboxG6" class="css-checkbox">
+                                                <label for="checkboxG6" class="checkbox-label">Q5: 多选题</label>
+                      </div>
+                      <div>
+                                                <input id="checkboxG7" type="checkbox" name="checkboxG7" class="css-checkbox">
+                                                <label for="checkboxG7" class="checkbox-label">Q6: 多选题</label>
+                      </div>
+                    </form>
+                    <div class="customize-control">
+                      <button class="medium gray"><span>取消</span></button>
+                      <button class="medium green"><span>应用</span></button>
+                    </div>
+                  </div>
+                  <div class="sidebar-row">
+                    <!-- 侧栏-设置区块--><span>筛选条件</span><a class="box-button blue"><i class="ic ic-plus-w"></i></a>
+                    <form id="rules">
+                      <div>
+                                                <input id="checkboxG8" type="checkbox" name="checkboxG8" class="css-checkbox">
+                                                <label for="checkboxG8" class="checkbox-label">收集器：收集器1,收集器2,收集器3,收集器1</label>
+                        <div class="dropdown-event">
+                                                    <ul class="floating strip">
+                                                      <li>操作：</li>
+                                                      <li>编辑</li>
+                                                      <li>重命名</li>
+                                                      <li></li>
+                                                    </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                      </div>
+                      <div>
+                                                <input id="checkboxG9" type="checkbox" name="checkboxG9" class="css-checkbox">
+                                                <label for="checkboxG9" class="checkbox-label">收集器：收集器1,收集器2,收集器3,收集器1</label>
+                        <div class="dropdown-event">
+                                                    <ul class="floating strip">
+                                                      <li>操作：</li>
+                                                      <li>编辑</li>
+                                                      <li>重命名</li>
+                                                      <li></li>
+                                                    </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                      </div>
+                    </form>
+                    <form id="sub-rules">
+                      <ul>
+                        <li>按收集器筛选<i class="ic ic-right-2d"></i></li>
+                        <li>按问题与答案筛选<i class="ic ic-right-2d"></i></li>
+                        <li>按时间筛选<i class="ic ic-right-2d"></i></li>
+                      </ul>
+                    </form>
+                    <form id="sub2-rules"><span>收集器筛选</span>
+                      <div id="coll-rules">
+                        <div>
+                                                  <input id="checkboxG11" type="checkbox" name="checkboxG11" class="css-checkbox">
+                                                  <label for="checkboxG11" class="checkbox-label">收集器 1</label>
+                        </div>
+                        <div>
+                                                  <input id="checkboxG12" type="checkbox" name="checkboxG12" class="css-checkbox">
+                                                  <label for="checkboxG12" class="checkbox-label">渠道 1</label>
+                        </div>
+                        <div>
+                                                  <input id="checkboxG13" type="checkbox" name="checkboxG13" class="css-checkbox">
+                                                  <label for="checkboxG13" class="checkbox-label">渠道 2</label>
+                        </div>
+                      </div>
+                    </form>
+                    <div class="customize-control">
+                      <button class="medium gray"><span>取消</span></button>
+                      <button class="medium green"><span>应用</span></button>
+                    </div>
+                  </div>
+                  <h2>输出<a class="box-button"><i class="ic ic-question-mark-d"></i></a></h2>
+                  <div class="sidebar-row">
+                    <!-- 侧栏-设置区块--><span>输出规则</span><a class="box-button blue"><i class="ic ic-plus-w"></i></a>
+                    <form id="rules">
+                      <div>
+                                                <input id="radio1" type="radio" name="radio1" checked="checked" class="css-checkbox">
+                                                <label for="radio1" class="radio-label radGroup1">输出规则20150214</label>
+                        <div class="dropdown-event">
+                                                    <ul class="floating strip">
+                                                      <li>操作：</li>
+                                                      <li>编辑</li>
+                                                      <li>重命名</li>
+                                                      <li></li>
+                                                    </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="sidebar-row">
+                    <!-- 侧栏-设置区块--><span>输出结果</span><a class="box-button green"><i class="ic ic-plus-w"></i></a>
+                    <div id="output">
+                      <!--i.ic.ic-download-w
+                      span CSV: Data_All_150324.zip
+                      .dropdown-event
+                          ul.dropdown.output
+                              li 显示文件详情
+                              li 下载结果
+                              li 删除结果
+                          a.box-button.setup
+                              i.ic.ic-wrench-d
+                      ul.output-detailed
+                          li Format: CSV
+                          li View:儲存的資料檢視頁面(edited)
+                          li Created:3/24/2015
+                          li Expires:4/7/2015
+                      -->
+                      <div class="output_box"><i class="ic ic-download-w"></i><span>CSV: Data_All_1asdadadadadasdsadadadas50324.zip</span>
+                        <div class="dropdown-event">
+                          <ul class="dropdown output">
+                            <li>显示文件详情</li>
+                            <li>下载结果</li>
+                            <li>删除结果</li>
+                          </ul><a class="box-button setup"><i class="ic ic-wrench-d"></i></a>
+                        </div>
+                        <ul class="output-detailed">
+                          <li>Format: CSV</li>
+                          <li>View:儲存的資料檢視頁面(edited)</li>
+                          <li>Created:3/24/2015</li>
+                          <li>Expires:4/7/2015</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="content-row column">
+                <div class="chart-view">
+                  <div><span>问题 1</span>
+                    <div class="dropdown-event">
+                      <button class="small right-ic"><span>导出图表</span><i class="ic ic-down-2d"></i></button>
+                      <ul class="dropdown customize right-ic">
+                        <li>导出资料</li>
+                        <li>导出图表</li>
+                      </ul>
+                    </div>
+                    <button class="small"><span>自定义</span></button>
+                  </div>
+                  <div class="tabs tabs-style-sub small">
+                    <nav>
+                      <ul>
+                        <li class="sub-tab-current"><span>图表类型</span></li>
+                        <li><span>显示选项</span></li>
+                        <li><span>自定义颜色</span></li>
+                        <li><span>标签</span></li>
+                      </ul>
+                    </nav><a class="box-button"><i class="ic ic-question-mark-d"></i></a>
+                    <div class="cq-view">
+                      <ul>
+                        <li class="ic-current"><i class="chic ic-hbar"></i></li>
+                        <li><i class="chic ic-vbar"></i></li>
+                        <li><i class="chic ic-stacked-hbar"></i></li>
+                        <li><i class="chic ic-stacked-vbar"></i></li>
+                        <li><i class="chic ic-pie"></i></li>
+                        <li><i class="chic ic-donut"></i></li>
+                        <li><i class="chic ic-line"></i></li>
+                        <li><i class="chic ic-area"></i></li>
+                      </ul>
+                      <div class="customize-control">
+                        <button class="medium gray"><span>取消</span></button>
+                        <button class="medium green"><i class="ic ic-2dot-w"></i><span>保存</span></button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chart-container">
+                    <h2>Create professional, responsive websites. Without any code.</h2><span>已回答：1 已略過：0 首次回复：2015/2/13 日期选择： 2015/2/7 至 2015/2/13</span><img src="../../images/db/chart.png">
+                  </div>
+                  <div class="Answer_selection">
+                    <ul class="Answer_selection_01">
+                      <li>
+                        <div><span>答案选择</span></div>
+                        <div><span>回复</span></div>
+                      </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>reate professional</span></div>
+                                              <div><span>100.00%</span><span>000</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>reate professional</span></div>
+                                              <div><span>100.00%</span><span>000</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>reate professional</span></div>
+                                              <div><span>100.00%</span><span>000</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>reate professional</span></div>
+                                              <div><span>100.00%</span><span>000</span></div>
+                                            </li>
+                    </ul>
+                    <ul class="Answer_selection_02">
+                      <li>
+                        <div><span>答案选择</span></div>
+                        <div><span>回复</span></div>
+                        <div class="Answer_point"><span>1</span></div>
+                        <div class="Answer_point"><span>2</span></div>
+                        <div class="Answer_point"><span>3</span></div>
+                      </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                                            <li>
+                                              <div><img src="../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg" width="64px"><span>选项题1</span></div>
+                                              <div><span>3.5</span></div>
+                                              <div class="Answer_point"><span>1</span><span>30%</span></div>
+                                              <div class="Answer_point"><span>2</span><span>40%</span></div>
+                                              <div class="Answer_point"><span>3</span><span>50%</span></div>
+                                            </li>
+                    </ul>
+                  </div>
+                </div><a class="load-more results_load_more"><span>加载更多...</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <footer>
+    <div class="w-container"><span>关于我们</span><span>关于我们</span><span>关于我们</span><span>关于我们</span>
+      <p>© 2015,<a>choices form</a> , Inc. All Rights Reserved.</p>
+    </div>
+  </footer>
+</html>

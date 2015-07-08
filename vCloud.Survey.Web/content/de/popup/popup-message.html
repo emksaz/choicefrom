@@ -1,0 +1,10 @@
+
+<div id="message" class="popup vertical-centers">
+  <div class="popup-title"><i class="ic ic-info"></i>
+    <h3 ng-click="handlePopupMessageClose()">提示信息</h3><a class="close-popup"><i class="ic ic-close"></i></a>
+  </div>
+  <ul class="popup-content">
+    <p ng-bind="designManager.PopupMessageManager.getPromptMessage()"></p>
+    <div class="popup-control"><a ng-click="handleCancelSaveEditInfo()" class="close-popup"><span>取 消</span></a><a ng-click="handleSaveEditInfo()"><span>确 定</span></a></div>
+  </ul>
+</div>

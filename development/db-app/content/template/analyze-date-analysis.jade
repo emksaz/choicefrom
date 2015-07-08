@@ -1,0 +1,63 @@
+#Data_analysis.pop-ups.medium(ng-click='ShowPopup($event)', ng-show='QuestionSummaries.Popupbackground==2')
+   div
+      i.ic.ic-document-d
+      span 输出结果
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form
+      #export_data
+         ul#bp-tabs.tabs
+            li.tab(ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]", ng-click='QuestionSummaries.DataTabClass=1')
+               a(rel='panel1') 数据结果
+            li.tab(ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]", ng-click='QuestionSummaries.DataTabClass=2')
+               a(rel='panel2') 统计图表
+         .panel(ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==1 ]")
+            div
+               span 数据视图
+               div
+                  input#radio11.css-checkbox(type='radio', name='data_type_1', value='0', ng-model='QuestionSummaries.DataViewType')
+                  label.radio-label.radGroup1(for='radio11') 当前显示
+               div
+                  input#radio12.css-checkbox(type='radio', name='data_type_1', value='1', ng-model='QuestionSummaries.DataViewType')
+                  label.radio-label.radGroup1(for='radio12') 全部
+            div
+               span 数据内容
+               div
+                  input#radio13.css-checkbox(type='checkbox', name='data_type_2', ng-model='QuestionSummaries.DataViewSelectText')
+                  label.checkbox-label.radGroup1(for='radio13') 选项文本
+               div
+                  input#radio14.css-checkbox(type='checkbox', name='data_type_5', ng-model='QuestionSummaries.DataViewSelectValue')
+                  label.checkbox-label.radGroup1(for='radio14') 选项值
+            div
+               span 文件名
+               input(type='text', maxlength='30', name='out_xlsx', ng-model='QuestionSummaries.DataViewTypeDownLoadFileName', placeholder='问卷编号 + 结果数据 + 年月时分秒')
+               span .xlsx
+         .panel(ng-class="{true: 'activ', false: ''}[QuestionSummaries.DataTabClass==2 ]")
+            div
+               span 数据视图
+               div
+                  input#radio15.css-checkbox(type='radio', name='data_type_3', value='0', ng-model='QuestionSummaries.DataAnalysisViewType')
+                  label.radio-label.radGroup1(for='radio15') 当前显示
+               div
+                  input#radio16.css-checkbox(type='radio', name='data_type_3', value='1', ng-model='QuestionSummaries.DataAnalysisViewType')
+                  label.radio-label.radGroup1(for='radio16') 全部
+            div
+               span 输出类型
+               div
+                  input#radio17.css-checkbox(type='radio', name='data_type_4', value='0', ng-model='QuestionSummaries.DataAnalysisViewFileType')
+                  label.radio-label.radGroup1(for='radio17') EXCEL
+               div
+                  input#radio18.css-checkbox(type='radio', name='data_type_4', value='1', ng-model='QuestionSummaries.DataAnalysisViewFileType')
+                  label.radio-label.radGroup1(for='radio18') PDF
+            div
+               span 文件名
+               input(type='text', maxlength='30', name='out_pdf', ng-model='QuestionSummaries.DataAnalysisViewTypeDownLoadFileName', placeholder='问卷编号 + 汇总数据 + 年月时分秒')
+               span .{{QuestionSummaries.DataAnalysisViewFileType==1?"pdf":"xlsx"}}
+         button.border(type='button', ng-click='CloseDiv()')
+            span 取 消
+         button.green(ng-click='CreateFileInfo();')
+            span 导 出
+            div(ng-show='QuestionSummaries.IsCreateFileIng')
+               .load_point01
+               .load_point02
+               .load_point03

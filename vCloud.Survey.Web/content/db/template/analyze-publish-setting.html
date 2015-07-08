@@ -1,0 +1,73 @@
+
+<div id="publish" ng-attr-class="{{publishManager.otherFlag4 &amp;&amp; 'content-row disabled'||'content-row'}}">
+  <div class="row-title">
+    <h2>收集方案设置</h2>
+    <button ng-disabled="!publishManager.publishDisable" ng-click="Publish()" ng-if="publishManager.publishFlag" class="green"><i class="ic ic-rocket-f-w"></i><span>发布收集方案</span></button>
+  </div>
+  <form>
+    <h3>问卷发行数（份）：</h3>
+    <input type="number" name="link" min="1" max="99999999" placeholder="" ng-model="publishManager.publishCount" oninput="notifyTextLength(this, 8)" ng-readonly="publishManager.QuotaFlag" ng-change="publishNumChangeForOnChange(publishManager.publishCount)"/><br/>
+    <div class="select">
+      <button ng-click="quotaStyleChange()" class="dark select right-ic"><span>{{publishManager.QuotaName}}</span><i class="ic ic-down-1w"></i></button>
+      <ul ng-repeat="quota in QuotaList" ng-style="publishManager.quotaChangeStyle" ng-mouseleave="publishManager.quotaChangeStyle={visibility: 'hidden'}" class="option dark">
+        <li ng-click="quotaChange(quota);publishManager.quotaChangeStyle={visibility: 'hidden'}"><i class="ic ic-quota-w"></i><span>{{quota.QuotaTableName}}</span><a ng-click="redQuotaUrl($event)" class="box-button"><i class="ic ic-wrench-w"></i></a></li>
+        <li ng-click="quotaChange('');publishManager.quotaChangeStyle={visibility: 'hidden'}" ng-show="publishManager.CancelQuotaFlag"><i class="ic ic-quota-w"></i><span>{{publishManager.InitQuotaName}}</span></li>
+      </ul>
+    </div>
+    <p>{{::UserPageText.Publish_publishCount}}</p>
+  </form>
+  <form>
+    <h3>设置调研时限（天）：</h3>
+    <input id="SetSurveyDate" type="number" name="link" min="1" max="999" placeholder="" ng-model="publishManager.PublishDays" oninput="notifyTextLength(this, 3)" ng-readonly="publishManager.daysLock" ng-change="PublishDaysChangeForOnChange(publishManager.PublishDays)" ng-show="!publishManager.daysLock"/>
+    <input id="SetSurveyDate" type="number" name="link" placeholder="" ng-readonly="publishManager.daysLock" ng-show="publishManager.daysLock"/><br/>
+    <div>
+      <input id="checkboxG1" type="checkbox" name="checkboxG1" ng-click="NoTimeLimitSelect()" ng-checked="publishManager.NoTimeLimit" ng-disabled="publishManager.DisableAll || !publishManager.otherFlag2" class="css-checkbox"/>
+      <label for="checkboxG1" onselectstart="return false;" class="checkbox-label">无时限至集满配额</label>
+    </div>
+    <!--mark.form-message Brief Statement Or Account Of The Main Points Of Something-->
+    <p>{{::UserPageText.Publish_publishDays}}</p>
+  </form>
+  <form>
+    <div>
+      <input id="radio1" type="radio" name="radiog_lite" ng-click="ReleaseSelect('1')" ng-checked="publishManager.ReleaseType==1" ng-disabled="publishManager.DisableAll || !publishManager.otherFlag2" class="css-checkbox"/>
+      <label for="radio1" onselectstart="return false;" class="radio-label radGroup1">直接发布</label>
+      <h5 id="PublishTime" ng-show="publishManager.onLineFlag" ng-if="false"></h5>
+    </div>
+    <div>
+      <input id="radio2" type="radio" name="radiog_lite" ng-click="ReleaseSelect('2')" ng-disabled="publishManager.DisableAll || !publishManager.otherFlag2" ng-checked="publishManager.ReleaseType==2" class="css-checkbox"/>
+      <label for="radio2" onselectstart="return false;" class="radio-label radGroup1">计划发布</label>
+    </div>
+    <input id="PlanTime" type="text" name="link" placeholder="" ng-disabled="publishManager.planHourFlag" style="cursor:pointer" ng-click="planHourChange()" value=""/>
+    <!--input#datetimepicker(type="text" name="link" placeholder="")--><br/>
+    <!--mark.form-message Brief Statement Or Account Of The Main Points Of Something-->
+    <p>{{::UserPageText.Publish_publishTime}}</p>
+  </form>
+  <form>
+    <div>
+      <input id="radio3" type="radio" name="radiog_lite" ng-click="TerLimitSelect('Y')" ng-checked="publishManager.TerLimitReply == 'Y'" ng-disabled="publishManager.DisableAll" class="css-checkbox"/>
+      <label for="radio3" onselectstart="return false;" class="radio-label radGroup1">每个终端只允许一次回复</label>
+    </div>
+    <div>
+      <input id="radio4" type="radio" name="radiog_lite" ng-click="TerLimitSelect('N')" ng-disabled="publishManager.DisableAll" ng-checked="publishManager.TerLimitReply == 'N'" class="css-checkbox"/>
+      <label for="radio4" onselectstart="return false;" class="radio-label radGroup1">每个终端允许多次回复（建议用于落地调研、电脑终端或手动输入资料）</label>
+    </div>
+  </form>
+  <form>
+    <div>
+      <input id="checkboxG2" type="checkbox" name="checkboxG2" ng-click="parameterSelect()" ng-disabled="publishManager.DisableAll" ng-checked="publishManager.parameterFlag == 'Y'" class="css-checkbox"/>
+      <label for="checkboxG2" onselectstart="return false;" class="checkbox-label">设置带参链接</label>
+    </div>
+    <p>在发布的链接后增加参数，可通过指定不同的参数值回收特定的信息（常用于回收答卷者信息）<br/>例：<span>
+        <disable>http://q.cform.io/?6Nveye</disable></span><font color="#FF0000">&key=</font>Tom</p>
+  </form>
+  <!--form(style='display:none')
+  div
+     input#checkboxG2.css-checkbox(type='checkbox', name='checkboxG2')
+     label.checkbox-label(for='checkboxG2') 调查问卷中的问题被回复之后进入下一题，受访者将无法返回并变更之前的回覆。
+  -->
+  <!--form(style='display:none')
+  div
+     input#checkboxG3.css-checkbox(type='checkbox', name='checkboxG3')
+     label.checkbox-label(for='checkboxG3') 匿名处理（不保存受访者的 ip 地址信息）
+  -->
+</div>

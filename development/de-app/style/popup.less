@@ -1,0 +1,417 @@
+.popup-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: none;
+  z-index: 1200;
+  transform-style: preserve-3d;
+  background-image: -webkit-radial-gradient(50% 50%, circle, fade(black, 20%), fade(black, 50%));
+  background-image: radial-gradient(50% 50%, circle, fade(black, 20%), fade(black, 50%));
+}
+
+// popup 窗口 ------------------------------------------------------------------------------------
+
+.popup {
+  visibility: hidden;
+  z-index: 1300;
+  position: relative;
+  background-color: @gray4a;
+  border-radius: 3px;
+  border: 1px solid @dark27-gray;
+  .windows-shadow;
+  .translate3d(0, 0, 0);
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.popup.vertical-centers {
+  top: 50%;
+  left: 50%;
+  .translate3d(-50%, -50%, 0);
+}
+
+// popup 按钮区 ------------------------------------------------------------------------------------
+
+.popup-control {
+  padding: 8px;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  > a {
+    padding: 8px 48px;
+    float: left;
+    border-radius: 3px;
+    > span {
+      display: block;
+    }
+    &:nth-of-type(1) {
+      box-shadow: @medium5d-gray 0 0 0 1px inset;
+      -webkit-box-shadow: @medium5d-gray 0 0 0 1px inset;
+      &:hover {
+        background-color: fade(@dark39-gray, 50%);
+        box-shadow: @medium74-gray 0 0 0 1px inset;
+        -webkit-box-shadow: @medium74-gray 0 0 0 1px inset;
+      }
+    }
+    &:nth-of-type(2) {
+      float: right;
+      .light-dark-border;
+      .gray-gradient;
+      &:hover {
+        background-color: @medium5d-gray;
+      }
+    }
+  }
+}
+
+// popup 标题区 ------------------------------------------------------------------------------------
+
+.custom-modal-header,
+.theme-title,
+.popup-title {
+  position: relative;
+  padding: 8px;
+  background-color: @medium5d-gray;
+  border-bottom: 1px solid @dark27-gray;
+  width: 100%;
+  float: left;
+  z-index: 100;
+  .translate3d(0, 0, 0);
+  > i {
+    float: left;
+    margin-right: 8px;
+  }
+  > h3 {
+    float: left;
+    padding: 0;
+  }
+  > a {
+    position: absolute;
+    padding: 2px;
+    right: 8px;
+    top: -2px;
+    border-radius: 2px;
+    overflow: hidden;
+    background-color: @medium5d-gray;
+    .gray-gradient;
+    .light-dark-border;
+  }
+}
+
+// popup 内容区 ------------------------------------------------------------------------------------
+
+.popup-content {
+  position: relative;
+  padding: 0 1px;
+  li {
+    position: relative;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid @dark39-gray;
+    -webkit-transition: background-color 0.1s;
+    transition: background-color 0.1s;
+    &:hover {
+      background-color: @medium64-gray;
+    }
+    &:last-of-type {
+      border: none;
+    }
+    > span {
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+// popup 搜索 ------------------------------------------------------------------------------------
+
+#search {
+  width: 200px;
+  .popup-content {
+    height: 360px;
+  }
+}
+
+// popup 调试 ------------------------------------------------------------------------------------
+
+#debug {
+  width: 300px;
+  .popup-content {
+    height: 360px;
+  }
+  > h5 {
+    padding: 8px;
+    border-top: 1px solid @dark39-gray;
+  }
+  .popup-content {
+    li {
+      padding: 0 8px 0 52px;
+      font-size: 12px;
+      > i {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 16px;
+        margin: auto 0;
+      }
+      > span {
+        display: block;
+        padding: 8px 0;
+      }
+      > h4 {
+        display: block;
+        padding: 8px 0;
+        border-top: 1px dotted @medium74-gray;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.list-activ {
+  background-color: @medium64-gray;
+}
+
+
+// popup 批量输入 ------------------------------------------------------------------------------------
+
+#batch {
+  width: 720px;
+  ul.popup-content {
+    .batch-control {
+      padding: 0 8px;
+      display: block;
+      &:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+      > a {
+        padding: 8px 0;
+        float: left;
+        &:nth-of-type(2) {
+          margin-left: 24px;
+        }
+        &:last-of-type {
+          float: right;
+        }
+        > span {
+          color: @textd7;
+          float: left;
+          margin-right: 8px;
+        }
+        > i {
+          float: right;
+        }
+      }
+      > h4 {
+        float: left;
+        &:nth-of-type(2) {
+          float: right;
+          margin-right: 6px;
+        }
+      }
+    }
+  }
+}
+
+
+
+.batch-input {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 640px;
+  .dark-gray-gradient;
+}
+
+#batch-textarea {
+  min-height: 480px;
+  resize: none;
+  line-height: 28px;
+  word-wrap: break-word;
+}
+
+// popup 版本保存 ------------------------------------------------------------------------------------
+
+#save {
+  width: 400px;
+  > .popup-title {
+    background: none;
+    border: none;
+  }
+  > .popup-content {
+    padding: 16px;
+    > .popup-control {
+      padding: 0;
+      > a {
+        margin-top: 16px;
+        width: 100%;
+        text-align: center;
+        padding: 8px 0;
+        float: left;
+        border-radius: 3px;
+        .light-dark-border;
+        .gray-gradient;
+        &:hover {
+          background-color: @medium5d-gray;
+        }
+      }
+    }
+  }
+}
+
+// popup 提示 ------------------------------------------------------------------------------------
+
+#message {
+  width: 480px;
+  > .popup-title {
+    background: none;
+    border: none;
+  }
+  > .popup-content {
+    padding: 8px 16px 16px 16px;
+    > p {
+      min-height: 64px;
+      border-bottom: 1px solid @dark39-gray;
+      padding-bottom: 16px;
+    }
+    > .popup-control {
+      padding: 0;
+      margin-top: 16px;
+    }
+  }
+}
+
+// popup 顶部提示条 ------------------------------------------------------------------------------------
+
+#topline {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 72px;
+  right: 72px;
+  padding: 12px 24px;
+  border-radius: 6px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  z-index: 2000;
+  color: @white;
+  border: none;
+  .translate3d(0, -64px, 0);
+  box-shadow: fade(black, 50%) 0 2px 12px 0;
+  -webkit-box-shadow: fade(black, 50%) 0 2px 12px 0;
+  -webkit-animation: topline 5s forwards;
+  animation: topline 5s forwards;
+  .animation-timing-function(cubic-bezier(0.77, 0, 0.175, 1));
+  > i {
+    float: left;
+    opacity: 1;
+    margin-right: 8px;
+  }
+  > p {
+    float: left;
+  }
+}
+
+#topline.blue {
+  background-color: @blue;
+}
+
+#topline.red {
+  background-color: @tomato;
+}
+
+#topline.green {
+  background-color: @sea_green;
+}
+
+@-webkit-keyframes topline {
+  0% {
+    .translate3d(0, -64px, 0);
+  }
+
+  10% {
+    .translate3d(0, 0, 0);
+  }
+
+  90% {
+    .translate3d(0, 0, 0);
+  }
+
+  100% {
+    .translate3d(0, -64px, 0);
+  }
+}
+
+@keyframes topline {
+  0% {
+    .translate3d(0, -64px, 0);
+  }
+
+  10% {
+    .translate3d(0, 0, 0);
+  }
+
+  90% {
+    .translate3d(0, 0, 0);
+  }
+
+  100% {
+    .translate3d(0, -64px, 0);
+  }
+}
+
+// 右键菜单 ------------------------------------------------------------------------------------
+
+ul.right-click {
+  display: block;
+  width: 240px;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #d6dadf;
+  z-index: 2000;
+  box-shadow: fade(black, 50%) 0 2px 8px 0;
+  -webkit-box-shadow: fade(black, 50%) 0 2px 8px 0;
+  > li {
+    width: 100%;
+    padding: 2px 24px;
+    color: @dark39-gray;
+    float: left;
+    &:hover {
+      background-color: @medium74-gray;
+      color: @textd7;
+    }
+    > span {
+      cursor: default;
+      float: left;
+      &:nth-of-type(2) {
+        float: right;
+        color: lighten(@medium74-gray, 16%);
+      }
+    }
+  }
+  li.breakline {
+    padding: 0;
+    height: 1px;
+    background-color: lighten(@medium74-gray, 24%);
+  }
+  li.disable {
+    color: lighten(@medium74-gray, 16%);
+    &:hover {
+      background: none;
+      color: lighten(@medium74-gray, 16%);
+    }
+  }
+}

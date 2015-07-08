@@ -1,0 +1,94 @@
+#masonry {
+  margin: auto -1rem;
+  @media (max-width: 479px) {
+    margin: auto -0.5rem;
+  }
+  .masonry-con {
+    position: relative;
+    font-size: 1.4rem;
+    padding: 1rem 1rem 1rem 4rem;
+  }
+  .tick.card {
+    @media (max-width: 479px) {
+      margin: 0.5rem !important;
+    }
+  }
+}
+
+.masonry-item {
+  cursor: pointer;
+  padding: 1rem;
+  width: 33.3% !important;
+  @media (max-width: 767px) {
+    width: 50% !important;
+  }
+  @media (max-width: 479px) {
+    padding: 0.5rem;
+  }
+  img {
+    .transition-property(opacity);
+    .transition-duration(500ms);
+  }
+  .grid {
+    width: 100%;
+    height: 16rem;
+    overflow: hidden;
+  }
+}
+
+.masonry-item.xpan {
+  width: 100% !important;
+}
+
+.masonry-item.w2 {
+  width: 50%;
+}
+
+.masonry-border {
+  position: relative;
+  padding: 1px;
+  overflow: hidden;
+  border-radius: 3px;
+  .transition-property(all);
+  .transition-duration(500ms);
+  .box-shadow(0px 0px 0px 1px @question_color inset);
+  &:hover {
+    .box-shadow(0px 0px 0px 1px lighten(@button_color, 5%) inset);
+  }
+}
+
+.masonry-eff {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: @bg-color;
+  z-index: 5;
+}
+
+.masonry-bg {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  background-color: @bg-color;
+}
+
+.tick-bg {
+  display: none;
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  border-top: 8rem solid @bg-color;
+  border-left: 8rem solid transparent;
+  @media (max-width: 479px) {
+    border-top: 6rem solid @bg-color;
+    border-left: 6rem solid transparent;
+  }
+
+}

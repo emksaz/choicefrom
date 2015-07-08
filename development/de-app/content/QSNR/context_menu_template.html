@@ -1,0 +1,15 @@
+﻿<div class="popup_windows right_click color_light_d6d6d6 radius_3px"
+     ng-attr-style="{{contextMenu.getStyle()}}"
+     ng-mousedown="handleMenuMouseDown($event)">
+    <div ng-repeat="item in contextMenu.list">
+        <div class="w-clearfix right_click_item"
+             ng-click="handleMenuItemClick(item)"
+             ng-class="{'menu_item_disable':!item.enable}">
+            <h3 class="float_l cursor_default">{{item.text}}</h3>
+            <h3 class="float_r font_color_gary_9e9e9e cursor_default">{{item.hotKey}}</h3>
+        </div>
+        <div ng-if="item.line" class="menu_item_line">
+        </div>
+    </div>
+    
+</div>

@@ -1,0 +1,77 @@
+#publish(ng-attr-class="{{publishManager.otherFlag4 && 'content-row disabled'||'content-row'}}")
+   .row-title
+      h2 收集方案设置
+      button.green(ng-disabled='!publishManager.publishDisable', ng-click='Publish()', ng-if='publishManager.publishFlag')
+         i.ic.ic-rocket-f-w
+         span 发布收集方案
+   form
+      h3 问卷发行数（份）：
+      input(type='number', name='link', min='1', max='99999999', placeholder='', ng-model='publishManager.publishCount', oninput='notifyTextLength(this, 8)', ng-readonly='publishManager.QuotaFlag', ng-change='publishNumChangeForOnChange(publishManager.publishCount)')
+      br
+      .select
+         button.dark.select.right-ic(ng-click='quotaStyleChange()')
+            span {{publishManager.QuotaName}}
+            i.ic.ic-down-1w
+         ul.option.dark(ng-repeat='quota in QuotaList', ng-style='publishManager.quotaChangeStyle', ng-mouseleave="publishManager.quotaChangeStyle={visibility: 'hidden'}")
+            li(ng-click="quotaChange(quota);publishManager.quotaChangeStyle={visibility: 'hidden'}")
+               i.ic.ic-quota-w
+               span {{quota.QuotaTableName}}
+               a.box-button(ng-click='redQuotaUrl($event)')
+                  i.ic.ic-wrench-w
+            li(ng-click="quotaChange('');publishManager.quotaChangeStyle={visibility: 'hidden'}", ng-show='publishManager.CancelQuotaFlag')
+               i.ic.ic-quota-w
+               span {{publishManager.InitQuotaName}}
+      p
+         | {{::UserPageText.Publish_publishCount}}
+   form
+      h3 设置调研时限（天）：
+      input#SetSurveyDate(type='number', name='link', min='1', max='999', placeholder='', ng-model='publishManager.PublishDays', oninput='notifyTextLength(this, 3)', ng-readonly='publishManager.daysLock', ng-change='PublishDaysChangeForOnChange(publishManager.PublishDays)', ng-show='!publishManager.daysLock')
+      input#SetSurveyDate(type='number', name='link', placeholder='', ng-readonly='publishManager.daysLock', ng-show='publishManager.daysLock')
+      br
+      div
+         input#checkboxG1.css-checkbox(type='checkbox', name='checkboxG1', ng-click='NoTimeLimitSelect()', ng-checked='publishManager.NoTimeLimit', ng-disabled='publishManager.DisableAll || !publishManager.otherFlag2')
+         label.checkbox-label(for='checkboxG1', onselectstart='return false;') 无时限至集满配额
+      //mark.form-message Brief Statement Or Account Of The Main Points Of Something
+      p
+         | {{::UserPageText.Publish_publishDays}}
+   form
+      div
+         input#radio1.css-checkbox(type='radio', name='radiog_lite', ng-click="ReleaseSelect('1')", ng-checked='publishManager.ReleaseType==1', ng-disabled='publishManager.DisableAll || !publishManager.otherFlag2')
+         label.radio-label.radGroup1(for='radio1', onselectstart='return false;') 直接发布
+         h5#PublishTime(ng-show='publishManager.onLineFlag', ng-if='false')
+      div
+         input#radio2.css-checkbox(type='radio', name='radiog_lite', ng-click="ReleaseSelect('2')", ng-disabled='publishManager.DisableAll || !publishManager.otherFlag2', ng-checked='publishManager.ReleaseType==2')
+         label.radio-label.radGroup1(for='radio2', onselectstart='return false;') 计划发布
+      input#PlanTime(type='text', name='link', placeholder='', ng-disabled='publishManager.planHourFlag', style='cursor:pointer', ng-click='planHourChange()', value='')
+      //input#datetimepicker(type="text" name="link" placeholder="")
+      br
+      //mark.form-message Brief Statement Or Account Of The Main Points Of Something
+      p
+         | {{::UserPageText.Publish_publishTime}}
+   form
+      div
+         input#radio3.css-checkbox(type='radio', name='radiog_lite', ng-click="TerLimitSelect('Y')", ng-checked="publishManager.TerLimitReply == 'Y'", ng-disabled='publishManager.DisableAll')
+         label.radio-label.radGroup1(for='radio3', onselectstart='return false;') 每个终端只允许一次回复
+      div
+         input#radio4.css-checkbox(type='radio', name='radiog_lite', ng-click="TerLimitSelect('N')", ng-disabled='publishManager.DisableAll', ng-checked="publishManager.TerLimitReply == 'N'")
+         label.radio-label.radGroup1(for='radio4', onselectstart='return false;') 每个终端允许多次回复（建议用于落地调研、电脑终端或手动输入资料）
+   form
+      div
+         input#checkboxG2.css-checkbox(type='checkbox', name='checkboxG2', ng-click='parameterSelect()', ng-disabled='publishManager.DisableAll', ng-checked="publishManager.parameterFlag == 'Y'")
+         label.checkbox-label(for='checkboxG2', onselectstart='return false;') 设置带参链接
+      p
+         | 在发布的链接后增加参数，可通过指定不同的参数值回收特定的信息（常用于回收答卷者信息）
+         br
+         | 例：
+         span
+            disable http://q.cform.io/?6Nveye
+         font(color='#FF0000') &key=
+         | Tom
+   //form(style='display:none')
+      div
+         input#checkboxG2.css-checkbox(type='checkbox', name='checkboxG2')
+         label.checkbox-label(for='checkboxG2') 调查问卷中的问题被回复之后进入下一题，受访者将无法返回并变更之前的回覆。
+   //form(style='display:none')
+      div
+         input#checkboxG3.css-checkbox(type='checkbox', name='checkboxG3')
+         label.checkbox-label(for='checkboxG3') 匿名处理（不保存受访者的 ip 地址信息）

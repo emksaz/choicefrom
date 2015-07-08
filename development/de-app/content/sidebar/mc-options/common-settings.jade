@@ -1,0 +1,32 @@
+.kit-position#common-settings
+    include ../../template/title-local.jade
+    +title('通用设置')
+    .section-content
+        .check-item
+            a.checkbox.check-attac
+                i.check-box.off
+                i.check-box.on
+                span 多选题
+            .attached-item
+                .spinner
+                    span 最少:
+                    input.switch-button(type="text" value="1")
+                    a
+                    a
+                .spinner
+                    span 最多:
+                    input.switch-button(type="text" value="1")
+                    a
+                    a
+                .text-tips
+                    i.ic-m.ic-prompt
+                    span 最大数值不能大于选项数量
+        .check-item
+            a.checkbox.check-attac
+                i.check-box.off
+                i.check-box.on
+                span 选项随机
+            .attached-item
+                .text-tips
+                    i.ic-m.ic-prompt
+                    span 选项随机对（其它）选项无效，（其它）选项始终排列在全部选项的底部。

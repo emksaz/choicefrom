@@ -1,0 +1,129 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('账单明细')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    h1 密码设置
+                    button.purple
+                        i.ic.ic-star-w
+                        span 管理我的方案
+                    p 当前方案：经济型
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-user
+                    .content-wrap
+                        div
+                            .content-row
+                                .row-title
+                                    h2 发票信息
+                                    button.green(disabled='disabled')
+                                        i.ic.ic-2dot-w
+                                        span 保存更改
+                                .sub-tabs
+                                    ul
+                                        li.tab-current
+                                            span 普通发票
+                                        li
+                                            span 增值税发票
+                                    div
+                                        form
+                                            h3 使用者名称：
+                                            input(type='text', name='name', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 发票内容：
+                                            div
+                                                span
+                                                    include ./template/radio-button
+                                                    +radio('radio1','软件服务费','checked')
+                                                span
+                                                    +radio('radio2','技术服务费')
+                                                span
+                                                    +radio('radio3','咨询费')
+                                        form
+                                            h3 邮寄地址：
+                                            textarea(name='address', placeholder='')
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 联系人：
+                                            input(type='text', name='contact', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 联系电话：
+                                            input(type='tel', name='telphone', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        p
+                                            | You can upload images up to 256x256. Your avatar shows up in your public profile and
+                                            | your organization notifications.
+                                    // 普通发票
+                                    div
+                                        form
+                                            h3 使用者名称：
+                                            input(type='text', name='name', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            div 发票内容：
+                                            div
+                                                span
+                                                    +radio('radio4','软件服务费','checked')
+                                                span
+                                                    +radio('radio5','技术服务费')
+                                                span
+                                                    +radio('radio6','咨询费')
+                                        form
+                                            h3 税号:
+                                            input(type='text', name='tax', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            div 开户行：
+                                            input(type='text', name='bank', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 银行账号：
+                                            input(type='text', name='bank-id', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 邮寄地址：
+                                            textarea(name='address', placeholder='')
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        form
+                                            h3 联系人：
+                                            input(type='text', name='contact', placeholder='')
+                                            br
+                                            mark.form-message Brief Statement Or Account Of The Main Points Of Something
+                                        p
+                                            | You can upload images up to 256x256. Your avatar shows up in your public profile and
+                                            | your organization notifications.
+                                    // 增值税发票
+                            #overview.content-row
+                                h2 付款历史
+                                ul
+                                    li
+                                        span 日期
+                                        span 内容
+                                    li
+                                        span 2015年2月27日
+                                        span 标准型方案月服务费 ￥120元
+                                    li
+                                        span 2015年2月27日
+                                        span 标准型方案月服务费 ￥120元
+                                    li
+                                        span 2015年2月27日
+                                        span 标准型方案月服务费 ￥120元
+                                    p
+                                        | You can upload images up to 256x256. Your avatar shows up in your public profile and your
+                                        | organization notifications.
+    include layout/footer

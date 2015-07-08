@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>弹出窗口</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../../../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../../../css/db-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../../../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../../../images/cf.svg">
+        <script type="text/javascript" src="../../../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../../../script/lib/datetimepicker.js"></script>
+        <script type="text/javascript" src="../../../script/lib/scrollTo.js"></script>
+        <script type="application/javascript" src="../../../script/lib/fastclick.js"></script>
+        <script type="text/javascript" src="../../../script/lib/modernizr.js"></script>
+        <script src="../../../script/db-index.js"></script>
+  </head>
+  <body>
+    <div class="main-wrapper">
+      <div id="data_analysis" class="pop-ups medium">
+        <div><i class="ic ic-document-d"></i><span>数据导出</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <div id="export_data">
+            <ul id="bp-tabs" class="tabs">
+              <li class="tab activ"><a rel="panel1">数据结果</a></li>
+              <li class="tab"><a rel="panel2">数据分析</a></li>
+            </ul>
+            <div class="panel activ">
+              <div><span>数据视图</span>
+                <div>
+                                    <input id="radio11" type="radio" name="radio11" checked="checked" class="css-checkbox">
+                                    <label for="radio11" class="radio-label radGroup1">当前选择视图</label>
+                </div>
+                <div>
+                                    <input id="radio12" type="radio" name="radio12" class="css-checkbox">
+                                    <label for="radio12" class="radio-label radGroup1">原始视图</label>
+                </div>
+              </div>
+              <div><span>数据内容</span>
+                <div>
+                                    <input id="radio13" type="radio" name="radio13" checked="checked" class="css-checkbox">
+                                    <label for="radio13" class="radio-label radGroup1">选择文本</label>
+                </div>
+                <div>
+                                    <input id="radio14" type="radio" name="radio14" class="css-checkbox">
+                                    <label for="radio14" class="radio-label radGroup1">数值</label>
+                </div>
+              </div>
+              <div><span>文件名</span>
+                <input type="text" name="out_xlsx" placeholder="问卷编号 + 汇总数据/结果数据 + 年月时分秒"><span>.xlsx</span>
+              </div>
+            </div>
+            <div class="panel">
+              <div><span>数据视图</span>
+                <div>
+                                    <input id="radio15" type="radio" name="radio15" checked="checked" class="css-checkbox">
+                                    <label for="radio15" class="radio-label radGroup1">当前选择视图</label>
+                </div>
+                <div>
+                                    <input id="radio16" type="radio" name="radio16" class="css-checkbox">
+                                    <label for="radio16" class="radio-label radGroup1">原始视图</label>
+                </div>
+              </div>
+              <div id="out_type"><span>输出类型</span>
+                <div>
+                                    <input id="radio17" type="radio" name="radio17" checked="checked" class="css-checkbox">
+                                    <label for="radio17" class="radio-label radGroup1"></label><img src="images/xlsx.png">
+                </div>
+                <div>
+                                    <input id="radio18" type="radio" name="radio18" class="css-checkbox">
+                                    <label for="radio18" class="radio-label radGroup1"></label><img src="images/pdf.png">
+                </div>
+              </div>
+              <div><span>文件名</span>
+                <input type="text" name="out_pdf" placeholder="问卷编号 + 汇总数据/结果数据 + 年月时分秒"><span>.pdf</span>
+              </div>
+            </div>
+            <button class="border"><span>取 消</span></button>
+            <button class="green"><span>导 出</span>
+              <div>
+                <div class="load_point01"></div>
+                <div class="load_point02"></div>
+                <div class="load_point03"></div>
+              </div>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="pop-ups">
+        <div><i class="ic ic-folder-f-d"></i><span>新建文件夹</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <h3>文件夹名称：</h3>
+          <input type="text" name="name" placeholder="请输入文件夹名称"><br>
+          <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+          <button class="border"><span>取 消</span></button>
+          <button class="green"><span>新 建</span></button>
+        </form>
+      </div>
+      <div class="pop-ups">
+        <div><i class="ic ic-folder-f-d"></i><span>重命名文件夹</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <h3>文件夹名称：</h3>
+          <input type="text" name="name" placeholder="Adidas"><br>
+          <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+          <button class="border"><span>取 消</span></button>
+          <button class="blue"><span>重命名</span></button>
+        </form>
+      </div>
+      <div class="pop-ups">
+        <div><i class="ic ic-folder-f-d"></i><span>移动到文件夹</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <p>Create professional, responsive websites. Without any code.</p>
+          <h3>移动到文件夹：</h3>
+          <div class="select dropdown-event">
+            <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+            <ul class="option">
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+            </ul>
+          </div>
+          <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+          <button class="border"><span>取 消</span></button>
+          <button class="blue"><span>移 动</span></button>
+        </form>
+      </div>
+      <div class="pop-ups">
+        <div><i class="ic ic-trash-f-d"></i><span>删除文件夹</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <p>删除文件夹不会影响文件夹中包含的问卷，问卷将移动至默认无文件夹归属位置。</p>
+          <h3>选择要删除的文件夹：</h3>
+          <div class="select">
+            <button class="select right-ic"><span>Brief Statement Or Account Of The Main Points Of Something</span><i class="ic ic-down-1d"></i></button>
+            <ul class="option">
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+              <li>Brief Statement Or Account Of The Main Points Of Something</li>
+            </ul>
+          </div>
+          <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+          <button class="border"><span>取 消</span></button>
+          <button class="red"><span>删 除</span></button>
+        </form>
+      </div>
+      <div id="login_again" class="pop-ups">
+        <div><i class="ic ic-user-f"></i><span>重新登录</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <h3>
+            <mark class="form-message">登录超时,请重新登录!</mark>
+          </h3>
+          <input type="text" name="name" placeholder="注册邮箱">
+          <input type="text" name="name" placeholder="密码">
+          <button class="border"><span>取 消</span></button>
+          <button class="green"><span>重新登录</span></button>
+        </form>
+      </div>
+      <div id="ques-review" class="pop-ups">
+        <div><i class="ic ic-eye-f-d"></i><span>问卷预览</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form class="ng-pristine ng-valid">
+          <div id="QuesPreviewURl"></div>
+          <button class="blue"><span>下载二维码</span></button>
+          <mark class="form-message">当前链接为预览链接，不作为正式的问卷向他人发送。</mark>
+          <div>
+            <h3>问卷预览地址：</h3>
+            <button class="dark"><span>复制链接</span></button><a id="QuesPreviewHref" href="" target="_blank" style="height:auto;" class="preViewLink">http://121.40.216.155/?b68a4213-48a6-4dcd-a325-680f00dcfe50</a>
+          </div>
+        </form>
+      </div>
+      <div class="pop-ups medium">
+        <div><i class="ic ic-trash-f-d"></i><span>删除问卷</span><a class="box-button"><i class="ic ic-x-d"></i></a></div>
+        <form>
+          <p>您的问卷、内容、页面和图像将被永久删除。如果您的问卷被分享在众研以外的渠道，链接也将随之失效，所有被收集的数据也将无法获取。</p>
+          <h2>请输入<span>登录密码</span>确认删除操作</h2>
+          <input type="password" name="password" placeholder=""><br>
+          <mark class="form-message">Brief Statement Or Account Of The Main Points Of Something</mark>
+          <button class="border"><span>取 消</span></button>
+          <button class="red"><span>删除问卷</span></button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

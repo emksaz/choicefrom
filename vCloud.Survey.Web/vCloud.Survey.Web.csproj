@@ -1,0 +1,904 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6872B0C4-C49D-4F77-B71E-D635457059E0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>vCloud.Survey.Web</RootNamespace>
+    <AssemblyName>vCloud.Survey.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Data.v12.2">
+      <HintPath>..\..\..\..\众研2015beat1\dlls\DevExpress.Data.v12.2.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.Xpo.v12.2">
+      <HintPath>..\..\..\..\众研2015beat1\dlls\DevExpress.Xpo.v12.2.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data">
+      <HintPath>..\..\..\dlls\mysql.data.dll</HintPath>
+    </Reference>
+    <Reference Include="NetDimension.Weibo">
+      <HintPath>..\..\..\dlls\NetDimension.Weibo.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\dlls\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="cmd\libgcc_s_sjlj-1.dll" />
+    <Content Include="cmd\libstdc++-6.dll" />
+    <Content Include="cmd\libwinpthread-1.dll" />
+    <Content Include="cmd\pngquant.exe" />
+    <Content Include="cmd\wkhtmltoimage.exe" />
+    <Content Include="cmd\wkhtmltopdf.exe" />
+    <Content Include="cmd\wkhtmltox.dll" />
+    <Content Include="Content\db\404.html" />
+    <Content Include="Content\db\creating.html" />
+    <Content Include="Content\db\dashboard.html" />
+    <Content Include="Content\db\email-settings.html" />
+    <Content Include="Content\db\forgot-password.html" />
+    <Content Include="Content\db\general-settings.html" />
+    <Content Include="Content\db\help-center.html" />
+    <Content Include="Content\db\help-content.html" />
+    <Content Include="Content\db\help-content\cb_end.html" />
+    <Content Include="Content\db\help-content\cb_input.html" />
+    <Content Include="Content\db\help-content\cb_range.html" />
+    <Content Include="Content\db\help-content\cb_select.html" />
+    <Content Include="Content\db\help-content\cb_selectpic.html" />
+    <Content Include="Content\db\help-content\cb_start.html" />
+    <Content Include="Content\db\help-content\glb_data_view.html" />
+    <Content Include="Content\db\help-content\glb_designcenter.html" />
+    <Content Include="Content\db\help-content\glb_designcenter2.html" />
+    <Content Include="Content\db\help-content\glb_discriminate.html" />
+    <Content Include="Content\db\help-content\glb_newsurvey.html" />
+    <Content Include="Content\db\help-content\glb_quickstart.html" />
+    <Content Include="Content\db\help-content\glb_quota.html" />
+    <Content Include="Content\db\help-content\glb_shortcutlist.html" />
+    <Content Include="Content\db\help-content\glb_surveymanger.html" />
+    <Content Include="Content\db\help-content\glb_surveysettings.html" />
+    <Content Include="Content\db\help-content\glb_survey_pub.html" />
+    <Content Include="Content\db\help-content\help-glb-quickstart.html" />
+    <Content Include="Content\db\help-content\help-mark.html" />
+    <Content Include="Content\db\layout\footer.html" />
+    <Content Include="Content\db\layout\head.html" />
+    <Content Include="Content\db\layout\loading.html" />
+    <Content Include="Content\db\layout\nav.html" />
+    <Content Include="Content\db\login.html" />
+    <Content Include="Content\db\password.html" />
+    <Content Include="Content\db\profile.html" />
+    <Content Include="Content\db\qm\analyze-results-data-trends.html" />
+    <Content Include="Content\db\qm\analyze-results-question-summaries.html" />
+    <Content Include="Content\db\qm\analyze-results.html" />
+    <Content Include="Content\db\qm\backups.html" />
+    <Content Include="Content\db\qm\preview.html" />
+    <Content Include="Content\db\qm\publish.html" />
+    <Content Include="Content\db\qm\questionnair-list.html" />
+    <Content Include="Content\db\qm\questionnair-settings.html" />
+    <Content Include="Content\db\qm\questionnaire-create.html" />
+    <Content Include="Content\db\qm\quota.html" />
+    <Content Include="Content\db\qm\summary.html" />
+    <Content Include="Content\db\quota-empyt.html" />
+    <Content Include="Content\db\quota.html" />
+    <Content Include="Content\db\signup.html" />
+    <Content Include="Content\db\template\checkbox.html" />
+    <Content Include="Content\db\template\dropdown-accounts-settings.html" />
+    <Content Include="Content\db\template\dropdown-accounts.html" />
+    <Content Include="Content\db\template\dropdown-folder.html" />
+    <Content Include="Content\db\template\dropdown-sample.html" />
+    <Content Include="Content\db\template\dropdown-sorting.html" />
+    <Content Include="Content\db\template\floating-strip.html" />
+    <Content Include="Content\db\template\quota-setting-row-empyt.html" />
+    <Content Include="Content\db\template\quota-setting-row.html" />
+    <Content Include="Content\db\template\quota-sidebar-row.html" />
+    <Content Include="Content\db\template\select.html" />
+    <Content Include="Content\db\template\shortcut.html" />
+    <Content Include="Content\db\template\survey-column-sample.html" />
+    <Content Include="Content\db\template\survey-column.html" />
+    <Content Include="Content\db\template\tabs-main.html" />
+    <Content Include="Content\db\template\tabs-settings.html" />
+    <Content Include="Content\db\template\tabs-user.html" />
+    <Content Include="Content\db\top.html" />
+    <Content Include="Content\db\uc\password.html" />
+    <Content Include="Content\db\uc\user_center.html" />
+    <Content Include="Content\db\uc\user_info.html" />
+    <Content Include="Content\db\uc\user_infoystest .html" />
+    <Content Include="Content\de\blank.html" />
+    <Content Include="Content\de\icon\main-lighten.html" />
+    <Content Include="Content\de\index.html" />
+    <Content Include="Content\de\kit\media-kit.html" />
+    <Content Include="Content\de\kit\nodes-kit.html" />
+    <Content Include="Content\de\kit\theme-kit.html" />
+    <Content Include="Content\de\layout\footerbar.html" />
+    <Content Include="Content\de\layout\head.html" />
+    <Content Include="Content\de\layout\nav.html" />
+    <Content Include="Content\de\layout\sidebar-blank.html" />
+    <Content Include="Content\de\layout\sidebar.html" />
+    <Content Include="Content\de\layout\toolbar.html" />
+    <Content Include="Content\de\popup\help-center.html" />
+    <Content Include="Content\de\popup\history.html" />
+    <Content Include="Content\de\popup\markdown-editor.html" />
+    <Content Include="Content\de\popup\popup-batch.html" />
+    <Content Include="Content\de\popup\popup-debug.html" />
+    <Content Include="Content\de\popup\popup-message.html" />
+    <Content Include="Content\de\popup\popup-save.html" />
+    <Content Include="Content\de\popup\popup-search.html" />
+    <Content Include="Content\de\popup\popup-topline.html" />
+    <Content Include="Content\de\popup\right-click.html" />
+    <Content Include="Content\de\save-animation-icon.html" />
+    <Content Include="Content\de\sidebar\mc-options\common-settings.html" />
+    <Content Include="Content\de\sidebar\mc-options\mc-options-settings.html" />
+    <Content Include="Content\de\sidebar\mc-options\nothing-selected.html" />
+    <Content Include="Content\de\sidebar\mc-options\other-settings.html" />
+    <Content Include="Content\de\sidebar\mc-options\question-settings.html" />
+    <Content Include="Content\de\sidebar\mc-options\type-settings.html" />
+    <Content Include="Content\de\template\options.html" />
+    <Content Include="Content\de\template\pic-options.html" />
+    <Content Include="Content\de\template\select.html" />
+    <Content Include="Content\de\template\title-local.html" />
+    <Content Include="Css\base.css" />
+    <Content Include="Css\color.css" />
+    <Content Include="Css\colpick.css" />
+    <Content Include="Css\db-index.css" />
+    <Content Include="Css\normalize.css" />
+    <Content Include="fonts\Kiro-Bold.svg" />
+    <Content Include="fonts\Kiro-Regular.svg" />
+    <Content Include="fonts\Kiro-Thin.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\cf.svg">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Images\dashboard\067653d3ed5c442a309c7749f43ebf4a.jpeg" />
+    <Content Include="Images\dashboard\114c115.jpeg" />
+    <Content Include="Images\dashboard\114c116.jpg" />
+    <Content Include="Images\dashboard\294357d3b695949d871f62ae4e12be78.jpg" />
+    <Content Include="Images\dashboard\3c8af702414306bd8d0147f99108c908.jpg" />
+    <Content Include="Images\dashboard\43af6455fc0cfe04abce344714fae65e.jpeg" />
+    <Content Include="Images\dashboard\5190af6c3ff260a697999a6c76f62aae.jpeg" />
+    <Content Include="Images\dashboard\7cecb159b2a70fa960a7727b40a80c8e.jpeg" />
+    <Content Include="Images\dashboard\87f15dcd58abb00986309a5f2ca6ea21.jpeg" />
+    <Content Include="Images\dashboard\95b73c75ad837dd107bc7c4c2dfed39a.jpg" />
+    <Content Include="Images\dashboard\9bcc931ca94536c7238ed9084edabb3e.jpeg" />
+    <Content Include="Images\dashboard\9d78c0498bdd607d06bd38772792b985.jpg" />
+    <Content Include="Images\dashboard\b3d1551e19fc744459910c23642d9229.jpg" />
+    <Content Include="Images\dashboard\c6d96a089cffc204a3a345325a9aecf0.jpeg" />
+    <Content Include="Images\dashboard\chart-icon.png" />
+    <Content Include="Images\dashboard\chart.png" />
+    <Content Include="Images\dashboard\checkbox.png" />
+    <Content Include="Images\dashboard\cs-icon.png" />
+    <Content Include="Images\dashboard\D E T E R M I N A T I O N by David Ruiz Luna.jpeg" />
+    <Content Include="Images\dashboard\d4b9866f5a814bb9d34ec15a9bf1464d.jpeg" />
+    <Content Include="Images\dashboard\db60481fa8e480cb1d2b5887c0bea494.jpeg" />
+    <Content Include="Images\dashboard\DefaultOrganization.png" />
+    <Content Include="Images\dashboard\DefaultProfile.png" />
+    <Content Include="Images\dashboard\DefaultSurveyCover.png" />
+    <Content Include="Images\dashboard\default-organization.jpg" />
+    <Content Include="Images\dashboard\default-profile.jpg" />
+    <Content Include="Images\dashboard\df3cbe630be823a13f7c70e4c2501124.jpg" />
+    <Content Include="Images\dashboard\e705c79d929fafe6b0aeb863f131491a.jpeg" />
+    <Content Include="Images\dashboard\f3f285eeb259b845f76191544374fd7e.jpeg" />
+    <Content Include="Images\dashboard\fae65e.jpg" />
+    <Content Include="Images\dashboard\fd27829a2b188e3ebdf1b82a1a551a34.jpg" />
+    <Content Include="Images\dashboard\help\btn_bcbb.png" />
+    <Content Include="Images\dashboard\help\btn_dashboard.png" />
+    <Content Include="Images\dashboard\help\btn_delete.png" />
+    <Content Include="Images\dashboard\help\btn_delete1.png" />
+    <Content Include="Images\dashboard\help\btn_dklg.png" />
+    <Content Include="Images\dashboard\help\btn_fzhwj.png" />
+    <Content Include="Images\dashboard\help\btn_ggbban.png" />
+    <Content Include="Images\dashboard\help\btn_lzt.png" />
+    <Content Include="Images\dashboard\help\btn_pltj.png" />
+    <Content Include="Images\dashboard\help\btn_quota_pezcz.png" />
+    <Content Include="Images\dashboard\help\btn_shchpebg.png" />
+    <Content Include="Images\dashboard\help\btn_shchwj.png" />
+    <Content Include="Images\dashboard\help\btn_shjwj.png" />
+    <Content Include="Images\dashboard\help\btn_tjmt.png" />
+    <Content Include="Images\dashboard\help\btn_toolbar.png" />
+    <Content Include="Images\dashboard\help\btn_tpt_shch.png" />
+    <Content Include="Images\dashboard\help\btn_wjfb.png" />
+    <Content Include="Images\dashboard\help\btn_wjts.png" />
+    <Content Include="Images\dashboard\help\btn_xshishzh.png" />
+    <Content Include="Images\dashboard\help\btn_xxshz.png" />
+    <Content Include="Images\dashboard\help\btn_xxshz1.png" />
+    <Content Include="Images\dashboard\help\btn_ycshzh.png" />
+    <Content Include="Images\dashboard\help\btn_ydwj.png" />
+    <Content Include="Images\dashboard\help\btn_ylwj.png" />
+    <Content Include="Images\dashboard\help\btn_zjpe.png" />
+    <Content Include="Images\dashboard\help\checkbox.png" />
+    <Content Include="Images\dashboard\help\cht_connect.png" />
+    <Content Include="Images\dashboard\help\cht_fz.png" />
+    <Content Include="Images\dashboard\help\cht_range_txxx.png" />
+    <Content Include="Images\dashboard\help\cht_range_txzl.png" />
+    <Content Include="Images\dashboard\help\cht_ts.png" />
+    <Content Include="Images\dashboard\help\cht_wfz.png" />
+    <Content Include="Images\dashboard\help\cht_xxts.png" />
+    <Content Include="Images\dashboard\help\default-organization.jpg" />
+    <Content Include="Images\dashboard\help\default-profile.jpg" />
+    <Content Include="Images\dashboard\help\dlg_bcbb.png" />
+    <Content Include="Images\dashboard\help\dlg_ggbb.png" />
+    <Content Include="Images\dashboard\help\dlg_hqbb.png" />
+    <Content Include="Images\dashboard\help\dlg_pltj.png" />
+    <Content Include="Images\dashboard\help\dlg_tscc.png" />
+    <Content Include="Images\dashboard\help\dlg_wjyl.png" />
+    <Content Include="Images\dashboard\help\glb_bcwjbb.png" />
+    <Content Include="Images\dashboard\help\glb_data_hfs.png" />
+    <Content Include="Images\dashboard\help\glb_data_jh.png" />
+    <Content Include="Images\dashboard\help\glb_data_jhl.png" />
+    <Content Include="Images\dashboard\help\glb_data_progess.png" />
+    <Content Include="Images\dashboard\help\glb_data_scjg.png" />
+    <Content Include="Images\dashboard\help\glb_data_scxxjg.png" />
+    <Content Include="Images\dashboard\help\glb_data_setview.png" />
+    <Content Include="Images\dashboard\help\glb_data_singledata.png" />
+    <Content Include="Images\dashboard\help\glb_data_sjfx.png" />
+    <Content Include="Images\dashboard\help\glb_data_stcz.png" />
+    <Content Include="Images\dashboard\help\glb_data_syxx.png" />
+    <Content Include="Images\dashboard\help\glb_data_tool.png" />
+    <Content Include="Images\dashboard\help\glb_data_xmsjjd.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter_bottom.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter_bottom2.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter_left.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter_media.png" />
+    <Content Include="Images\dashboard\help\glb_designcenter_top.png" />
+    <Content Include="Images\dashboard\help\glb_fjc_kbpe.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_bcwj.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_dkjd.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_fbwj.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_fzjd.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_stcz.png" />
+    <Content Include="Images\dashboard\help\glb_gjl_tswj.png" />
+    <Content Include="Images\dashboard\help\glb_hfwjbb.png" />
+    <Content Include="Images\dashboard\help\glb_lvyouwj.png" />
+    <Content Include="Images\dashboard\help\glb_newsurvey_blank.png" />
+    <Content Include="Images\dashboard\help\glb_newsurvey_new.png" />
+    <Content Include="Images\dashboard\help\glb_newsurvey_new2.png" />
+    <Content Include="Images\dashboard\help\glb_newsurvey_new3.png" />
+    <Content Include="Images\dashboard\help\glb_newsurvey_sample.png" />
+    <Content Include="Images\dashboard\help\glb_panel_advance.png" />
+    <Content Include="Images\dashboard\help\glb_panel_base.png" />
+    <Content Include="Images\dashboard\help\glb_quickstart_nd1.png" />
+    <Content Include="Images\dashboard\help\glb_quickstart_pic1.png" />
+    <Content Include="Images\dashboard\help\glb_quota_dgpez.png" />
+    <Content Include="Images\dashboard\help\glb_quota_dgpez1.png" />
+    <Content Include="Images\dashboard\help\glb_quota_dgpez2.png" />
+    <Content Include="Images\dashboard\help\glb_quota_dgpez3.png" />
+    <Content Include="Images\dashboard\help\glb_quota_dgpez4.png" />
+    <Content Include="Images\dashboard\help\glb_quota_jchpe1.png" />
+    <Content Include="Images\dashboard\help\glb_quota_jchpe2.png" />
+    <Content Include="Images\dashboard\help\glb_quota_jchpe3.png" />
+    <Content Include="Images\dashboard\help\glb_quota_jchpe4.png" />
+    <Content Include="Images\dashboard\help\glb_quota_jdpe.png" />
+    <Content Include="Images\dashboard\help\glb_quota_kbpe.png" />
+    <Content Include="Images\dashboard\help\glb_quota_kbpe1.png" />
+    <Content Include="Images\dashboard\help\glb_quota_survey.png" />
+    <Content Include="Images\dashboard\help\glb_quota_tjpetj.png" />
+    <Content Include="Images\dashboard\help\glb_quota_zhbjd.png" />
+    <Content Include="Images\dashboard\help\glb_quota_zjpetj.png" />
+    <Content Include="Images\dashboard\help\glb_settings.png" />
+    <Content Include="Images\dashboard\help\glb_ssjg.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjcz.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjhsjd.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjjcz.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjkjcz.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjpx.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjsz.png" />
+    <Content Include="Images\dashboard\help\glb_surveymanager_wjwjj.png" />
+    <Content Include="Images\dashboard\help\glb_survey_fwh.png" />
+    <Content Include="Images\dashboard\help\glb_survey_jhfb.png" />
+    <Content Include="Images\dashboard\help\glb_survey_pub.png" />
+    <Content Include="Images\dashboard\help\glb_wjglzx.png" />
+    <Content Include="Images\dashboard\help\glb_wjglzx_dywj.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjq.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjqfc.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjqfcwj.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjqfcwj1.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjq_jm.png" />
+    <Content Include="Images\dashboard\help\glb_wjsjbjq_xx.png" />
+    <Content Include="Images\dashboard\help\glb_wjss.png" />
+    <Content Include="Images\dashboard\help\glb_xjdcwj.png" />
+    <Content Include="Images\dashboard\help\glb_zhb.png" />
+    <Content Include="Images\dashboard\help\icon256.gif" />
+    <Content Include="Images\dashboard\help\icon32.gif" />
+    <Content Include="Images\dashboard\help\nd_end.png" />
+    <Content Include="Images\dashboard\help\nd_input.png" />
+    <Content Include="Images\dashboard\help\nd_range.png" />
+    <Content Include="Images\dashboard\help\nd_select.png" />
+    <Content Include="Images\dashboard\help\nd_selectpic.png" />
+    <Content Include="Images\dashboard\help\nd_start.png" />
+    <Content Include="Images\dashboard\help\smp_tpt.png" />
+    <Content Include="Images\dashboard\help\spritesheet.png" />
+    <Content Include="Images\dashboard\icon256.gif" />
+    <Content Include="Images\dashboard\icon32.gif" />
+    <Content Include="Images\dashboard\loading2.gif" />
+    <Content Include="Images\dashboard\logo%402.png" />
+    <Content Include="Images\dashboard\Mapbox Partners.jpeg" />
+    <Content Include="Images\dashboard\pattern.png" />
+    <Content Include="Images\dashboard\pattern.svg" />
+    <Content Include="Images\dashboard\que_pic_0017_b74033aafb6b37544a2959fbd5090a89.jpg" />
+    <Content Include="Images\dashboard\Screen Shot 2015-03-27 at 上午1.40.40.png" />
+    <Content Include="Images\dashboard\spritesheet.png" />
+    <Content Include="Images\db\067653d3ed5c442a309c7749f43ebf4a.jpeg" />
+    <Content Include="Images\db\114c115.jpeg" />
+    <Content Include="Images\db\114c116.jpg" />
+    <Content Include="Images\db\294357d3b695949d871f62ae4e12be78.jpg" />
+    <Content Include="Images\db\3c8af702414306bd8d0147f99108c908.jpg" />
+    <Content Include="Images\db\43af6455fc0cfe04abce344714fae65e.jpeg" />
+    <Content Include="Images\db\5190af6c3ff260a697999a6c76f62aae.jpeg" />
+    <Content Include="Images\db\7cecb159b2a70fa960a7727b40a80c8e.jpeg" />
+    <Content Include="Images\db\87f15dcd58abb00986309a5f2ca6ea21.jpeg" />
+    <Content Include="Images\db\95b73c75ad837dd107bc7c4c2dfed39a.jpg" />
+    <Content Include="Images\db\9bcc931ca94536c7238ed9084edabb3e.jpeg" />
+    <Content Include="Images\db\9d78c0498bdd607d06bd38772792b985.jpg" />
+    <Content Include="Images\db\b3d1551e19fc744459910c23642d9229.jpg" />
+    <Content Include="Images\db\c6d96a089cffc204a3a345325a9aecf0.jpeg" />
+    <Content Include="Images\db\chart-icon.png" />
+    <Content Include="Images\db\chart.png" />
+    <Content Include="Images\db\checkbox.png" />
+    <Content Include="Images\db\cs-icon.png" />
+    <Content Include="Images\db\D E T E R M I N A T I O N by David Ruiz Luna.jpeg" />
+    <Content Include="Images\db\d4b9866f5a814bb9d34ec15a9bf1464d.jpeg" />
+    <Content Include="Images\db\db60481fa8e480cb1d2b5887c0bea494.jpeg" />
+    <Content Include="Images\db\default-organization.jpg" />
+    <Content Include="Images\db\default-profile.jpg" />
+    <Content Include="Images\db\DefaultOrganization.png" />
+    <Content Include="Images\db\DefaultProfile.png" />
+    <Content Include="Images\db\DefaultSurveyCover.png" />
+    <Content Include="Images\db\df3cbe630be823a13f7c70e4c2501124.jpg" />
+    <Content Include="Images\db\e705c79d929fafe6b0aeb863f131491a.jpeg" />
+    <Content Include="Images\db\f3f285eeb259b845f76191544374fd7e.jpeg" />
+    <Content Include="Images\db\fae65e.jpg" />
+    <Content Include="Images\db\fd27829a2b188e3ebdf1b82a1a551a34.jpg" />
+    <Content Include="Images\db\icon256.gif" />
+    <Content Include="Images\db\icon32.gif" />
+    <Content Include="Images\db\loading2.gif" />
+    <Content Include="Images\db\logo%402.png" />
+    <Content Include="Images\db\Mapbox Partners.jpeg" />
+    <Content Include="Images\db\pattern.png" />
+    <Content Include="Images\db\pattern.svg" />
+    <Content Include="Images\db\que_pic_0017_b74033aafb6b37544a2959fbd5090a89.jpg" />
+    <Content Include="Images\db\Screen Shot 2015-03-27 at 上午1.40.40.png" />
+    <Content Include="Images\db\spritesheet.png" />
+    <Content Include="Images\de\96064525269751.552a803e00ca9.jpg" />
+    <Content Include="Images\de\be-1.jpg" />
+    <Content Include="Images\de\be-10.jpg" />
+    <Content Include="Images\de\be-11.jpg" />
+    <Content Include="Images\de\be-12.jpg" />
+    <Content Include="Images\de\be-13.jpg" />
+    <Content Include="Images\de\be-14.jpg" />
+    <Content Include="Images\de\be-15.jpg" />
+    <Content Include="Images\de\be-2.jpg" />
+    <Content Include="Images\de\be-3.jpg" />
+    <Content Include="Images\de\be-4.jpg" />
+    <Content Include="Images\de\be-5.jpg" />
+    <Content Include="Images\de\be-6.jpg" />
+    <Content Include="Images\de\be-7.jpg" />
+    <Content Include="Images\de\be-8.jpg" />
+    <Content Include="Images\de\be-9.jpg" />
+    <Content Include="Images\de\ic-dark.png" />
+    <Content Include="Images\de\ic-lighten.png" />
+    <Content Include="Images\de\ic-mini.png" />
+    <Content Include="Images\de\ic-save.png" />
+    <Content Include="Images\de\pin-1.jpg" />
+    <Content Include="Images\de\shadow-r.png" />
+    <Content Include="Images\de\shadow.png" />
+    <Content Include="Images\de\toggle.png" />
+    <Content Include="Images\embg.jpg" />
+    <Content Include="Images\erweima.png" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\help\btn_bcbb.png" />
+    <Content Include="Images\help\btn_dashboard.png" />
+    <Content Include="Images\help\btn_delete.png" />
+    <Content Include="Images\help\btn_delete1.png" />
+    <Content Include="Images\help\btn_dklg.png" />
+    <Content Include="Images\help\btn_fzhwj.png" />
+    <Content Include="Images\help\btn_ggbban.png" />
+    <Content Include="Images\help\btn_lzt.png" />
+    <Content Include="Images\help\btn_pltj.png" />
+    <Content Include="Images\help\btn_quota_pezcz.png" />
+    <Content Include="Images\help\btn_shchpebg.png" />
+    <Content Include="Images\help\btn_shchwj.png" />
+    <Content Include="Images\help\btn_shjwj.png" />
+    <Content Include="Images\help\btn_tjmt.png" />
+    <Content Include="Images\help\btn_toolbar.png" />
+    <Content Include="Images\help\btn_tpt_shch.png" />
+    <Content Include="Images\help\btn_wjfb.png" />
+    <Content Include="Images\help\btn_wjts.png" />
+    <Content Include="Images\help\btn_xshishzh.png" />
+    <Content Include="Images\help\btn_xxshz.png" />
+    <Content Include="Images\help\btn_xxshz1.png" />
+    <Content Include="Images\help\btn_ycshzh.png" />
+    <Content Include="Images\help\btn_ydwj.png" />
+    <Content Include="Images\help\btn_ylwj.png" />
+    <Content Include="Images\help\btn_zjpe.png" />
+    <Content Include="Images\help\checkbox.png" />
+    <Content Include="Images\help\cht_connect.png" />
+    <Content Include="Images\help\cht_fz.png" />
+    <Content Include="Images\help\cht_range_txxx.png" />
+    <Content Include="Images\help\cht_range_txzl.png" />
+    <Content Include="Images\help\cht_ts.png" />
+    <Content Include="Images\help\cht_wfz.png" />
+    <Content Include="Images\help\cht_xxts.png" />
+    <Content Include="Images\help\default-organization.jpg" />
+    <Content Include="Images\help\default-profile.jpg" />
+    <Content Include="Images\help\dlg_bcbb.png" />
+    <Content Include="Images\help\dlg_ggbb.png" />
+    <Content Include="Images\help\dlg_hqbb.png" />
+    <Content Include="Images\help\dlg_pltj.png" />
+    <Content Include="Images\help\dlg_tscc.png" />
+    <Content Include="Images\help\dlg_wjyl.png" />
+    <Content Include="Images\help\glb_bcwjbb.png" />
+    <Content Include="Images\help\glb_data_hfs.png" />
+    <Content Include="Images\help\glb_data_jh.png" />
+    <Content Include="Images\help\glb_data_jhl.png" />
+    <Content Include="Images\help\glb_data_progess.png" />
+    <Content Include="Images\help\glb_data_scjg.png" />
+    <Content Include="Images\help\glb_data_scxxjg.png" />
+    <Content Include="Images\help\glb_data_setview.png" />
+    <Content Include="Images\help\glb_data_singledata.png" />
+    <Content Include="Images\help\glb_data_sjfx.png" />
+    <Content Include="Images\help\glb_data_stcz.png" />
+    <Content Include="Images\help\glb_data_syxx.png" />
+    <Content Include="Images\help\glb_data_tool.png" />
+    <Content Include="Images\help\glb_data_xmsjjd.png" />
+    <Content Include="Images\help\glb_designcenter.png" />
+    <Content Include="Images\help\glb_designcenter_bottom.png" />
+    <Content Include="Images\help\glb_designcenter_bottom2.png" />
+    <Content Include="Images\help\glb_designcenter_left.png" />
+    <Content Include="Images\help\glb_designcenter_media.png" />
+    <Content Include="Images\help\glb_designcenter_top.png" />
+    <Content Include="Images\help\glb_fjc_kbpe.png" />
+    <Content Include="Images\help\glb_gjl_bcwj.png" />
+    <Content Include="Images\help\glb_gjl_dkjd.png" />
+    <Content Include="Images\help\glb_gjl_fbwj.png" />
+    <Content Include="Images\help\glb_gjl_fzjd.png" />
+    <Content Include="Images\help\glb_gjl_stcz.png" />
+    <Content Include="Images\help\glb_gjl_tswj.png" />
+    <Content Include="Images\help\glb_hfwjbb.png" />
+    <Content Include="Images\help\glb_lvyouwj.png" />
+    <Content Include="Images\help\glb_newsurvey_blank.png" />
+    <Content Include="Images\help\glb_newsurvey_new.png" />
+    <Content Include="Images\help\glb_newsurvey_new2.png" />
+    <Content Include="Images\help\glb_newsurvey_new3.png" />
+    <Content Include="Images\help\glb_newsurvey_sample.png" />
+    <Content Include="Images\help\glb_panel_advance.png" />
+    <Content Include="Images\help\glb_panel_base.png" />
+    <Content Include="Images\help\glb_quickstart_nd1.png" />
+    <Content Include="Images\help\glb_quickstart_pic1.png" />
+    <Content Include="Images\help\glb_quota_dgpez.png" />
+    <Content Include="Images\help\glb_quota_dgpez1.png" />
+    <Content Include="Images\help\glb_quota_dgpez2.png" />
+    <Content Include="Images\help\glb_quota_dgpez3.png" />
+    <Content Include="Images\help\glb_quota_dgpez4.png" />
+    <Content Include="Images\help\glb_quota_jchpe1.png" />
+    <Content Include="Images\help\glb_quota_jchpe2.png" />
+    <Content Include="Images\help\glb_quota_jchpe3.png" />
+    <Content Include="Images\help\glb_quota_jchpe4.png" />
+    <Content Include="Images\help\glb_quota_jdpe.png" />
+    <Content Include="Images\help\glb_quota_kbpe.png" />
+    <Content Include="Images\help\glb_quota_kbpe1.png" />
+    <Content Include="Images\help\glb_quota_survey.png" />
+    <Content Include="Images\help\glb_quota_tjpetj.png" />
+    <Content Include="Images\help\glb_quota_zhbjd.png" />
+    <Content Include="Images\help\glb_quota_zjpetj.png" />
+    <Content Include="Images\help\glb_settings.png" />
+    <Content Include="Images\help\glb_ssjg.png" />
+    <Content Include="Images\help\glb_surveymanager_wjcz.png" />
+    <Content Include="Images\help\glb_surveymanager_wjhsjd.png" />
+    <Content Include="Images\help\glb_surveymanager_wjjcz.png" />
+    <Content Include="Images\help\glb_surveymanager_wjkjcz.png" />
+    <Content Include="Images\help\glb_surveymanager_wjpx.png" />
+    <Content Include="Images\help\glb_surveymanager_wjsz.png" />
+    <Content Include="Images\help\glb_surveymanager_wjwjj.png" />
+    <Content Include="Images\help\glb_survey_fwh.png" />
+    <Content Include="Images\help\glb_survey_jhfb.png" />
+    <Content Include="Images\help\glb_survey_pub.png" />
+    <Content Include="Images\help\glb_wjglzx.png" />
+    <Content Include="Images\help\glb_wjglzx_dywj.png" />
+    <Content Include="Images\help\glb_wjsjbjq.png" />
+    <Content Include="Images\help\glb_wjsjbjqfc.png" />
+    <Content Include="Images\help\glb_wjsjbjqfcwj.png" />
+    <Content Include="Images\help\glb_wjsjbjqfcwj1.png" />
+    <Content Include="Images\help\glb_wjsjbjq_jm.png" />
+    <Content Include="Images\help\glb_wjsjbjq_xx.png" />
+    <Content Include="Images\help\glb_wjss.png" />
+    <Content Include="Images\help\glb_xjdcwj.png" />
+    <Content Include="Images\help\glb_zhb.png" />
+    <Content Include="Images\help\icon256.gif" />
+    <Content Include="Images\help\icon32.gif" />
+    <Content Include="Images\help\nd_end.png" />
+    <Content Include="Images\help\nd_input.png" />
+    <Content Include="Images\help\nd_range.png" />
+    <Content Include="Images\help\nd_select.png" />
+    <Content Include="Images\help\nd_selectpic.png" />
+    <Content Include="Images\help\nd_start.png" />
+    <Content Include="Images\help\smp_tpt.png" />
+    <Content Include="Images\help\spritesheet.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\pdf.png" />
+    <Content Include="Images\pg.png" />
+    <Content Include="Images\pixel.png" />
+    <Content Include="Images\qq_logo.png" />
+    <Content Include="Images\qq_logo_h.png" />
+    <Content Include="Images\QRCodeLogo%402x.png" />
+    <Content Include="Images\QRCodeLogo.png" />
+    <Content Include="Images\QSNR\node-icon-media.svg" />
+    <Content Include="Images\QSNR\node-icon-multiselect.svg" />
+    <Content Include="Images\QSNR\phone.png" />
+    <Content Include="Images\share.jpg" />
+    <Content Include="Images\sina_logo.png" />
+    <Content Include="Images\sina_logo_h.png" />
+    <Content Include="Images\TipsPics\tips_addmedia.jpg" />
+    <Content Include="Images\TipsPics\tips_input.jpg" />
+    <Content Include="Images\TipsPics\tips_midia_pic.jpg" />
+    <Content Include="Images\TipsPics\tips_range1.jpg" />
+    <Content Include="Images\TipsPics\tips_range2.jpg" />
+    <Content Include="Images\TipsPics\tips_select.jpg" />
+    <Content Include="Images\TipsPics\tips_select_note.jpg" />
+    <Content Include="Images\TipsPics\tips_select_option.jpg" />
+    <Content Include="Images\TipsPics\tips_select_other2.jpg" />
+    <Content Include="Images\QSNR\294357d3b695949d871f62ae4e12be78.jpg" />
+    <Content Include="Images\QSNR\briefcase-1.svg" />
+    <Content Include="Images\QSNR\building-1.svg" />
+    <Content Include="Images\QSNR\caret-down.svg" />
+    <Content Include="Images\QSNR\checkmark-3.svg" />
+    <Content Include="Images\QSNR\circle.svg" />
+    <Content Include="Images\QSNR\design-icon.png" />
+    <Content Include="Images\QSNR\design-light-icon.png" />
+    <Content Include="Images\QSNR\file-text-o.svg" />
+    <Content Include="Images\QSNR\grid.svg" />
+    <Content Include="Images\QSNR\group-1.svg" />
+    <Content Include="Images\QSNR\icon256.gif" />
+    <Content Include="Images\QSNR\icon32.gif" />
+    <Content Include="Images\QSNR\id-2.svg" />
+    <Content Include="Images\QSNR\liner.svg" />
+    <Content Include="Images\QSNR\location-pin-1.svg" />
+    <Content Include="Images\QSNR\menu-2.svg" />
+    <Content Include="Images\QSNR\money-1.svg" />
+    <Content Include="Images\QSNR\nodes_kit_icon.png" />
+    <Content Include="Images\QSNR\nodes_kit_icon_60.png" />
+    <Content Include="Images\QSNR\nodes_kit_icon_light_60.png" />
+    <Content Include="Images\QSNR\node_setting.svg" />
+    <Content Include="Images\QSNR\notification.svg" />
+    <Content Include="Images\QSNR\open-book-2.svg" />
+    <Content Include="Images\QSNR\pinterest.svg" />
+    <Content Include="Images\QSNR\random.svg" />
+    <Content Include="Images\QSNR\rect.svg" />
+    <Content Include="Images\QSNR\retweet.svg" />
+    <Content Include="Images\QSNR\ring-1.svg" />
+    <Content Include="Images\QSNR\rounded.svg" />
+    <Content Include="Images\QSNR\RZUQX6V36IIEPBBIEMMG_s.png" />
+    <Content Include="Images\QSNR\spriticon.png" />
+    <Content Include="Images\QSNR\star-2.svg" />
+    <Content Include="Images\QSNR\thinking-comment-2.svg" />
+    <Content Include="Images\QSNR\user-1.svg" />
+    <Content Include="Images\QSNR\wallet-1.svg" />
+    <Content Include="Images\TipsPics\tips_tpt.png" />
+    <Content Include="Images\Unknown.png" />
+    <Content Include="Images\ws\114c115.jpeg" />
+    <Content Include="Images\ws\13.png" />
+    <Content Include="Images\ws\14.png" />
+    <Content Include="Images\ws\66774-img.jpg" />
+    <Content Include="Images\ws\agsquare_%402X.png" />
+    <Content Include="Images\ws\app-screens-01.png" />
+    <Content Include="Images\ws\app-screens-05.png" />
+    <Content Include="Images\ws\app-screens-07.png" />
+    <Content Include="Images\ws\app-screens-12.png" />
+    <Content Include="Images\ws\arrow mapp.png" />
+    <Content Include="Images\ws\auto-save-versions.png" />
+    <Content Include="Images\ws\chart.png" />
+    <Content Include="Images\ws\click.png" />
+    <Content Include="Images\ws\content.jpg" />
+    <Content Include="Images\ws\custom-theme.png" />
+    <Content Include="Images\ws\custom-variables.png" />
+    <Content Include="Images\ws\data-trends.png" />
+    <Content Include="Images\ws\female.png" />
+    <Content Include="Images\ws\Gold2 %402x.png" />
+    <Content Include="Images\ws\Gold6 %402x.png" />
+    <Content Include="Images\ws\icon-nodes.png" />
+    <Content Include="Images\ws\ip-screens-01.png" />
+    <Content Include="Images\ws\ip-screens-02.png" />
+    <Content Include="Images\ws\ip-screens-03.png" />
+    <Content Include="Images\ws\ip-screens-04.png" />
+    <Content Include="Images\ws\ip-screens-05.png" />
+    <Content Include="Images\ws\ip-screens-06.png" />
+    <Content Include="Images\ws\ip-screens-07.png" />
+    <Content Include="Images\ws\ip-screens-08.png" />
+    <Content Include="Images\ws\ip-screens-09.png" />
+    <Content Include="Images\ws\ip-screens-10.png" />
+    <Content Include="Images\ws\ip-screens-11.png" />
+    <Content Include="Images\ws\ip-screens-12.png" />
+    <Content Include="Images\ws\l-ic.png" />
+    <Content Include="Images\ws\logic-nodes.png" />
+    <Content Include="Images\ws\man.png" />
+    <Content Include="Images\ws\Nodes.png" />
+    <Content Include="Images\ws\organizations.png" />
+    <Content Include="Images\ws\pattern.png" />
+    <Content Include="Images\ws\pattern.svg" />
+    <Content Include="Images\ws\pattern1.svg" />
+    <Content Include="Images\ws\quota.png" />
+    <Content Include="Images\ws\settings-publish.png" />
+    <Content Include="Images\ws\settings-quota.png" />
+    <Content Include="Images\ws\spritehome.png" />
+    <Content Include="Images\ws\tablet-hands.jpg" />
+    <Content Include="Images\ws\web-ui-s1.png" />
+    <Content Include="Images\ws\web-ui-s2.png" />
+    <Content Include="Images\ws\web-ui-s3.png" />
+    <Content Include="Images\ws\web-ui.png" />
+    <Content Include="Images\xlsx.png" />
+    <Content Include="ReleaseJS\zyds.min.JS" />
+    <Content Include="ReleaseJS\zyIn.min.js" />
+    <Content Include="ReleaseJS\zySI.min.js" />
+    <Content Include="Script\db-index.js" />
+    <Content Include="Script\de-index.js" />
+    <Content Include="Script\lib\angular-ui-router.js" />
+    <Content Include="Script\lib\angular.min.js" />
+    <Content Include="Script\lib\colpick.js" />
+    <Content Include="Script\lib\fastclick.js" />
+    <Content Include="Script\lib\jquery-ui.min.js" />
+    <Content Include="Script\lib\jquery.min.js" />
+    <Content Include="Script\lib\less.min.js" />
+    <Content Include="Script\lib\md-editor.js" />
+    <Content Include="Script\lib\md-library.js" />
+    <Content Include="Script\lib\modernizr.js" />
+    <Content Include="Script\lib\scroller.js" />
+    <Content Include="Script\lib\showdown.js" />
+    <Content Include="Script\lib\sortable.js" />
+    <Content Include="UploadFiles\Css\master.css" />
+    <Content Include="UploadFiles\fonts\icon-flat.svg" />
+    <Content Include="UploadFiles\fonts\icon-UniGrid.svg" />
+    <Content Include="UploadFiles\Html\tmpHtml.html" />
+    <Content Include="UploadFiles\images\cf.svg" />
+    <Content Include="UploadFiles\images\favicon.ico" />
+    <Content Include="UploadFiles\images\Shop.jpeg" />
+    <Content Include="UploadFiles\images\Uck-fay.png" />
+    <Content Include="UploadFiles\images\Unknown.png" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\CompanyPortrait\180_55C38274A717728C275F4B5D8F2F56C3.jpg" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\CompanyPortrait\180_80F455548334732B9C7B4B3A47A15DEF.gif" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\CompanyPortrait\180_85BD7C82E61082CED5E2A059CE661DC4.jpg" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\c1c79fc7-f5bb-4757-a191-daba89f8094c\MediaLib\9B565DB8259CB87A95927C549C8A39E8.jpg" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\c1c79fc7-f5bb-4757-a191-daba89f8094c\MediaLib\C941F39359A3297545E8BF64A6FE7F0A.jpg" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\c1c79fc7-f5bb-4757-a191-daba89f8094c\MediaLib\DD757EFFDA3F5A6AE75C9C145494B888.jpg" />
+    <Content Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\c1c79fc7-f5bb-4757-a191-daba89f8094c\MediaLib\E55515E5E6A194AF1588EF37710CB154.jpg" />
+    <Content Include="UploadFiles\Photo\icon2561.gif" />
+    <Content Include="UploadFiles\TempCss\master.css" />
+    <Content Include="UploadFiles\TempCss\mobile.css" />
+    <Content Include="UploadFiles\TmpLess\button.less" />
+    <Content Include="UploadFiles\TmpLess\cf-markdown.less" />
+    <Content Include="UploadFiles\TmpLess\choices.less" />
+    <Content Include="UploadFiles\TmpLess\common.less" />
+    <Content Include="UploadFiles\TmpLess\component.less" />
+    <Content Include="UploadFiles\TmpLess\footer.less" />
+    <Content Include="UploadFiles\TmpLess\icon.less" />
+    <Content Include="UploadFiles\TmpLess\input.less" />
+    <Content Include="UploadFiles\TmpLess\layout.less" />
+    <Content Include="UploadFiles\TmpLess\loading.less" />
+    <Content Include="UploadFiles\TmpLess\master.less" />
+    <Content Include="UploadFiles\TmpLess\mobile.less" />
+    <Content Include="UploadFiles\TmpLess\pictures.less" />
+    <Content Include="UploadFiles\TmpLess\prefixer.less" />
+    <Content Include="UploadFiles\TmpLess\question.less" />
+    <Content Include="UploadFiles\TmpLess\rating.less" />
+    <Content Include="UploadRoot\UploadFile.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Captcha.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UploadRoot\Upload.aspx.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\SignIn.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\QD\QuestionnairDesign_old.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="fonts\Kiro-Bold.eot" />
+    <Content Include="fonts\Kiro-Bold.ttf" />
+    <Content Include="fonts\Kiro-Bold.woff" />
+    <Content Include="fonts\Kiro-Bold.woff2" />
+    <Content Include="fonts\Kiro-Regular.eot" />
+    <Content Include="fonts\Kiro-Regular.ttf" />
+    <Content Include="fonts\Kiro-Regular.woff" />
+    <Content Include="fonts\Kiro-Regular.woff2" />
+    <Content Include="Views\Home\DashBoard.cshtml" />
+    <Content Include="fonts\Kiro-Thin.eot" />
+    <Content Include="fonts\Kiro-Thin.ttf" />
+    <Content Include="fonts\Kiro-Thin.woff" />
+    <Content Include="fonts\Kiro-Thin.woff2" />
+    <Content Include="Views\Home\Tmpindex.cshtml" />
+    <Content Include="Views\Home\QQLogin.cshtml" />
+    <Content Include="Views\Home\SinaLogin.cshtml" />
+    <Content Include="UploadFiles\Excel\tmp.xlsx" />
+    <Content Include="UploadFiles\fonts\icon-flat.eot" />
+    <Content Include="UploadFiles\fonts\icon-flat.ttf" />
+    <Content Include="UploadFiles\fonts\icon-flat.woff" />
+    <Content Include="UploadFiles\fonts\icon-flat.woff2" />
+    <Content Include="UploadFiles\fonts\icon-UniGrid.eot" />
+    <Content Include="UploadFiles\fonts\icon-UniGrid.ttf" />
+    <Content Include="UploadFiles\fonts\icon-UniGrid.woff" />
+    <Content Include="UploadFiles\fonts\icon-UniGrid.woff2" />
+    <Content Include="Images\dashboard\checkbox.psd" />
+    <Content Include="Images\dashboard\help\checkbox.psd" />
+    <Content Include="Images\dashboard\help\spritesheet.psd" />
+    <Content Include="Images\dashboard\spritesheet.psd" />
+    <Content Include="Images\de\ic-dark.psd" />
+    <Content Include="Images\de\ic-lighten.psd" />
+    <Content Include="Images\de\ic-mini.psd" />
+    <Content Include="Images\db\checkbox.psd" />
+    <Content Include="Images\db\spritesheet.psd" />
+    <Content Include="Images\help\checkbox.psd" />
+    <Content Include="Images\help\spritesheet.psd" />
+    <Content Include="Views\Home\index.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Models\" />
+    <Folder Include="UploadFiles\CssFiles\" />
+    <Folder Include="UploadFiles\Less\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\13ff053a-116f-468c-8de4-519f9dae28cb\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\4ccbb264-2643-4936-b782-ea321b37c488\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\51847074-9f2c-4cdc-9bd0-86702db623f6\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\5bb2de7c-0ab0-4aea-a17e-ccab4a867165\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\636bce7e-73c5-47c5-9a89-477b9fea9876\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\89e2e3a8-5de2-41ec-813b-712418ac678b\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\9219f4ad-20ea-4daa-ab83-bd470c058b78\" />
+    <Folder Include="UploadFiles\Photo\a57d09c3-5cc2-4dc9-b60a-5700f7d40a47\Questionnaire\e3316aec-2815-4947-b3b2-b12ee74924b4\" />
+    <Folder Include="UploadFiles\PublishFiles\" />
+    <Folder Include="UploadRoot\UploadImages\" />
+    <Folder Include="Views\UM\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vCloud.Survey.Business\vCloud.Survey.Business.csproj">
+      <Project>{67a086a9-d2b0-48ad-b397-40ab3c629859}</Project>
+      <Name>vCloud.Survey.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vCloud.Survey.Controllers\vCloud.Survey.Controllers.csproj">
+      <Project>{fa81e84c-d759-40e3-a81b-15e9b08b4d3a}</Project>
+      <Name>vCloud.Survey.Controllers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vCloud.Survey.Model.SurveyAdminInfo\vCloud.Survey.Model.SurveyAdminInfo.csproj">
+      <Project>{c2c5be5a-458b-4b0c-8340-4b6a2d43732a}</Project>
+      <Name>vCloud.Survey.Model.SurveyAdminInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\vCloud.Survey.Model.SurveyInfo\vCloud.Survey.Model.SurveyInfo.csproj">
+      <Project>{e1682303-5e62-4a68-af56-6fc2b8e4c7ee}</Project>
+      <Name>vCloud.Survey.Model.SurveyInfo</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VQ.Common\VQ.Common.csproj">
+      <Project>{c0ab3d62-5a76-4433-8630-d7ed28fea1ad}</Project>
+      <Name>VQ.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\VQ.SessionManage\VQ.SessionManage.csproj">
+      <Project>{bddd926a-4a3b-4a2b-a0a8-27d0b7dcf7c7}</Project>
+      <Name>VQ.SessionManage</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>16994</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:7090</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,73 @@
+.button {
+  display: inline-block;
+  padding: 13px 36px 11px 36px;
+  border-radius: 3px;
+  font-size: 16px;
+  text-align: center;
+  text-decoration: none;
+  .transition-property(all);
+  .transition-duration(500ms);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.button i {
+  opacity: 0.8;
+  .transition-property(opacity);
+  .transition-duration(500ms);
+}
+
+.button:hover i {
+  opacity: 1;
+}
+
+.button.green {
+  border: 1px solid @sea_green;
+  background-color: @sea_green;
+  color: @white;
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.button.blue {
+   border: 1px solid @dodger_blue;
+   background-color: @dodger_blue;
+   color: @white;
+   &:hover {
+     background-color: transparent;
+     color: @dodger_blue;
+   }
+ }
+
+.button.sign-up {
+  border: 1px solid @dodger_blue;
+  background-color: @dodger_blue;
+  color: @white;
+  &:hover {
+    background-color: transparent;
+  }
+  @media (max-width: 767px) {
+    background-color: transparent;
+    border-color: transparent;
+    &:hover {
+      border: 1px solid @dodger_blue;
+    }
+  }
+}
+
+.button.log-in {
+  border: 1px solid transparent;
+  color: @white;
+  &:hover {
+    border: 1px solid @dodger_blue;
+  }
+}
+
+.button.board {
+  border: 1px solid @sea_green;
+  color: @white;
+  &:hover {
+    border: 1px solid @purple;
+  }
+}

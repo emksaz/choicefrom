@@ -1,0 +1,65 @@
+#home.w-section.section.home(data-ix='show-nav')
+    .navbar-scroll(data-collapse='medium', data-animation='default', data-duration='400', data-contain='1', data-ix='display-none-scroll-nav')
+        .w-container
+            a(href='#home')
+                p.logo
+                    | choice form
+                    span beta
+            nav(role='navigation')
+                | @if ((bool)ViewData["IsLogin"])
+                | {
+                a.button.sign-up(href='/home/DashBoard') 我的调查问卷 1232323
+                | }
+                | else
+                | {
+                a.button.log-in(href='/home/signin?type=1') 登 录
+                a.button.sign-up(href='/home/signin?type=2') 注 册
+                | }
+    .navbar(data-collapse='none', data-animation='default', data-duration='400')
+        .w-container
+            p.logo
+                | choice form
+                span beta
+            nav(role='navigation')
+                | @if ((bool)ViewData["IsLogin"])
+                | {
+                a.button.sign-up(href='/home/DashBoard') 我的调查问卷
+                | }
+                | else
+                | {
+                a.button.log-in(href='/home/signin?type=1') 登 录
+                a.button.sign-up(href='/home/signin?type=2') 注 册
+                | }
+    div
+        #home.w-container
+            .w-row
+                .w-col.w-col-6
+                    .hero-text
+                        h1(data-ix='hero-headline')
+                            span 巧思
+                            p.logo
+                                | choice form
+                                span beta
+                            br
+                            span 在线问卷系统
+                        h2(data-ix='hero-headline-2') Best online survey software & questionnaire tool
+                        | @if ((bool)ViewData["IsLogin"])
+                        | {
+                        a.button.green(href='/home/DashBoard', data-ix='hero-button')
+                            i.sprite.sprite-brush-1
+                            strong 开始设计问卷
+                        | }
+                        | else
+                        | {
+                        a.button.green(href='/home/signin?type=1', data-ix='hero-button')
+                            i.sprite.sprite-brush-1
+                            strong 开始设计问卷
+                        | }
+                        a.button.board(style='display:none;', href='#', data-ix='hero-button')
+                            i.sprite.sprite-play-4
+                            strong 观看视频
+                .w-col.w-col-6.cover-phone
+                    .my-survey(data-ix='phone-3')
+                        .survey-screen
+                            // | <iframe src="@Request["quesID"]" style="overflow:hidden;">
+                            |<iframe src="@ViewData["QuesUrl"]" style="overflow:hidden;"></iframe>

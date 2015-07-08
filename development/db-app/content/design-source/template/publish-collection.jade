@@ -1,0 +1,58 @@
+#collection.content-row
+    .row-title
+        h2 渠道设置
+        button.blue
+            i.ic.ic-plus-w
+            span 添加收集渠道
+    .tabs.tabs-style-sub
+        nav
+            ul
+                li.sub-tab-current
+                    span 微信
+                li
+                    span 微博
+                li
+                    span 微博
+            .dropdown-event
+                include ../template/floating-strip-3
+                +item('选中收集方案操作：','复制','重命名','删除')
+        .collection
+            form
+                div
+                    include ../template/checkbox
+                    +checkbox('checkboxG4','关注服务号的受访者，才能回复。')
+                div
+                    +checkbox('checkboxG5','收集受访者的微信基础信息。')
+                p
+                    | You can upload images up to 256x256. Your avatar shows up in your public profile
+                    | and your
+                    | organization notifications.
+            form
+                h3 绑定微信服务号
+                mixin input(name, placeholder, readonly)
+                    input(type='text', name= name, placeholder= placeholder, readonly= readonly)
+                    br
+                    mark.form-message
+                        | Brief Statement Or Account Of The Main Points Of
+                        | Something
+                +input('weichat','名称：','true')
+                +input('weichat','APP ID','true')
+                +input('weichat','名称：','true')
+                +input('weichat','微信号：','true')
+                +input('weichat','APP Secret:','true')
+
+                button.gray
+                    span 验证并保存
+                p
+                    | You can upload images up to 256x256. Your avatar shows up in your public profile
+                    | and your
+                    | organization notifications.
+            form
+                div 配置 OAuth 域名：
+                +input('weichat','','true')
+                button.gray
+                    span 立即验证
+                p
+                    | You can upload images up to 256x256. Your avatar shows up in your public profile
+                    | and your
+                    | organization notifications.

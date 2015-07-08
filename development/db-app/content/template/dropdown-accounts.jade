@@ -1,0 +1,13 @@
+ul.dropdown.accounts.right-ic.downul
+   li.dropdown-tips 切换用户
+   li(ng-click='ChangeCompany(Company);', ng-repeat='Company in QList.Companys', title='{{Company.CompanyName}}')
+      .ic-profile(style=' background-image: url({{Company.BackgroundImg}}); ')
+      |                     {{Company.CompanyName}}
+      i.ic.ic-checkmark-b(ng-show='Company.IsCurrent')
+   // 正式环境删除开始
+   li(ng-show="IsDemo=='1'")
+      i.ic.ic-building-add-d
+      | 创建新的组织
+   li(ng-show="IsDemo=='1'")
+      i.ic.ic-settings-d
+      | 组织设置

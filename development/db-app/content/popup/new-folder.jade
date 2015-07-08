@@ -1,0 +1,15 @@
+.pop-ups(ng-click='ShowPopup($event)', ng-show='QList.Popupbackground==1')
+   div
+      i.ic.ic-add-folder-d
+      span 新建文件夹
+      a.box-button(ng-click='CloseDiv()')
+         i.ic.ic-x-d
+   form#AddFolderForm(name='AddFolderForm', novalidate='')
+      h3 文件夹名称：
+      input#AFolderName(type='text', placeholder='请输入文件夹名称', name='AFolderName', ng-model='EFolder.Name', ng-keydown='enterOrEscOper(4)', required='', ng-maxlength='20', oninput='notifyTextLength(this, 20)')
+      br
+      mark.form-message(ng-show='AddFolderForm.AFolderName.$dirty && AddFolderForm.AFolderName.$invalid') 文件夹名称不可为空。
+      button.border(type='button', ng-click='CloseDiv()')
+         span 取 消
+      button.green(ng-click='SaveFolder(AddFolderForm.$valid)')
+         span 新 建

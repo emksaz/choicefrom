@@ -1,0 +1,40 @@
+.content-row.column
+   .chart-view(ng-repeat='node in QuestionSummaries.SummariesList', ng-show='node.NodeShow')
+      div
+         span {{node.Name}}
+      .chart-container
+         h2 {{node.Title}}
+         span 已回答：{{node.AnswerNum}} 已略过：{{node.SkipNum}} 
+         div(id='div_{{node.NodeID}}', style='height:270px; ', ng-show='node.IsShowNodeImg')
+         form.Answer_selection
+            ul.Answer_selection_01(ng-show="node.QType!='2'")
+               li
+                  div
+                     span 答案选择
+                  div
+                     span 回复
+               li(ng-repeat='option in node.OptionList')
+                  div
+                     img(ng-show='option.ShowImg', ng-src='{{option.ImgUrl}}', width='64')
+                     span {{option.OptionName}}
+                  div
+                     span {{option.OptionPercentage}}%
+                     span {{option.OptionNum}}
+            ul.Answer_selection_02(ng-show="node.QType=='2'")
+               li
+                  div(style='width:42%') 答案选择
+                  div(style='width:13%')   平均值
+                  .Answer_point(style='width:15%')
+                     span 1
+                  .Answer_point(style='width:15%')
+                     span 2
+                  .Answer_point(style='width:15%')
+                     span 3
+               li(ng-repeat='option in node.OptionList')
+                  div(style='width:42%')
+                     span {{option.OptionName}}
+                  div(style='width:13%')
+                     span {{option.OptionAverageNum}}
+                  .Answer_point(style='width:15%', ng-repeat='ovalue in option.OptionPercentageList')
+                     span {{ovalue.Num}}
+                     span {{ovalue.Percentage}}%

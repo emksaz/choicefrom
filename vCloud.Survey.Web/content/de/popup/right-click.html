@@ -1,0 +1,8 @@
+
+<ul ng-attr-style="{{contextMenu.getStyle()}}" ng-mousedown="handleMenuMouseDown($event)" class="right-click">
+  <li ng-repeat="item in contextMenu.list" ng-click="handleMenuItemClick(item)" ng-class="{'disable':!item.enable}"><span>{{item.text}}</span><span>{{item.hotKey}}</span></li>
+  <li class="breakline"></li>
+  <li ng-repeat="item in contextMenu.list2" ng-click="handleMenuItemClick(item)" ng-class="{'disable':!item.enable}"><span>{{item.text}}</span><span>{{item.hotKey}}</span></li>
+  <li class="breakline"></li>
+  <li ng-repeat="item in contextMenu.list3" ng-click="handleMenuItemClick(item)" ng-class="{'disable':!item.enable}"><span>{{item.text}}</span><span>{{item.hotKey}}</span></li>
+</ul>

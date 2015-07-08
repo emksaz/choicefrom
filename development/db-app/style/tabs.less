@@ -1,0 +1,399 @@
+.tabs {
+  position: relative;
+}
+
+//Tab 导航栏
+.tabs > nav > ul {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  -ms-box-orient: horizontal;
+  -ms-box-pack: center;
+  .flex-flow(row wrap);
+  .justify-content(flex-start);
+  .user-select(none);
+  @media (max-width: 767px) {
+    .justify-content(space-between);
+  }
+}
+
+//Tab 导航栏-按钮位置
+.tabs-style > nav > ul > li {
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  margin: 0 48px 0 8px;
+  .flex-basis(auto);
+  .translate3d(0,0,0);
+  -moz-osx-font-smoothing: grayscale;
+  @media (max-width: 991px) {
+    margin: 0 24px;
+  }
+  @media (max-width: 479px) {
+    margin: 0 12px;
+  }
+}
+
+//Tab 导航栏-按钮
+.tabs-style > nav > ul > li > span {
+  display: inline-block;
+  white-space: nowrap;
+  padding: 20px 0;
+  color: @dark_gray;
+  .transition(color, 300ms, ease-in);
+}
+
+//Tab 导航栏-按钮(选中/悬浮)颜色
+.tabs-style-sub > nav > ul > li > span:hover,
+.sub-tabs > ul > li:hover,
+.tab-current,
+.tabs-style > nav > ul > li > span:hover,
+.tabs-style > nav > ul > li > span:focus,
+.tabs-style > nav > ul > li.tab-current > span {
+  color: @dodger_blue;
+}
+
+//Tab 导航栏-按钮-底部横线
+.tabs-style > nav > ul > li::before {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: @dodger_blue;
+  content: '';
+  opacity: 0;
+  .transition(all, 200ms, ease-in);
+  -webkit-transform: scale3d(0, 1, 1);
+  transform: scale3d(0, 1, 1);
+}
+
+.tabs-style > nav > ul > li:hover {
+  &:before {
+    opacity: 1;
+    -webkit-transform: scale3d(1, 1, 1);
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+////Tab 导航栏-按钮-底部横线-悬浮动画
+.tabs-style > nav > ul > li.tab-current::before {
+  opacity: 1;
+  -webkit-transform: scale3d(1, 1, 1);
+  transform: scale3d(1, 1, 1);
+}
+
+//二级 Tabs (文字)(发票)
+.sub-tabs {
+  position: relative;
+}
+
+//二级 Tabs 导航栏
+.sub-tabs ul {
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+//二级 Tabs-导航栏-按钮位置 (文字)(发票)
+.sub-tabs ul li {
+  padding: 20px 0;
+  display: inline-block;
+  margin: 0 48px 0 8px;
+  cursor: pointer;
+  .transition(color, 300ms, ease-in);
+  @media (max-width: 479px) {
+    margin: 0;
+    float: left;
+    width: 50%;
+    text-align: center;
+  }
+}
+
+//二级 Tabs (标签)(发布)
+.tabs-style-sub > nav {
+  padding: 0 24px;
+  border-bottom: 1px solid @silver;
+  @media (max-width: 991px) {
+    padding: 0;
+  }
+}
+
+//二级 Tabs-导航栏 (标签)(发布)
+.tabs-style-sub > nav > ul {
+  color: @dark_gray;
+  @media (max-width: 991px) {
+    padding: 0 24px;
+  }
+  @media (max-width: 479px) {
+    padding: 0 12px;
+  }
+}
+
+//二级 Tabs-导航栏-按钮位置 (标签)(发布)
+.tabs-style-sub > nav > ul > li {
+  padding: 12px 24px 8px 24px;
+  margin: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  @media (max-width: 991px) {
+    margin: 0;
+  }
+  @media (max-width: 767px) {
+    margin: 0;
+    padding: 12px 0 8px 0;
+    text-align: center;
+    .flex-grow(1);
+  }
+
+}
+
+//二级 Tabs-导航栏 (标签)(发布)
+.tabs-style-sub > nav > ul > li >span {
+  display: inline;
+  padding: 0;
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  .transition(color, 500ms, ease);
+
+}
+
+//二级 Tabs-导航栏-按钮(选中)标签效果 (标签)(发布)
+.tabs-style-sub > nav > ul > li.sub-tab-current {
+  position: relative;
+  border: 1px solid @silver;
+  border-radius: 3px 3px 0 0;
+  border-bottom: none;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0;
+    height: 4px;
+    bottom: -2px;
+    background-color: @white;
+  }
+}
+
+//二级 Tabs-导航栏-按钮(选中)颜色 (标签)(发布)
+.tabs-style-sub > nav > ul > li.sub-tab-current span {
+  color: @dodger_blue;
+}
+
+//二级 Tabs-导航栏-右侧设置按钮位置 (标签)(发布)
+.tabs-style-sub > nav > .dropdown-event {
+  position: absolute;
+  right: 24px;
+  top: 0;
+  @media (max-width: 767px) {
+    display: none;
+  }
+}
+
+//二级 Tabs-导航栏-发布状态圆点 (标签)(发布)
+.tabs-style-sub > nav > ul > li > i.dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  margin-right: 12px;
+}
+
+//二级 Tabs-导航栏-发布状态圆点 (蓝色)
+i.dot.blue {
+  background-color: fade(@dodger_blue, 25%);
+  border: 1px solid @dodger_blue;
+}
+
+//二级 Tabs-导航栏-发布状态圆点 (紫色)
+i.dot.purple {
+  background-color: fade(@purple, 25%);
+  border: 1px solid @purple;
+}
+
+//二级 Tabs-导航栏-发布状态圆点 (绿色)
+i.dot.gray {
+  background-color: fade(@silver, 25%);
+  border: 1px solid @silver;
+}
+
+//二级 Tabs-导航栏-发布状态圆点 (红色)
+i.dot.red {
+  background-color: fade(@tomato, 25%);
+  border: 1px solid @tomato;
+}
+
+//三级 Tabs-导航栏 (自定义图表)
+.tabs-style-sub.small > nav {
+  padding: 0;
+}
+
+//三级 Tabs-导航栏 (自定义图表)
+.tabs-style-sub.small > nav > ul {
+  padding: 0 12px;
+}
+
+//三级 Tabs-导航栏 (标签) (自定义图表)
+.tabs-style-sub.small > nav > ul > li {
+  padding: 6px 16px 4px 16px;
+}
+
+
+//Tab 内容区
+.content-wrap {
+  position: relative;
+  border: 1px solid @silver;
+  border-radius: 2px;
+  background-color: @white;
+  min-height: 600px;
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+}
+
+//Tab 内容区-分栏
+.content-row {
+  padding: 32px 24px;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+  @media (max-width: 479px) {
+    padding: 24px 12px;
+  }
+}
+
+//Tab 内容区-分栏 (带侧栏)
+.content-row.column {
+  width: 70%;
+  float: left;
+  @media (max-width: 991px) {
+    width: 100%;
+  }
+}
+
+//Tab 内容区-分栏 (最后一个没有下划线)
+.content-wrap .content-row {
+  border-bottom: 1px solid @silver;
+  &:last-child {
+    border: none;
+  }
+}
+
+.content-row .row-title {
+  @media (max-width: 767px) {
+    text-align: center;
+  }
+}
+
+//Tabs 内容区-分栏-标题
+.content-row .row-title h2 {
+  float: left;
+  display: inline-block;
+  @media (max-width: 767px) {
+    float: none;
+    display: block;
+  }
+}
+
+//Tabs 内容区-分栏-按钮
+.content-row .row-title button {
+  float: right;
+  margin-left: 12px;
+  @media (max-width: 767px) {
+    float: none;
+    display: inline-block;
+    margin: 12px 0;
+  }
+}
+
+//Tabs 内容区-分栏-表单
+.content-row form {
+  position: relative;
+  display: block;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+//Tabs 内容区-分栏-标题
+.content-row .row-title {
+  position: relative;
+  margin-bottom: 16px;
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.content-row form img,
+//Tabs 内容区-分栏-表单-标题
+.content-row form div {
+  float: left;
+  clear: left;
+  padding: 12px 0 0 0;
+}
+
+.content-row form img {
+  @media (max-width: 479px) {
+    width: 100%;
+  }
+}
+
+//快速帮助
+.creating p,
+.content-row p {
+  display: inline-block;
+  font-size: 14px;
+  color: @silver;
+  position: absolute;
+  right: 0;
+  top: 40px;
+  bottom: 0;
+  padding-left: 32px;
+  width: 40%;
+  border-left: 1px solid @silver;
+  @media (max-width: 991px) {
+    font-size: 12px;
+    position: relative;
+    width: 100%;
+    top: 0;
+    margin: 12px 0 0 0;
+    padding: 0;
+    border: none;
+  }
+}
+
+//输入框尺寸
+textarea,
+.creating,
+.content-row {
+  mark,
+  input[type='text'],
+  input[type='Password'],
+  input[type='email'],
+  input[type='tel'],
+  input[type='date'],
+  input[type='datetime'] {
+    width: 55%;
+    margin-top: 12px;
+    @media (max-width: 991px) {
+      width: 100%;
+    }
+  }
+}

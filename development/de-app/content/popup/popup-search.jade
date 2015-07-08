@@ -1,0 +1,10 @@
+.popup.drag#search(ng-attr-style="{{designManager.searchManager.getStyle()}}",ng-mousedown="handleResultMouseDown($event)")
+    .popup-title
+        i.ic.ic-search
+        h3 搜索
+        a.close-popup(ng-click="handleCloseResultClick()")
+            i.ic.ic-close
+    .popup-content.nano(ng-attr-style="{{designManager.searchManager.getSearchListStyle()}}")
+        ul.nano-content
+            li(ng-repeat="node in designManager.searchManager.nodes", ng-click="handleResultItemClick(node)", ng-class="{'list-activ':node.isSelected()}")
+                span {{node.nodeName}}

@@ -1,0 +1,67 @@
+
+@{
+Layout = null;
+}<!DOCTYPE html>
+<html>
+  <head>
+        <title>survey| choice form</title>
+        <meta http-equiv="Content-Type" charset="utf-8" name="viewport" content="width=device-width, height=device-height, initial-scale=1, minimum-scale=1, maximum-scale=1">
+        <link rel="stylesheet" type="text/css" href="../css/normalize.css">
+        <link rel="stylesheet" type="text/css" href="../css/db-index.css">
+        <link rel="shortcut icon" type="image/x-icon" href="../images/favicon.ico">
+        <link rel="apple-touch-icon" type="image/x-icon" href="../images/cf.svg">
+        <script type="text/javascript" src="../script/lib/jquery.min.js"></script>
+        <script type="text/javascript" src="../script/lib/angular.min.js"></script>
+        <script type="text/javascript" src="../script/lib/angular-ui-router.js"></script>
+        <script type="text/javascript" src="../script/lib/modernizr.js"></script>
+        <script type="text/javascript" src="../script/lib/datetimepicker.js"></script>
+        <script type="application/javascript" src="../script/lib/fastclick.js"></script>
+        <script src="http://localhost:7099/common/script/Tips.js"> </script>
+        <script src="http://localhost:7099/common/script/jquery-migrate-1.2.1.js"></script>
+        <script src="http://localhost:7099/common/script/stream-v1.js"></script>
+        <script src="http://localhost:7099/common/script/jquery.qrcode.min.js"></script>
+        <script src="http://localhost:7099/db-app/script/Echarts/echarts.js"></script>
+        <script src="http://localhost:7099/common/script/radialIndicator.min.js"></script><script src="http://localhost:7099/common/script/config.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/common/script/ui.datepicker-zy.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/common/script/windowAlert-custom.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/common/script/pagePromptText.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        @if (System.Configuration.ConfigurationManager.AppSettings.Get("isPublic") == "0") { 
+        <script src="http://localhost:7099/common/script/loading.js"></script>
+        <script src="http://localhost:7099/db-app/script/event.js"></script><script src="http://localhost:7099/common/script/common.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/appconfig/appconfig.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/common/script/OpenUpload.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QuestionnairSettingsCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/QuesInfoEditCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/QuestionnairListCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/UC/AccountSettingCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/QuesQuotaCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/QuesPublishCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/PublishManagerCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/DataTrendsCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        <script src="http://localhost:7099/db-app/script/controllers/QM/QuestionSummariesCtrl.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        }else{
+        <script src="../script/db-index.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+        }
+  </head>
+  <body>
+    @if (ViewData["IsShowDemo"].ToString()=="1")
+    {
+    <div style="position: absolute;z-index:90000;padding-left:200px;top:10px;width: 50px;text-align: center;font-size:32px;line-height:38px;color:snow;text-shadow:black 0px 0px 8px">Demo</div>    }
+    <input type="hidden" id="hiddendemotype" value="@System.Configuration.ConfigurationManager.AppSettings["IsShowDemo"].ToString()" />
+    <div id="LoadingDiv" style="display:none" class="loading">
+      <div class="lot lot1"></div>
+      <div class="lot lot2"></div>
+      <div class="lot lot3"></div>
+      <div class="lot lot4"></div>
+    </div>
+    <div class="main-wrapper">
+      <top></top>
+      <div data-ui-view=""></div>
+    </div>
+    <footer>
+      <div class="w-container"><span>&#20851;&#20110;&#25105;&#20204;</span><span>&#20851;&#20110;&#25105;&#20204;</span><span>&#20851;&#20110;&#25105;&#20204;</span><span>&#20851;&#20110;&#25105;&#20204;</span>
+        <p>&#169; 2015,<a>choices form</a> , Inc. All Rights Reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

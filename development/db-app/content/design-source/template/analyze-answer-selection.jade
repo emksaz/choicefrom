@@ -1,0 +1,53 @@
+.Answer_selection
+    ul.Answer_selection_01
+        li
+            div
+                span 答案选择
+            div
+                span 回复
+        mixin answer-list1()
+            li
+                div
+                    img(src='../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg', width='64px')
+                    span reate professional
+                div
+                    span 100.00%
+                    span 000
+        +answer-list1()
+        +answer-list1()
+        +answer-list1()
+        +answer-list1()
+    ul.Answer_selection_02
+        li
+            div
+                span 答案选择
+            div
+                span 回复
+            .Answer_point
+                span 1
+            .Answer_point
+                span 2
+            .Answer_point
+                span 3
+        mixin answer-list2()
+            li
+                div
+                    img(src='../../images/db/067653d3ed5c442a309c7749f43ebf4a.jpeg', width='64px')
+                    span 选项题1
+                div
+                    span 3.5
+                .Answer_point
+                    span 1
+                    span 30%
+                .Answer_point
+                    span 2
+                    span 40%
+                .Answer_point
+                    span 3
+                    span 50%
+        +answer-list2()
+        +answer-list2()
+        +answer-list2()
+        +answer-list2()
+        +answer-list2()
+        +answer-list2()

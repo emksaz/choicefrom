@@ -1,0 +1,295 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="utf-8">
+    <title>choice form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Webflow">
+    <link rel="stylesheet" type="text/css" href="~/Css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="~/Css/webflow.css">
+    <link rel="stylesheet" type="text/css" href="~/Css/QSNR/cs-design.webflow.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")">
+    <script type="text/javascript" src="~/Script/js/modernizr.js"></script> 
+    <link rel="stylesheet" type="text/css" href="~/Css/QSNR/main.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" />
+    <link rel="stylesheet" type="text/css" href="~/Css/QSNR/chart.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" />
+    <link rel="stylesheet" type="text/css" href="~/Css/QSNR/editor.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" />
+    <link href="~/Css/colpick.css" rel="stylesheet" />
+    <link href="~/Css/custom_scroller.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" rel="stylesheet" />
+    <link href="~/Css/cs-survey-design.css?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" rel="stylesheet" />
+
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/cf.svg">
+</head>
+
+<body ng-app="ZYDesign"
+      ng-controller="ZYDesignController"
+      data-mouse-capture="true"
+      ng-mouseup="handleMouseUp($event)"
+      onselectstart="return false">
+    <input type="hidden" id="quesIDEx" value="@Request["quesID"]" />
+    <input type="hidden" id="quesName" value="@ViewData["PMQuesName"]" />
+    <input type="hidden" id="QuesNumber" value="@ViewData["QuesNumber"]"/>
+    <input type="hidden" id="companyId" value="@ViewData["companyId"]" />
+    <section class="w-section design_wrapper" style="display:none;">
+        <main class="w-section design_main">
+            <!--&#30011;&#24067;&#9660;-->
+            <div id="chart_content" class="click_hide_unpinned">
+                <div data-node-flow="designManager"></div>
+            </div>
+            <!--&#30011;&#24067;&#9650;-->
+            <!--&#40560;&#30524;&#9660;-->
+            <div id="chart_eye" class="eagle_eye color_eagle_eye border_light_gary_3c3c3c left top click_hide_unpinned">
+                <div data-eagle-eye="designManager"></div>
+            </div>
+            <!--&#40560;&#30524;&#9650;-->
+            <!--&#21491;&#20391;&#32534;&#36753;&#21306;&#22495;&#9660;-->
+            <div class="design_sidebar_tabs border_dark_gary_262626 color_dark_slate_gary_kit border_dark_gary_262626 left"></div>
+            <div data-node-editor="designManager.currentNode"
+                 data-design-manager="designManager"></div>
+            <!--&#21491;&#20391;&#32534;&#36753;&#21306;&#22495;&#9650;-->
+            <!--&#24038;&#20391;&#36873;&#39033;&#26639;&#9660;-->
+            <div class="design_toolbar color_dark_slate_gary_kit padding_lr_8px border_dark_gary_262626 right">
+                <div class="w-inline-block toolbar_button border_dark_gary_262626 buttom cursor_pointer">
+                    <div class="design_icon size_20px ic_nodes_kit"
+                         ng-click="handleToggleNodeBoxClick();" title="&#33410;&#28857;&#21015;&#34920;"></div>
+                </div>
+                <div class="w-inline-block toolbar_button border_dark_gary_262626 buttom cursor_pointer">
+                    <div class="design_icon size_20px ic_theme"
+                         ng-click="handleToggleThemeBoxClick()"></div>
+                </div>
+                <div class="absolute_b padding_lr_8px" style="display:none">
+                    <div class="w-inline-block toolbar_button border_dark_gary_262626 buttom cursor_pointer" style="display:none">
+                        <div class="design_icon size_20px ic_cooperative"></div>
+                    </div>
+                    <div class="w-inline-block toolbar_button cursor_pointer" style="display:none">
+                        <div class="design_icon size_20px ic_prompt"></div>
+                    </div>
+                    <div class="w-inline-block toolbar_button">
+                        <div class="design_icon size_20px ic_video_tutorials cursor_pointer"></div>
+                    </div>
+                    <div class="w-inline-block toolbar_button cursor_pointer">
+                        <div class="design_icon size_20px ic_help"></div>
+                    </div>
+                </div>
+            </div>
+            <!--&#24038;&#20391;&#36873;&#39033;&#26639;&#9650;-->
+            <!--&#19979;&#20391;&#25805;&#20316;&#26639;&#9660;-->
+            <div class="w-clearfix design_buttom_bar color_light_buttom_bar border_light_gary_3c3c3c top click_hide_unpinned">
+                <div class="w-clearfix float_r padding_lr_5px border_light_gary_3c3c3c left">
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px cursor_pointer"
+                         title="&#26174;&#31034;&#20840;&#37096;" ng-click="handleShowAllClick()">
+                        <div class="design_icon size_20px float_l ic_showall"></div>
+                    </div>
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px cursor_pointer"
+                         title="&#25918;&#22823;" ng-click="chartSvgZoomIn()">
+                        <div class="design_icon size_20px float_l ic_zoomin"></div>
+                    </div>
+                    <h3 class="float_r padding_tb_5px padding_lr_5px width_58px text_align_center cursor_default" ng-bind="designManager.getChartZoomRateText()"></h3>
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px cursor_pointer"
+                         title="&#32553;&#23567;" ng-click="handleZoomOutClick()">
+                        <div class="design_icon size_20px float_l ic_zoomout"></div>
+                    </div>
+                </div>
+                <div class="w-clearfix float_r padding_lr_5px border_light_gary_3c3c3c left cursor_pointer" style="display:none;">
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px"
+                         title="&#26174;&#31034;&#32593;&#26684;" ng-click="handleGridToggleClick()">
+                        <div class="design_icon size_20px float_l ic_grid"></div>
+                    </div>
+                </div>
+                <div class="w-clearfix float_r padding_lr_5px border_light_gary_3c3c3c left cursor_pointer">
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px"
+                         title="&#21024;&#38500;&#25152;&#36873;" ng-click="handleDeleteNodeClick()">
+                        <div class="design_icon size_20px float_l ic_delete"></div>
+                    </div>
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px cursor_pointer"
+                         title="&#22797;&#21046;&#33410;&#28857;" ng-click="handleCopyNodeClick()">
+                        <div class="design_icon size_20px float_l ic_duplicate"></div>
+                    </div>
+                    <div class="w-clearfix w-inline-block design_buttom_bar_button float_r padding_tb_5px padding_lr_5px cursor_pointer"
+                         title="&#26029;&#24320;&#25152;&#36873;&#36830;&#32447;" ng-click="handleBreakConnClick()">
+                        <div class="design_icon size_20px float_l ic_broken_link"></div>
+                    </div>
+                </div>
+                <span id="system_hinter" class="font_size_12px"></span>
+            </div>
+            <!--&#19979;&#20391;&#25805;&#20316;&#26639;&#9650;-->
+            <!--&#19978;&#20391;&#25805;&#20316;&#26639;&#9660;-->
+            <header class="w-clearfix design_control color_dark_slate_gary_kit border_dark_gary_262626 buttom click_hide_unpinned">
+                <div class="padding_lr_8px float_l cursor_pointer">
+                    <div class="w-inline-block toolbar_button"
+                         ng-click="handleBackIconClick()"
+                         ng-mouseenter="backHover = true;"
+                         ng-mouseleave="backHover = false;">
+                        <div class="design_icon size_20px ic_back_to_dashboard"></div>
+                    </div>
+                </div>
+                <div class="w-clearfix design_que_title float_l padding_lr_10px font_color_light_d6d6d6 cursor_default"
+                     ng-if="!backHover">
+                    @*<div class="design_icon size_24px ic_logo float_l margin_r_10px"></div>*@
+                    <div class="overflow_hide font_line_height_24px height_24px text_ellipsis" id="start_node_name" title="{{designManager.startNode.nodeName}}" ng-bind="designManager.startNode.nodeName"></div>
+                </div>
+                <div class="back_to_dashboard float_l font_color_light_d6d6d6 padding_lr_10px cursor_pointer elementShow"
+                     ng-if="backHover">
+                    <div class="font_line_height_24px font_size_12px">&#36820;&#22238;&#38382;&#21367;&#31649;&#29702;</div>
+                </div>
+                <div class="w-clearfix w-inline-block design_control_bar_button float_r padding_tb_8px font_center padding_lr_20px border_dark_gary_262626 left cursor_pointer"
+                     ng-click="handleReleaseIconClick()">
+                    <div class="design_icon size_20px float_l ic_publish margin_r_5px"></div>
+                    <h3 class="float_l">&#21457;&#24067;</h3>
+                </div>
+                <div class="w-clearfix w-inline-block design_control_bar_button float_r padding_tb_8px font_center padding_lr_20px border_dark_gary_262626 left cursor_pointer"
+                     ng-click="handleTestClick()">
+                    <div class="design_icon size_20px float_l ic_debugging margin_r_5px"></div>
+                    <h3 class="float_l">&#35843;&#35797;</h3>
+                </div>
+                <div class="w-clearfix w-inline-block design_control_bar_button float_r
+                     padding_tb_8px font_center padding_lr_20px border_dark_gary_262626 left cursor_pointer"
+                     ng-click="handleSaveClick()" title="&#20445;&#23384;">
+                    <div class="design_icon size_20px float_l ic_uploading data_no_change"
+                         ng-class="{'data_saving':designManager.isAutoSaving(),'data_no_change':!designManager.hasChange()}" title="&#20445;&#23384;"></div>
+                    <h3 class="float_l" style="color: #887D7D;margin-left:5px;">&#20445;&#23384;</h3>
+                </div>
+                <div class="w-inline-block float_r cursor_pointer"
+                     
+                     ng-mouseenter="handleVersionHistoryMouseEnter()"
+                     ng-mouseleave="handleVersionHistoryMouseLeave()">
+                    <div data-version-history="designManager.versionHistoryManager"
+                         ng-if="designManager.versionHistoryManager.isVisible()"></div>
+                    <div class="w-clearfix w-inline-block design_control_bar_button float_r padding_tb_8px
+                         font_center padding_lr_20px border_dark_gary_262626 left">
+                        <div class="design_icon size_20px float_l ic_history"
+                             ng-class="{'data_saving':designManager.isManaulSaving()}" title="&#20445;&#23384;&#29256;&#26412;"></div>
+                    </div>
+                </div>
+                <div class="w-clearfix float_r padding_lr_10px border_dark_gary_262626 left cursor_pointer" style="display:none;">
+                    <div class="w-clearfix w-inline-block design_control_bar_button float_r padding_tb_8px font_center padding_lr_5px">
+                        <div class="design_icon size_20px float_l ic_redo"></div>
+                    </div>
+                    <div class="w-clearfix w-inline-block design_control_bar_button float_r padding_tb_8px font_center padding_lr_5px">
+                        <div class="design_icon size_20px float_l ic_undo"></div>
+                    </div>
+                </div>
+                <div class="w-inline-block float_r cursor_pointer"
+                     ng-mouseenter="handleSearcherMouseEnter($event)"
+                     ng-mouseleave="handleSearcherMouseLeave($event)"
+                     id="searcher">
+                    <div class="w-inline-block search_button color_dark_slate_gary_kit float_r"
+                         ng-mouseenter="searchBtnHover = true" ng-mouseleave="searchBtnHover = false">
+                        <div class="design_icon size_20px ic_search" ng-click="handleSearchClick()"
+                             ng-class="{'opacity_100_dur_200':searchBtnHover,'opacity_75_dur_200':!searchBtnHover}" title="&#25628;&#32034;"></div>
+                    </div>
+                    <div class="search_symbol border_dark_gary_262626 left color_dark_slate_gary_kit dur_width_200">
+                        <div class="w-form search_form_wrapper">
+                            <input class="w-input scarch color_dark_gary_gradient_input design_input border_dark_gary_262626 all_sides font_color_light_d6d6d6"
+                                   id="search_txt" type="text" placeholder="&#25628;&#32034;" ng-keydown="handleSearcherKeydown($event)">
+                        </div>
+                    </div>
+                </div>
+
+            </header>
+            <!--&#19978;&#20391;&#25805;&#20316;&#26639;&#9650;-->
+            <!--&#28155;&#21152;&#33410;&#28857;&#25805;&#20316;&#26639;&#9660;-->
+            <div data-node-box="designManager.nodeBoxManager" data-context-help="designManager.helpManager" ng-if="designManager.nodeBoxManager.isVisible()"></div>
+            <!--&#28155;&#21152;&#33410;&#28857;&#25805;&#20316;&#26639;&#9650;-->
+            <!--&#20027;&#39064;&#25805;&#20316;&#26639;&#9660;-->
+            <div data-theme-box="designManager.themeBoxManager" ng-if="designManager.themeBoxManager.isVisible()"></div>
+            <!--&#20027;&#39064;&#25805;&#20316;&#26639;&#9650;-->
+        </main>
+    </section>
+    <div data-node-searcher="designManager" ng-if="designManager.searchManager.show"></div>
+    <div data-node-validator="designManager" ng-if="designManager.validateManager.show"></div>
+    <div data-batch-option="designManager.optionBatchAddManager" ng-if="designManager.optionBatchAddManager.isVisible()"></div>
+    <div data-version-save="designManager.versionSaveManager" ng-if="designManager.versionSaveManager.isVisible()"></div>
+    <div data-context-menu="designManager.contextMenu" ng-if="designManager.contextMenu.isVisible()"></div>
+    <div data-help-box="designManager" data-help-text="designManager.helpManager" ng-if="designManager.helpManager.show"></div>
+    @*<div class="popup_masker" id="design_loader">
+        <div id="design_loader_icon">
+            <div class="lot lot1"></div>
+            <div class="lot lot2"></div>
+            <div class="lot lot3"></div>
+            <div class="lot lot4"></div>
+        </div>
+    </div>*@
+    <div id="uploadDiv" style="display:none;"></div>
+    <!--&#22522;&#26412;&#24211;&#21152;&#36733;&#9660;-->
+    <script type="text/javascript" src="~/Script/js/jquery-2.1.3.min.js"></script>
+    @*<script src="~/Script/js/jquery-1.7.2.min.js"></script>*@
+    <script src="~/Script/js/jquery-migrate-1.2.1.js"></script>
+    <script src="~/Script/js/qrcode.js"></script>
+    <script type="text/javascript" src="~/Script/js/config.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script type="text/javascript" src="~/Script/angular/angular.js"></script>
+    <script src="~/Script/js/stream-v1.js"></script>
+    <script src="~/Script/js/windowAlert-custom-old.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/js/common.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/appconfig/qsnr_cfg.js"></script>
+    <script src="~/Script/js/colpick.js"></script>
+    <!--&#22522;&#26412;&#24211;&#21152;&#36733;&#9650;-->
+
+    <!--&#24320;&#21457;&#29256;&#26412;&#19987;&#29992;js&#24341;&#29992;&#22359;&#9660;-->
+    <!--&#20849;&#36890;&#21152;&#36733;&#9660;-->
+    <script src="~/Script/QSNR/uploader.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/design.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <!--&#20849;&#36890;&#21152;&#36733;&#9650;-->
+
+    <!--&#33410;&#28857;&#30456;&#20851;&#31867;&#21152;&#36733;&#9660;-->
+    <script src="~/Script/QSNR/model/node_base_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_subject_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_select_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_selectpic_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_marking_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_fillblank_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_sequencing_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_matrix_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_start_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_check_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_end_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_comment_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_info_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_tool_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_logic_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_loop_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/model/node_random_model.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <!--&#33410;&#28857;&#30456;&#20851;&#31867;&#21152;&#36733;&#9650;-->
+
+    <!--&#26381;&#21153;&#21152;&#36733;&#9660;-->
+    <script src="~/Script/QSNR/service/mouse_capture_service.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/service/dragging_service.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")" type="text/javascript"></script>
+    <script src="~/Script/QSNR/service/operation_record_service.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/service/design_manager_service.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <!--&#26381;&#21153;&#21152;&#36733;&#9650;-->
+
+    <!--&#25351;&#20196;&#21152;&#36733;&#9660;-->
+    <script src="~/Script/QSNR/directive_old/batch_option_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/context_help_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/context_menu_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/drag_option_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/eagle_eye_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/image_select_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/image_uplaod_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/node_box_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/node_editor_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/node_flow_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/node_searcher_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/node_validator_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/theme_box_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/validate_option_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/version_history_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <script src="~/Script/QSNR/directive_old/version_save_directive.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <!--&#25351;&#20196;&#21152;&#36733;&#9650;-->
+
+    <!--angular&#20837;&#21475;&#21152;&#36733;&#9660;-->
+    <script type="text/javascript" src="~/Script/QSNR/app_old.js?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <!--angular&#20837;&#21475;&#21152;&#36733;&#9660;-->
+
+    <!--&#24320;&#21457;&#29256;&#26412;&#19987;&#29992;js&#24341;&#29992;&#22359;&#9650;-->
+
+    
+    
+    @*<!--&#21457;&#24067;&#29256;&#26412;&#19987;&#29992;js&#24341;&#29992;&#22359;&#9660;-->
+    <script src="~/ReleaseJS/zyds.min.JS?v=@System.Configuration.ConfigurationManager.AppSettings.Get("version")"></script>
+    <!--&#21457;&#24067;&#29256;&#26412;&#19987;&#29992;js&#24341;&#29992;&#22359;&#9650;-->*@
+</body>
+</html>

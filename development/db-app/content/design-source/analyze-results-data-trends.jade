@@ -1,0 +1,94 @@
+doctype html
+html
+    head
+        include layout/head.jade
+        +title ('分析结果-收集进度')
+    body
+        include layout/loading
+        .main-wrapper
+            include layout/nav
+            header.page-header
+                .w-container
+                    a
+                        i.ic.ic-24-dashboard-l
+                    h1 Here are some quick tips for a first-time organization member.
+                    button.purple
+                        i.ic.ic-brush-w
+                        span 设计问卷
+                    include ./template/shortcut
+            .w-container
+                .tabs.tabs-style
+                    include ./template/tabs-analyze
+                    #data-trends.content-wrap
+                        .tabs.tabs-style-sub
+                            nav
+                                ul
+                                    li.sub-tab-current
+                                        span 收集进度
+                                    li
+                                        span 数据结果
+                                    li
+                                        span 个人结果
+                            .content-row
+                                .question-view
+                                    div
+                                        span 项目收集进度
+                                        span 显示详细
+                                        input.ios-toggle(type='checkbox')
+                                    ul
+                                        mixin progress(Percentage)
+                                            li
+                                                span 合计进度合计进度合计进度合计进度：
+                                                .progress-bar-section
+                                                    .progress-bar-main
+                                                h2= Percentage
+                                        +progress('60%')
+                                    ul#details
+                                        +progress('50%')
+                                        +progress('50%')
+                                        +progress('50%')
+                                .chart-view
+                                    div
+                                        span 回复数（按天统计）
+                                        .dropdown-event
+                                            button.small.right-ic
+                                                span 视图比例
+                                                i.ic.ic-down-2d
+                                            ul#view-days.dropdown.customize.right-ic
+                                                li 周视图
+                                                li 30天视图
+                                                li 全部视图
+                                    .chart-container
+                                        span 首次回复： 2015/2/13 日期选择： 2015/2/7 - 2015/3/14
+                                        img(src='images/chart.png')
+                                #div-quota-box
+                                    #div-quota-grid
+                                        table#reportTable.grid-column-group(freezerownum='0', freezecolumnnum='1', cellpadding='0', cellspacing='0', style='width: 875px;')
+                                            tbody
+                                                tr
+                                                    td#tdrow1(colspan='1', style='  border-bottom: 1px solid #bdc3c7; ', align='left')
+                                                        nobr 配额组1
+                                                    td(style='  border-bottom: 1px solid #bdc3c7;border-right: 1px solid #bdc3c7;', align='left')
+                                                tr
+                                                    td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa', title='10-20')
+                                                        nobr          10-20       
+                                                    td(align='center', style='height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;')
+                                                        input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,11920e26-4e46-4637-85a9-f4a4316d973b_,00000000-0000-0000-0000-000000000000_', value='')
+                                                tr
+                                                    td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  ', title='21-30')
+                                                        nobr          21-30       
+                                                    td(align='center', style='height: 30px;  border-right: 1px solid #bdc3c7;')
+                                                        input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,e29c3a61-747f-4140-813f-d2fc7358fd41_,00000000-0000-0000-0000-000000000000_', value='')
+                                                tr
+                                                    td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px;  background-color: #f5f7fa', title='31-40')
+                                                        nobr          31-40       
+                                                    td(align='center', style='height: 30px;  background-color: #f5f7fa;border-right: 1px solid #bdc3c7;')
+                                                        input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,c5efa942-7b4d-4fba-989b-b7726f37fb9d_,00000000-0000-0000-0000-000000000000_', value='')
+                                                tr
+                                                    td(rowspan='1', align='center', style='height: 30px;padding-top: 5px;padding-bottom: 5px; border-bottom: 1px solid #bdc3c7; ', title='41-50')
+                                                        nobr          41-50       
+                                                    td(align='center', style='height: 30px;  border-bottom: 1px solid #bdc3c7; border-right: 1px solid #bdc3c7;')
+                                                        input.w-input.grid-column-input(type='text', maxlength='6', onkeyup='ChangeText(this);', id='input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_', name='input_Num,1,09a0368f-4e03-4f5a-93d0-7dafee33a554_,00000000-0000-0000-0000-000000000000_', value='')
+                                .too-small-alert
+                                    p 您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。
+    include layout/footer

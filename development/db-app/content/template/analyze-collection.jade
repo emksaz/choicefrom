@@ -1,0 +1,54 @@
+#collection(ng-attr-class="{{publishManager.otherFlag4 && 'content-row disabled'||'content-row'}}")
+    .row-title
+        h2 渠道设置
+        button.blue(disabled='disabled', ng-if='false')
+            i.ic.ic-plus-w
+            span 添加收集渠道
+    .tabs.tabs-style-sub
+        nav
+            ul
+                li.sub-tab-current
+                    span 微信
+            .dropdown-event
+                include ../template/floating-strip-3
+                +item('选中收集渠道操作：','复制','重命名','删除')
+        .collection
+            form
+                div(ng-if='false')
+                    input#checkboxG4.css-checkbox(type='checkbox', name='checkboxG4')
+                    label.checkbox-label(for='checkboxG4', onselectstart='return false;') 关注服务号的受访者，才能回复。
+                div
+                    input#checkboxG5.css-checkbox(type='checkbox', name='checkboxG5', ng-click='toggleCollectionEnable()', ng-disabled='publishManager.DisableAll', ng-checked='publishManager.collectionEnable')
+                    label.checkbox-label(for='checkboxG5', onselectstart='return false;') 收集受访者的微信基础信息
+                p
+                    | {{::UserPageText.Publish_publishIntervieweeInfo}}
+            form(name='WeichatForm', novalidate='')
+                h3 绑定微信服务号
+                input(type='text', name='WeChatName', placeholder='名称：', ng-readonly='!publishManager.collectionEnable', ng-model='publishManager.WeChatName')
+                br
+                //mark.form-message(ng-show="WeichatForm.WeChatName.$dirty && WeichatForm.WeChatName.$invalid && WeichatForm.WeChatName.$error.required") 请输入微信名称！
+                br
+                input(type='text', name='WeChatNameId', placeholder='微信号：', ng-readonly='!publishManager.collectionEnable', ng-model='publishManager.WeChatNameId')
+                br
+                //mark.form-message(ng-show="WeichatForm.WeChatNameId.$dirty && WeichatForm.WeChatNameId.$invalid && WeichatForm.WeChatNameId.$error.required") 请输入微信号
+                input(type='text', required='', name='WeChatNameAppID', placeholder='APP ID：', ng-readonly='!publishManager.collectionEnable', ng-model='publishManager.WeChatNameAppID', ng-change='QuesSetWebChatBtnChange(WeichatForm.$valid,WeichatForm.WeChatNameAppID.$dirty)')
+                br
+                mark.form-message(ng-show='WeichatForm.WeChatNameAppID.$dirty && WeichatForm.WeChatNameAppID.$invalid && WeichatForm.WeChatNameAppID.$error.required') 请输入APP ID！
+                br
+                input(type='text', name='WeChatAppSecret', placeholder='APP Secret:', ng-readonly='!publishManager.collectionEnable', ng-model='publishManager.WeChatAppSecret', ng-change='QuesSetWebChatBtnChange(WeichatForm.$valid,WeichatForm.WeChatAppSecret.$dirty)', required='')
+                br
+                mark.form-message(ng-show='WeichatForm.WeChatAppSecret.$dirty && WeichatForm.WeChatAppSecret.$invalid && WeichatForm.WeChatAppSecret.$error.required') 请输入APP Secret！
+                button(ng-class="{'green':publishManager.WeChatBtnFlag,'gray':!publishManager.WeChatBtnFlag}", ng-click='WeiChatVerify()')
+                    span(onselectstart='return false;') 验证并保存
+                p
+                    | {{::UserPageText.Publish_publishWeiXinInfo}}
+            form
+                div 配置 OAuth 域名：
+                input#weichat-oauth(type='text', placeholder='', name='weichat-oauth', readonly='')
+                br
+                button(ng-class="{'green':publishManager.WeichatOauthFlag,'gray':!publishManager.WeichatOauthFlag}", ng-click='QuesSetWebChatOauthBtn()')
+                    span(onselectstart='return false;') 立即验证
+                p
+                    | {{::UserPageText.Publish_publishOauthConfig}}
+                    br
+                    | {{::UserPageText.Publish_publishImmediatelyVerify}}

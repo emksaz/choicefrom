@@ -1,0 +1,30 @@
+nav
+    a.leave(ng-click="handleBackIconClick()")
+        i.ic.ic-leave
+        i.leave-icon
+            span.dashboard-loader
+                span.loader-inner
+    .logo
+        span choice form
+        span 返回我的问卷
+    .title(ng-bind="designManager.startNode.nodeName")
+    .operation.drop-closest
+        a.publish.v-tips(value="Tooltip", ng-click="handleReleaseIconClick()")
+            i.ic.ic-publish
+            span 发布
+        a.debug.v-tips(value="Tooltip", ng-click="handleTestClick()")
+            i.ic.ic-debug
+            span 调试
+        a.save.v-tips(value="Tooltip", ng-click="handleReleaseIconClick()")
+            i.sv.sv-save
+            span 保存
+        .history.dropdown-item
+            a.drop-but(ng-mouseenter="handleVersionHistoryMouseEnter()")
+                i.ic.ic-history
+            //include ../content/-popup/history.jade
+            div(data-version-drop="designManager.versionHistoryManager", data-popupmessage-manager="designManager.PopupMessageManager")
+        .undo
+            a.v-tips(value="Tooltip", ng-click="handleRedoClick()")
+                i.ic.ic-redo
+            a.v-tips(value="Tooltip", ng-click="handleUndoClick()")
+                i.ic.ic-undo

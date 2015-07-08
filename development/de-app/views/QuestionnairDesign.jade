@@ -1,0 +1,119 @@
+﻿|@{
+|    Layout = null;
+|}
+
+doctype html
+html
+    head
+        include ../content/layout/head.jade
+        +title('survey | choice form')
+    body(ng-app="ZYDesign" 
+            ng-controller="ZYDesignController" 
+            ng-mouseup="handleMouseUp($event)"
+            data-mouse-capture="true"
+            onselectstart="return false")
+        | <input type="hidden" id="quesIDEx" value="@Request["quesID"]">
+        | <input type="hidden" id="quesName" value="@ViewData["PMQuesName"]">
+        | <input type="hidden" id="QuesNumber" value="@ViewData["QuesNumber"]">
+        | <input type="hidden" id="companyId" value="@ViewData["companyId"]">
+        
+        div#main
+            div#chart_content
+                div(data-node-flow="designManager")
+            div#chart_eye
+                div(data-eagle-eye="designManager")
+            div(data-nav-bar="designManager")
+            div(data-tool-bar="designManager")
+            div(data-side-bar="designManager.currentNode")
+            div.slide-border
+            div(data-footer-bar="designManager")
+            div(data-nodes-kit="designManager.nodeBoxManager" 
+                ng-if="designManager.nodeBoxManager.isVisible()")
+            div(data-media-kit="designManager.imageUploadManager" 
+                ng-if="designManager.imageUploadManager.mediaIsVisible()")
+            div(data-theme-kit="designManager.themeBoxManager" 
+                ng-if="designManager.themeBoxManager.isVisible()")
+            div(data-popup-search="designManager" 
+                ng-if="designManager.searchManager.show")
+            div(data-popup-debug="todo")
+            div(data-popup-batch="todo")
+            div(data-popup-save="designManager.versionSaveManager" 
+                ng-if="designManager.versionSaveManager.isVisible()")
+            div(data-popup-message="designManager" 
+                ng-if="designManager.PopupMessageManager.isVisible()")
+            div(data-popup-topline="todo")
+            div(data-markdown-editor="todo")
+            div.popup-background
+            div(data-right-click="designManager.contextMenu" 
+                ng-if="designManager.contextMenu.isVisible()")
+        div#uploadDiv(style="display:none;")
+        script(src="../../script/lib/showdown.js")
+        script(src="../../script/lib/md-library.js")
+        script(src="../../script/lib/md-editor.js")
+        script(src="../../script/lib/sortable-options.js")
+        script(src="../../script/lib/stream-v1.js")  
+        
+        |@if (System.Configuration.ConfigurationManager.AppSettings.Get("isPublic") == "0") { 
+        
+        script(src="http://localhost:7099/common/script/config.js")
+        script(src="http://localhost:7099/de-app/script/uploader.js")
+        script(src="http://localhost:7099/de-app/script/design.js")
+        script(src="http://localhost:7099/de-app/script/qsnr_cfg.js")
+
+        script(src="http://localhost:7099/de-app/script/model/node_base_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_check_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_subject_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_tool_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_check_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_comment_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_end_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_fillblank_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_info_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_logic_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_loop_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_marking_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_matrix_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_random_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_select_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_selectpic_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_sequencing_model.js")
+        script(src="http://localhost:7099/de-app/script/model/node_start_model.js")
+
+
+        script(src="http://localhost:7099/de-app/script/directive/markdown_editor_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/footer_bar_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/media_kit_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/nav_bar_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/tool_bar_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/theme_kit_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/side_bar_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_topline_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_search_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_save_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_message_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_debug_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/popup_batch_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/nodes_kit_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/eagle_eye_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/node_flow_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/version_drop_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/common_setting_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/option_setting_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/other_setting_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/question_setting_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/type_setting_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/help_center_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/right_click_directive.js")
+        script(src="http://localhost:7099/de-app/script/directive/normal_option_directive.js")
+
+        script(src="http://localhost:7099/de-app/script/service/mouse_capture_service.js")
+        script(src="http://localhost:7099/de-app/script/service/dragging_service.js")
+        script(src="http://localhost:7099/de-app/script/service/operation_record_service.js")
+        script(src="http://localhost:7099/de-app/script/service/design_manager_service.js")
+
+        script(src="http://localhost:7099/de-app/script/app.js")
+        |}else{
+        script(src="../../script/de-index.js")
+        |}
+
+        

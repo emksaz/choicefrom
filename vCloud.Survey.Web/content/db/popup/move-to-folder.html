@@ -1,0 +1,16 @@
+
+<div ng-click="ShowPopup($event)" ng-show="QList.Popupbackground==5" class="pop-ups">
+  <div><i class="ic ic-folder-f-d"></i><span>移动到文件夹</span><a ng-click="CloseDiv()" class="box-button"><i class="ic ic-x-d"></i></a></div>
+  <form>
+    <h3>将当前问卷移动到文件夹：</h3>
+    <div class="select dropdown-event">
+      <button class="select right-ic dropdown-bt"><span>{{QList.MoveQuesFolder}}</span><i class="ic ic-down-1d"></i></button>
+      <ul class="option downul">
+        <li ng-show="QList.MoveT==1" ng-click="ChangeMoveFolder('','我的文件夹');">我的文件夹</li>
+        <li ng-click="ChangeMoveFolder(Folder.FolderID,Folder.FolderName);" ng-repeat="Folder in QList.ShowMoveFolderList" title="{{Folder.FolderName}}">{{Folder.FolderName}}</li>
+      </ul>
+    </div>
+    <button type="button" ng-click="CloseDiv()" class="border"><span>取 消</span></button>
+    <button ng-click="MoveFolder()" class="blue"><span>移 动</span></button>
+  </form>
+</div>

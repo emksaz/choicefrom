@@ -1,0 +1,46 @@
+
+<div id="data-trends" class="content-wrap">
+  <div class="tabs tabs-style-sub">
+    <nav>
+      <ul>
+        <li class="sub-tab-current"><span>收集进度</span></li>
+        <li ng-click="AnalyzeResultTabSelect()"><span>统计图表</span></li>
+        <li ng-show="IsDemo=='1'"><span>数据结果</span></li>
+      </ul>
+    </nav>
+    <div class="content-row">
+      <div id="div_questionViewWidth" class="question-view">
+        <div><span>项目收集进度</span></div>
+        <ul>
+          <li><span>合计进度：</span>
+            <div class="progress-bar-section">
+              <div ng-style="DataTrends.ProgressWidthStyle" class="progress-bar-main"></div>
+            </div>
+            <h2>{{DataTrends.ProgressWidth}}%</h2>
+          </li>
+        </ul>
+      </div>
+      <div class="chart-view">
+        <div><span>回复数（按天统计）</span>
+          <div class="dropdown-event">
+            <button class="small right-ic dropdown-bt"><span>视图比例</span><i class="ic ic-down-2d"></i></button>
+            <ul id="view-days" class="dropdown customize right-ic downul">
+              <li ng-click="ShowViewDate('7')">7天视图</li>
+              <li ng-click="ShowViewDate('30')">30天视图</li>
+              <li ng-click="ShowViewDate('0')">全部视图</li>
+            </ul>
+          </div>
+        </div>
+        <div class="chart-container"><span>首次回复： {{DataTrends.FirstReturnTime}} 日期选择： {{DataTrends.StartTime}} - {{DataTrends.EndTime}}</span>
+          <div id="main" style="height:350px; "></div>
+        </div>
+      </div>
+      <div id="div-quota-box">
+        <div id="div-quota-grid" style=" border-top: 1px solid #bdc3c7; border-left: 1px solid #bdc3c7; " ng-show="DataTrends.GridShow"></div>
+      </div>
+      <div class="too-small-alert">
+        <p style="color: #4e5b68;">您的浏览器太小，要创建一个新的调查问卷，请调整浏览器至一个更大的屏幕分辨率。</p>
+      </div>
+    </div>
+  </div>
+</div>

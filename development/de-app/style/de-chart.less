@@ -1,0 +1,133 @@
+﻿/*设计页面节点控件专用样式*/
+
+#chart_content {
+    position:relative;
+    top:37px;
+    left:37px;
+    min-width:687px;
+}
+
+#chart_eye{
+    position: absolute;
+    bottom: 25px;
+    right: 296px;
+    border-top-style: solid;
+    border-left-style: solid;
+    border-width: 1px;
+    border-color: #3c3c3c;
+    background-color: rgba(255, 255, 255, 0.49);
+}
+
+svg {
+    height:100%;
+    width:100%;
+}
+
+svg:active {
+    cursor:pointer;
+}
+
+svg *:active {
+    cursor:default;
+}
+
+svg text,
+svg tspan{
+    font-family: "Hiragino Sans GB","Microsoft YaHei","微软雅黑",tahoma,arial,simsun,"宋体";
+    cursor:default;
+}
+
+.elementShow {
+    display: block!important;
+}
+
+.elementHide {
+    display: none!important;
+}
+
+.text_anchor_end {
+    text-anchor:end;
+}
+
+.mouseover_node_rect {
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+.selected_node_rect {
+    stroke: white;
+    stroke-width: 0.5px;
+}
+
+.node_rect {
+    stroke: black;
+    stroke-width: 0.5px;
+}
+
+.connector_circle {
+    stroke: #000000;
+    stroke-width:0.5px;
+    fill: rgba(52, 73, 94, 0.34)
+}
+
+.connector_circle_disable {
+    fill: gray;
+    stroke: black;
+    stroke-width: 1;
+    opacity:0.8;
+}
+
+.connection_endpoint,
+.connector_connected {
+    fill: silver;
+}
+
+.mouseover_connection_endpoint,
+.connector_conn_hovered {
+    fill: black;
+}
+
+.selected_connection_endpoint,
+.connector_selected {
+    fill: red;
+}
+
+
+
+.connector_circle:hover,
+.mouseover_connector_circle {
+    stroke: #34495e;
+    stroke-width:0.5px;
+    fill: rgba(255, 255, 255, 0.49);
+}
+
+.events_all {
+    pointer-events: all;
+}
+
+.events_none,
+.connection_disable {
+    pointer-events: none;
+}
+
+.connection_line {
+    stroke: silver;
+    stroke-width: 1;
+    fill: transparent;
+}
+
+.mouseover_connection_line {
+    stroke: black;
+    stroke-width: 1;
+    fill: transparent;
+}
+
+.selected_connection_line {
+    stroke: red;
+    stroke-width: 1;
+    fill: transparent;
+}
+
+line {
+    stroke-width:0.5px;
+}

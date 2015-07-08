@@ -1,0 +1,123 @@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <title>&#24039;&#24605; choice form</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="&#24039;&#24605; choice form" content="&#26368;&#19987;&#19994;&#30340;&#22312;&#32447;&#38382;&#21367;&#31995;&#32479;">
+    
+    <meta name="description" content="&#24039;&#24605; choice form &#26368;&#19987;&#19994;&#30340;&#22312;&#32447;&#38382;&#21367;&#31995;&#32479;">
+    <meta name="keywords" content="choice form,form,forms,choice,&#24039;&#24605;&#38382;&#21367;,&#35843;&#30740;,&#34920;&#21333;,&#22312;&#32447;&#38382;&#21367;,&#38382;&#21367;&#35774;&#35745;,">
+  
+    <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="/css/home.css">
+    <script type="text/javascript" src="/Script/js/modernizr.js"></script>
+    <script type="text/javascript" src="/Script/js/jquery-2.1.3.min.js"></script>
+    <script type='application/javascript' src='/Script/js/fastclick.js'></script>
+    <script src="/Script/js/event-index.js"></script>
+    <script src="/Script/js/jquery.validate.vq.js"></script>
+    <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/images/cf.svg">
+    @*<script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js" data-appid="101221559" charset="utf-8"></script>*@ 
+    <script type="text/javascript" src="http://qzonestyle.gtimg.cn/qzone/openapi/qc_loader.js"
+            data-appid="101221559" data-redirecturi="http://www.csvfx.com/Home/QQLogin" charset="utf-8"></script>   
+</head>
+<body>
+   
+    <a href="http://openapi.qzone.qq.com/oauth/show?which=ConfirmPage&display=pc&client_id=101221559&response_type=token&scope=get_user_info&redirect_uri=http%3A%2F%2Fwww.csvfx.com%2FHome%2FQQLogin?type=1">QQlogin</a>
+
+    @*https://api.weibo.com/oauth2/authorize?client_id=YOUR_CLIENT_ID&response_type=code&redirect_uri=YOUR_REGISTERED_REDIRECT_URI*@
+    <a href="https://api.weibo.com/oauth2/authorize?client_id=3780257084&response_type=code&redirect_uri=http%3A%2F%2Fwww.csvfx.com%2FHome%2FSinaLogin?type=1">Sina</a>
+
+
+
+
+
+
+
+
+
+    <!-- Baidu Button BEGIN -->
+    <div class="bdsharebuttonbox" data-tag="share_1" >
+        <a class="bds_weixin" data-cmd="weixin"></a>
+        <a class="bds_sqq" data-cmd="sqq"></a>
+        <a class="bds_tsina" data-cmd="tsina"></a>
+        <a class="bds_mail" data-cmd="mail"></a> 
+    </div>
+    <script>
+        window._bd_share_config = {
+            common: {
+                bdText: '&#38382;&#21367;&#21517;&#31216;',
+                bdDesc: '&#38382;&#21367;&#25551;&#36848;',
+                bdUrl: 'http://www.hao123.com',
+                bdPic: '&#22270;&#29255;&#36335;&#24452;'
+            },
+            share: [{
+                "bdSize": 16
+            }],
+            slide: [{
+                bdImg: 0,
+                bdPos: "right",
+                bdTop: 100
+            }],
+           
+         
+        }
+        with (document) 0[(getElementsByTagName('head')[0] || body).appendChild(createElement('script')).src = 'http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion=' + ~(-new Date() / 36e5)];
+    </script>
+    <!-- Baidu Button END -->
+
+
+
+
+
+
+
+       @*<span id="qqLoginBtn"></span>
+    <script type="text/javascript">
+        //&#35843;&#29992;QC.Login&#26041;&#27861;&#65292;&#25351;&#23450;btnId&#21442;&#25968;&#23558;&#25353;&#38062;&#32465;&#23450;&#22312;&#23481;&#22120;&#33410;&#28857;&#20013;
+        QC.Login({
+            //btnId&#65306;&#25554;&#20837;&#25353;&#38062;&#30340;&#33410;&#28857;id&#65292;&#24517;&#36873;
+            btnId: "qqLoginBtn",
+            //&#29992;&#25143;&#38656;&#35201;&#30830;&#35748;&#30340;scope&#25480;&#26435;&#39033;&#65292;&#21487;&#36873;&#65292;&#40664;&#35748;all
+            scope: "get_user_info",
+            //&#25353;&#38062;&#23610;&#23544;&#65292;&#21487;&#29992;&#20540;[A_XL| A_L| A_M| A_S|  B_M| B_S| C_S]&#65292;&#21487;&#36873;&#65292;&#40664;&#35748;B_S
+            size: "A_XL"
+        }, function (reqData, opts) {//&#30331;&#24405;&#25104;&#21151;
+            //&#26681;&#25454;&#36820;&#22238;&#25968;&#25454;&#65292;&#26356;&#25442;&#25353;&#38062;&#26174;&#31034;&#29366;&#24577;&#26041;&#27861;
+            var dom = document.getElementById(opts['btnId']),
+            _logoutTemplate = [
+                //&#22836;&#20687;
+                '<span><img src="{figureurl}" class="{size_key}"/></span>',
+                //&#26165;&#31216;
+                '<span>{nickname}</span>',
+                //&#36864;&#20986;
+                '<span><a href="javascript:QC.Login.signOut();">&#36864;&#20986;</a></span>'
+            ].join("");
+            dom && (dom.innerHTML = QC.String.format(_logoutTemplate, {
+                nickname: QC.String.escHTML(reqData.nickname), //&#20570;xss&#36807;&#28388;
+                figureurl: reqData.figureurl_qq_1
+            }));
+
+                 QC.Login.getMe(function(openId, accessToken){
+                 alert(["&#24403;&#21069;&#30331;&#24405;&#29992;&#25143;&#30340;", "openId&#20026;&#65306;"+openId, "accessToken&#20026;&#65306;"+accessToken].join("\n"));
+             });
+
+            //&#36825;&#37324;&#21487;&#20197;&#35843;&#29992;&#33258;&#24049;&#30340;&#20445;&#23384;&#25509;&#21475;
+            //...
+
+        }, function (opts) {//&#27880;&#38144;&#25104;&#21151;
+            alert('QQ&#30331;&#24405; &#27880;&#38144;&#25104;&#21151;');
+        }
+     );
+    </script>*@
+</body>
+</html>

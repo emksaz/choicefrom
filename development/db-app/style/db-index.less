@@ -1,0 +1,230 @@
+@import "dashboard.less";
+@import "creating.less";
+@import "account.less";
+@import "quota.less";
+@import "publish.less";
+@import "analyze-results";
+@import "member.less";
+@import "base.less";
+@import "button.less";
+@import "floating.less";
+@import "tabs.less";
+@import "pop-ups.less";
+@import "tips.less";
+@import "help.less";
+@import "cs-icon.less";
+@import "font-icon.less";
+@import "msg.less";
+@import "common.less";
+@import "prefixer.less";
+@import "datetimepicker.less";
+
+@dodger_blue: #5940aa;
+@sea_green: #1894f2;
+@purple: #2ecc71;
+@dark_slate: #4E5B68;
+@dark_slate2: #34495e;
+@gold: #f1c40f;
+@tomato: #e74c3c;
+@silver: #bdc3c7;
+@white: #ffffff;
+@dark_gray: darken(@silver, 16%);
+
+@font-face {
+  font-family: 'Kiro-Regular';
+  src: url('../fonts/Kiro-Regular.eot');
+  src: url('../fonts/Kiro-Regular.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/Kiro-Regular.woff2') format('woff2'),
+  url('../fonts/Kiro-Regular.woff') format('woff'),
+  url('../fonts/Kiro-Regular.ttf') format('truetype'),
+  url('../fonts/Kiro-Regular.svg#Kiro-Regular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'ic-help';
+  src: url('../fonts/ic-help.eot');
+  src: url('../fonts/ic-help.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/ic-help.woff2') format('woff2'),
+  url('../fonts/ic-help.woff') format('woff'),
+  url('../fonts/ic-help.ttf') format('truetype'),
+  url('../fonts/ic-help.svg#ic') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  //-webkit-transform-style: preserve-3d;
+}
+html,body{
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  height: 100%;
+  font-family: "Helvetica Neue" ,Helvetica, Arial, "Lantinghei SC", "Hiragino Sans GB", STHeiti, "Noto Sans S Chinese", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+body {
+  margin: 0;
+  height: 100% !important;
+  min-height: 100%;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  background-color: lighten(@silver, 18%);
+  color: @dark_slate;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+blockquote {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-user-select: text !important;
+
+  & ::-ms-expand {
+    display: none;
+  }
+}
+
+select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+.unstyled::-webkit-inner-spin-button,
+.unstyled::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.w-clearfix {
+
+  &:before {
+    content: " ";
+    display: table;
+  }
+
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.w-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 940px;
+  position: relative;
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+  @media screen and (min-width: 1200px) {
+    min-width: 1170px;
+  }
+  @media (max-width: 991px) {
+    width: 728px;
+    max-width: 728px;
+  }
+  @media (max-width: 767px) {
+    width: auto;
+    max-width: 728px;
+    padding: 0 24px;
+  }
+  @media (max-width: 479px) {
+    max-width: none;
+    padding: 0 12px;
+  }
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+h1 {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+h2 {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 36px;
+}
+
+h3 {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 12px;
+  float: left;
+  clear: left;
+}
+
+h4 {
+  font-size: 12px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+//新增 隐藏滚动条
+.srcollHide {
+  overflow: hidden;
+}

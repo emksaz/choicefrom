@@ -1,0 +1,28 @@
+
+<div>
+  <header class="page-header">
+    <div class="w-container">
+      <h1>账户设置</h1>
+      <button style="display:none;" class="purple"><i class="ic ic-star-w"></i><span>管理我的方案</span></button>
+      <p style="display:none;">当前方案：经济型</p>
+    </div>
+  </header>
+  <div class="w-container">
+    <div class="tabs tabs-style">
+      <nav>
+        <ul>
+                    <li ng-attr-class="{{Usercenter.UserSetAction=='User_info' &amp;&amp; 'tab-current' || ''}}" ng-click="UserSetTab('User_info')"><span>账户摘要</span></li>
+                    <li ng-attr-class="{{Usercenter.UserSetAction=='SchemeSet' &amp;&amp; 'tab-current' || ''}}" ng-click="IsDemo=='1'"><span>方案类型</span></li>
+                    <li ng-attr-class="{{Usercenter.UserSetAction=='BillInfo' &amp;&amp; 'tab-current' || ''}}" ng-click="IsDemo=='1'"><span>账单明细</span></li>
+                    <li ng-attr-class="{{Usercenter.UserSetAction=='EmailSet' &amp;&amp; 'tab-current' || ''}}" ng-click="IsDemo=='1'"><span>邮箱通知</span></li>
+                    <li ng-attr-class="{{Usercenter.UserSetAction=='Password' &amp;&amp; 'tab-current' || ''}}" ng-click="UserSetTab('Password')"><span>密码设置</span></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="w-tab-content">
+      <div>
+        <div ui-view=""></div>
+      </div>
+    </div>
+  </div>
+</div>

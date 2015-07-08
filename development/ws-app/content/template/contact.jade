@@ -1,0 +1,32 @@
+#contact.w-section.section
+    .w-container
+        .title
+            h2.dark-tittle 联系我们
+            span contact us
+            p choice form 非常重视您的意见和建议，请您把您的使用感受，或者批评意见告诉我们，这将是我们更好地完善系统的动力。
+        .w-row
+            .w-col.w-col-9
+                .contact-form
+                    form#email-form.w-clearfix(method='post')
+                        input#name(type='text', placeholder='如何称呼您?', name='name', data-name='Name', required='required')
+                        input#email(type='email', placeholder='如何回复您? ( email )', name='email', data-name='Email', required='required')
+                        input#email-2(type='text', placeholder='主题', name='email-2', data-name='Email 2', required='required')
+                        textarea#field(placeholder='内容', name='field', required='required')
+                        input#submit_button.button.blue(type='button', value='发送信息', onclick='SendMail()', data-wait='发送中...')
+                    #emilsucc.w-form-done.success-message
+                        p 您的信息已发送, 我们会通过邮件的形式回复您.
+                    #emailfail.w-form-fail
+                        p (⊙o⊙)哦, 信息发送失败,请重试.(
+            .w-col.w-col-3
+                h4 联系地址:
+                p
+                    | 上海市徐汇区龙华中路600号绿地中心B座701单元
+                    br
+                    br
+                    | Phone: 86 021-54591660
+                    br
+                    | Email: sc@cform.io
+                    br
+                    | Web: cform.io
+                h4 工作时间:
+                p 周一至周五: 10 AM – 18 PM

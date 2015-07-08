@@ -1,0 +1,25 @@
+| @{
+| Layout = null;
+| }
+
+doctype html
+html
+    head
+        include ../../content/layout/head.jade
+        +title ('survey| choice form')
+
+    body
+
+        | @if (ViewData["IsShowDemo"].ToString()=="1")
+        | {
+        div(style='position: absolute;z-index:90000;padding-left:200px;top:10px;width: 50px;text-align: center;font-size:32px;line-height:38px;color:snow;text-shadow:black 0px 0px 8px') Demo
+        |     }
+        |<input type="hidden" id="hiddendemotype" value="@System.Configuration.ConfigurationManager.AppSettings["IsShowDemo"].ToString()" />
+
+        include ../../content/template/loading
+
+        .main-wrapper
+            top
+            div(data-ui-view='')
+
+        include ../../content/layout/footer.jade

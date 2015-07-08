@@ -1,0 +1,33 @@
+#sidebar(data-id="node_editor")
+    .tab-panels
+        ul.tabs
+            li
+                a.tab.activ.v-tips(value="", name='5', rel="sidebar_panel1")
+                    i.ic.ic-editor
+            li
+                a.tab.v-tips(value="Tooltip", name='6', rel="sidebar_panel2")
+                    i.ic.ic-advanced
+        .leading-section
+            div
+                i
+                span 选择题
+                .color-box
+            div
+                span 题目编号
+            input(type='text', placeholder='题目编号', ng-model='node.nodeName', ng-focus='handleNodeNameChange(node,-1)', ng-change='handleNodeNameChange(node)', ng-blur='handleNodeNameChange(node,1)', ng-model-options='{debounce:150}', ng-disabled='!node.nodeNameEditable', maxlength='20')
+            div(ng-click="handleNodeLocateClick(node)")
+                i.ic-m.ic-location
+                span common target
+        .panel.nano.activ#sidebar_panel1
+            .kit-section-group.nano-content(ng-if="node")
+                div(data-question-setting="todo")
+                div(data-type-setting="todo")
+                div(data-option-setting="todo")
+                div(data-common-setting="todo")
+                div(data-other-setting="todo")
+                //include ../content/sidebar/mc-options/question-settings.jade
+                //include ../content/sidebar/mc-options/type-settings.jade
+                //include ../content/sidebar/mc-options/mc-options-settings.jade
+                //include ../content/sidebar/mc-options/common-settings.jade
+                //include ../content/sidebar/mc-options/other-settings.jade
+        .panel#sidebar_panel2

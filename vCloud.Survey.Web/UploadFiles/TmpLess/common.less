@@ -1,0 +1,202 @@
+@font-face {
+  font-family: 'Icon unigrid';
+  src: url('../fonts/icon-unigrid.eot') format('embedded-opentype'), url('../fonts/icon-unigrid.woff') format('woff'), url('../fonts/icon-unigrid.ttf') format('truetype'), url('../fonts/icon-unigrid.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Icon flat';
+  src: url('../fonts/icon-flat.eot') format('embedded-opentype'), url('../fonts/icon-flat.woff') format('woff'), url('../fonts/icon-flat.ttf') format('truetype'), url('../fonts/icon-flat.svg') format('svg');
+  font-weight: 400;
+  font-style: normal;
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  -webkit-touch-callout: none;
+  //-webkit-user-select: none;
+  //-khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+  font-size: 62.5%; /*10 ÷ 16 × 100% = 62.5%*/
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    font-size: 60%;
+  }
+
+  /* iPhone 5 (portrait and landscape) */
+  @media only screen and (min-width: 320px) and (max-width: 568px) {
+    font-size: 60%;
+  }
+
+  /* iPhone 6 (portrait and landscape) */
+  @media only screen and (min-width: 375px) and (max-width: 667px) {
+    font-size: 60%;
+  }
+
+  /* iPhone 6 Plus (portrait) */
+  @media only screen and (min-width: 414px) and (max-width: 736px) and (orientation: portrait) {
+    font-size: 60%;
+  }
+
+  /* Other smartphones with smaller screen (portrait and landscape) */
+  @media only screen and (max-width: 319px) {
+    font-size: 50%;
+  }
+
+  /* iPads 1/2 iPad Mini (portrait and landscape) */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 90%;
+  }
+
+  /* iPad 3/4 (portrait and landscape) */
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    font-size: 62.5%;
+  }
+}
+
+html.w-mod-touch * {
+  background-attachment: scroll !important;
+}
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+body {
+  margin: 0;
+  height: 100% !important;
+  min-height: 100%;
+  padding: 6.4rem 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lantinghei SC", "Hiragino Sans GB", STHeiti, "Noto Sans S Chinese", "Microsoft Yahei", "Microsoft Sans Serif", "WenQuanYi Micro Hei", sans-serif;
+  font-size: 1.6rem;/*1.6 × 10px = 16px */
+  line-height: 2rem;
+  background-color: @bg-color;
+  color: @question_color;
+  background-position: center, center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  //.bg-image;
+}
+
+p {
+  margin: 0px;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  font-weight: 400;
+}
+
+a {
+  text-decoration: none;
+}
+
+.w-clearfix {
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+    content: " ";
+    display: table;
+  }
+}
+
+.w-container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 767px;
+  position: relative;
+  &:before {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+  @media (max-width: 991px) {
+    width: 75%;
+  }
+
+  @media (max-width: 767px) {
+    width: 100%;
+    padding-right: 4.8rem;
+    padding-left: 4.8rem;
+  }
+
+  @media (max-width: 479px) {
+    padding-right: 2.4rem;
+    padding-left: 2.4rem;
+  }
+}
+
+input[type='range'],
+input[type='range']:focus,
+input[type='range']:active,
+input[type='range']::-moz-focus-inner,
+input[type='range']::-moz-focus-outer,
+input[type='range']:-moz-focusring {
+  border: 0;
+  outline: none;
+}
+
+input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  -webkit-user-select: text !important;
+
+  & ::-ms-expand {
+    display: none;
+  }
+}
+
+select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+}
+
+::-webkit-input-placeholder {
+  color: fade(greyscale(@question_color), 50%);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+  color: fade(greyscale(@question_color), 50%);
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+  color: fade(greyscale(@question_color), 50%);
+}
+
+:-ms-input-placeholder {
+  color: fade(greyscale(@question_color), 50%);
+}
+
+/*添加顶部提示动画, 点击按钮动画*/
+.animated{-webkit-animation-duration:1s;animation-duration:1s;-webkit-animation-fill-mode:both;animation-fill-mode:both}
+
+@-webkit-keyframes slideInDown{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);visibility:visible}100%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0)}}
+@keyframes slideInDown{0%{-webkit-transform:translate3d(0,-100%,0);transform:translate3d(0,-100%,0);visibility:visible}100%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}}
+.slideInDown{-webkit-animation-name:slideInDown;animation-name:slideInDown}
+@-webkit-keyframes shake{0%,100%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}
+@keyframes shake{0%,100%{-webkit-transform:translate3d(0,0,0);transform:translate3d(0,0,0)}10%,30%,50%,70%,90%{-webkit-transform:translate3d(-10px,0,0);transform:translate3d(-10px,0,0)}20%,40%,60%,80%{-webkit-transform:translate3d(10px,0,0);transform:translate3d(10px,0,0)}}
+.shake{-webkit-animation-name:shake;animation-name:shake}

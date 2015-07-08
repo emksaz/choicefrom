@@ -1,0 +1,171 @@
+@import "color.less";
+
+body {
+  padding: 4.8rem 0 !important;
+  height: 100% !important;
+  min-height: auto !important;
+  background-size: 100%, cover !important;
+  @media (max-width: 767px) {
+    padding: 3.2rem 0 !important;
+    background-size: auto, cover !important;
+  }
+}
+
+.wrap {
+  height: auto !important;
+  min-height: auto !important;
+  //padding-bottom: 0 !important;
+}
+
+.stick {
+  clear: none !important;
+  //margin-top: 3.2rem !important;
+  padding-top: 0 !important;
+  height: 4.8rem !important;
+  @media (max-width: 479px) {
+    //margin-top: 2.4rem !important;
+  }
+}
+
+.attachment {
+  width: 100% !important;
+  height: auto !important;
+}
+
+.masonry-border,
+.choices-border {
+  &:hover {
+    box-shadow: 0px 0px 0px 1px lighten(@question_color, 5%) inset !important;
+    background-color: fade(@question_color, 3%) !important;
+  }
+}
+
+.choices-input,
+.cs-skin-overlay,
+.choices-select {
+  &:hover {
+    border: 1px dashed @question_color !important;
+  }
+}
+
+.choices {
+  &:hover > .label {
+    color: @choices_text;
+  }
+}
+
+.letter {
+  display: none !important;
+}
+
+.label {
+  padding-left: 0.75em !important;
+}
+
+.enter {
+  display: none !important;
+}
+
+.button {
+  @media (max-width: 767px) {
+    width: 100% !important;
+    float: none !important;
+    margin-bottom: 9.6rem !important;
+  }
+  &:hover {
+    background-color: @button_color !important;
+  }
+  &:active {
+    background-color: @choices_text !important;
+  }
+}
+
+.button.return{
+  display: none !important;
+}
+
+#back {
+  display: none !important;
+}
+
+.copyright {
+  &:hover {
+    color: @question_color !important;
+  }
+  &:active {
+    color: @choices_text !important;
+  }
+}
+
+.justify-fix {
+  @media (max-width: 767px) {
+    display: none !important;
+  }
+}
+
+.masonry-item {
+  &:hover .masonry-border {
+    background-color: transparent !important;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 480px) {
+    width: 100% !important;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 568px) {
+    width: 100% !important;
+  }
+  @media only screen and (min-width: 414px) and (max-width: 736px) and (orientation: portrait) {
+    width: 50% !important;
+  }
+}
+
+.masonry-con {
+  padding: 1rem !important;
+}
+
+.rating {
+  text-align: center !important;
+  /*@media only screen and (min-width: 320px) and (max-width: 480px) {
+    font-size: 4.8rem !important;
+  }
+
+  /!* iPhone 5 (portrait and landscape) *!/
+  @media only screen and (min-width: 320px) and (max-width: 568px) {
+    font-size: 5.6rem !important;
+  }
+
+  /!* iPhone 6 (portrait and landscape) *!/
+  @media only screen and (min-width: 375px) and (max-width: 667px) {
+    font-size: 6rem !important;
+  }
+
+  /!* iPhone 6 Plus (portrait) *!/
+  @media only screen and (min-width: 414px) and (max-width: 736px) and (orientation: portrait) {
+    font-size: 6.4rem !important;
+  }
+
+  /!* Other smartphones with smaller screen (portrait and landscape) *!/
+  @media only screen and (max-width: 319px) {
+    font-size: 6.4rem !important;
+  }
+
+  /!* iPads 1/2 iPad Mini (portrait and landscape) *!/
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    font-size: 6.4rem !important;
+  }
+
+  /!* iPad 3/4 (portrait and landscape) *!/
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
+    font-size: 6.4rem !important;
+  }*/
+}
+
+input[type="range"] {
+  &::-webkit-slider-thumb {
+    &:hover {
+      background-color: @button_color !important;
+    }
+    &:active {
+      background-color: @choices_text !important;
+    }
+  }
+}

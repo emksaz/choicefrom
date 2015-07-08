@@ -1,0 +1,48 @@
+
+<div>
+  <div class="content-wrap">
+    <div>
+      <div id="profile" class="content-row">
+        <div id="indicatorContainerWrap">
+          <div id="RadioProgressBar"></div><i style="background-image: url({{UserImageURL.ImgUrl}});" class="ic-profile"></i>
+        </div>
+        <div>
+          <button class="blue btnUpload"><i class="ic ic-cloud-upload-w"></i><span>上 传</span></button>
+          <p>{{::UserPageText.UserInfo_UserPicForm}}<br/>{{::UserPageText.UserInfo_UserPicSize}}</p>
+        </div>
+      </div>
+      <div class="content-row">
+        <div class="row-title">
+          <h2>帐户信息</h2>
+          <button ng-disabled="!UUserInfo.UserInfoSubmitFlag" ng-click="SubmitUserInfo()" class="green"><i class="ic ic-2dot-w"></i><span>保存更改</span></button>
+        </div>
+        <form name="UserInfoNameForm">
+          <h3>使用者名称：</h3>
+          <input type="text" ng-minlength="2" ng-maxlength="20" maxlength="20" ng-keydown="enter()" placeholder="请输入使用者名称" name="accountName" ng-model="UUserInfo.accountName" ng-change="userInfoEditChange(UserInfoNameForm.$valid,UserInfoNameForm.accountName.$dirty)"/><br/>
+          <mark style="display:block" ng-show="UserInfoNameForm.accountName.$dirty &amp;&amp; UserInfoNameForm.accountName.$invalid &amp;&amp; UserInfoNameForm.accountName.$error.minlength" class="form-message">使用者名称最少输入2位。</mark>
+          <mark style="display:block" ng-show="UserInfoNameForm.accountName.$dirty &amp;&amp; UserInfoNameForm.accountName.$invalid &amp;&amp; UserInfoNameForm.accountName.$error.maxlength" class="form-message">{{::UserPageText.UserInfo_UserName}}</mark>
+          <p>{{::UserPageText.UserInfo_UserName}}</p>
+        </form>
+        <form name="UserInfoEmailForm">
+          <h3>Email 地址：</h3>
+          <input type="text" name="accountEmail" ng-keydown="enter()" placeholder="请输入 Email 地址" ng-model="UUserInfo.accountEmail" ng-maxlength="50" required="" ng-change="emailCheck(UserInfoEmailForm.$valid,UserInfoEmailForm.accountEmail.$dirty,this.UUserInfo.accountEmail)" maxlength="50"/><br/>
+          <mark style="display:block" ng-show="UserInfoEmailForm.accountEmail.$dirty &amp;&amp; UserInfoEmailForm.accountEmail.$invalid &amp;&amp; UserInfoEmailForm.accountEmail.$error.required" class="form-message">请输入Email地址</mark>
+          <mark style="display:block" ng-show="UserInfoEmailForm.accountEmail.$dirty &amp;&amp; UserInfoEmailForm.accountEmail.$invalid &amp;&amp; UserInfoEmailForm.accountEmail.$error.maxlength" class="form-message">{{::UserPageText.UserInfo_Email}}</mark>
+          <mark style="display:block" ng-show="emailCheckFlag" class="form-message">邮箱格式错误！</mark>
+          <p>{{::UserPageText.UserInfo_Email}}</p>
+        </form>
+      </div>
+      <div id="overview" class="content-row">
+        <h2>使用详情</h2>
+        <ul>
+          <li><span>账户创建时间：</span><span>{{::UUserInfo.CreateDate}}</span></li>
+          <li><span>创建问卷数量：</span><span>{{UUserInfo.CreateSum}}</span></li>
+          <li><span>发布问卷数量：</span><span>{{UUserInfo.PublishSum}}</span></li>
+          <li style="display:none;"><span>存储容量：</span><span>759.6 mb</span></li>
+          <p>{{::UserPageText.UserInfo_Commitment}}</p>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="uploadDiv" style="display:none;"></div>
+</div>

@@ -1,0 +1,62 @@
+
+<div class="sidebar">
+  <div class="setting-row">
+    <div class="sidebar-row">
+      <!-- 侧栏-设置区块--><span>{{QuestionSummaries.ShowSetName}}</span><a ng-click="AddShowRuleClick()" ng-show="QuestionSummaries.IsShowAddButton" class="box-button blue"><i title="添加显示设置" class="ic ic-plus-w"></i></a>
+      <form id="rules" ng-show="!QuestionSummaries.AddShowRule">
+        <div ng-repeat="DataList in QuestionSummaries.DataListList">
+          <input type="radio" name="radiog_lite" id="Rule_{{DataList.ID}}" ng-checked="DataList.IsSelect" ng-click="SelectDataListInfo(DataList)" class="css-checkbox"/>
+          <label for="Rule_{{DataList.ID}}" title="{{DataList.Name}}" class="radio-label radGroup1">{{DataList.Name}}</label>
+          <div ng-show="DataList.IsShowTool" class="dropdown-event">
+            <ul class="floating strip downul">
+              <li>操作：</li>
+              <li ng-click="EditShowRuleClick(DataList)">编辑</li>
+              <li ng-click="EditShowRuleName(DataList)">重命名</li>
+              <li ng-click="DeleteDataListInfo(DataList)">删除</li>
+            </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+          </div>
+        </div>
+      </form>
+      <form id="sub-rules" ng-show="QuestionSummaries.AddShowRule">
+        <div>
+          <input id="checkboxG1" type="checkbox" ng-checked="QuestionSummaries.ShowNodeAllSelect" ng-click="SelectAllNode()" class="css-checkbox"/>
+          <label for="checkboxG1" class="checkbox-label">全选</label>
+        </div>
+        <div>
+          <input id="checkboxG2" type="checkbox" ng-checked="QuestionSummaries.ShowNodeReverseSelect" ng-click="ReverseSelectNode()" class="css-checkbox"/>
+          <label for="checkboxG2" class="checkbox-label">反选</label>
+        </div>
+        <div ng-repeat="Node in QuestionSummaries.ShowNodeList">
+          <input type="checkbox" id="{{Node.NodeID}}" ng-checked="Node.IsSelect" ng-click="SelectShowNode(Node)" class="css-checkbox"/>
+          <label for="{{Node.NodeID}}" title="{{Node.NodeTitle}}: {{Node.NodeName}}" class="checkbox-label">{{Node.NodeTitle}}: {{Node.NodeName}}</label>
+        </div>
+      </form>
+      <div ng-show="QuestionSummaries.AddShowRule" class="customize-control">
+        <button ng-click="CloseShowRuleClick()" class="medium gray"><span>取消</span></button>
+        <button ng-click="SaveShowRuleClick()" class="medium green"><span>应用</span></button>
+      </div>
+    </div>
+    <div class="sidebar-row">
+      <!-- 侧栏-设置区块--><span>输出结果</span><a ng-click="OpenDownLoadInfo()" class="box-button green"><i title="添加输出结果" class="ic ic-plus-w"></i></a>
+      <p ng-show="!QuestionSummaries.IsShowOutView">未输出任何结果</p>
+      <mark ng-show="!QuestionSummaries.IsShowOutView">点击右上角加号生成下载结果<a>更多帮助 »</a></mark>
+      <div id="output" ng-show="QuestionSummaries.IsShowOutView" ng-repeat="DataOutput in DataOutputInfo.dataOutputList ">
+        <div class="output_box"><i ng-click="GotoUrl(DataOutput.URL,DataOutput.FileName)" class="ic ic-download-w"></i><span style="min-height:26px">{{DataOutput.FileFormat}}: {{DataOutput.FileName}}</span>
+          <div class="dropdown-event">
+            <ul class="dropdown output downul">
+              <li ng-click="ShowDataOutputInfo(DataOutput)">{{DataOutput.ShowFileName}}</li>
+              <li ng-click="GotoUrl(DataOutput.URL,DataOutput.FileName)">下载结果</li>
+              <li ng-click="DelDataOutput(DataOutput.ID,DataOutput.URL)">删除结果</li>
+            </ul><a class="box-button setup dropdown-bt"><i class="ic ic-wrench-d"></i></a>
+          </div>
+          <ul ng-show="DataOutput.IsShowInfo" class="output-detailed">
+            <li>文件格式: {{DataOutput.FileFormat}}</li>
+            <!-- <li>视图内容:{{DataOutput.ViewName}}</li>-->
+            <li>创建时间:{{DataOutput.CreateTime}}</li>
+            <li>有效时间:{{DataOutput.ExpireDate}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

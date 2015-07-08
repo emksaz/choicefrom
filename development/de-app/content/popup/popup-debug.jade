@@ -1,0 +1,26 @@
+.popup.drag#debug
+    .popup-title
+        i.ic.ic-debugging
+        h3 校验结果
+        a.close-popup
+            i.ic.ic-close
+    .popup-content.nano
+        ul.nano-content
+            mixin list(text,prompt,activ)
+                li(class= activ)
+                    i.ic.ic-exclamation
+                    span= text
+                    h4= prompt
+            +list('选择题1','没有完成输入没有完成输入没有完成输入没有完成输入')
+            +list('选择题1选择题1选择题1选择题1选择题1选择题1选择题1选择题1','没有完成输入')
+            +list('选择题1','没有完成输入','list-activ')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+            +list('选择题1','没有完成输入')
+    h5 请修正该问题（检查以下系统提示节点），再次执行调试功能。

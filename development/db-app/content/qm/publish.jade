@@ -1,0 +1,67 @@
+div
+    #published.content-wrap
+        .content-row
+            .row-title
+                h2 发布
+                #publishtext(ng-style='publishManager.designErrorStyle')
+                #RestTime
+                button.blue(ng-if='false')
+                    i.ic.ic-plus-w
+                    span 添加收集方案
+                button.green(ng-show='publishManager.PublishPageFlagBtn', ng-disabled='!publishManager.SaveSetFlag', ng-click='SavePublishSet()')
+                    i.ic.ic-2dot-w
+                    span 保存更改
+        .tabs.tabs-style-sub(ng-show='publishManager.PublishPageFlag')
+            nav
+                ul(ng-show='publishManager.PublishPageFlag')
+                    mixin sub-tab(color,text,current)
+                        li(class= current)
+                            i.dot(class= color)
+                            span= text
+                    +sub-tab('blue','收集方案1','sub-tab-current')
+                    //+sub-tab('red','收集方案2')
+                .dropdown-event
+                    include ../template/floating-strip-3
+                    +item('选中收集方案操作：','复制','重命名','删除')
+
+            include ../template/analyze-web-link
+
+            include ../template/analyze-publish-setting
+
+            include ../template/analyze-collection
+
+.pop-ups-background(ng-show='CollDown!=0', ng-click='cancelClose()', style='z-index:9000')
+    .center
+        .pop-ups.medium(ng-show='CollDown==1', ng-click='CancelPopup($event)')
+            div
+                i.ic.ic-trophy
+                span 收集器下线
+                a.box-button(ng-click='cancelClose()')
+                    i.ic.ic-x-d
+            form
+                p 下线后问卷收集器将停止收集问卷，会使得使用此收集器的人无法填写问卷！请确认是否对当前收集器进行下线？
+                h2 请输入下线原因
+                input#reason(type='text', name='reason')
+                br
+                button.border(type='button', ng-click='cancelClose()')
+                    span 取 消
+                button.red(ng-click='Down()')
+                    span 关闭收集器
+        //.popup-windows.absolute-center.folder(ng-show='CollDown==2', ng-click='CancelPopup($event)')
+            .w-clearfix.popup-header
+                .icon.float-left.margin-right-5px.ic-add-folder-d
+                h5.popup-title 微信验证
+                a.w-inline-block.cancel-button(ng-click='cancelClose()')
+                    .icon.ic-cancel.hover-tager
+            .popup-content
+                .w-form(style='text-align:center;')
+                    #weichatURl
+        #ques-review.pop-ups(ng-show='CollDown==2', ng-click='CancelPopup($event)')
+            div
+                i.ic.ic-magic-wand
+                span 微信验证
+                a.box-button(ng-click='cancelClose()')
+                    i.ic.ic-x-d
+            form.ng-pristine.ng-valid
+                div
+                    img#WeixinPreviewURl(src='', style='width:312px')

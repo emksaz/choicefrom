@@ -1,0 +1,395 @@
+ //顶部控制栏 - 去底色
+  #sample-page {
+    border: none;
+    background: none;
+    button.gray {
+      padding: 8px 24px 7px 24px;
+    }
+  }
+
+ #sample-w{
+   //新建调查问卷 - 板块
+   .creating {
+     background-color: @white;
+     border-radius: 2px;
+     border: 1px solid @silver;
+     padding: 24px;
+     margin-bottom: 48px;
+     @media (max-width: 991px) {
+       margin-top: 24px;
+     }
+     @media (max-width: 479px) {
+       padding: 12px;
+       width: 270px;
+       margin: 24px auto 36px auto;
+     }
+     &:after {
+       clear: both;
+       content: " ";
+       display: table;
+     }
+     //表单
+     form {
+       position: relative;
+       &:after {
+         clear: both;
+         content: " ";
+         display: table;
+       }
+       //问卷标题 - 文字
+       h3 {
+         margin-top: 0;
+       }
+       //输入框
+       mark,
+       input {
+         width: 64%;
+         @media (max-width: 991px) {
+           width: 100%;
+         }
+       }
+       //快速帮助
+       p {
+         width: 30%;
+         top: 34px;
+         padding-top: 8px;
+         @media (max-width: 991px) {
+           top: 0;
+           width: 100%;
+           padding: 0;
+         }
+       }
+     }
+
+     //问卷标题 + 文件夹下拉菜单
+     form > div {
+       width: 65%;
+       &:after {
+         clear: both;
+         content: " ";
+         display: table;
+       }
+       @media (max-width: 991px) {
+         width: 100%;
+       }
+     }
+
+     //文件夹下拉菜单
+     form > div > .dropdown-event {
+       float: right;
+       button {
+         min-width: 120px;
+         max-width: 256px;
+         font-size: 12px;
+         color: @dark_gray;
+         padding-top: 0;
+         padding-bottom: 0;
+         i {
+           top: 0;
+         }
+       }
+       ul{
+         min-width: 190px;
+         max-width: 256px;
+       }
+     }
+
+   }
+   //取消最后一个影藏 (没有创建 + )
+   .survey-column {
+     margin-top: 6px;
+     @media (max-width: 991px) {
+       &:last-child {
+         display: block;
+       }
+     }
+   }
+   //空白范本
+   .open-design {
+     text-align: center;
+     h1 {
+       color: @silver;
+       line-height: 180px;
+       .transition(opacity, 500ms, ease);
+     }
+     &:hover h1 {
+       opacity: 0;
+     }
+   }
+   //查看范本 - 文字
+   .survey-mask span {
+     color: @silver;
+     float: left;
+     font-size: 12px;
+     opacity: 0;
+     .transition(opacity, 500ms, ease);
+   }
+   //查看范本 - 图标
+   .survey-operations {
+     a {
+       float: left;
+     }
+     i {
+       opacity: 0.6;
+       float: left;
+       margin-right: 6px;
+       .transition(opacity, 500ms, ease);
+     }
+   }
+   //查看范本 - 悬浮效果
+   .survey-operations a:hover {
+     span, i {
+       opacity: 1;
+     }
+   }
+   //范本价格区
+   .collection-schedule {
+     height: 37px;
+     padding: 8px;
+     //价格文字
+     span {
+       display: inline-block;
+       float: right;
+       color: @dark_gray;
+     }
+     //已选择标记
+     div {
+       background-color: @dodger_blue;
+       color: @white;
+       display: inline-block;
+       border-radius: 2px;
+       padding: 0 6px;
+     }
+   }
+   .survey-footer > div {
+     display: -webkit-box;
+     text-overflow: ellipsis;
+     overflow : hidden;
+     line-height: 16px;
+     margin-top: 12px;
+     height: 48px;
+     -webkit-line-clamp: 3;
+     -webkit-box-orient: vertical;
+     white-space: normal;
+   }
+   //范本选中效果 (边框)
+   .survey-item.select-sample {
+     border: 1px solid @dodger_blue;
+     .box-shadow(@dodger_blue 0px 0px 0px 2px);
+   }
+   //范本库下拉菜单
+   .separator-bar {
+     .dropdown-event {
+       float: right;
+       button{
+         text-align: right;
+       }
+     }
+     //使用范本 - 文字
+     h1 {
+       display: inline-block;
+     }
+   }
+   //浏览器尺寸提示
+   .too-small-alert {
+     margin-top: 0;
+   }
+ }
+
+/*#sample {
+  //顶部控制栏 - 去底色
+  .page-header {
+    border: none;
+    background: none;
+    button.gray {
+      padding: 8px 24px 7px 24px;
+    }
+  }
+
+  //新建调查问卷 - 板块
+  .creating {
+    background-color: @white;
+    border-radius: 2px;
+    border: 1px solid @silver;
+    padding: 24px;
+    margin-bottom: 48px;
+    @media (max-width: 991px) {
+      margin-top: 24px;
+    }
+    @media (max-width: 479px) {
+      padding: 12px;
+      width: 270px;
+      margin: 24px auto 36px auto;
+    }
+    &:after {
+      clear: both;
+      content: " ";
+      display: table;
+    }
+    //表单
+    form {
+      position: relative;
+      &:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+      //问卷标题 - 文字
+      h3 {
+        margin-top: 0;
+      }
+      //输入框
+      mark,
+      input {
+        width: 64%;
+        @media (max-width: 991px) {
+          width: 100%;
+        }
+      }
+      //快速帮助
+      p {
+        width: 30%;
+        top: 34px;
+        padding-top: 8px;
+        @media (max-width: 991px) {
+          top: 0;
+          width: 100%;
+          padding: 0;
+        }
+      }
+    }
+
+    //问卷标题 + 文件夹下拉菜单
+    form > div {
+      width: 65%;
+      &:after {
+        clear: both;
+        content: " ";
+        display: table;
+      }
+      @media (max-width: 991px) {
+        width: 100%;
+      }
+    }
+
+    //文件夹下拉菜单
+    form > div > .dropdown-event {
+      float: right;
+      button {
+        font-size: 12px;
+        color: @dark_gray;
+        padding-top: 0;
+        padding-bottom: 0;
+        i {
+          top: 0;
+        }
+      }
+    }
+  }
+
+  //取消最后一个影藏 (没有创建 + )
+  .survey-column {
+    margin-top: 6px;
+    @media (max-width: 991px) {
+      &:last-child {
+        display: block;
+      }
+    }
+  }
+
+  //空白范本
+  .open-design {
+    text-align: center;
+    h1 {
+      color: @silver;
+      line-height: 180px;
+      .transition(opacity, 500ms, ease);
+    }
+    &:hover h1 {
+      opacity: 0;
+    }
+  }
+
+  //查看范本 - 文字
+  .survey-mask span {
+    color: @silver;
+    float: left;
+    font-size: 12px;
+    opacity: 0;
+    .transition(opacity, 500ms, ease);
+  }
+
+  //查看范本 - 图标
+  .survey-operations {
+    a {
+      float: left;
+    }
+    i {
+      opacity: 0.6;
+      float: left;
+      margin-right: 6px;
+      .transition(opacity, 500ms, ease);
+    }
+  }
+
+  //查看范本 - 悬浮效果
+  .survey-operations a:hover {
+    span, i {
+      opacity: 1;
+    }
+  }
+
+  //范本价格区
+  .collection-schedule {
+    height: 37px;
+    padding: 8px;
+    //价格文字
+    span {
+      display: inline-block;
+      float: right;
+      color: @dark_gray;
+    }
+    //已选择标记
+    div {
+      background-color: @dodger_blue;
+      color: @white;
+      display: inline-block;
+      border-radius: 2px;
+      padding: 0 6px;
+    }
+  }
+
+  .survey-footer > div {
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    overflow : hidden;
+    line-height: 16px;
+    margin-top: 12px;
+    height: 48px;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+  }
+
+  //范本选中效果 (边框)
+  .survey-item.select-sample {
+    border: 1px solid @dodger_blue;
+    .box-shadow(@dodger_blue 0px 0px 0px 2px);
+  }
+
+  //范本库下拉菜单
+  .separator-bar {
+    .dropdown-event {
+      float: right;
+    }
+    //使用范本 - 文字
+    h1 {
+      display: inline-block;
+    }
+  }
+
+  //浏览器尺寸提示
+  .too-small-alert {
+    margin-top: 0;
+  }
+}*/

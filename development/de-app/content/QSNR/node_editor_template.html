@@ -1,0 +1,1444 @@
+﻿<div class="w-tabs design_sidebar_tabs color_dark_slate_gary_kit
+     font_color_light_d6d6d6 border_dark_gary_262626 left click_hide_unpinned"
+     id="node_editor">
+    <div class="media_kit_background color_dark_gary_title_local elementShow"
+         ng-click="handleUploaderMaskClick()"
+         ng-if="designManager.imageUploadManager.isVisible()"></div>
+    <!--头部TAB选项▼-->
+    <div class="w-tab-menu design_tabs_menu border_dark_gary_262626 buttom color_dark_gary_title_local">
+        <!--基本设置TAB▼-->
+        <div ng-click="activeTab = 1"
+             class="w-tab-link w-inline-block design_tab_button color_dark_gary_title_local border_dark_gary_262626 right buttom"
+             ng-class="{'w--current': activeTab == 1}" title="基本设置">
+            <div class="tabs_1_hover" ng-mouseenter="tab1Hover = true" ng-mouseleave="tab1Hover = false"></div>
+            <div class="design_icon ic_tab1 size_20px tabs_1_open"
+                 ng-class="{'opacity_100_dur_200':tab1Hover|| activeTab == 1,'opacity_75_dur_200':!tab1Hover&&activeTab != 1}"></div>
+        </div>
+        <!--基本设置TAB▲-->
+        <!--高级设置TAB▼-->
+        <div ng-click="activeTab = 2" style="display:none;"
+             class="w-tab-link w-inline-block design_tab_button color_dark_gary_title_local border_dark_gary_262626 right buttom"
+             ng-class="{'w--current': activeTab == 2}" title="扩展设置">
+            <div class=" tabs_2_hover" ng-mouseenter="tab2Hover = true" ng-mouseleave="tab2Hover = false"></div>
+            <div class="design_icon ic_tab2 size_20px tabs_2_open"
+                 ng-class="{'opacity_100_dur_200':tab2Hover||activeTab == 2,'opacity_75_dur_200':!tab2Hover&&activeTab != 2}"></div>
+        </div>
+        <!--高级设置TAB▲-->
+        <!--媒体设置TAB▼-->
+        <div ng-click="activeTab = 3"
+             class="w-tab-link w-inline-block design_tab_button color_dark_gary_title_local border_dark_gary_262626 right buttom"
+             ng-class="{'w--current': activeTab == 3}" title="媒体库">
+            <div class=" tabs_3_hover" ng-mouseenter="tab3Hover = true" ng-mouseleave="tab3Hover = false"></div>
+            <div class="design_icon size_20px tabs_3_open ic_tab3"
+                 ng-class="{'opacity_100_dur_200':tab3Hover||activeTab == 3,'opacity_75_dur_200':!tab3Hover&&activeTab != 2}"></div>
+        </div>
+        <!--媒体设置TAB▲-->
+    </div>
+    <!--头部TAB选项▲-->
+    <!--节点概况设置▼-->
+    <div class="leading_section padding_lr_10px border_dark_gary_262626 buttom">
+        <!--题型▼-->
+        <div class="w-clearfix element_details padding_tb_8px border_light_gary_3c3c3c buttom">
+            <div>
+                <div class="design_icon size_20px margin_r_5px float_l"
+                     ng-attr-class="{{getNodeIcon()}}"></div>
+                <h4 class="float_l cursor_default">{{getNodeName()}}</h4>
+            </div>
+            <div class="color_picker size_20px float_r border_dark_gary_262626 color_blue_3498db all_sides" style="display:none;"></div>
+        </div>
+        <!--题型▲-->
+        <!--题号▼-->
+        <div class="id_selector padding_tb_8px">
+            <h4 class="float_l cursor_default">{{node.nameText}}</h4>
+            <div class="w-clearfix mc_button border_dark_gary_262626 radius_3px float_r all_sides" style="display:none;">
+                <div class="button_activation color_gary_gradient_icon_button design_button"></div>
+                <div class="float_l padding_lr_5px">
+                    <div class="design_icon size_20px ic_preview"></div>
+                </div>
+                <div class="w-inline-block button_link"></div>
+            </div>
+        </div>
+
+        <input class="design_input radius_2px border_dark_gary_262626 padding_lr_10px padding_tb_5px height_30px all_sides color_dark_gary_gradient_input"
+               ng-readonly="!node"
+               ng-attr-maxlength="{{node.nameLengthLimit}}"
+               style=" width: 279px; outline: none;"
+               ng-model="node.nodeName"
+               ng-focus="handleNodeNameChange(node,-1)"
+               ng-change="handleNodeNameChange(node)"
+               ng-blur="handleNodeNameChange(node,1)"
+               ng-model-options="{debounce:150}"
+               ng-disabled="!node.nodeNameEditable" />
+
+        <div class="w-clearfix common_target padding_tb_8px height_36px font_color_gary_9e9e9e">
+            <div style="display:inline-block;overflow:hidden;" ng-click="handleNodeLocateClick(node)" class="cursor_pointer">
+                <h4 class="float_l margin_l_5px">快速定位</h4>
+                <div class="w-clearfix icon_column float_l padding_tb_8px">
+                    <div class="design_icon size_20px margin_r_5px float_l ic_inspector"></div>
+                </div>
+            </div>
+            
+        </div>
+        <!--题号▲-->
+    </div>
+    <!--节点概况设置▲-->
+    <!--节点详细设置▼-->
+    <div class="w-tab-content design_tab_content">
+        <div class="none_selected color_dark_gary_title_local"
+             ng-if="!node && activeTab != 3">
+            <div class="notice_symbol radius_3px font_color_gary_9e9e9e">
+                <div class="nodes_icon ic_sprite_main"></div>
+                <div>请在画布上选择一个节点来激活这个面板对其进行编辑</div>
+            </div>
+        </div>
+        <!--基本设置▼-->
+        <div class="w-tab-pane design_sidebar"
+             ng-class="{'w--tab-active':activeTab == 1}"
+             ng-if="node">
+            <div class="kit_section_group" style="width: 299px">
+                <!--问题区▼-->
+                <div class="position_div" style="width:299px">
+                    <!--问题头部▼-->
+                    <div class="w-clearfix w-inline-block addon_options_on_off font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="handleMediaToggleClick(node)"
+                         ng-if="!node.mediaDisable">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_switch_on switch_on"
+                             ng-class="{'elementShow':node.useMedia}"></div>
+                        <div class="design_icon size_20px margin_r_5px float_l ic_switch_off switch_off"
+                             ng-class="{'elementHide':node.useMedia}"></div>
+                        <h4 class="float_l">{{node.getMediaIconText()}}</h4>
+                    </div>
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                             width_100per border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.questionHiding = !node.questionHiding"
+                         ng-mouseenter="node.questionHover = true"
+                         ng-mouseleave="node.questionHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.questionHiding,
+                                 'rotate_0_dur_300':!node.questionHiding,
+                                 'opacity_100_dur_200':node.questionHover,
+                                 'opacity_75_dur_200':!node.questionHover}"></div>
+                        <h4 class="float_l">问题</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.questionHiding,'elementHide':!node.questionHiding}">
+                        </div>
+                    </div>
+                    <!--问题头部▲-->
+                    <!--问题编辑区▼-->
+                    <div class="section_content padding_lr_10px border_dark_gary_262626 buttom"
+                         ng-class="{'elementHide':node.questionHiding,'elementShow':!node.questionHiding}">
+                        <!--问题文字编辑区▼-->
+                        <div class="title_selector padding_tb_8px">
+                            <h4 class="float_l cursor_default">{{node.describeText}}</h4>
+                        </div>
+                        <div class="w-form">
+                            <form class="w-clearfix" id="email-form" name="email-form">
+                                <textarea class="question_text w-input design_input border_dark_gary_262626 max_width_280px
+                                              float_l font_size_12px font_color_light_d6d6d6 radius_2px padding_lr_10px
+                                              padding_tb_5px margin_b_0px min_height_100px all_sides color_dark_gary_gradient_input"
+                                          id="topic" ng-attr-placeholder="{{'请输入' + node.describeText}}" name="topic"
+                                          oninput="notifyTextLength(this,600)"
+                                          ng-model-options="{debounce:150}"
+                                          ng-model="node.question.originText"
+                                          ng-focus="handleNodeDescribeChange(node.question,-1)"
+                                          ng-change="handleNodeDescribeChange(node.question)"
+                                          ng-blur="handleNodeDescribeChange(node.question,1)"></textarea>
+                            </form>
+                            <div class="w-form-done">
+                                <p>Thank you! Your submission has been received!</p>
+                            </div>
+                            <div class="w-form-fail">
+                                <p>Oops! Something went wrong while submitting the form :(</p>
+                            </div>
+                        </div>
+                        <!--问题文字编辑区▲-->
+                        <!--问题媒体编辑区▼-->
+                        <div class="media_options_section margin_b_20px"
+                             ng-class="{'elementShow':node.useMedia,'elementHide':!node.useMedia}">
+                            <div class="w-clearfix title_selector padding_tb_8px margin_t_20px border_light_gary_3c3c3c top">
+                                <h4 class="float_l cursor_default">媒体选项：</h4>
+                            </div>
+                            <!--图片选择▼-->
+                            <div data-image-select="node" data-image-lib="designManager.imageUploadManager"></div>
+                            <!--图片选择▲-->
+                        </div>
+                        <!--问题媒体编辑区▲-->
+                    </div>
+                    <!--问题编辑区▲-->
+                </div>
+                <!--问题区▲-->
+
+                <!--结束配置区▼-->
+                <div class="position_div" style="width:299px" ng-if="node.isTypeOf('END')">
+                    <!--结束配置▼-->
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                             width_100per border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.endCfgHiding = !node.endCfgHiding"
+                         ng-mouseenter="node.endCfgHover = true"
+                         ng-mouseleave="node.endCfgHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.endCfgHiding,
+                                 'rotate_0_dur_300':!node.endCfgHiding,
+                                 'opacity_100_dur_200':node.endCfgHover,
+                                 'opacity_75_dur_200':!node.endCfgHover}"></div>
+                        <h4 class="float_l">结束设置</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.endCfgHiding,'elementHide':!node.endCfgHiding}">
+                        </div>
+                    </div>
+                    <!--结束配置▲-->
+                    <!--结束配置编辑区▼-->
+                    <div class="section_content padding_lr_10px border_dark_gary_262626 buttom"
+                         ng-class="{'elementHide':node.endCfgHiding,'elementShow':!node.endCfgHiding}">
+                        <div class="title_selector padding_tb_8px">
+                            <h4 class="float_l cursor_default">完成后跳转链接</h4>
+                        </div>
+                        <div class="w-form">
+                            <form class="w-clearfix" id="email-form" name="email-form">
+                                <textarea class="question_text w-input design_input border_dark_gary_262626 max_width_280px
+                                              float_l font_size_12px font_color_light_d6d6d6 radius_2px padding_lr_10px
+                                              padding_tb_5px margin_b_0px min_height_100px all_sides color_dark_gary_gradient_input"
+                                          id="topic" placeholder="请输入有效的跳转地址" name="topic"
+                                          oninput="notifyTextLength(this,600)"
+                                          ng-model-options="{debounce:150}"
+                                          ng-model="node.linkUrl"
+                                          ng-focus="handleLinkUrlChange(node,-1)"
+                                          ng-change="handleLinkUrlChange(node)"
+                                          ng-blur="handleLinkUrlChange(node,1)"></textarea>
+                            </form>
+                            <div class="w-form-done">
+                                <p>Thank you! Your submission has been received!</p>
+                            </div>
+                            <div class="w-form-fail">
+                                <p>Oops! Something went wrong while submitting the form :(</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!--结束配置编辑区▲-->
+                </div>
+                <!--结束配置区▲-->
+
+                <!--通用设置区▼-->
+                <div class="position_div" ng-if="node.isSubject()">
+                    <!--高级设置头部控制区▼-->
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local width_100per
+                             font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                         ng-click="node.advanceHiding = !node.advanceHiding"
+                         ng-mouseenter="node.advanceHover = true"
+                         ng-mouseleave="node.advanceHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.advanceHiding,
+                                 'rotate_0_dur_300':!node.advanceHiding,
+                                 'opacity_100_dur_200':node.advanceHover,
+                                 'opacity_75_dur_200':!node.advanceHover}"></div>
+                        <h4 class="float_l cursor_pointer">通用设置</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.advanceHiding,'elementHide':!node.advanceHiding}"></div>
+                        <div class="design_icon size_20px ic_nodes_help nodes_help"
+                             ng-class="{'trans_0_0_dur_200':node.advanceHover,
+                                         'trans_0_m20_dur_200':!node.advanceHover}" ng-click="handleNodeEditorHelpClick($event,'generalSetting')"></div>
+                    </div>
+                    <!--高级设置头部控制区▲-->
+                    <!--高级设置内容区▼-->
+                    <div class="section_content padding_lr_10px"
+                         ng-class="{'elementHide':node.advanceHiding,'elementShow':!node.advanceHiding}" style="margin-bottom:10px;">
+                        <!--题目专用高级区▼-->
+                        <div ng-if="node.isSubject()">
+                            <!--是否必答▼-->
+                            <div class="padding_tb_10px" style="display:none;">
+                                <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px cursor_pointer"
+                                     ng-click="handleToggleAnswerRequireClick(node)"
+                                     ng-mouseenter="node.answerRequireHover = true"
+                                     ng-mouseleave="node.answerRequireHover = false">
+                                    <div class="position_div size_20px float_l margin_r_5px">
+                                        <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                             ng-class="{'elementShow':node.answerRequired,
+                                             'elementHide':!node.answerRequired,
+                                             'opacity_100_dur_200':node.answerRequireHover,
+                                             'opacity_75_dur_200':!node.answerRequireHover}"></div>
+                                        <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                             ng-class="{'elementHide':node.answerRequired,
+                                             'elementShow':!node.answerRequired,
+                                             'opacity_100_dur_200':node.answerRequireHover,
+                                             'opacity_75_dur_200':!node.answerRequireHover}"></div>
+                                    </div>
+                                    <h4 class="float_l cursor_pointer">必答题，须有答案</h4>
+                                </div>
+                                <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e"
+                                     ng-class="{'elementShow':node.answerRequired,'elementHide':!node.answerRequired}">
+                                    <h4 class="common_paragraph cursor_default">必答题受访者没有做出相应回复的情况下，无法进入至下一题。</h4>
+                                    <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                        <div class="design_icon size_20px float_l ic_point"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--是否必答▲-->
+                            <!--是否多选 选择题专用▼-->
+                            <div class="padding_tb_10px border_light_gary_3c3c3c top"
+                                 ng-if="node.isTypeIn('SELECT,SELECTPIC')">
+                                <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px cursor_pointer"
+                                     ng-click="handleMultipleSelectToggleClick(node)"
+                                     ng-mouseenter="node.multiHover = true"
+                                     ng-mouseleave="node.multiHover = false">
+                                    <div class="position_div size_20px float_l margin_r_5px">
+                                        <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                             ng-class="{'elementShow':node.multipleSelect,
+                                             'elementHide':!node.multipleSelect,
+                                             'opacity_100_dur_200':node.multiHover,
+                                             'opacity_75_dur_200':!node.multiHover}"></div>
+                                        <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                             ng-class="{'elementHide':node.multipleSelect,
+                                             'elementShow':!node.multipleSelect,
+                                             'opacity_100_dur_200':node.multiHover,
+                                             'opacity_75_dur_200':!node.multiHover}"></div>
+                                    </div>
+                                    <h4 class="float_l cursor_pointer">多选题</h4>
+                                </div>
+                                <div ng-class="{'elementShow':node.multipleSelect,'elementHide':!node.multipleSelect}">
+                                    <div class="w-clearfix checkbox_tager padding_tb_6px">
+                                        <h4 class="float_l font_line_height_24px margin_r_5px cursor_default">最少：</h4>
+                                        <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px float_l padding_lr_10px
+                                             all_sides color_dark_gary_gradient_input width_65px margin_r_20px">
+                                            <input class="float_r margin_r_5px pick_input"
+                                                   ng-keydown="handleOnlyNumberInputKeyDown($event)"
+                                                   ng-model="node.multipleMin"
+                                                   maxlength="3"
+                                                   ng-focus="handleMultipleMinChange(node,-1)"
+                                                   ng-change="handleMultipleMinChange(node)"
+                                                   ng-blur="handleMultipleMinChange(node,1)" />
+                                            <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button"
+                                                 ng-click="handleMultipleMinChangeClick(node,1)">
+                                                <div class="design_icon ic_up"></div>
+                                            </div>
+                                            <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button"
+                                                 ng-click="handleMultipleMinChangeClick(node,-1)">
+                                                <div class="design_icon ic_down"></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="font_line_height_24px margin_r_5px float_l cursor_default">最多：</h4>
+                                        <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px padding_lr_10px all_sides
+                                             color_dark_gary_gradient_input width_65px float_l">
+                                            <input class="float_r margin_r_5px pick_input"
+                                                   style="ime-mode:disabled"
+                                                   ng-keydown="handleOnlyNumberInputKeyDown($event)"
+                                                   ng-model="node.multipleMax"
+                                                   maxlength="3"
+                                                   ng-focus="handleMultipleMaxChange(node,-1)"
+                                                   ng-change="handleMultipleMaxChange(node)"
+                                                   ng-blur="handleMultipleMaxChange(node,1)"
+                                                   type="tel" />
+                                            <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button"
+                                                 ng-click="handleMultipleMaxChangeClick(node,1)">
+                                                <div class="design_icon ic_up"></div>
+                                            </div>
+                                            <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button"
+                                                 ng-click="handleMultipleMaxChangeClick(node,-1)">
+                                                <div class="design_icon ic_down"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e">
+                                        <h4 class="common_paragraph cursor_default">最大数值不能大于选项数量</h4>
+                                        <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                            <div class="design_icon size_20px float_l ic_warning"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!--是否多选 选择题专用▲-->
+                            <!--是否选项随机 矩阵题不用▼-->
+                            <div class="padding_tb_10px border_light_gary_3c3c3c top"
+                                 ng-if="!node.isTypeIn('MATRIX,FILL')">
+                                <!--选项随机控制切换▼-->
+                                <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px cursor_pointer"
+                                     ng-click="handleToggleRandomOptionYClick(node)"
+                                     ng-mouseenter="node.randomYHover = true"
+                                     ng-mouseleave="node.randomYHover = false">
+                                    <div class="position_div size_20px float_l margin_r_5px">
+                                        <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                             ng-class="{'elementShow':node.randomOptionY,
+                                             'elementHide':!node.randomOptionY,
+                                             'opacity_100_dur_200':node.randomYHover,
+                                             'opacity_75_dur_200':!node.randomYHover}"></div>
+                                        <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                             ng-class="{'elementHide':node.randomOptionY,
+                                             'elementShow':!node.randomOptionY,
+                                             'opacity_100_dur_200':node.randomYHover,
+                                             'opacity_75_dur_200':!node.randomYHover}"></div>
+                                    </div>
+                                    <h4 class="float_l cursor_pointer">选项随机</h4>
+                                </div>
+                                <!--选项随机控制切换▲-->
+                                <!--随机选项备用区▼-->
+                                <div ng-class="{'elementShow':node.randomOptionY,'elementHide':!node.randomOptionY}">
+                                    <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e">
+                                        <h4 class="common_paragraph cursor_default">选项随机对（其它）选项无效，（其它）选项始终排列在全部选项的底部。</h4>
+                                        <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                            <div class="design_icon size_20px float_l ic_point"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--随机选项备用区▲-->
+                            </div>
+                            <!--是否选项随机 矩阵题不用▲-->
+                            <!--矩阵题专用区域▼-->
+                            <div ng-if="node.isTypeOf('MATRIX')">
+                                <!--是否选项随机 矩阵题专用▼-->
+                                <div class="padding_tb_10px border_light_gary_3c3c3c top">
+                                    <!--选项随机控制切换▼-->
+                                    <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px"
+                                         ng-click="handleToggleRandomOpenClick(node)"
+                                         ng-mouseenter="node.randomHover = true"
+                                         ng-mouseleave="node.randomHover = false">
+                                        <div class="position_div size_20px float_l margin_r_5px">
+                                            <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                 ng-class="{'elementShow':node.randomOpen,
+                                             'elementHide':!node.randomOpen,
+                                             'opacity_100_dur_200':node.randomHover,
+                                             'opacity_75_dur_200':!node.randomHover}"></div>
+                                            <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                 ng-class="{'elementHide':node.randomOpen,
+                                             'elementShow':!node.randomOpen,
+                                             'opacity_100_dur_200':node.randomHover,
+                                             'opacity_75_dur_200':!node.randomHover}"></div>
+                                        </div>
+                                        <h4 class="float_l cursor_default">选项随机</h4>
+                                    </div>
+                                    <!--选项随机控制切换▲-->
+                                    <!--随机选项备用区▼-->
+                                    <div ng-class="{'elementShow':node.randomOpen,'elementHide':!node.randomOpen}">
+                                        <div class="w-clearfix checkbox_tager padding_tb_6px padding_lr_5px"
+                                             ng-if="node.isTypeOf('MATRIX')">
+                                            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_20px"
+                                                 ng-click="handleToggleRandomOptionYClick(node)"
+                                                 ng-mouseenter="node.randomYHover = true"
+                                                 ng-mouseleave="node.randomYHover = false">
+                                                <h4 class="float_l cursor_default">行选项：</h4>
+                                                <div class="position_div size_20px float_l">
+                                                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                         ng-class="{'elementShow':node.randomOptionY,
+                                                                'elementHide':!node.randomOptionY,
+                                                                'opacity_100_dur_200':node.randomYHover,
+                                                                'opacity_75_dur_200':!node.randomYHover}"></div>
+                                                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                         ng-class="{'elementHide':node.randomOptionY,
+                                                                'elementShow':!node.randomOptionY,
+                                                                'opacity_100_dur_200':node.randomYHover,
+                                                                'opacity_75_dur_200':!node.randomYHover}"></div>
+                                                </div>
+                                            </div>
+                                            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l"
+                                                 ng-click="handleToggleRandomOptionXClick(node)"
+                                                 ng-mouseenter="node.randomXHover = true"
+                                                 ng-mouseleave="node.randomXHover = false">
+                                                <h4 class="float_l">列选项：</h4>
+                                                <div class="position_div size_20px float_l">
+                                                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                         ng-class="{'elementShow':node.randomOptionX,
+                                                                'elementHide':!node.randomOptionX,
+                                                                'opacity_100_dur_200':node.randomXHover,
+                                                                'opacity_75_dur_200':!node.randomXHover}"></div>
+                                                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                         ng-class="{'elementHide':node.randomOptionX,
+                                                                'elementShow':!node.randomOptionX,
+                                                                'opacity_100_dur_200':node.randomXHover,
+                                                                'opacity_75_dur_200':!node.randomXHover}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e">
+                                            <h4 class="common_paragraph">选项随机对（其它）选项无效，（其它）选项始终排列在全部选项的底部。</h4>
+                                            <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                                <div class="design_icon size_20px float_l ic_point"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--随机选项备用区▲-->
+                                </div>
+                                <!--是否选项随机 矩阵题专用▲-->
+                                <!--固定位循环 矩阵题专用▼-->
+                                <div class="padding_tb_10px border_light_gary_3c3c3c top buttom">
+                                    <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px"
+                                         ng-click="handleToggleLoopOpenClick(node)"
+                                         ng-mouseenter="node.loopHover = true"
+                                         ng-mouseleave="node.loopHover = false">
+                                        <div class="position_div size_20px float_l margin_r_5px">
+                                            <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                 ng-class="{'elementShow':node.loopOpen,
+                                                            'elementHide':!node.loopOpen,
+                                                            'opacity_100_dur_200':node.loopHover,
+                                                            'opacity_75_dur_200':!node.loopHover}"></div>
+                                            <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                 ng-class="{'elementHide':node.loopOpen,
+                                                            'elementShow':!node.loopOpen,
+                                                            'opacity_100_dur_200':node.loopHover,
+                                                            'opacity_75_dur_200':!node.loopHover}"></div>
+                                        </div>
+                                        <h4 class="float_l cursor_default">固定位随机</h4>
+                                    </div>
+                                    <!--固定位循环备用区▼-->
+                                    <div ng-class="{'elementShow':node.loopOpen,'elementHide':!node.loopOpen}">
+                                        <div class="w-clearfix checkbox_tager padding_tb_6px padding_lr_5px">
+                                            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_20px"
+                                                 ng-click="handleToggleLoopOptionYClick(node)"
+                                                 ng-mouseenter="node.loopYHover = true"
+                                                 ng-mouseleave="node.loopYHover = false">
+                                                <h4 class="float_l cursor_default">行选项：</h4>
+                                                <div class="position_div size_20px float_l">
+                                                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                         ng-class="{'elementShow':node.loopOptionY,
+                                                            'elementHide':!node.loopOptionY,
+                                                            'opacity_100_dur_200':node.loopYHover,
+                                                            'opacity_75_dur_200':!node.loopYHover}"></div>
+                                                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                         ng-class="{'elementHide':node.loopOptionY,
+                                                            'elementShow':!node.loopOptionY,
+                                                            'opacity_100_dur_200':node.loopYHover,
+                                                            'opacity_75_dur_200':!node.loopYHover}"></div>
+                                                </div>
+                                            </div>
+                                            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l"
+                                                 ng-click="handleToggleLoopOptionXClick(node)"
+                                                 ng-mouseenter="node.loopXHover = true"
+                                                 ng-mouseleave="node.loopXHover = false">
+                                                <h4 class="float_l cursor_default">列选项：</h4>
+                                                <div class="position_div size_20px float_l">
+                                                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                         ng-class="{'elementShow':node.loopOptionX,
+                                                            'elementHide':!node.loopOptionX,
+                                                            'opacity_100_dur_200':node.loopXHover,
+                                                            'opacity_75_dur_200':!node.loopXHover}"></div>
+                                                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                         ng-class="{'elementHide':node.loopOptionX,
+                                                            'elementShow':!node.loopOptionX,
+                                                            'opacity_100_dur_200':node.loopXHover,
+                                                            'opacity_75_dur_200':!node.loopXHover}"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e">
+                                            <h4 class="common_paragraph cursor_default">必答题受访者没有做出相应回复的情况下，无法进入至下一题。</h4>
+                                            <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                                <div class="design_icon size_20px float_l ic_point"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--固定位循环备用区▲-->
+                                </div>
+                                <!--固定位循环 矩阵题专用▲-->
+                                <!--题型 矩阵题专用▼-->
+                                <div class="w-clearfix padding_tb_8px padding_lr_5px">
+                                    <h4 class="float_l cursor_default">题型：</h4>
+                                </div>
+                                <!--题型 矩阵题专用▲-->
+                            </div>
+                            <!--矩阵题专用区域▲-->
+                            <!--验证▼-->
+                            <div data-validate-option="node"
+                                 ng-if="node.isTypeOf('FILL')"></div>
+                            <!--验证▲-->
+                        </div>
+                        <!--题目专用高级区▲-->
+                    </div>
+                    <!--高级设置内容区▲-->
+                </div>
+                <!--通用设置区▲-->
+
+                <!--图片模式设置区 仅图片选择题使用▼-->
+                <div class="position_div" ng-if="node.isTypeOf('SELECTPIC')">
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                         width_100per border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.imgSetHiding = !node.imgSetHiding"
+                         ng-mouseenter="node.imgSetHover = true"
+                         ng-mouseleave="node.imgSetHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.imgSetHiding,
+                                 'rotate_0_dur_300':!node.imgSetHiding,
+                                 'opacity_100_dur_200':node.imgSetHover,
+                                 'opacity_75_dur_200':!node.imgSetHover}"></div>
+                        <h4 class="float_l">图片模式设置</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.imgSetHiding,'elementHide':!node.imgSetHiding}">
+                        </div>
+                    </div>
+                    <!--图片设置区▼-->
+                    <div class="cursor_default" ng-class="{'elementHide':node.imgSetHiding}">
+                        <!--布局样式▼-->
+                        <div class="section_content padding_lr_10px">
+                            <div class="w-clearfix padding_tb_8px border_light_gary_3c3c3c buttom">
+                                <div class="id_selector padding_tb_8px">
+                                    <h4 class="float_l">布局样式</h4>
+                                </div>
+                                <div class="select-container cursor_pointer"
+                                     ng-click="handleImgListTypeClick(node,1)">
+                                    <div class="pics-nodes-icon pics-nodes-img-size pics-nodes-linerview"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.listType==1}"></div>
+                                            </div>
+                                        </div>
+                                        单行
+                                    </div>
+                                </div>
+                                <div class="select-container cursor_pointer"
+                                     ng-click="handleImgListTypeClick(node,2)">
+                                    <div class="pics-nodes-icon pics-nodes-img-size pics-nodes-pinterest"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.listType==2}"></div>
+                                            </div>
+                                        </div>
+                                        瀑布流
+                                    </div>
+                                </div>
+                                <div class="select-container cursor_pointer editor_developing"
+                                     ng-click="handleImgListTypeClick(node,3)">
+                                    <div class="pics-nodes-icon pics-nodes-img-size pics-nodes-grid"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.listType==3}"></div>
+                                            </div>
+                                        </div>
+                                        网格
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--布局样式▲-->
+                        <!--边框样式▼-->
+                        <div class="section_content padding_lr_10px">
+                            <div class="w-clearfix padding_tb_8px">
+                                <div class="id_selector padding_tb_8px">
+                                    <h4 class="float_l">图片样式</h4>
+                                </div>
+                                <div class="select-container cursor_pointer" ng-class="{'image_type_disabled':node.isDisabledBorderType(1)}"
+                                     ng-click="handleImgBorderTypeClick(node,1)">
+                                    <div class="pics-nodes-icon pics-nodes-icon-size pics-nodes-rect"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.borderType==1}"></div>
+                                            </div>
+                                        </div>
+                                        直角
+                                    </div>
+                                </div>
+                                <div class="select-container cursor_pointer" ng-class="{'image_type_disabled':node.isDisabledBorderType(2)}"
+                                     ng-click="handleImgBorderTypeClick(node,2)">
+                                    <div class="pics-nodes-icon pics-nodes-icon-size pics-nodes-rounded"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.borderType==2}"></div>
+                                            </div>
+                                        </div>
+                                        圆角
+                                    </div>
+                                </div>
+                                <div class="select-container cursor_pointer" ng-class="{'image_type_disabled':node.isDisabledBorderType(3)}"
+                                     ng-click="handleImgBorderTypeClick(node,3)">
+                                    <div class="pics-nodes-icon pics-nodes-icon-size pics-nodes-circle"></div>
+                                    <div class="margin-T5px div_as_h4">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"></div>
+                                                <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.borderType==3}"></div>
+                                            </div>
+                                        </div>
+                                        圆形
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--边框样式▲-->
+                    </div>
+                    <!--图片设置区▲-->
+                </div>
+                <!--图片模式设置区 仅图片选择题使用▲-->
+
+                <!--打分方式设置区 仅打分题使用▼-->
+                <div class="position_div" ng-if="node.isTypeOf('MARK')">
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                         width_100per border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.markSetHiding = !node.markSetHiding"
+                         ng-mouseenter="node.markSetHover = true"
+                         ng-mouseleave="node.markSetHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.markSetHiding,
+                                 'rotate_0_dur_300':!node.markSetHiding,
+                                 'opacity_100_dur_200':node.markSetHover,
+                                 'opacity_75_dur_200':!node.markSetHover}"></div>
+                        <h4 class="float_l">打分设置</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.markSetHiding,'elementHide':!node.markSetHiding}">
+                        </div>
+                    </div>
+                
+                    <div class="cursor_default" ng-class="{'elementHide':node.markSetHiding}">
+                        <!--打分方式选择▼-->
+                        <div class="w-clearfix padding_tb_8px" style="padding-left:12px;margin-bottom:10px">
+                            <div ng-click="handleMarkTypeClick(1,node)" class="editor_developing cursor_pointer w-inline-block">
+                                <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                                    <div class="position_div size_20px">
+                                        <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                        <div class="design_icon size_20px ic_radio_on radio_on"
+                                             ng-class="{'elementShow':node.markType == 1}"></div>
+                                    </div>
+                                </div>
+                                <h4 class="float_l margin_r_20px  cursor_pointer">分值评价</h4>
+                            </div>
+                            
+                            <div ng-click="handleMarkTypeClick(2,node)" class="cursor_pointer w-inline-block">
+                                <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px ">
+                                    <div class="position_div size_20px">
+                                        <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                        <div class="design_icon size_20px ic_radio_on radio_on"
+                                             ng-class="{'elementShow':node.markType == 2}"></div>
+                                    </div>
+                                </div>
+                                <h4 class="float_l margin_r_20px  cursor_pointer">图形评价</h4>
+                            </div>
+                            
+                            <div class="elem_forbid cursor_pointer w-inline-block" ng-click="handleMarkTypeClick(3,node)">
+                                <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                                    <div class="position_div size_20px">
+                                        <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                        <div class="design_icon size_20px ic_radio_on radio_on"
+                                             ng-class="{'elementShow':node.markType == 3}"></div>
+                                    </div>
+                                </div>
+                                <h4 class="float_l margin_r_20px  cursor_pointer">文字评价</h4>
+                            </div>
+                        </div>
+                        <!--打分方式选择▲-->
+
+                        <!--分值方式▼-->
+                        <div class="section_content padding_lr_10px" 
+                             ng-class="{'elementShow':node.markType == 1,'elementHide':node.markType != 1}" 
+                             style="padding-bottom:8px;">
+                            <h4 class="common_paragraph cursor_default width_270px" style="margin-bottom: 5px;">在以下范围之内:</h4>
+                            <div class="w-clearfix checkbox_tager padding_tb_6px">
+                                <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px float_l padding_lr_10px
+                                             all_sides color_dark_gary_gradient_input width_65px margin_r_20px"
+                                     style="width: 110px; margin-right: 8px;">
+                                    <input class="float_r margin_r_5px pick_input"
+                                           ng-keydown="handleOnlyNumberInputKeyDown($event)"
+                                           ng-model="node.markMin"
+                                           ng-model-options="{debounce:150}"
+                                           ng-change="handleMarkMinChange(node)"
+                                           ng-focus="handleMarkMinChange(node,-1)"
+                                           ng-blur="handleMarkMinChange(node,1)"
+                                           style="width:90px">
+                                    <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button" 
+                                         ng-click="handleMarkMinChangeClick(node,1)">
+                                        <div class="design_icon ic_up"></div>
+                                    </div>
+                                    <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button" 
+                                         ng-click="handleMarkMinChangeClick(node,-1)">
+                                        <div class="design_icon ic_down"></div>
+                                    </div>
+                                </div>
+                                <h4 class="font_line_height_24px margin_r_5px float_l cursor_default">至</h4>
+                                <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px padding_lr_10px all_sides
+                                             color_dark_gary_gradient_input width_65px float_l"
+                                     style="width: 110px; margin-right: 3px;">
+                                    <input class="float_r margin_r_5px pick_input"
+                                           ng-keydown="handleOnlyNumberInputKeyDown($event)"
+                                           ng-model="node.markMax"
+                                           ng-model-options="{debounce:150}"
+                                           ng-change="handleMarkMaxChange(node)"
+                                           ng-focus="handleMarkMaxChange(node,-1)"
+                                           ng-blur="handleMarkMaxChange(node,1)"
+                                           style="width:90px">
+                                    <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button" 
+                                         ng-click="handleMarkMaxChangeClick(node,1)">
+                                        <div class="design_icon ic_up"></div>
+                                    </div>
+                                    <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button" 
+                                         ng-click="handleMarkMaxChangeClick(node,-1)">
+                                        <div class="design_icon ic_down"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--默认分值▼-->
+                            <div>
+                                <h4 class="font_line_height_24px margin_r_5px float_l cursor_default width_270px" style="margin-top: 3px;">默认分值：</h4>
+                                <div class="w-clearfix kit_unit_box design_input radius_3px border_dark_gary_262626 height_24px float_l padding_lr_10px
+                                             all_sides color_dark_gary_gradient_input width_65px margin_r_20px"
+                                     style="width: 110px; margin-right: 8px;margin-top:3px;">
+                                    <input class="float_r margin_r_5px pick_input"
+                                           ng-keydown="handleOnlyNumberInputKeyDown($event)"
+                                           ng-model="node.defaultMark"
+                                           ng-model-options="{debounce:150}"
+                                           ng-change="handleDefaultMarkChange(node)"
+                                           ng-focus="handleDefaultMarkChange(node,-1)"
+                                           ng-blur="handleDefaultMarkChange(node,1)"
+                                           style="width:90px">
+                                    <div class="w-inline-block sprite_mid border_dark_gary_262626 buttom left color_gary_gradient_icon_button"
+                                         ng-click="handleDefaultMarkChangeClick(node,1)">
+                                        <div class="design_icon ic_up"></div>
+                                    </div>
+                                    <div class="w-inline-block sprite_mid down border_dark_gary_262626 left color_gary_gradient_icon_button"
+                                         ng-click="handleDefaultMarkChangeClick(node,-1)">
+                                        <div class="design_icon ic_down"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--默认分值▲-->
+                            <!--是否显示分值▼-->
+                            <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 margin_t_6px width_270px"
+                                 ng-click="handleShowMarkValueClick(node)"
+                                 ng-mouseenter="node.showMarkHover = true"
+                                 ng-mouseleave="node.showMarkHover = false">
+                                <div class="position_div size_20px float_l margin_r_5px">
+                                    <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                         ng-class="{'elementShow':node.showMarkValue,
+                                             'elementHide':!node.showMarkValue,
+                                             'opacity_100_dur_200':node.showMarkHover,
+                                             'opacity_75_dur_200':!node.showMarkHover}"></div>
+                                    <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                         ng-class="{'elementHide':node.showMarkValue,
+                                             'elementShow':!node.showMarkValue,
+                                             'opacity_100_dur_200':node.showMarkHover,
+                                             'opacity_75_dur_200':!node.showMarkHover}"></div>
+                                </div>
+                                <h4 class="float_l cursor_default">显示分值</h4>
+                            </div>
+                            <!--是否显示分值▲-->
+
+                            <div>
+                                <div class="w-clearfix w-inline-block width_270px" ng-click="handleShowMarkValueDescribeClick(node)"
+                                     ng-mouseenter="node.showMarkDescribeHover = true"
+                                     ng-mouseleave="node.showMarkDescribeHover = false">
+                                    <div class="position_div size_20px float_l margin_r_5px">
+                                        <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                             ng-class="{'elementShow':node.showMarkValueDescribe,
+                                             'elementHide':!node.showMarkValueDescribe,
+                                             'opacity_100_dur_200':node.showMarkDescribeHover,
+                                             'opacity_75_dur_200':!node.showMarkDescribeHover}"></div>
+                                        <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                             ng-class="{'elementHide':node.showMarkValueDescribe,
+                                             'elementShow':!node.showMarkValueDescribe,
+                                             'opacity_100_dur_200':node.showMarkDescribeHover,
+                                             'opacity_75_dur_200':!node.showMarkDescribeHover}"></div>
+                                    </div>
+                                    <h4 class=" cursor_default float_l">分值描述:</h4>
+                                </div>
+                                <input class="design_input radius_2px border_dark_gary_262626 padding_lr_10px padding_tb_5px height_30px all_sides color_dark_gary_gradient_input"
+                                       maxlength="10" placeholder="请输入低分描述"
+                                       style=" width: 279px; outline: none; margin-top: 5px;"
+                                       ng-model="node.minText"
+                                       ng-focus="handleMarkMinTextChange(node,-1)"
+                                       ng-change="handleMarkMinTextChange(node)"
+                                       ng-blur="handleMarkMinTextChange(node,1)"
+                                       ng-model-options="{debounce:150}" ng-if="node.showMarkValueDescribe" />
+                                <input class="design_input radius_2px border_dark_gary_262626 padding_lr_10px padding_tb_5px height_30px all_sides color_dark_gary_gradient_input"
+                                       maxlength="10" placeholder="请输入中分描述"
+                                       style=" width: 279px; outline: none;margin-top:10px;"
+                                       ng-model="node.midText"
+                                       ng-focus="handleMarkMidTextChange(node,-1)"
+                                       ng-change="handleMarkMidTextChange(node)"
+                                       ng-blur="handleMarkMidTextChange(node,1)"
+                                       ng-model-options="{debounce:150}" ng-if="node.showMarkValueDescribe" />
+                                <input class="design_input radius_2px border_dark_gary_262626 padding_lr_10px padding_tb_5px height_30px all_sides color_dark_gary_gradient_input"
+                                       maxlength="10" placeholder="请输入高分描述"
+                                       style=" width: 279px; outline: none; margin-top: 10px;"
+                                       ng-model="node.maxText"
+                                       ng-focus="handleMarkMaxTextChange(node,-1)"
+                                       ng-change="handleMarkMaxTextChange(node)"
+                                       ng-blur="handleMarkMaxTextChange(node,1)"
+                                       ng-model-options="{debounce:150}" ng-if="node.showMarkValueDescribe" />
+                            </div>
+                            
+                        </div>
+                        <!--分值方式▲-->
+
+                        <!--图形方式▼-->
+                        <div class="section_content padding_lr_10px"
+                             ng-class="{'elementShow':node.markType == 2,'elementHide':node.markType != 2}"
+                             style="padding-bottom:8px;">
+                            <h4 class="common_paragraph cursor_default">图形选择</h4>
+                            <div class="w-clearfix padding_tb_6px" style="padding-left:14px">
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_star_favorite':node.markImgCode==1,'ic_ic_star_favorite_o':node.markImgCode!=1}"
+                                     ng-click="handleMarkImgCodeClick(node,1)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_bomb':node.markImgCode==2,'ic_ic_bomb_o':node.markImgCode!=2}"
+                                     ng-click="handleMarkImgCodeClick(node,2)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_check_complete':node.markImgCode==3,'ic_ic_check_complete_o':node.markImgCode!=3}"
+                                     ng-click="handleMarkImgCodeClick(node,3)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_cup_goblet':node.markImgCode==4,'ic_ic_cup_goblet_o':node.markImgCode!=4}"
+                                     ng-click="handleMarkImgCodeClick(node,4)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_delete_close':node.markImgCode==5,'ic_ic_delete_close_o':node.markImgCode!=5}"
+                                     ng-click="handleMarkImgCodeClick(node,5)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_flag':node.markImgCode==6,'ic_ic_flag_o':node.markImgCode!=6}"
+                                     ng-click="handleMarkImgCodeClick(node,6)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_heart_love':node.markImgCode==7,'ic_ic_heart_love_o':node.markImgCode!=7}"
+                                     ng-click="handleMarkImgCodeClick(node,7)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_lamp_incandescent':node.markImgCode==8,'ic_ic_lamp_incandescent_o':node.markImgCode!=8}"
+                                     ng-click="handleMarkImgCodeClick(node,8)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_no_dislike':node.markImgCode==9,'ic_ic_no_dislike_o':node.markImgCode!=9}"
+                                     ng-click="handleMarkImgCodeClick(node,9)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_package':node.markImgCode==10,'ic_ic_package_o':node.markImgCode!=10}"
+                                     ng-click="handleMarkImgCodeClick(node,10)">
+                                </div>
+                                <div class="mark_img ic cursor_pointer"
+                                     ng-class="{'ic_ic_yes_like':node.markImgCode==11,'ic_ic_yes_like_o':node.markImgCode!=11}"
+                                     ng-click="handleMarkImgCodeClick(node,11)">
+                                </div>
+                            </div>
+                            <h4 class="common_paragraph cursor_default">图形总量</h4>
+                            <div class="w-clearfix padding_tb_8px" style="padding-left:12px;margin-bottom:10px">
+                                <div ng-click="handleMarkImgCountClick(3,node)" class="cursor_pointer w-inline-block">
+                                    <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                        <div class="position_div size_20px">
+                                            <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                            <div class="design_icon size_20px ic_radio_on radio_on"
+                                                 ng-class="{'elementShow':node.markImgCount == 3}"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="float_l margin_r_20px  cursor_pointer">3</h4>
+                                </div>
+                                
+                                <div ng-click="handleMarkImgCountClick(4,node)" class="cursor_pointer w-inline-block">
+                                    <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                        <div class="position_div size_20px">
+                                            <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                            <div class="design_icon size_20px ic_radio_on radio_on"
+                                                 ng-class="{'elementShow':node.markImgCount == 4}"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="float_l margin_r_20px  cursor_pointer">4</h4>
+                                </div>
+                                
+                                <div ng-click="handleMarkImgCountClick(5,node)" class="cursor_pointer w-inline-block">
+                                    <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                        <div class="position_div size_20px">
+                                            <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                            <div class="design_icon size_20px ic_radio_on radio_on"
+                                                 ng-class="{'elementShow':node.markImgCount == 5}"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="float_l margin_r_20px  cursor_pointer">5</h4>
+                                </div>
+                                
+                                <div ng-click="handleMarkImgCountClick(7,node)" class="cursor_pointer w-inline-block">
+                                    <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                        <div class="position_div size_20px">
+                                            <div class="design_icon size_20px ic_radio_off radio_off"></div>
+                                            <div class="design_icon size_20px ic_radio_on radio_on"
+                                                 ng-class="{'elementShow':node.markImgCount == 7}"></div>
+                                        </div>
+                                    </div>
+                                    <h4 class="float_l margin_r_20px  cursor_pointer">7</h4>
+                                </div>
+                                
+                            </div>
+                        </div>
+                        <!--图形方式▲-->
+
+                        <!--文字方式▼-->
+                        <div class="section_content padding_lr_10px"
+                             ng-class="{'elementShow':node.markType == 3,'elementHide':node.markType != 3}"
+                             style="padding-bottom:8px;">
+                            <h4 class="common_paragraph cursor_default width_270px">评价内容:</h4>
+                            <div class="design_input padding_tb_5px padding_l_5px padding_r_30px float_r border_dark_gary_262626
+                                        radius_2px mc_options_input width_100per all_sides color_dark_gary_gradient_input margin_t_10px"
+                                         ng-repeat="markItem in node.markTxtList">
+                                <!--选项文字编辑▼-->
+                                <input class="mark_item_editor"
+                                       ng-model="markItem.text"
+                                       ng-model-options="{debounce:150}"
+                                       placeholder="请输入文字描述" />
+
+                                <!--选项文字编辑▲-->
+                                <!--删除按钮▼-->
+                                <div class="w-inline-block mc_options_addon_button border_dark_gary_262626 left cursor_pointer">
+                                    <div class="design_icon size_20px ic_remove remove_tager option_delete_icon elementShow"
+                                         ng-click="handleDeleteMarkItemClick(node,markItem)"></div>
+                                </div>
+                                <!--删除按钮▲-->
+                            </div>
+                            <!--添加评价项按钮▼-->
+                            <div class="w-clearfix margin_t_10px">
+                                <div class="w-clearfix add_mc_options_button radius_3px border_light_gary_3c3c3c 
+                                     float_r all_sides overflow_hide cursor_pointer margin_t_10px"
+                                     >
+                                    <div class="w-inline-block design_button height_30px padding_tb_5px float_l font_color_light_d6d6d6 text_decoration_none
+                                         font_size_12px color_gary_gradient_text_button"
+                                         ng-click="handleAddMarkItemClick(node)">
+                                        <div class="font_center padding_lr_12px right">添加评价</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--添加选项按钮▲-->
+                        </div>
+                        <!--文字方式▲-->
+                    </div>
+                </div>
+                <!--打分方式设置区 仅打分题使用▲-->
+
+                <!--选项区 题目专用▼-->
+                <div class="position_div" style="width:299px" ng-if="node.isSubject()">
+                    <!--是否显示其他选项控制区 选择题专用▼-->
+                    <div class="w-clearfix w-inline-block addon_options_on_off font_color_light_d6d6d6 cursor_pointer" ng-click="handleOtherOptionToggleClick(node)"
+                         ng-if="node.isTypeOf('SELECT')">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_switch_on switch_on"
+                             ng-class="{'elementShow':node.useOtherOption,'elementHide':!node.useOtherOption}"></div>
+                        <div class="design_icon size_20px margin_r_5px float_l ic_switch_off switch_off"
+                             ng-class="{'elementHide':node.useOtherOption,'elementShow':!node.useOtherOption}"></div>
+                        <h4 class="float_l">{{node.getOtherOptionIconText()}}</h4>
+                    </div>
+                    <!--是否显示其他选项控制区 选择题专用▲-->
+                    <!--选项显示隐藏控制区▼-->
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local width_100per
+                             font_color_light_d6d6d6 border_dark_gary_262626 buttom cursor_pointer"
+                         ng-click="node.optionHiding=!node.optionHiding"
+                         ng-mouseenter="node.optionHover = true"
+                         ng-mouseleave="node.optionHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.optionHiding,
+                                 'rotate_0_dur_300':!node.optionHiding,
+                                 'opacity_100_dur_200':node.optionHover,
+                                 'opacity_75_dur_200':!node.optionHover}"></div>
+                        <h4 class="float_l">选项</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.optionHiding,'elementHide':!node.optionHiding}"></div>
+                    </div>
+                    <!--选项显示隐藏控制区▲-->
+                    <div class="section_content padding_lr_10px padding_b_20px"
+                         ng-class="{'elementHide':node.optionHiding,'elementShow':!node.optionHiding}">
+                        <!--行列选项切换 矩阵题专用▼-->
+                        <div class="w-tab-menu matrix_row_column_menu margin_t_10px radius_3px overflow_hide border_dark_gary_262626 all_sides
+                                  font_size_12px"
+                             ng-if="node.isTypeOf('MATRIX')">
+                            <div class="w-tab-link w--current w-inline-block matrix_tab_link" data-w-tab="Tab 1">
+                                <div>行选项</div>
+                            </div>
+                            <div class="w-tab-link w-inline-block matrix_tab_link left" data-w-tab="Tab 2">
+                                <div>列选项</div>
+                            </div>
+                            <div class="color_gary_gradient_text_button matrix_tab_toggle"
+                                 ng-click="node.rowHiding = !node.rowHiding"
+                                 ng-class="{'left_0px':node.rowHiding,'left_137px':!node.rowHiding}"></div>
+                        </div>
+                        <!--行列选项切换 矩阵题专用▲-->
+                        <div>
+                            <div class="w-clearfix title_selector padding_tb_8px">
+                                <!--选项编号显示状态切换按钮▼-->
+                                <div ng-if="!node.isTypeOf('FILL')">
+                                    <h4 class="margin_r_10px float_l margin_t_1px cursor_default">选项数值：</h4>
+                                    <div class="w-clearfix mc_button float_l border_dark_gary_262626 radius_3px all_sides cursor_pointer">
+                                        <div class="design_button_activation width_50per mc_options_t color_gary_gradient_icon_button"
+                                             ng-class="{'trans_0_0_dur_200':node.optionNumberOpen,'trans_32_0_dur_200':!node.optionNumberOpen}"></div>
+                                        <div class="float_l padding_lr_5px">
+                                            <div class="design_icon size_20px ic_off"></div>
+                                        </div>
+                                        <div class="float_l padding_lr_5px border_dark_gary_262626 left">
+                                            <div class="design_icon size_20px ic_mc_number"></div>
+                                        </div>
+                                        <div class="w-inline-block design_button_activation mc_options_t width_50per"
+                                             ng-class="{'trans_0_0_dur_200':node.optionNumberOpen,'trans_32_0_dur_200':!node.optionNumberOpen}"
+                                             ng-click="node.optionNumberOpen = !node.optionNumberOpen"></div>
+                                    </div>
+                                </div>
+
+                                <!--选项编号显示状态切换按钮▲-->
+                                <!--选项删除状态切换按钮▼-->
+                                <div class="w-inline-block cursor_pointer"
+                                     ng-click="node.optionDeleting = !node.optionDeleting"
+                                     ng-class="{'margin_l_50px':node.isTypeOf('SEQUENCE'),'margin_l_80px':!node.isTypeOf('SEQUENCE'),
+                                                    'margin_l_213px':node.isTypeOf('FILL')}">
+                                    <div class="w-clearfix mc_button border_dark_gary_262626 radius_3px float_r all_sides">
+                                        <div class="button_activation color_gary_gradient_icon_button design_button"
+                                             ng-class="{'elementShow':node.optionDeleting,'elementHide':!node.optionDeleting}"></div>
+                                        <div class="float_l padding_lr_5px">
+                                            <div class="design_icon size_20px ic_trash"></div>
+                                        </div>
+                                        <div class="w-inline-block button_link"></div>
+                                    </div>
+                                    <h4 class="margin_r_10px float_r margin_t_1px">删除</h4>
+                                </div>
+                                <h4 class="float_r margin_t_1px cursor_default" ng-if="node.isTypeOf('SEQUENCE')">目标</h4>
+                                <!--选项删除状态切换按钮▲-->
+                            </div>
+                            <!--选项 矩阵题不用▼-->
+                            <div ng-if="!node.isTypeOf('MATRIX')">
+                                <div data-design-manager="designManager"
+                                     data-current-node="node"
+                                     data-drag-option="node.options"></div>
+                            </div>
+                            <!--选项 矩阵题不用▲-->
+                            <!--列选项 矩阵题专用▼-->
+                            <div ng-if="node.isTypeOf('MATRIX') && node.rowHiding">
+                                <div data-design-manager="designManager"
+                                     data-current-node="node"
+                                     data-drag-option="node.optionsX"></div>
+                            </div>
+                            <!--列选项 矩阵题专用▲-->
+                            <!--行选项 矩阵题专用▼-->
+                            <div ng-if="node.isTypeOf('MATRIX') && !node.rowHiding">
+                                <div data-design-manager="designManager"
+                                     data-current-node="node"
+                                     data-drag-option="node.optionsY"></div>
+                            </div>
+                            <!--行选项 矩阵题专用▲-->
+                        </div>
+                        <!--添加选项按钮▼-->
+                        <div class="w-clearfix margin_t_20px">
+                            <div class="w-clearfix add_mc_options_button radius_3px border_light_gary_3c3c3c float_r all_sides overflow_hide cursor_pointer">
+                                <div class="w-inline-block design_button height_30px padding_tb_5px float_l font_color_light_d6d6d6 text_decoration_none
+                                         font_size_12px color_gary_gradient_text_button"
+                                     ng-click="handleAddOptionClick(node)">
+                                    <div class="font_center padding_lr_12px border_light_gary_3c3c3c right">添加选项</div>
+                                </div>
+                                <div class="w-inline-block design_button height_30px padding_tb_5px padding_lr_5px width_30px float_r color_gary_gradient_text_button"
+                                     ng-click="handleAddOptionBatchClick(node)">
+                                    <div class="design_icon size_20px ic_expand_more"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--添加选项按钮▲-->
+                    </div>
+                    <!--其他选项区域 选择题专用▼-->
+                    <div class=""
+                         ng-if="node.isTypeOf('SELECT')"
+                         ng-class="{'elementShow':node.useOtherOption,'elementHide':!node.useOtherOption}">
+                        <div class="other_options_section">
+                            <!--其他选项控制区▼-->
+                            <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local
+                                     width_100per font_color_light_d6d6d6 border_dark_gary_262626 buttom top cursor_pointer"
+                                 ng-click="node.otherOptionHiding = !node.otherOptionHiding"
+                                 ng-mouseenter="node.otherOptionHover=true"
+                                 ng-mouseleave="node.otherOptionHover=false">
+                                <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                                     ng-class="{'rotate_m90_dur_300':node.otherOptionHiding,
+                                         'rotate_0_dur_300':!node.otherOptionHiding,
+                                         'opacity_100_dur_200':node.otherOptionHover,
+                                         'opacity_75_dur_200':!node.otherOptionHover}"></div>
+                                <h4 class="float_l">其他选项</h4>
+                                <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                                     ng-class="{'elementShow':node.otherOptionHiding,
+                                         'elementHide':!node.otherOptionHiding}"></div>
+                                <div id="node_editor_otherOption" class="design_icon size_20px ic_nodes_help nodes_help"
+                                     ng-class="{'trans_0_0_dur_200':node.otherOptionHover,
+                                         'trans_0_m20_dur_200':!node.otherOptionHover}"
+                                     ng-click="handleNodeEditorHelpClick($event,'otherOption')"></div>
+                            </div>
+                            <!--其他选项控制区▲-->
+                            <div class="section_content padding_lr_10px" ng-class="{'elementHide':node.otherOptionHiding,'elementShow':!node.otherOptionHiding}">
+                                <!--其他选项类型设置▼-->
+                                <div class="w-clearfix padding_tb_8px">
+                                    <div ng-click="handleOtherTypeClick(1,node.otherOption,node)" class="cursor_pointer w-inline-block">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_radio_off radio_off"
+                                                     ng-class="{'elementHide':node.otherOption.otherType == 1,
+                                                                'elementShow':node.otherOption.otherType != 1}"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.otherOption.otherType == 1,
+                                                                'elementHide':node.otherOption.otherType != 1}"></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="float_l margin_r_20px  cursor_pointer">选项</h4>
+                                    </div>
+
+                                    <div ng-click="handleOtherTypeClick(2,node.otherOption,node)" class="cursor_pointer w-inline-block">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_radio_off radio_off"
+                                                     ng-class="{'elementHide':node.otherOption.otherType == 2,
+                                                                'elementShow':node.otherOption.otherType != 2}"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.otherOption.otherType == 2,
+                                                                'elementHide':node.otherOption.otherType != 2}"></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="float_l margin_r_20px  cursor_pointer">备注栏</h4>
+                                    </div>
+
+                                    <div ng-click="handleOtherTypeClick(3,node.otherOption,node)" class="cursor_pointer w-inline-block">
+                                        <div class="w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px cursor_pointer">
+                                            <div class="position_div size_20px">
+                                                <div class="design_icon size_20px ic_radio_off radio_off"
+                                                     ng-class="{'elementHide':node.otherOption.otherType == 3,
+                                                                'elementShow':node.otherOption.otherType != 3}"></div>
+                                                <div class="design_icon size_20px ic_radio_on radio_on"
+                                                     ng-class="{'elementShow':node.otherOption.otherType == 3,
+                                                                'elementHide':node.otherOption.otherType != 3}"></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="float_l margin_r_20px  cursor_pointer">选项+备注栏</h4>
+                                    </div>
+
+
+                                </div>
+                                <!--其他选项类型设置▲-->
+                                <div class="w-clearfix nodes_options margin_t_10px">
+                                    <div class="design_input padding_t_5px padding_l_5px padding_r_30px float_r border_dark_gary_262626
+                                         radius_2px mc_options_input width_100per all_sides color_dark_gary_gradient_input"
+                                         ng-class="{'width_250_dur_300':node.optionNumberOpen,'width_280_dur_300':!node.optionNumberOpen}"
+                                         style="position:relative;">
+                                        <!--选项文字编辑▼-->
+                                        <textarea class="options_paragraph option_editor_input option_editor other_option_editor"
+                                                  ng-model="node.otherOption.originText"
+                                                  ng-model-options="{debounce:150}"
+                                                  ng-focus="handleOtherOptionTextChange(node.otherOption,-1)"
+                                                  ng-change="handleOtherOptionTextChange(node.otherOption)"
+                                                  ng-blur="handleOtherOptionTextChange(node.otherOption,1)"
+                                                  ng-class="{'width_235_mi':node.optionNumberOpen,'width_265_mi':!node.optionNumberOpen}"></textarea>
+                                        <!--选项文字编辑▲-->
+                                    </div>
+
+                                    <!--选项编号▼-->
+                                    <div class="mc_number font_size_12px padding_tb_5px border_dark_gary_262626 radius_2px all_sides color_slate_gary_gradient_field"
+                                         ng-class="{'elementShow':node.optionNumberOpen,'elementHide':!node.optionNumberOpen}">
+                                        <!--选项编号编辑▼-->
+                                        <input type="text" ng-model="node.otherOption.number"
+                                               ng-focus="handleOtherOptionNumberChange(node.otherOption,-1)"
+                                               ng-change="handleOtherOptionNumberChange(node.otherOption)"
+                                               ng-blur="handleOtherOptionNumberChange(node.otherOption,1)"
+                                               ng-model-options="{debounce:150}"
+                                               ng-keydown="handleOnlyNumberInputKeyDown($event)" />
+                                        <!--选项编号编辑▲-->
+                                    </div>
+                                    <!--选项编号▲-->
+                                </div>
+
+                                <div ng-if="node.otherOption.otherType != 1">
+                                    <div class="w-clearfix padding_tb_8px cursor_pointer w-inline-block" ng-click="handleFillRequireClick(node.otherOption)">
+                                        <div class="w-clearfix w-inline-block design_checkbox font_color_light_d6d6d6 float_l margin_r_5px">
+                                            <div class="position_div size_20px float_l">
+                                                <div class="design_icon size_20px ic_checkbox_on checkbox_on"
+                                                     ng-class="{'elementShow':node.otherOption.fillRequired,'elementHide':!node.otherOption.fillRequired}"></div>
+                                                <div class="design_icon size_20px ic_checkbox_off checkbox_off"
+                                                     ng-class="{'elementHide':node.otherOption.fillRequired,'elementShow':!node.otherOption.fillRequired}"></div>
+                                            </div>
+                                        </div>
+                                        <h4 class="float_l  cursor_pointer">备注信息必填</h4>
+                                    </div>
+                                    <!--验证▼-->
+                                    <div data-validate-option="node.otherOption"></div>
+                                    <!--验证▲-->
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!--其他选项区域 选择题专用▲-->
+                </div>
+                <!--选项区 题目专用▲-->
+                <div class="size_299_250"></div>
+            </div>
+
+        </div>
+        <!--基本设置▲-->
+        <!--高级设置▼-->
+        <div class="w-tab-pane advanced_settings"
+             ng-class="{'w--tab-active':activeTab == 2}"
+             ng-if="node">
+            <div class="kit_section_group">
+                <div class="size_299_250"></div>
+            </div>
+        </div>
+        <!--高级设置▲-->
+        <!--媒体设置▼-->
+        <div class="w-tab-pane media_settings"
+             ng-class="{'w--tab-active':activeTab == 3}">
+            <div class="kit_section_group">
+                <!--图片区▼-->
+                <div class="position_div">
+                    <!--图片头部控制区▼-->
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local width_100per
+                             border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.picHiding = !node.picHiding"
+                         ng-mouseenter="node.picHover = true"
+                         ng-mouseleave="node.picHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.picHiding,
+                                 'rotate_0_dur_300':!node.picHiding,
+                                 'opacity_100_dur_200':node.picHover,
+                                 'opacity_75_dur_200':!node.picHover}"></div>
+                        <h4 class="float_l">图片</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.picHiding,'elementHide':!node.picHiding}"></div>
+                        <div id="node_editor_media" class="design_icon size_20px ic_nodes_help nodes_help"
+                             ng-class="{'trans_0_0_dur_200':node.picHover,
+                                         'trans_0_m20_dur_200':!node.picHover}" ng-click="handleNodeEditorHelpClick($event,'mediaNode')"></div>
+                    </div>
+                    <!--图片头部控制区▲-->
+                    <!--图片设置区▼-->
+                    <div class="section_content padding_lr_10px border_dark_gary_262626 buttom"
+                         ng-class="{'elementHide':node.picHiding,'elementShow':!node.picHiding}">
+                        <div class="media_section">
+                            <div class="w-clearfix title_selector padding_tb_6px">
+                                <h4 class="float_l font_line_height_24px cursor_default">添加图片</h4>
+                                <!--添加图片按钮▼-->
+                                <div class="w-inline-block design_button height_24px radius_2px border_light_gary_3c3c3c
+                                         float_r all_sides color_gary_gradient_icon_button width_36px cursor_pointer"
+                                     ng-click="handleImageUploadOpenClick()">
+                                    <div class="design_icon size_20px ic_image"></div>
+                                </div>
+                                <!--添加图片按钮▲-->
+                            </div>
+
+                            <div class="w-clearfix kit_field radius_2px"
+                                 style="height:auto;">
+                                <!--添加图片窗口▼-->
+                                <div data-image-upload="designManager.imageUploadManager" ng-if="designManager.imageUploadManager.isVisible()"></div>
+                                <!--添加图片窗口▲-->
+                                <!--图片列表▼-->
+                                <div ng-repeat="image in designManager.imageUploadManager.imageList"
+                                     class="w-clearfix kit_field radius_2px border_dark_gary_262626 padding_tb_6px
+                                     font_size_12px all_sides color_slate_gary_gradient_field cursor_pointer"
+                                     ng-class="{'margin_t_10px':!$first}"
+                                     ng-click="handleImageEditClick(image)">
+                                    <div class="w-inline-block mc_options_addon_button right border_dark_gary_262626 right float_l margin_r_5px">
+                                        <div class="design_icon ic_drag size_20px"></div>
+                                    </div>
+                                    <div class="font_color_light_d6d6d6 float_l font_line_height_24px position_div text_ellipsis cursor_default"
+                                         style="width:175px">{{image.fileName}}</div>
+                                    <div class="w-inline-block float_r position_div width_36px height_20px margin_t_2px cursor_pointer"
+                                         ng-click="handleImageDeleteClick(image,$event)">
+                                        <div class="design_icon size_20px ic_remove"></div>
+                                    </div>
+                                    <div class="thumb_image_icon border_light_gary_3c3c3c all_sides float_r"
+                                         ng-attr-style="{{image.getThumbnailStyle()}}"></div>
+                                </div>
+                                <!--图片列表▲-->
+                            </div>
+
+                            <div class="w-clearfix common_target padding_tb_8px checkbox_tager font_color_gary_9e9e9e">
+                                <h4 class="common_paragraph cursor_default">图片文件大小小于2M，格式：gif，jpg，png</h4>
+                                <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                    <div class="design_icon size_20px float_l ic_point"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--图片设置区▲-->
+                </div>
+                <!--图片区▲-->
+                <!--视频区▼-->
+                <div class="position_div" style="display:none;">
+                    <!--视频头部控制区▼-->
+                    <div class="w-clearfix w-inline-block title_local padding_tb_5px padding_lr_10px color_dark_gary_title_local width_100per
+                             border_dark_gary_262626 buttom font_color_light_d6d6d6 cursor_pointer"
+                         ng-click="node.videoHiding = !node.videoHiding"
+                         ng-mouseenter="node.videoHover = true" ng-mouseleave="node.videoHover = false">
+                        <div class="design_icon size_20px margin_r_5px float_l ic_arrow_drop_down design_arrow_drop_down"
+                             ng-class="{'rotate_m90_dur_300':node.videoHiding,
+                                 'rotate_0_dur_300':!node.videoHiding,
+                                 'opacity_100_dur_200':node.videoHover,
+                                 'opacity_75_dur_200':!node.videoHover}"></div>
+                        <h4 class="float_l">视频</h4>
+                        <div class="design_icon size_20px float_l ic_blue_light blue_dot"
+                             ng-class="{'elementShow':node.videoHiding,'elementHide':!node.videoHiding}"></div>
+                        <div class="design_icon size_20px ic_nodes_help nodes_help"
+                             ng-class="{'trans_0_0_dur_200':node.videoHover,
+                                         'trans_0_m20_dur_200':!node.videoHover}"></div>
+                    </div>
+                    <!--视频头部控制区▲-->
+                    <!--视频设置区▼-->
+                    <div class="section_content padding_lr_10px"
+                         ng-class="{'elementHide':node.videoHiding,'elementShow':!node.videoHiding}">
+                        <div class="media_section">
+                            <div class="w-clearfix title_selector padding_tb_6px">
+                                <h4 class="float_l font_line_height_24px cursor_default">添加视频</h4>
+                                <div class="w-inline-block design_button height_24px radius_2px border_light_gary_3c3c3c
+                                         float_r all_sides color_gary_gradient_icon_button width_36px"
+                                     ng-click="node.videoAddOpen = true">
+                                    <div class="design_icon size_20px ic_movie"></div>
+                                </div>
+                            </div>
+                            <div class="kit_field radius_2px border_dark_gary_262626 padding_tb_6px font_size_12px padding_l_5px all_sides color_slate_gary_gradient_field">
+                                <div class="font_center font_line_height_24px cursor_default">空</div>
+                                <div class="upload_media_kit color_dark_slate_gary_kit radius_3px border_dark_gary_262626 padding_lr_10px
+                                         font_color_light_d6d6d6 all_sides kit_shadow upload_movies elementShow"
+                                     ng-if="node.videoAddOpen">
+                                    <div class="arrow">
+                                        <div class="upload_arrow"></div>
+                                        <div class="upload_arrow gary"></div>
+                                    </div>
+                                    <div class="w-inline-block close_button color_gary_gradient_icon_button border_light_gary_3c3c3c all_sides radius_2px">
+                                        <div class="design_icon size_20px ic_close" ng-click="node.videoAddOpen = false"></div>
+                                    </div>
+                                    <div class="height_30px padding_tb_5px">
+                                        <h4>视频：</h4>
+                                    </div>
+                                    <div class="padding_lr_10px padding_tb_10px border_light_gary_3c3c3c all_sides radius_2px">
+                                        <div>
+                                            <h4>URL：</h4>
+                                        </div>
+                                        <div class="design_input radius_2px border_dark_gary_262626 padding_lr_10px padding_tb_5px height_30px
+                                                 all_sides color_dark_gary_gradient_input margin_t_5px">
+                                            <div class="width_100per height_20px overflow_hide font_size_12px">http://v.youku.com/v_show/id_XODQxMjgyMTIw.html</div>
+                                        </div>
+                                    </div>
+                                    <div class="height_30px padding_tb_5px">
+                                        <h4>预览：</h4>
+                                    </div>
+                                    <div class="padding_lr_10px padding_tb_10px border_light_gary_3c3c3c all_sides margin_b_10px radius_2px">
+                                        <div class="image_preview border_dark_gary_262626 all_sides"></div>
+                                        <div class="margin_t_10px border_light_gary_3c3c3c top"></div>
+                                        <div class="font_size_12px margin_t_10px">This is some text inside of a div block.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-clearfix common_target padding_tb_8px checkbox_tager margin_b_20px font_color_gary_9e9e9e">
+                                <h4 class="common_paragraph cursor_default">视频支持外链地址：优酷，土豆，腾讯</h4>
+                                <div class="w-clearfix icon_column float_l padding_tb_8px">
+                                    <div class="design_icon size_20px float_l ic_point"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--视频设置区▲-->
+                </div>
+                <!--视频区▲-->
+                <div class="size_299_250"></div>
+            </div>
+        </div>
+        <!--媒体设置▲-->
+    </div>
+    <!--节点详细设置▲-->
+</div>
